@@ -1,0 +1,7 @@
+---
+title: "Clase 06 | Documentos dinámicos en Quarto"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---

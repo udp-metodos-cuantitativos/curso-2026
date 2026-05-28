@@ -1,0 +1,380 @@
+---
+title: "Clase 05 | Estadística bivariada"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 05</p>
+  <h1>Estadística bivariada</h1>
+  <p>Tablas de contingencia, asociación y visualizaciones para explorar la relación entre dos variables.</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la clase
+
+En esta clase introducimos el análisis bivariado: el estudio de la relación entre dos variables. A diferencia del análisis univariado —que describe una variable a la vez—, el análisis bivariado nos permite preguntarnos si dos fenómenos están asociados y en qué dirección.
+
+Trabajaremos con la base procesada de ELSOC 2022 que construimos en clases anteriores. En detalle, aprenderemos a:
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Tablas de contingencia**
+
+Cruzar dos variables categóricas y calcular distribuciones porcentuales.
+:::
+
+::: {.objetivo-card}
+**Asociación entre variables**
+
+Comprender qué significa que dos variables estén relacionadas.
+:::
+
+::: {.objetivo-card}
+**Correlación**
+
+Medir la dirección e intensidad de la relación entre dos variables continuas.
+:::
+
+::: {.objetivo-card}
+**Visualización bivariada**
+
+Construir gráficos de dispersión, barras bivariadas y boxplots comparativos con `ggplot2`.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## 0. Preparación
+
+Cargamos los paquetes y la base procesada de ELSOC 2022:
+
+```{r}
+#| label: preparacion
+#| echo: true
+#| eval: false
+
+pacman::p_load(tidyverse,
+               janitor,    # para tablas de contingencia legibles
+               sjPlot,     # para tablas y gráficos con etiquetas
+               corrplot)   # para matrices de correlación
+
+options(scipen = 999)
+rm(list = ls())
+
+load("output/proc_elsoc.RData")
+```
+
+:::
+
+::: {.clase-card}
+
+## 1. Tablas de contingencia
+
+Una **tabla de contingencia** (o tabla cruzada) muestra la distribución conjunta de dos variables categóricas. Cada celda indica cuántos casos tienen simultáneamente los valores de ambas variables.
+
+La función base en R es `table()`:
+
+```{r}
+#| label: tabla-base
+#| echo: true
+#| eval: false
+
+# Frecuencias absolutas
+table(proc_elsoc$sexo, proc_elsoc$autor_democ)
+```
+
+Para obtener porcentajes usamos `prop.table()`. El argumento `margin` indica si queremos porcentajes por fila (`1`) o por columna (`2`):
+
+```{r}
+#| label: tabla-proporciones
+#| echo: true
+#| eval: false
+
+# Porcentajes por fila (distribución de autor_democ dentro de cada sexo)
+prop.table(table(proc_elsoc$sexo, proc_elsoc$autor_democ), margin = 1) * 100
+```
+
+### 1.1 Con `janitor`: tablas más legibles
+
+El paquete `janitor` ofrece `tabyl()`, que genera tablas más limpias y fáciles de leer:
+
+```{r}
+#| label: tabla-janitor
+#| echo: true
+#| eval: false
+
+proc_elsoc %>%
+  tabyl(sexo, autor_democ) %>%
+  adorn_percentages("row") %>%       # porcentajes por fila
+  adorn_pct_formatting(digits = 1) %>% # formato con 1 decimal
+  adorn_ns()                         # agrega frecuencias absolutas entre paréntesis
+```
+
+::: {.callout-note}
+**¿Por qué porcentajes por fila?**
+Cuando queremos comparar cómo se distribuye una variable (ej. opinión política) *según* otra (ej. sexo), calculamos porcentajes dentro de cada fila. Así cada fila suma 100% y la comparación entre grupos es directa.
+:::
+
+### 1.2 Ejercicio
+
+Construye una tabla de contingencia entre `tramo_edad` y `jv_delincuentes`. ¿En qué grupo etario es más frecuente justificar la violencia contra delincuentes?
+
+```{r}
+#| label: ejercicio-tabla
+#| echo: true
+#| eval: false
+
+proc_elsoc %>%
+  tabyl(___, ___) %>%
+  adorn_percentages("row") %>%
+  adorn_pct_formatting(digits = 1)
+```
+
+:::
+
+::: {.clase-card}
+
+## 2. La noción de asociación entre variables
+
+Dos variables están **asociadas** cuando la distribución de una cambia según los valores de la otra. En términos prácticos:
+
+- Si las filas de una tabla de contingencia son *similares* entre sí → las variables **no están asociadas**
+- Si las filas son *distintas* entre sí → las variables **sí están asociadas**
+
+### 2.1 Chi-cuadrado: prueba de asociación para variables categóricas
+
+La prueba **chi-cuadrado (χ²)** nos permite evaluar si la asociación observada en una tabla de contingencia es estadísticamente significativa, o si podría deberse al azar:
+
+```{r}
+#| label: chisq
+#| echo: true
+#| eval: false
+
+# ¿Existe asociación entre sexo y opinión sobre la democracia?
+chisq.test(table(proc_elsoc$sexo, proc_elsoc$autor_democ))
+```
+
+::: {.callout-note}
+**¿Cómo leer el resultado?**
+El valor **p** (*p-value*) indica la probabilidad de obtener esos datos si no hubiera asociación. Por convención:
+
+- p < 0.05 → hay evidencia de asociación
+- p ≥ 0.05 → no hay evidencia suficiente de asociación
+:::
+
+:::
+
+::: {.clase-card}
+
+## 3. Correlación
+
+La **correlación** mide la dirección e intensidad de la relación entre dos variables continuas. El coeficiente más común es el de **Pearson (r)**:
+
+| Valor de r | Interpretación |
+|---|---|
+| r = 1 | Asociación positiva perfecta |
+| 0 < r < 1 | Asociación positiva (a mayor X, mayor Y) |
+| r = 0 | Sin asociación lineal |
+| -1 < r < 0 | Asociación negativa (a mayor X, menor Y) |
+| r = -1 | Asociación negativa perfecta |
+
+```{r}
+#| label: correlacion-simple
+#| echo: true
+#| eval: false
+
+# Correlación entre edad e ingreso
+cor(proc_elsoc$edad, proc_elsoc$ingreso, use = "complete.obs")
+```
+
+### 3.1 Matriz de correlaciones
+
+Cuando tenemos varias variables continuas, es útil calcular todas las correlaciones de una vez:
+
+```{r}
+#| label: matriz-cor
+#| echo: true
+#| eval: false
+
+proc_elsoc %>%
+  select(edad, ingreso) %>%
+  cor(use = "complete.obs")
+```
+
+Y visualizarla con `corrplot`:
+
+```{r}
+#| label: corrplot
+#| echo: true
+#| eval: false
+
+proc_elsoc %>%
+  select(edad, ingreso) %>%
+  cor(use = "complete.obs") %>%
+  corrplot(method = "color",
+           type = "upper",
+           addCoef.col = "black",
+           tl.col = "black")
+```
+
+::: {.callout-important}
+**Correlación ≠ causalidad.** Una correlación alta entre dos variables no significa que una cause a la otra. Pueden estar relacionadas por una tercera variable, o simplemente coincidir en el tiempo.
+:::
+
+:::
+
+::: {.clase-card}
+
+## 4. Visualización bivariada con ggplot2
+
+### 4.1 Gráfico de dispersión — dos variables continuas
+
+El **scatter plot** muestra cada observación como un punto en el plano, con una variable en el eje X y otra en el eje Y. Es el gráfico natural para explorar correlaciones.
+
+```{r}
+#| label: scatter
+#| echo: true
+#| eval: false
+
+ggplot(proc_elsoc, aes(x = edad, y = ingreso)) +
+  geom_point(alpha = 0.3, color = "#0072B2") +
+  geom_smooth(method = "lm", se = FALSE, color = "#D55E00") +
+  labs(
+    title = "Relación entre edad e ingreso",
+    subtitle = "ELSOC 2022",
+    x = "Edad (años)",
+    y = "Ingreso mensual del hogar"
+  ) +
+  theme_minimal()
+```
+
+::: {.callout-note}
+- `alpha = 0.3` hace los puntos semitransparentes, útil cuando hay muchas observaciones superpuestas.
+- `geom_smooth(method = "lm")` agrega una línea de tendencia lineal.
+:::
+
+### 4.2 Gráfico de barras bivariado — dos variables categóricas
+
+#### Barras agrupadas
+
+```{r}
+#| label: barras-agrupadas
+#| echo: true
+#| eval: false
+
+ggplot(proc_elsoc, aes(x = autor_democ, fill = sexo)) +
+  geom_bar(position = "dodge") +
+  labs(
+    title = "Opinión sobre la democracia según sexo",
+    subtitle = "ELSOC 2022",
+    x = NULL,
+    y = "Frecuencia",
+    fill = "Sexo"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 25, hjust = 1))
+```
+
+#### Barras apiladas con proporciones
+
+Más útil cuando queremos comparar distribuciones relativas entre grupos:
+
+```{r}
+#| label: barras-apiladas
+#| echo: true
+#| eval: false
+
+ggplot(proc_elsoc, aes(x = sexo, fill = autor_democ)) +
+  geom_bar(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Distribución de opinión sobre la democracia según sexo",
+    subtitle = "ELSOC 2022",
+    x = "Sexo",
+    y = "Porcentaje",
+    fill = "Opinión"
+  ) +
+  theme_minimal()
+```
+
+### 4.3 Boxplot bivariado — una variable continua + una categórica
+
+El **boxplot bivariado** compara la distribución de una variable continua entre distintos grupos. Es ideal para visualizar si el ingreso, la edad u otra variable numérica varía según sexo, tramo de edad, etc.
+
+```{r}
+#| label: boxplot-bivariado
+#| echo: true
+#| eval: false
+
+ggplot(proc_elsoc, aes(x = tramo_edad, y = ingreso, fill = tramo_edad)) +
+  geom_boxplot() +
+  labs(
+    title = "Distribución del ingreso según tramo de edad",
+    subtitle = "ELSOC 2022",
+    x = "Tramo de edad",
+    y = "Ingreso mensual del hogar"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+También podemos cruzar dos variables categóricas como grouping:
+
+```{r}
+#| label: boxplot-sexo-edad
+#| echo: true
+#| eval: false
+
+ggplot(proc_elsoc, aes(x = tramo_edad, y = ingreso, fill = sexo)) +
+  geom_boxplot() +
+  labs(
+    title = "Distribución del ingreso según tramo de edad y sexo",
+    subtitle = "ELSOC 2022",
+    x = "Tramo de edad",
+    y = "Ingreso mensual del hogar",
+    fill = "Sexo"
+  ) +
+  theme_minimal()
+```
+
+:::
+
+::: {.clase-card}
+
+## 5. Ejercicio integrador
+
+Usando `proc_elsoc`, responde las siguientes preguntas con código R:
+
+**1.** ¿La justificación de la violencia contra delincuentes (`jv_delincuentes`) varía según el tramo de ingreso (`tramo_ingreso`)? Construye una tabla de contingencia con porcentajes por fila e interpreta.
+
+**2.** ¿Existe asociación estadística entre `tramo_edad` y `jv_delincuentes`? Aplica una prueba chi-cuadrado.
+
+**3.** Construye un gráfico de barras apiladas (con proporciones) que muestre la distribución de `jv_delincuentes` según `tramo_edad`.
+
+**4.** Construye un boxplot que compare la distribución del `ingreso` entre quienes apoyan la democracia y quienes prefieren un gobierno autoritario (`autor_democ`).
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+:::
+::: {.column-margin}
+{{< include ../../includes/menu-clases.qmd >}}
+:::
+:::

@@ -64,6 +64,34 @@
         <a class="clase-link" href="/clases/clase_04/index.html" data-clase-link="clase_04">Clase 04 – Estadística Descriptiva Univariada</a>
       </div>
 
+      <div class="sidebar-unit-header">
+        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
+          <div class="unit-label-wrap">
+            <span class="unit-label">Unidad 4</span>
+            <span class="unit-title">Estadística Bivariada</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="collapse" id="unidad4">
+        <a class="clase-link" href="/clases/clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Bivariada</a>
+      </div>
+
+      <div class="sidebar-unit-header">
+        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad5" aria-expanded="false" aria-controls="unidad5">
+          <div class="unit-label-wrap">
+            <span class="unit-label">Unidad 5</span>
+            <span class="unit-title">Documentos dinámicos en Quarto</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="collapse" id="unidad5">
+        <a class="clase-link" href="/clases/clase_06/index.html" data-clase-link="clase_06">Clase 06 – Documentos dinámicos en Quarto</a>
+      </div>
+
     </div>
   </aside>
 </div>
