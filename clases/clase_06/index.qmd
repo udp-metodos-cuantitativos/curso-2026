@@ -15,6 +15,7 @@ body-classes: clases-page clase-page
   <p class="clase-kicker">Clase 06</p>
   <h1>Documentos dinámicos en Quarto</h1>
   <p>Cómo construir un informe reproducible con texto, código, tablas, gráficos e interpretaciones.</p>
+  <p><a class="btn btn-primary" href="informe_practica_bienestar_prueba.qmd" download>Descargar script</a></p>
 </section>
 ```
 
@@ -619,7 +620,7 @@ format:
     toc: true
     toc-depth: 2
     number-sections: true
-    theme: Cerulean
+    theme: cosmo
     code-fold: true
     code-summary: "Mostrar código"
 execute:
@@ -642,7 +643,8 @@ El tema del informe es el bienestar subjetivo. Para practicar análisis descript
 ## Cargar paquetes
 
 ```{r}
-#| label: cargar-paquetes
+#| label: cargar-paquetes-completo
+#| eval: false
 
 # Instalamos pacman si no está instalado
 if (!requireNamespace("pacman", quietly = TRUE)) {
@@ -662,7 +664,8 @@ options(scipen = 999)
 ## Simular datos
 
 ```{r}
-#| label: simular-datos
+#| label: simular-datos-completo
+#| eval: false
 
 # Fijamos una semilla para que siempre salgan los mismos datos
 set.seed(2026)
@@ -705,7 +708,8 @@ datos <- datos |>
 ## Revisar datos
 
 ```{r}
-#| label: revisar-datos
+#| label: revisar-datos-completo
+#| eval: false
 
 # Revisamos la estructura de la base
 glimpse(datos)
@@ -717,7 +721,7 @@ summary(datos)
 dim(datos)
 ```
 
-La base simulada contiene `r nrow(datos)` casos y `r ncol(datos)` variables.
+La base simulada contiene <code>r nrow(datos)</code> casos y <code>r ncol(datos)</code> variables.
 
 # Definición de variables
 
@@ -740,9 +744,10 @@ La tabla anterior resume las variables usadas en el informe. Su función es ayud
 ## Tabla de frecuencia
 
 ```{r}
-#| label: tbl-sexo
+#| label: tbl-sexo-completo
 #| tbl-cap: "Distribución de la muestra según sexo"
 #| echo: false
+#| eval: false
 
 # Contamos cuántos casos hay en cada categoría
 tabla_sexo <- datos |>
@@ -770,9 +775,10 @@ La @tbl-sexo muestra la composición de la muestra según sexo. Esta tabla permi
 ## Tabla descriptiva
 
 ```{r}
-#| label: tbl-descriptivos
+#| label: tbl-descriptivos-completo
 #| tbl-cap: "Medidas descriptivas de variables numéricas"
 #| echo: false
+#| eval: false
 
 # Creamos una tabla manual con medidas descriptivas
 tabla_descriptivos <- tibble(
@@ -809,9 +815,10 @@ La @tbl-descriptivos resume las variables numéricas principales. La media y la 
 ## Gráfico de barras
 
 ```{r}
-#| label: fig-educacion
+#| label: fig-educacion-completo
 #| fig-cap: "Distribución porcentual del nivel educacional"
 #| echo: false
+#| eval: false
 
 # Creamos una tabla para graficar
 tabla_educacion <- datos |>
@@ -838,9 +845,10 @@ La @fig-educacion muestra la distribución porcentual del nivel educacional. Est
 ## Histograma
 
 ```{r}
-#| label: fig-bienestar
+#| label: fig-bienestar-completo
 #| fig-cap: "Distribución del bienestar subjetivo"
 #| echo: false
+#| eval: false
 
 # Hacemos un histograma
 ggplot(datos, aes(x = bienestar_subjetivo)) +
@@ -860,9 +868,10 @@ La @fig-bienestar muestra cómo se distribuye el bienestar subjetivo. En este ca
 ## Tabla bivariada
 
 ```{r}
-#| label: tbl-bivariada
+#| label: tbl-bivariada-completo
 #| tbl-cap: "Participación social según nivel educacional"
 #| echo: false
+#| eval: false
 
 # Contamos casos por nivel educacional y participación social
 tabla_bivariada <- datos |>
@@ -893,9 +902,10 @@ La @tbl-bivariada permite comparar la participación social dentro de cada nivel
 ## Boxplot
 
 ```{r}
-#| label: fig-bivariada
+#| label: fig-bivariada-completo
 #| fig-cap: "Bienestar subjetivo según participación social"
 #| echo: false
+#| eval: false
 
 # Hacemos un boxplot para comparar grupos
 ggplot(datos, aes(x = participacion_social, y = bienestar_subjetivo)) +
@@ -917,7 +927,6 @@ Este informe tuvo como objetivo describir la distribución del bienestar subjeti
 Los resultados permiten practicar herramientas básicas de análisis descriptivo: tablas de frecuencia, medidas resumen, gráficos univariados y análisis bivariado. En particular, se comparó el bienestar subjetivo según participación social y se revisó la distribución de variables como sexo y nivel educacional.
 
 Como la base es simulada, los resultados no deben interpretarse como evidencia sobre una población real. Su utilidad es pedagógica: permite aprender cómo construir un informe reproducible en Quarto.
-
 
 ````
 

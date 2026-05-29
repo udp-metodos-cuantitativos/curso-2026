@@ -1,0 +1,308 @@
+---
+title: "Informe de práctica: bienestar subjetivo"
+author: "Nombre Apellido"
+date: today
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    theme: Cerulean
+    code-fold: true
+    code-summary: "Mostrar código"
+execute:
+  warning: false
+  message: false
+---
+
+# Introducción
+
+Este informe utiliza una base de datos ficticia para practicar la construcción de un documento reproducible en Quarto. El objetivo no es representar una población real, sino aprender a integrar texto, código, tablas, gráficos e interpretaciones en un mismo archivo.
+
+El tema del informe es el bienestar subjetivo. Para practicar análisis descriptivo, se trabajará con variables como sexo, edad, nivel educacional, participación social, confianza institucional e ingreso.
+
+**Pregunta de investigación:** ¿Cómo se distribuye el bienestar subjetivo según sexo, edad, nivel educacional y participación social en una encuesta ficticia de población adulta?
+
+**Objetivo:** Describir la distribución del bienestar subjetivo y compararla según algunas características sociales básicas.
+
+# Preparación de los datos
+
+## Cargar paquetes
+
+```{r}
+#| label: cargar-paquetes
+
+# Instalamos pacman si no está instalado
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
+
+# Cargamos paquetes
+pacman::p_load(
+  tidyverse, # manipular datos y hacer gráficos
+  gt         # hacer tablas más bonitas
+)
+
+# Evitamos notación científica
+options(scipen = 999)
+```
+
+## Simular datos
+
+```{r}
+#| label: simular-datos
+
+# Fijamos una semilla para que siempre salgan los mismos datos
+set.seed(2026)
+
+# Definimos el número de personas
+n <- 300
+
+# Creamos una base ficticia
+datos <- tibble(
+  sexo = sample(c("Mujer", "Hombre"), n, replace = TRUE),
+  edad = sample(18:80, n, replace = TRUE),
+  nivel_educacional = sample(
+    c("Básica o menos", "Media", "Superior"),
+    n,
+    replace = TRUE
+  ),
+  participacion_social = sample(
+    c("Participa", "No participa"),
+    n,
+    replace = TRUE
+  ),
+  confianza_institucional = sample(1:10, n, replace = TRUE),
+  bienestar_subjetivo = sample(1:10, n, replace = TRUE),
+  ingreso = sample(seq(300000, 1500000, by = 50000), n, replace = TRUE)
+)
+
+# Convertimos algunas variables en factores
+datos <- datos |>
+  mutate(
+    sexo = factor(sexo),
+    participacion_social = factor(participacion_social),
+    nivel_educacional = factor(
+      nivel_educacional,
+      levels = c("Básica o menos", "Media", "Superior"),
+      ordered = TRUE
+    )
+  )
+```
+
+## Revisar datos
+
+```{r}
+#| label: revisar-datos
+
+# Revisamos la estructura de la base
+glimpse(datos)
+
+# Revisamos un resumen general
+summary(datos)
+
+# Revisamos filas y columnas
+dim(datos)
+```
+
+La base simulada contiene `r nrow(datos)` casos y `r ncol(datos)` variables.
+
+# Definición de variables
+
+Antes de analizar los datos, es importante saber qué significa cada variable de la base.
+
+| Variable | Qué significa | Tipo de variable |
+|---|---|---|
+| `sexo` | Sexo de la persona encuestada | Categórica |
+| `edad` | Edad en años | Numérica |
+| `nivel_educacional` | Nivel educacional alcanzado | Categórica ordinal |
+| `participacion_social` | Indica si la persona participa o no en organizaciones sociales | Categórica |
+| `confianza_institucional` | Nivel de confianza institucional, de 1 a 10 | Numérica |
+| `bienestar_subjetivo` | Nivel de bienestar subjetivo, de 1 a 10 | Numérica |
+| `ingreso` | Ingreso mensual aproximado | Numérica |
+
+La tabla anterior resume las variables usadas en el informe. Su función es ayudar a comprender qué información contiene la base antes de revisar tablas y gráficos.
+
+# Análisis descriptivo
+
+## Tabla de frecuencia
+
+```{r}
+#| label: tbl-sexo
+#| tbl-cap: "Distribución de la muestra según sexo"
+#| echo: false
+
+# Contamos cuántos casos hay en cada categoría
+tabla_sexo <- datos |>
+  count(sexo)
+
+# Calculamos el porcentaje
+tabla_sexo <- tabla_sexo |>
+  mutate(porcentaje = round(n / sum(n) * 100, 1))
+
+# Mostramos la tabla
+tabla_sexo |>
+  gt() |>
+  tab_header(
+    title = "Distribución de la muestra según sexo"
+  ) |>
+  cols_label(
+    sexo = "Sexo",
+    n = "Frecuencia",
+    porcentaje = "Porcentaje (%)"
+  )
+```
+
+La @tbl-sexo muestra la composición de la muestra según sexo. Esta tabla permite conocer la estructura básica de la base antes de hacer comparaciones.
+
+## Tabla descriptiva
+
+```{r}
+#| label: tbl-descriptivos
+#| tbl-cap: "Medidas descriptivas de variables numéricas"
+#| echo: false
+
+# Creamos una tabla manual con medidas descriptivas
+tabla_descriptivos <- tibble(
+  variable = c("Edad", "Confianza institucional", "Bienestar subjetivo", "Ingreso"),
+  media = c(
+    round(mean(datos$edad, na.rm = TRUE), 2),
+    round(mean(datos$confianza_institucional, na.rm = TRUE), 2),
+    round(mean(datos$bienestar_subjetivo, na.rm = TRUE), 2),
+    round(mean(datos$ingreso, na.rm = TRUE), 0)
+  ),
+  mediana = c(
+    round(median(datos$edad, na.rm = TRUE), 2),
+    round(median(datos$confianza_institucional, na.rm = TRUE), 2),
+    round(median(datos$bienestar_subjetivo, na.rm = TRUE), 2),
+    round(median(datos$ingreso, na.rm = TRUE), 0)
+  )
+)
+
+# Mostramos la tabla
+tabla_descriptivos |>
+  gt() |>
+  tab_header(
+    title = "Medidas descriptivas"
+  ) |>
+  cols_label(
+    variable = "Variable",
+    media = "Media",
+    mediana = "Mediana"
+  )
+```
+
+La @tbl-descriptivos resume las variables numéricas principales. La media y la mediana permiten observar valores típicos de cada variable.
+
+## Gráfico de barras
+
+```{r}
+#| label: fig-educacion
+#| fig-cap: "Distribución porcentual del nivel educacional"
+#| echo: false
+
+# Creamos una tabla para graficar
+tabla_educacion <- datos |>
+  count(nivel_educacional)
+
+# Calculamos proporciones para el gráfico
+tabla_educacion <- tabla_educacion |>
+  mutate(porcentaje = n / sum(n))
+
+# Hacemos el gráfico
+ggplot(tabla_educacion, aes(x = nivel_educacional, y = porcentaje)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  labs(
+    title = "Distribución del nivel educacional",
+    x = "Nivel educacional",
+    y = "Porcentaje"
+  ) +
+  theme_minimal()
+```
+
+La @fig-educacion muestra la distribución porcentual del nivel educacional. Este tipo de gráfico es útil para variables categóricas.
+
+## Histograma
+
+```{r}
+#| label: fig-bienestar
+#| fig-cap: "Distribución del bienestar subjetivo"
+#| echo: false
+
+# Hacemos un histograma
+ggplot(datos, aes(x = bienestar_subjetivo)) +
+  geom_histogram(bins = 10) +
+  labs(
+    title = "Distribución del bienestar subjetivo",
+    x = "Bienestar subjetivo",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+```
+
+La @fig-bienestar muestra cómo se distribuye el bienestar subjetivo. En este caso, los valores van de 1 a 10.
+
+# Análisis bivariado
+
+## Tabla bivariada
+
+```{r}
+#| label: tbl-bivariada
+#| tbl-cap: "Participación social según nivel educacional"
+#| echo: false
+
+# Contamos casos por nivel educacional y participación social
+tabla_bivariada <- datos |>
+  count(nivel_educacional, participacion_social)
+
+# Calculamos porcentajes dentro de cada nivel educacional
+tabla_bivariada <- tabla_bivariada |>
+  group_by(nivel_educacional) |>
+  mutate(porcentaje = round(n / sum(n) * 100, 1)) |>
+  ungroup()
+
+# Mostramos la tabla
+tabla_bivariada |>
+  gt() |>
+  tab_header(
+    title = "Participación social según nivel educacional"
+  ) |>
+  cols_label(
+    nivel_educacional = "Nivel educacional",
+    participacion_social = "Participación social",
+    n = "Frecuencia",
+    porcentaje = "Porcentaje (%)"
+  )
+```
+
+La @tbl-bivariada permite comparar la participación social dentro de cada nivel educacional. Esta lectura es descriptiva y no permite hablar de causalidad.
+
+## Boxplot
+
+```{r}
+#| label: fig-bivariada
+#| fig-cap: "Bienestar subjetivo según participación social"
+#| echo: false
+
+# Hacemos un boxplot para comparar grupos
+ggplot(datos, aes(x = participacion_social, y = bienestar_subjetivo)) +
+  geom_boxplot() +
+  labs(
+    title = "Bienestar subjetivo según participación social",
+    x = "Participación social",
+    y = "Bienestar subjetivo"
+  ) +
+  theme_minimal()
+```
+
+La @fig-bivariada permite comparar la distribución del bienestar subjetivo entre quienes participan y quienes no participan socialmente.
+
+# Conclusiones
+
+Este informe tuvo como objetivo describir la distribución del bienestar subjetivo en una base ficticia de población adulta.
+
+Los resultados permiten practicar herramientas básicas de análisis descriptivo: tablas de frecuencia, medidas resumen, gráficos univariados y análisis bivariado. En particular, se comparó el bienestar subjetivo según participación social y se revisó la distribución de variables como sexo y nivel educacional.
+
+Como la base es simulada, los resultados no deben interpretarse como evidencia sobre una población real. Su utilidad es pedagógica: permite aprender cómo construir un informe reproducible en Quarto.
