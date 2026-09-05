@@ -406,7 +406,7 @@ textarea:focus-visible,
 .navbar .nav-link {
   color: #3E2A2A !important;
   font-weight: 550;
-  padding-block: 0.45rem !important;
+  padding-block: 0.55rem !important;
   padding-inline: 0.6rem !important;
   line-height: 1.4 !important;
   font-size: 0.95rem !important;
