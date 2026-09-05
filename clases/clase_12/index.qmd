@@ -1,0 +1,79 @@
+---
+title: "Clase 12 | Sesión de dudas"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 12 · Cierre del semestre</p>
+  <h1>Sesión de resolución de dudas</h1>
+  <p>Espacio plenario para consultas metodológicas y estadísticas, preparación de presentaciones y resolución de dudas para la prueba recuperativa.</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+Sesión de síntesis y cierre del período lectivo para resolver consultas de los equipos de investigación antes de las presentaciones finales.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Resolución metodológica**
+
+Aclarar dudas de interpretación de resultados, lectura de tablas y consistencia de conclusiones.
+:::
+
+::: {.objetivo-card}
+**Preparación de presentaciones**
+
+Pautas para la exposición oral de los resultados del trabajo grupal fijada para el 01/12/2026.
+:::
+
+::: {.objetivo-card}
+**Prueba recuperativa**
+
+Revisión de contenidos y orientaciones para estudiantes que deban rendir la solemne recuperativa.
+:::
+
+::: {.objetivo-card}
+**Cierre del curso**
+
+Balance de los resultados de aprendizaje alcanzados durante el semestre en Métodos Cuantitativos.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Fechas de cierre del semestre
+
+::: {.callout-important}
+* **01/12/2026:** Presentaciones de trabajos grupales y rendición de la prueba recuperativa.
+* **08/12/2026:** Feriado nacional.
+* **15/12/2026:** Examen oral individual.
+:::
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+::: {.column-margin}
+
+{{< include ../../includes/menu-clases.qmd >}}
+
+:::
+
+:::

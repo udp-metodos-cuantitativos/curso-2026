@@ -1,0 +1,78 @@
+---
+title: "Clase 11 | Taller de trabajo grupal"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 11 · Taller de investigación</p>
+  <h1>Elaboración del trabajo grupal</h1>
+  <p>Sesión de trabajo guiado en el laboratorio para el desarrollo del análisis empírico, tablas descriptivas y redacción del informe grupal.</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+Esta sesión está dedicada al trabajo aplicado de los equipos de investigación para avanzar en el procesamiento de datos, cálculo de estadísticos y estructuración del informe final del curso.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Articulación metodológica**
+
+Vincular la pregunta de investigación, los objetivos y las hipótesis formuladas con las variables empíricas seleccionadas.
+:::
+
+::: {.objetivo-card}
+**Análisis con R**
+
+Generar las tablas univariadas, bivariadas y gráficos que responderán a los objetivos del estudio.
+:::
+
+::: {.objetivo-card}
+**Asesoría docente**
+
+Revisión directa del código de R y retroalimentación metodológica por parte del equipo docente y ayudante.
+:::
+
+::: {.objetivo-card}
+**Pautas de entrega**
+
+Repasar los criterios formales de presentación, citas bibliográficas y entrega del informe (fecha oficial: 22/11/2026).
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Orientaciones para la entrega
+
+::: {.callout-tip}
+### Entrega del trabajo grupal (22/11/2026)
+El trabajo final representa el 40% de la nota de presentación a examen y debe integrar problematización, matriz de variables, análisis descriptivo y conclusiones sustantivas.
+:::
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+::: {.column-margin}
+
+{{< include ../../includes/menu-clases.qmd >}}
+
+:::
+
+:::

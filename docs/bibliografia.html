@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bibliografía – Procesamiento y Visualización de datos en R</title>
+<title>Bibliografía – Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./resources/imagenes/logo.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -86,10 +87,6 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -100,24 +97,13 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="./clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="./curso.html"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./bibliografia.html" aria-current="page"> 
@@ -130,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -172,170 +158,38 @@ ul.task-list li input[type="checkbox"] {
 <p><span class="library-tag library-tag-required">Obligatoria</span> <span class="library-tag library-tag-basic">Básica</span></p>
 </div>
 <div class="library-actions">
-<p><a href="resources/biblio/Agresti Franklin Klingenberg 2023 - Statistics The Art and Science of Learning from Data, 5th Edition, Global Edition (Pearson).pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Agresti Franklin Klingenberg 2023 - Statistics The Art and Science of Learning from Data, 5th Edition, Global Edition (Pearson).pdf" class="library-btn" download="">Descargar</a></p>
+<p><a href="resources/biblio/Ritchey_F__(2008)__(2ed)__Estadistica_para_las_CCSS.pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Ritchey_F__(2008)__(2ed)__Estadistica_para_las_CCSS.pdf" class="library-btn" download="">Descargar</a></p>
 </div>
 </div>
-<section id="agresti-franklin-klingenberg-2023" class="level3">
-<h3 class="anchored" data-anchor-id="agresti-franklin-klingenberg-2023">Agresti, Franklin &amp; Klingenberg (2023)</h3>
+<section id="ritchey-2002" class="level3">
+<h3 class="anchored" data-anchor-id="ritchey-2002">Ritchey (2002)</h3>
 <div class="library-title">
-<p><em>Statistics: The art and science of learning from data</em></p>
+<p><em>Estadística para las Ciencias Sociales: El potencial de la imaginación estadística</em></p>
 </div>
 <div class="library-ref">
-<p>Agresti, A., Franklin, C., &amp; Klingenberg, B. (2023). <em>Statistics: The art and science of learning from data</em> (5.ª ed.). Pearson.</p>
+<p>Ritchey, F. (2002). <em>Estadística para las Ciencias Sociales. El potencial de la imaginación estadística</em>. McGraw-Hill, México.</p>
 </div>
-<details class="library-details">
+<details class="library-details" open="">
 <summary>
-Capítulos recomendados
+Capítulos del programa
 </summary>
 <ul>
-<li>Cap. 1. Para clases 2 y 3.</li>
-<li>Cap. 2. Para clase 4.</li>
-<li>Cap. 3. Para clase 5.</li>
+<li><strong>Cap. 1.</strong> “La imaginación estadística” (Unidad I).</li>
+<li><strong>Cap. 2.</strong> “Organización de los datos para reducir al mínimo el error estadístico” (Unidad II).</li>
+<li><strong>Cap. 3.</strong> “Tablas y gráficas: una imagen dice más que mil palabras” (Unidad III).</li>
+<li><strong>Cap. 4.</strong> “Estimación de promedios” (Unidad III).</li>
+<li><strong>Cap. 5.</strong> “Medición de la dispersión o variación en una distribución de puntuaciones” (Unidad III).</li>
 </ul>
 </details>
-</section>
+<div class="library-ref library-ref-muted">
+<p><strong>Edición disponible en el sitio:</strong> 2.ª ed.&nbsp;(2008), McGraw-Hill.</p>
 </div>
-<div class="library-card library-card-featured">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-required">Obligatoria</span> <span class="library-tag library-tag-basic">Básica</span></p>
-</div>
-<div class="library-actions">
-<p><a href="resources/biblio/Field 2012 - Discovering-Statistics-Using-R.pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Field 2012 - Discovering-Statistics-Using-R.pdf" class="library-btn" download="">Descargar</a></p>
-</div>
-</div>
-<section id="field-miles-field-2012" class="level3">
-<h3 class="anchored" data-anchor-id="field-miles-field-2012">Field, Miles &amp; Field (2012)</h3>
-<div class="library-title">
-<p><em>Discovering statistics using R</em></p>
-</div>
-<div class="library-ref">
-<p>Field, A., Miles, J., &amp; Field, Z. (2012). <em>Discovering statistics using R</em>. SAGE.</p>
-</div>
-<div class="library-note">
-<p>Texto de apoyo para el uso de R en análisis estadístico aplicado.</p>
-</div>
-</section>
-</div>
-<div class="library-card library-card-featured">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-required">Obligatoria</span> <span class="library-tag library-tag-basic">Básica</span></p>
-</div>
-<div class="library-actions">
-<p><a href="resources/biblio/Johnson Kubi 2008 - Estadistica elemental (10ed).pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Johnson Kubi 2008 - Estadistica elemental (10ed).pdf" class="library-btn" download="">Descargar</a></p>
-</div>
-</div>
-<section id="johnson-kuby-2008" class="level3">
-<h3 class="anchored" data-anchor-id="johnson-kuby-2008">Johnson &amp; Kuby (2008)</h3>
-<div class="library-title">
-<p><em>Estadística elemental: Lo esencial</em></p>
-</div>
-<div class="library-ref">
-<p>Johnson, R., &amp; Kuby, P. (2008). <em>Estadística elemental: Lo esencial</em> (10.ª ed.). Cengage Learning.</p>
-</div>
-<details class="library-details">
-<summary>
-Capítulos recomendados
-</summary>
-<ul>
-<li>Cap. 1. Para clase 2.</li>
-<li>Cap. 2. Para clase 4.</li>
-<li>Cap. 3. Para clase 5.</li>
-</ul>
-</details>
-</section>
-</div>
-<div class="library-card library-card-featured">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-required">Obligatoria</span> <span class="library-tag library-tag-basic">Básica</span></p>
-</div>
-<div class="library-actions">
-<p><a href="resources/biblio/Ritchey 2008 - Estadistica_para_las_CCSS (2ed).pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Ritchey 2008 - Estadistica_para_las_CCSS (2ed).pdf" class="library-btn" download="">Descargar</a></p>
-</div>
-</div>
-<section id="ritchey-2008" class="level3">
-<h3 class="anchored" data-anchor-id="ritchey-2008">Ritchey (2008)</h3>
-<div class="library-title">
-<p><em>Estadística para las ciencias sociales: El potencial de la imaginación estadística</em></p>
-</div>
-<div class="library-ref">
-<p>Ritchey, F. (2008). <em>Estadística para las ciencias sociales: El potencial de la imaginación estadística</em> (2.ª ed.). McGraw-Hill.</p>
-</div>
-<details class="library-details">
-<summary>
-Capítulos recomendados
-</summary>
-<ul>
-<li>Cap. 1. Para clase 1.</li>
-<li>Cap. 2. Para clase 3.</li>
-<li>Caps. 3, 4 y 5. Para clase 4.</li>
-</ul>
-</details>
-</section>
-</div>
-<div class="library-card library-card-featured">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-required">Obligatoria</span> <span class="library-tag library-tag-basic">Básica</span> <span class="library-tag library-tag-suggested">En línea</span></p>
-</div>
-<div class="library-actions">
-<p><a href="https://andrescruz.org/libroadp/index.html" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir recurso</a></p>
-</div>
-</div>
-<section id="urdinez-cruz-2021" class="level3">
-<h3 class="anchored" data-anchor-id="urdinez-cruz-2021">Urdinez &amp; Cruz (2021)</h3>
-<div class="library-title">
-<p><em>Political Data Science Using R: A Practical Guide</em></p>
-</div>
-<div class="library-ref">
-<p>Urdinez, F., &amp; Cruz, A. (Eds.). (2021). <em>Political Data Science Using R: A Practical Guide</em>. CRC Press.</p>
-</div>
-<details class="library-details">
-<summary>
-Capítulos recomendados
-</summary>
-<ul>
-<li>Cap. 1. Para clase 1.</li>
-<li>Cap. 2. Para clase 2.</li>
-</ul>
-</details>
-</section>
-</div>
-<div class="library-card library-card-featured">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-required">Obligatoria</span> <span class="library-tag library-tag-basic">Básica</span> <span class="library-tag library-tag-suggested">En línea</span></p>
-</div>
-<div class="library-actions">
-<p><a href="https://es.r4ds.hadley.nz/" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir recurso</a></p>
-</div>
-</div>
-<section id="wickham-grolemund-2023" class="level3">
-<h3 class="anchored" data-anchor-id="wickham-grolemund-2023">Wickham &amp; Grolemund (2023)</h3>
-<div class="library-title">
-<p><em>R para Ciencia de Datos</em></p>
-</div>
-<div class="library-ref">
-<p>Wickham, H., &amp; Grolemund, G. (2023). <em>R para Ciencia de Datos</em>.</p>
-</div>
-<details class="library-details">
-<summary>
-Secciones recomendadas
-</summary>
-<ul>
-<li>Secciones 1, 2 y 4. Para clase 1.</li>
-<li>Secciones 5 y 6. Para clase 2.</li>
-<li>Sección 28. Para clase 4.</li>
-</ul>
-</details>
 </section>
 </div>
 </div>
 </section>
-<section id="bibliografía-complementaria-y-sugerida" class="level2 library-section">
-<h2 class="anchored" data-anchor-id="bibliografía-complementaria-y-sugerida">Bibliografía complementaria y sugerida</h2>
+<section id="bibliografía-complementaria" class="level2 library-section">
+<h2 class="anchored" data-anchor-id="bibliografía-complementaria">Bibliografía complementaria</h2>
 <div class="library-list library-grid-2">
 <div class="library-card">
 <div class="library-card-head">
@@ -343,60 +197,26 @@ Secciones recomendadas
 <p><span class="library-tag library-tag-complementary">Complementaria</span></p>
 </div>
 </div>
-<section id="agresti-2018" class="level3">
-<h3 class="anchored" data-anchor-id="agresti-2018">Agresti (2018)</h3>
+<section id="johnson-kuby-2004" class="level3">
+<h3 class="anchored" data-anchor-id="johnson-kuby-2004">Johnson &amp; Kuby (2004)</h3>
 <div class="library-title">
-<p><em>Statistical methods for the social sciences</em></p>
+<p><em>Estadística Elemental: Lo esencial</em></p>
 </div>
 <div class="library-ref">
-<p>Agresti, A. (2018). <em>Statistical methods for the social sciences</em> (5.ª ed.). Pearson.</p>
+<p>Johnson, R. &amp; Kuby, P. (2004). <em>Estadística Elemental. Lo esencial</em> (2.ª ed.). International Thomson, México.</p>
 </div>
-<div class="library-note">
-<p>Referencia complementaria para profundizar en métodos estadísticos aplicados a ciencias sociales. No hay PDF local disponible para esta edición en <code>resources/biblio</code>.</p>
-</div>
-</section>
-</div>
-<div class="library-card">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-complementary">Complementaria</span> <span class="library-tag library-tag-suggested">En línea</span></p>
-</div>
-<div class="library-actions">
-<p><a href="https://bookdown.org/gboccardo/manual-ED-UCH/" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir recurso</a></p>
-</div>
-</div>
-<section id="boccardo-ruiz-2019" class="level3">
-<h3 class="anchored" data-anchor-id="boccardo-ruiz-2019">Boccardo &amp; Ruiz (2019)</h3>
-<div class="library-title">
-<p><em>RStudio para Estadística Descriptiva en Ciencias Sociales</em></p>
-</div>
-<div class="library-ref">
-<p>Boccardo, G., &amp; Ruiz, F. (2019). <em>RStudio para Estadística Descriptiva en Ciencias Sociales</em>.</p>
-</div>
-<div class="library-note">
-<p>Manual aplicado para trabajar estadística descriptiva en RStudio.</p>
-</div>
-</section>
-</div>
-<div class="library-card">
-<div class="library-card-head">
-<div class="library-tags">
-<p><span class="library-tag library-tag-complementary">Complementaria</span></p>
-</div>
-<div class="library-actions">
-<p><a href="resources/biblio/Cea 2001 - Metodologia_cuantitativa_estrategias_y_tecnicas_de_investigacion_social.pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Cea 2001 - Metodologia_cuantitativa_estrategias_y_tecnicas_de_investigacion_social.pdf" class="library-btn" download="">Descargar</a></p>
-</div>
-</div>
-<section id="cea-dancona-2010" class="level3">
-<h3 class="anchored" data-anchor-id="cea-dancona-2010">Cea D’Ancona (2010)</h3>
-<div class="library-title">
-<p><em>Metodología cuantitativa: Estrategias y técnicas de investigación social</em></p>
-</div>
-<div class="library-ref">
-<p>Cea D’Ancona, M. Á. (2010). <em>Metodología cuantitativa: Estrategias y técnicas de investigación social</em>. Síntesis.</p>
-</div>
+<details class="library-details" open="">
+<summary>
+Capítulos del programa
+</summary>
+<ul>
+<li><strong>Cap. 1.</strong> “Estadística” (Unidad I).</li>
+<li><strong>Cap. 2.</strong> “Análisis descriptivo y presentación de datos en una sola variable” (Unidad III).</li>
+<li><strong>Cap. 3.</strong> “Análisis descriptivo y presentación de datos bivariados” (Unidad IV).</li>
+</ul>
+</details>
 <div class="library-ref library-ref-muted">
-<p><strong>Edición disponible:</strong> Cea D’Ancona, M. Á. (2001). <em>Metodología cuantitativa</em>. Síntesis.</p>
+<p><strong>Referencia programa oficial:</strong> 2.ª ed.&nbsp;(2004).</p>
 </div>
 </section>
 </div>
@@ -405,20 +225,17 @@ Secciones recomendadas
 <div class="library-tags">
 <p><span class="library-tag library-tag-complementary">Complementaria</span></p>
 </div>
-<div class="library-actions">
-<p><a href="resources/biblio/Nussbaumer 2016 - Storytelling with Data_ A Data Visualization Guide for Business Professionals (John Wiley &amp; Sons).pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Nussbaumer 2016 - Storytelling with Data_ A Data Visualization Guide for Business Professionals (John Wiley &amp; Sons).pdf" class="library-btn" download="">Descargar</a></p>
 </div>
-</div>
-<section id="nussbaumer-2015" class="level3">
-<h3 class="anchored" data-anchor-id="nussbaumer-2015">Nussbaumer (2015)</h3>
+<section id="cea-dancona-2005" class="level3">
+<h3 class="anchored" data-anchor-id="cea-dancona-2005">Cea D’Ancona (2005)</h3>
 <div class="library-title">
-<p><em>Storytelling with Data: A Data Visualization Guide for Business Professionals</em></p>
+<p><em>Metodología Cuantitativa: Estrategias y Técnicas de Investigación Social</em></p>
 </div>
 <div class="library-ref">
-<p>Nussbaumer, C. (2015). <em>Storytelling with Data: A Data Visualization Guide for Business Professionals</em>. John Wiley &amp; Sons.</p>
+<p>Cea D’Ancona, M. Á. (2005). <em>Metodología Cuantitativa: Estrategias y Técnicas de Investigación Social</em>. Ed. Síntesis Sociológica, Madrid.</p>
 </div>
 <div class="library-note">
-<p>Apoyo para comunicación visual, diseño de gráficos y narrativas con datos.</p>
+<p>Texto de referencia central para diseño de investigación social, operacionalización de conceptos, variables y técnicas de recolección de datos (Unidades I y II).</p>
 </div>
 </section>
 </div>
@@ -427,20 +244,36 @@ Secciones recomendadas
 <div class="library-tags">
 <p><span class="library-tag library-tag-complementary">Complementaria</span></p>
 </div>
-<div class="library-actions">
-<p><a href="resources/biblio/Schwabish 2017 - Better presentations _ a guide for scholars, researchers, and wonks (Columbia University Press).pdf" class="library-btn library-btn-primary" target="_blank" rel="noopener">Abrir PDF</a> <a href="resources/biblio/Schwabish 2017 - Better presentations _ a guide for scholars, researchers, and wonks (Columbia University Press).pdf" class="library-btn" download="">Descargar</a></p>
 </div>
-</div>
-<section id="schwabish-2017" class="level3">
-<h3 class="anchored" data-anchor-id="schwabish-2017">Schwabish (2017)</h3>
+<section id="agresti-finlay-2009" class="level3">
+<h3 class="anchored" data-anchor-id="agresti-finlay-2009">Agresti &amp; Finlay (2009)</h3>
 <div class="library-title">
-<p><em>Better presentations: A guide for scholars, researchers, and wonks</em></p>
+<p><em>Statistical Methods for the Social Sciences</em></p>
 </div>
 <div class="library-ref">
-<p>Schwabish, J. (2017). <em>Better presentations: A guide for scholars, researchers, and wonks</em>. Columbia University Press.</p>
+<p>Agresti, A. &amp; Finlay, B. (2009). <em>Statistical Methods for the Social Sciences</em> (4th ed.). Upper Saddle River, N.J.: Pearson Prentice Hall.</p>
 </div>
 <div class="library-note">
-<p>Recurso complementario para mejorar presentaciones y comunicación de resultados.</p>
+<p>Referencia metodológica y estadística para análisis univariado, bivariado e inferencial aplicado a datos de ciencias sociales.</p>
+</div>
+</section>
+</div>
+<div class="library-card">
+<div class="library-card-head">
+<div class="library-tags">
+<p><span class="library-tag library-tag-complementary">Complementaria</span></p>
+</div>
+</div>
+<section id="de-miguel-1997" class="level3">
+<h3 class="anchored" data-anchor-id="de-miguel-1997">De Miguel (1997)</h3>
+<div class="library-title">
+<p><em>Manual del Perfecto Sociólogo</em></p>
+</div>
+<div class="library-ref">
+<p>De Miguel, A. (1997). <em>Manual del Perfecto Sociólogo</em>. Madrid: Espasa Calpe.</p>
+</div>
+<div class="library-note">
+<p>Texto complementario para la reflexión sobre la práctica de la investigación social, el diseño de problemas e indicadores sociológicos.</p>
 </div>
 </section>
 </div>
@@ -524,7 +357,7 @@ Secciones recomendadas
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -879,7 +712,7 @@ Secciones recomendadas
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -889,5 +722,4 @@ Secciones recomendadas
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

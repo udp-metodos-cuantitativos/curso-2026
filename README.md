@@ -1,95 +1,106 @@
 <img src="resources/imagenes/logo.svg" alt="Logo del sitio" width="42" height="42" align="left" style="margin-right: 12px;"/>
 
-# Procesamiento y Visualización de Datos en R
+# Métodos Cuantitativos
 
-Sitio web del curso **Procesamiento y Visualización de Datos en R**, del **Magíster en Métodos para la Investigación Social**.
+Sitio web oficial del curso **Métodos Cuantitativos** (código **ANT01221**), correspondiente a la **Escuela de Antropología** de la **Universidad Diego Portales (UDP)**, 2026.
 
-**Docente:** Daniela Olivares Collío  
-**Ayudante:** Katherine Aravena Herrera  
-## Sitio web
+**Docente:** Daniela Olivares Collío (`daniela.olivares2@mail.udp.cl`)  
+**Ayudante:** Katherine Aravena Herrera (`katherine.aravena@mail.udp.cl`)  
 
-**[udp-visualizacion-datos-r.netlify.app](https://udp-visualizacion-datos-r.netlify.app)**
----
-
-## Descripción
-
-Este repositorio contiene el sitio web del curso **Procesamiento y Visualización de Datos en R**.  
-La página funciona como un espacio centralizado para organizar el programa, las clases, los materiales de apoyo, la bibliografía, los recursos para aprender R y las actualizaciones del curso.
-
-El sitio fue desarrollado con **Quarto**, publicado mediante **Netlify** y versionado en **GitHub**.
+**Repositorio:** [https://github.com/udp-metodos-cuantitativos/curso-2026](https://github.com/udp-metodos-cuantitativos/curso-2026)
 
 ---
 
-## Contenidos del sitio
+## Descripción de la asignatura
 
-El sitio contiene:
+La asignatura de **Métodos Cuantitativos** tiene como objetivo que las y los estudiantes conozcan y apliquen herramientas conceptuales y estadísticas básicas, principalmente a nivel descriptivo, para analizar fenómenos de las ciencias sociales de manera cuantitativa. 
 
-- **Inicio:** presentación general del curso y guía rápida para navegar la página.
-- **Curso:** programa, evaluaciones y calendarización integrada.
-- **Clases:** páginas individuales por clase, con visor de diapositivas, descarga de materiales y espacio de comentarios.
-- **Ayudantías:** materiales de apoyo y sesiones prácticas.
-- **Bibliografía:** catálogo compacto de lecturas obligatorias, básicas, complementarias y sugeridas.
-- **Recursos:** centro de apoyo con materiales para instalación, R, RStudio, Posit Cloud, Quarto, Tidyverse, visualización, bases de datos y errores frecuentes.
-- **Última información:** avisos, noticias y actualizaciones del curso.
+El curso articula:
+
+* Fundamentos y etapas del diseño de investigación cuantitativa.
+* Medición de la realidad social, problematización, preguntas, objetivos e hipótesis estadísticas.
+* Conceptualización, operacionalización, variables, atributos y niveles de medición.
+* Nociones de universo, población, muestra y técnicas de recolección de datos.
+* Elaboración de matrices de datos y libros de códigos.
+* Estadística descriptiva univariada: distribución, frecuencias, medidas de tendencia central, dispersión, posición y forma.
+* Análisis estadístico de relaciones bivariadas: tablas de contingencia, indicadores, índices, correlación de Pearson y regresión.
+* Uso básico del software estadístico **R** como herramienta para el procesamiento y análisis descriptivo de datos sociales.
+
+---
+
+## Estructura del sitio web
+
+El sitio centraliza los componentes pedagógicos de la asignatura:
+
+* **Inicio (`index.qmd`):** Portada institucional, presentación del curso, equipo docente y últimas noticias.
+* **Curso (`curso.qmd`):** Calendarización interactiva semana a semana, esquema formal de evaluaciones y fórmulas de cálculo (NP y NF), metodología y normativa académica de la Escuela de Antropología.
+* **Clases (`clases/`):** Páginas individuales por sesión organizadas en las 4 unidades oficiales del curso, con resumen de contenidos, objetivos y diapositivas.
+* **Bibliografía (`bibliografia.qmd`):** Catálogo de lecturas obligatorias (Ritchey) y complementarias (Johnson & Kuby, Cea D'Ancona, Agresti & Finlay, De Miguel) con acceso a documentos disponibles.
+* **Recursos (`Recursos.qmd`):** Centro de apoyo interactivo con guías para instalación de R y RStudio, paquetes esenciales (`tidyverse`, `haven`, `janitor`, `psych`, `sjPlot`, `ggplot2`), manuales de apoyo, fuentes de datos sociales y solución de errores comunes.
+* **Última información (`ultima-informacion.qmd`):** Avisos oficiales y novedades del curso.
 
 ---
 
 ## Tecnologías utilizadas
 
-- [Quarto](https://quarto.org/) — generación del sitio web estático.
-- [Bootstrap 5](https://getbootstrap.com/) — componentes y estructura visual.
-- [Netlify](https://www.netlify.com/) — publicación y despliegue continuo.
-- [GitHub](https://github.com/) — control de versiones y alojamiento del repositorio.
-- [Giscus](https://giscus.app/) — comentarios por clase mediante GitHub Discussions.
-- HTML, CSS y JavaScript — ajustes visuales, filtros y componentes interactivos.
+* [Quarto](https://quarto.org/) — Generación del sitio web estático.
+* [Bootstrap 5](https://getbootstrap.com/) — Componentes visuales y maquetación responsive.
+* [GitHub](https://github.com/) — Control de versiones y alojamiento del repositorio.
+* HTML, CSS y JavaScript — Componentes interactivos personalizados (calendario dinámico, buscador y filtros).
 
 ---
 
-## Estructura del proyecto
+## Estructura del repositorio
 
 ```text
-├── _quarto.yml                     # Configuración general del sitio
-├── index.qmd                       # Página de inicio
-├── curso.qmd                       # Programa, evaluaciones y calendarización
-├── ayudantias.qmd                  # Página de ayudantías
+├── _quarto.yml                     # Configuración general y navegación del sitio
+├── index.qmd                       # Portada del curso
+├── curso.qmd                       # Calendario, evaluaciones, metodología y normativa
 ├── bibliografia.qmd                # Catálogo bibliográfico del curso
-├── Recursos.qmd                    # Centro de recursos para R, Quarto y datos
-├── ultima-informacion.qmd          # Página general de avisos y noticias
-├── styles.css                      # Estilos personalizados del sitio
+├── Recursos.qmd                    # Centro de recursos de R, paquetes y datos
+├── ultima-informacion.qmd          # Índice de noticias y avisos
+├── styles.css                      # Hoja de estilos personalizados
+├── README.md                       # Documentación del repositorio
 │
-├── clases/
-│   ├── clase_00/
-│   │   ├── index.qmd               # Página de la Clase 00
-│   │   └── clase_00.pptx           # Diapositivas de la Clase 00
-│   ├── clase_01/
-│   │   ├── index.qmd               # Página de la Clase 01
-│   │   └── clase_01.pptx           # Diapositivas de la Clase 01
-│   └── clase_02/
-│       ├── index.qmd               # Página de la Clase 02
-│       └── clase_02.pptx           # Diapositivas de la Clase 02
+├── clases/                         # Sesiones de cátedra
+│   ├── clase_00/                   # Presentación y fundamentos
+│   ├── clase_01/                   # Variables y operacionalización (Unidad I)
+│   ├── clase_02/                   # Problema y matriz de datos (Unidades I–II)
+│   ├── clase_03/                   # Población, muestra y recolección (Unidad II)
+│   ├── clase_04/                   # Distribución y análisis univariado (Unidad III)
+│   ├── clase_05/                   # Frecuencias y tablas (Unidad III)
+│   ├── clase_06/                   # Tendencia central y dispersión (Unidad III)
+│   ├── clase_07/                   # Posición y forma (Unidad III)
+│   ├── clase_08/                   # Tablas de contingencia (Unidad IV)
+│   ├── clase_09/                   # Indicadores, índices y escalas (Unidad IV)
+│   ├── clase_10/                   # Correlación y regresión (Unidad IV)
+│   ├── clase_11/                   # Taller de elaboración de trabajo grupal
+│   └── clase_12/                   # Sesión de resolución de dudas
 │
-├── includes/
-│   ├── menu-clases.qmd             # Menú lateral compartido entre clases
-│   └── comentarios-giscus.qmd      # Bloque de comentarios por clase
+├── includes/                       # Componentes modulares reutilizables
+│   ├── menu-clases.qmd             # Menú lateral acordeón de clases
+│   ├── comentarios-giscus.qmd      # Contenedor de comentarios
+│   └── comentarios-netlify.qmd     # Formulario alternativo de contacto
 │
-├── ultima-informacion/
-│   └── *.qmd                       # Publicaciones, avisos y noticias del curso
+├── ultima-informacion/             # Artículos y noticias
+│   └── 2026-08-11-bienvenida-curso.qmd
 │
-├── resources/
-│   ├── imagenes/                   # Logos, favicon e imágenes generales
+├── resources/                      # Recursos estáticos
+│   ├── imagenes/                   # Logos e iconos del sitio
 │   ├── post/                       # Imágenes destacadas para noticias
-│   ├── biblio/                     # PDFs de bibliografía
-│   └── clases/                     # Materiales generales de clases, si corresponde
+│   ├── biblio/                     # Archivos PDF de la biblioteca
+│   ├── Daniela.jpg                 # Fotografía docente
+│   ├── Katherine.jpg               # Fotografía ayudante
+│   └── ELSOC_W06_v1.0_SPSS.sav     # Base de datos de práctica
 │
-└── docs/                           # Sitio compilado para publicación en Netlify
+└── docs/                           # Sitio web generado y compilado
 ```
+
+---
 
 ## Licencias
 
 | Tipo | Licencia |
-|------|----------|
-| **Contenido** (textos, presentaciones) | [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) |
-| **Código** (HTML, CSS, configuración) | [MIT](https://opensource.org/licenses/MIT) |
-
----
-
+|---|---|
+| **Contenido** (textos, programas y guías) | [Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) |
+| **Código** (HTML, CSS, JavaScript, scripts R) | [Licencia MIT](https://opensource.org/licenses/MIT) |

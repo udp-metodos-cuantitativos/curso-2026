@@ -22,198 +22,35 @@ body-classes: biblioteca-page
 :::
 
 ::: {.library-actions}
-[Abrir PDF](resources/biblio/Agresti%20Franklin%20Klingenberg%202023%20-%20Statistics%20The%20Art%20and%20Science%20of%20Learning%20from%20Data,%205th%20Edition,%20Global%20Edition%20(Pearson).pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Agresti%20Franklin%20Klingenberg%202023%20-%20Statistics%20The%20Art%20and%20Science%20of%20Learning%20from%20Data,%205th%20Edition,%20Global%20Edition%20(Pearson).pdf){.library-btn download=""}
+[Abrir PDF](resources/biblio/Ritchey_F__(2008)__(2ed)__Estadistica_para_las_CCSS.pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
+[Descargar](resources/biblio/Ritchey_F__(2008)__(2ed)__Estadistica_para_las_CCSS.pdf){.library-btn download=""}
 :::
 :::
 
-### Agresti, Franklin & Klingenberg (2023)
+### Ritchey (2002)
 
 ::: {.library-title}
-*Statistics: The art and science of learning from data*
+*Estadística para las Ciencias Sociales: El potencial de la imaginación estadística*
 :::
 
 ::: {.library-ref}
-Agresti, A., Franklin, C., & Klingenberg, B. (2023). *Statistics: The art and science of learning from data* (5.ª ed.). Pearson.
+Ritchey, F. (2002). *Estadística para las Ciencias Sociales. El potencial de la imaginación estadística*. McGraw-Hill, México.
 :::
 
-<details class="library-details">
-<summary>Capítulos recomendados</summary>
+<details class="library-details" open>
+<summary>Capítulos del programa</summary>
 
-- Cap. 1. Para clases 2 y 3.
-- Cap. 2. Para clase 4.
-- Cap. 3. Para clase 5.
+- **Cap. 1.** “La imaginación estadística” (Unidad I).
+- **Cap. 2.** “Organización de los datos para reducir al mínimo el error estadístico” (Unidad II).
+- **Cap. 3.** “Tablas y gráficas: una imagen dice más que mil palabras” (Unidad III).
+- **Cap. 4.** “Estimación de promedios” (Unidad III).
+- **Cap. 5.** “Medición de la dispersión o variación en una distribución de puntuaciones” (Unidad III).
 
 </details>
 
+::: {.library-ref .library-ref-muted}
+**Edición disponible en el sitio:** 2.ª ed. (2008), McGraw-Hill.
 :::
-
-::: {.library-card .library-card-featured}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-required">Obligatoria</span>
-<span class="library-tag library-tag-basic">Básica</span>
-:::
-
-::: {.library-actions}
-[Abrir PDF](resources/biblio/Field%202012%20-%20Discovering-Statistics-Using-R.pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Field%202012%20-%20Discovering-Statistics-Using-R.pdf){.library-btn download=""}
-:::
-:::
-
-### Field, Miles & Field (2012)
-
-::: {.library-title}
-*Discovering statistics using R*
-:::
-
-::: {.library-ref}
-Field, A., Miles, J., & Field, Z. (2012). *Discovering statistics using R*. SAGE.
-:::
-
-::: {.library-note}
-Texto de apoyo para el uso de R en análisis estadístico aplicado.
-:::
-
-:::
-
-::: {.library-card .library-card-featured}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-required">Obligatoria</span>
-<span class="library-tag library-tag-basic">Básica</span>
-:::
-
-::: {.library-actions}
-[Abrir PDF](resources/biblio/Johnson%20Kubi%202008%20-%20Estadistica%20elemental%20(10ed).pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Johnson%20Kubi%202008%20-%20Estadistica%20elemental%20(10ed).pdf){.library-btn download=""}
-:::
-:::
-
-### Johnson & Kuby (2008)
-
-::: {.library-title}
-*Estadística elemental: Lo esencial*
-:::
-
-::: {.library-ref}
-Johnson, R., & Kuby, P. (2008). *Estadística elemental: Lo esencial* (10.ª ed.). Cengage Learning.
-:::
-
-<details class="library-details">
-<summary>Capítulos recomendados</summary>
-
-- Cap. 1. Para clase 2.
-- Cap. 2. Para clase 4.
-- Cap. 3. Para clase 5.
-
-</details>
-
-:::
-
-::: {.library-card .library-card-featured}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-required">Obligatoria</span>
-<span class="library-tag library-tag-basic">Básica</span>
-:::
-
-::: {.library-actions}
-[Abrir PDF](resources/biblio/Ritchey%202008%20-%20Estadistica_para_las_CCSS%20(2ed).pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Ritchey%202008%20-%20Estadistica_para_las_CCSS%20(2ed).pdf){.library-btn download=""}
-:::
-:::
-
-### Ritchey (2008)
-
-::: {.library-title}
-*Estadística para las ciencias sociales: El potencial de la imaginación estadística*
-:::
-
-::: {.library-ref}
-Ritchey, F. (2008). *Estadística para las ciencias sociales: El potencial de la imaginación estadística* (2.ª ed.). McGraw-Hill.
-:::
-
-<details class="library-details">
-<summary>Capítulos recomendados</summary>
-
-- Cap. 1. Para clase 1.
-- Cap. 2. Para clase 3.
-- Caps. 3, 4 y 5. Para clase 4.
-
-</details>
-
-:::
-
-::: {.library-card .library-card-featured}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-required">Obligatoria</span>
-<span class="library-tag library-tag-basic">Básica</span>
-<span class="library-tag library-tag-suggested">En línea</span>
-:::
-
-::: {.library-actions}
-[Abrir recurso](https://andrescruz.org/libroadp/index.html){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-:::
-:::
-
-### Urdinez & Cruz (2021)
-
-::: {.library-title}
-*Political Data Science Using R: A Practical Guide*
-:::
-
-::: {.library-ref}
-Urdinez, F., & Cruz, A. (Eds.). (2021). *Political Data Science Using R: A Practical Guide*. CRC Press.
-:::
-
-<details class="library-details">
-<summary>Capítulos recomendados</summary>
-
-- Cap. 1. Para clase 1.
-- Cap. 2. Para clase 2.
-
-</details>
-
-:::
-
-::: {.library-card .library-card-featured}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-required">Obligatoria</span>
-<span class="library-tag library-tag-basic">Básica</span>
-<span class="library-tag library-tag-suggested">En línea</span>
-:::
-
-::: {.library-actions}
-[Abrir recurso](https://es.r4ds.hadley.nz/){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-:::
-:::
-
-### Wickham & Grolemund (2023)
-
-::: {.library-title}
-*R para Ciencia de Datos*
-:::
-
-::: {.library-ref}
-Wickham, H., & Grolemund, G. (2023). *R para Ciencia de Datos*.
-:::
-
-<details class="library-details">
-<summary>Secciones recomendadas</summary>
-
-- Secciones 1, 2 y 4. Para clase 1.
-- Secciones 5 y 6. Para clase 2.
-- Sección 28. Para clase 4.
-
-</details>
 
 :::
 
@@ -221,7 +58,7 @@ Wickham, H., & Grolemund, G. (2023). *R para Ciencia de Datos*.
 :::
 
 ::: {.library-section}
-## Bibliografía complementaria y sugerida
+## Bibliografía complementaria
 
 ::: {.library-list .library-grid-2}
 
@@ -233,76 +70,27 @@ Wickham, H., & Grolemund, G. (2023). *R para Ciencia de Datos*.
 :::
 :::
 
-### Agresti (2018)
+### Johnson & Kuby (2004)
 
 ::: {.library-title}
-*Statistical methods for the social sciences*
+*Estadística Elemental: Lo esencial*
 :::
 
 ::: {.library-ref}
-Agresti, A. (2018). *Statistical methods for the social sciences* (5.ª ed.). Pearson.
+Johnson, R. & Kuby, P. (2004). *Estadística Elemental. Lo esencial* (2.ª ed.). International Thomson, México.
 :::
 
-::: {.library-note}
-Referencia complementaria para profundizar en métodos estadísticos aplicados a ciencias sociales. No hay PDF local disponible para esta edición en `resources/biblio`.
-:::
+<details class="library-details" open>
+<summary>Capítulos del programa</summary>
 
-:::
+- **Cap. 1.** “Estadística” (Unidad I).
+- **Cap. 2.** “Análisis descriptivo y presentación de datos en una sola variable” (Unidad III).
+- **Cap. 3.** “Análisis descriptivo y presentación de datos bivariados” (Unidad IV).
 
-::: {.library-card}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-complementary">Complementaria</span>
-<span class="library-tag library-tag-suggested">En línea</span>
-:::
-
-::: {.library-actions}
-[Abrir recurso](https://bookdown.org/gboccardo/manual-ED-UCH/){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-:::
-:::
-
-### Boccardo & Ruiz (2019)
-
-::: {.library-title}
-*RStudio para Estadística Descriptiva en Ciencias Sociales*
-:::
-
-::: {.library-ref}
-Boccardo, G., & Ruiz, F. (2019). *RStudio para Estadística Descriptiva en Ciencias Sociales*.
-:::
-
-::: {.library-note}
-Manual aplicado para trabajar estadística descriptiva en RStudio.
-:::
-
-:::
-
-::: {.library-card}
-
-::: {.library-card-head}
-::: {.library-tags}
-<span class="library-tag library-tag-complementary">Complementaria</span>
-:::
-
-::: {.library-actions}
-[Abrir PDF](resources/biblio/Cea%202001%20-%20Metodologia_cuantitativa_estrategias_y_tecnicas_de_investigacion_social.pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Cea%202001%20-%20Metodologia_cuantitativa_estrategias_y_tecnicas_de_investigacion_social.pdf){.library-btn download=""}
-:::
-:::
-
-### Cea D'Ancona (2010)
-
-::: {.library-title}
-*Metodología cuantitativa: Estrategias y técnicas de investigación social*
-:::
-
-::: {.library-ref}
-Cea D'Ancona, M. Á. (2010). *Metodología cuantitativa: Estrategias y técnicas de investigación social*. Síntesis.
-:::
+</details>
 
 ::: {.library-ref .library-ref-muted}
-**Edición disponible:** Cea D'Ancona, M. Á. (2001). *Metodología cuantitativa*. Síntesis.
+**Referencia programa oficial:** 2.ª ed. (2004).
 :::
 
 :::
@@ -313,25 +101,20 @@ Cea D'Ancona, M. Á. (2010). *Metodología cuantitativa: Estrategias y técnicas
 ::: {.library-tags}
 <span class="library-tag library-tag-complementary">Complementaria</span>
 :::
-
-::: {.library-actions}
-[Abrir PDF](resources/biblio/Nussbaumer%202016%20-%20Storytelling%20with%20Data_%20A%20Data%20Visualization%20Guide%20for%20Business%20Professionals%20(John%20Wiley%20&%20Sons).pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Nussbaumer%202016%20-%20Storytelling%20with%20Data_%20A%20Data%20Visualization%20Guide%20for%20Business%20Professionals%20(John%20Wiley%20&%20Sons).pdf){.library-btn download=""}
-:::
 :::
 
-### Nussbaumer (2015)
+### Cea D'Ancona (2005)
 
 ::: {.library-title}
-*Storytelling with Data: A Data Visualization Guide for Business Professionals*
+*Metodología Cuantitativa: Estrategias y Técnicas de Investigación Social*
 :::
 
 ::: {.library-ref}
-Nussbaumer, C. (2015). *Storytelling with Data: A Data Visualization Guide for Business Professionals*. John Wiley & Sons.
+Cea D'Ancona, M. Á. (2005). *Metodología Cuantitativa: Estrategias y Técnicas de Investigación Social*. Ed. Síntesis Sociológica, Madrid.
 :::
 
 ::: {.library-note}
-Apoyo para comunicación visual, diseño de gráficos y narrativas con datos.
+Texto de referencia central para diseño de investigación social, operacionalización de conceptos, variables y técnicas de recolección de datos (Unidades I y II).
 :::
 
 :::
@@ -342,25 +125,44 @@ Apoyo para comunicación visual, diseño de gráficos y narrativas con datos.
 ::: {.library-tags}
 <span class="library-tag library-tag-complementary">Complementaria</span>
 :::
-
-::: {.library-actions}
-[Abrir PDF](resources/biblio/Schwabish%202017%20-%20Better%20presentations%20_%20a%20guide%20for%20scholars,%20researchers,%20and%20wonks%20(Columbia%20University%20Press).pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
-[Descargar](resources/biblio/Schwabish%202017%20-%20Better%20presentations%20_%20a%20guide%20for%20scholars,%20researchers,%20and%20wonks%20(Columbia%20University%20Press).pdf){.library-btn download=""}
-:::
 :::
 
-### Schwabish (2017)
+### Agresti & Finlay (2009)
 
 ::: {.library-title}
-*Better presentations: A guide for scholars, researchers, and wonks*
+*Statistical Methods for the Social Sciences*
 :::
 
 ::: {.library-ref}
-Schwabish, J. (2017). *Better presentations: A guide for scholars, researchers, and wonks*. Columbia University Press.
+Agresti, A. & Finlay, B. (2009). *Statistical Methods for the Social Sciences* (4th ed.). Upper Saddle River, N.J.: Pearson Prentice Hall.
 :::
 
 ::: {.library-note}
-Recurso complementario para mejorar presentaciones y comunicación de resultados.
+Referencia metodológica y estadística para análisis univariado, bivariado e inferencial aplicado a datos de ciencias sociales.
+:::
+
+:::
+
+::: {.library-card}
+
+::: {.library-card-head}
+::: {.library-tags}
+<span class="library-tag library-tag-complementary">Complementaria</span>
+:::
+:::
+
+### De Miguel (1997)
+
+::: {.library-title}
+*Manual del Perfecto Sociólogo*
+:::
+
+::: {.library-ref}
+De Miguel, A. (1997). *Manual del Perfecto Sociólogo*. Madrid: Espasa Calpe.
+:::
+
+::: {.library-note}
+Texto complementario para la reflexión sobre la práctica de la investigación social, el diseño de problemas e indicadores sociológicos.
 :::
 
 :::

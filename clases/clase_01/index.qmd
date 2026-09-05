@@ -1,44 +1,83 @@
 ---
-title: "Clase 01 | Introducción al uso de R"
+title: "Clase 01 | Variables y operacionalización"
 title-block: false
 toc: false
 page-layout: full
 body-classes: clases-page clase-page
 ---
 
-
 ::: {.columns #catedra}
 
 ::: {.column .clase-main}
 
 ```{=html}
-<div class="clase-presentacion">
-  <div class="clase-slide">
-    <div class="ratio ratio-16x9">
-      <iframe 
-        src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fudp-visualizacion-datos-r.netlify.app%2Fclases%2Fclase_01%2Fclase_01_v20260507b.pptx" 
-        allowfullscreen 
-        frameborder="0" 
-        scrolling="no">
-      </iframe>
-    </div>
-  </div>
-
-  <div class="clase-info">
-    <span class="clase-titulo">Clase 01 | Unidad 1. Introducción al uso de R</span>
-    <span class="clase-descarga">
-      <a href="clase_01_v20260507b.pptx">Descargar diapositivas</a>
-    </span>
-  </div>
-</div>
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 01 · Unidad I</p>
+  <h1>Investigación cuantitativa, variables y operacionalización</h1>
+  <p>Características de la investigación cuantitativa, conceptualización de variables e indicadores, operacionalización y niveles de medición.</p>
+</section>
 ```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+En esta clase profundizamos en el proceso que permite conectar conceptos teóricos abstractos con observaciones empíricas medibles.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Etapas del diseño**
+
+Conocer las fases del proceso de investigación cuantitativa y tipos de estudios.
+:::
+
+::: {.objetivo-card}
+**Operacionalización**
+
+Deducir dimensiones e indicadores observables a partir de conceptos teóricos.
+:::
+
+::: {.objetivo-card}
+**Variables y atributos**
+
+Distinguir entre unidades de análisis, variables, categorías y atributos.
+:::
+
+::: {.objetivo-card}
+**Niveles de medición**
+
+Identificar variables nominales, ordinales, de intervalo y de razón, y sus transformaciones.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Presentación de la sesión
+
+<div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+  <a href="clase_01.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
+  <a href="clase_01.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
+  <a href="clase_01.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Pantalla completa</a>
+</div>
+
+<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 520px; border: 1px solid rgba(0,0,0,0.12);">
+  <iframe src="clase_01.pdf" title="Presentación Clase 01" allowfullscreen></iframe>
+</div>
+
+:::
 
 {{< include ../../includes/comentarios-giscus.qmd >}}
 
 :::
+
 ::: {.column-margin}
 
 {{< include ../../includes/menu-clases.qmd >}}
 
 :::
+
 :::

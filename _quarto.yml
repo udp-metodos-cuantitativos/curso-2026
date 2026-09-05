@@ -4,23 +4,22 @@ project:
   resources:
     - styles.css
     - clases/**/*.pptx
-    - ayudantias/ayudantia_1/resources/01.zip
+    - clases/**/*.pdf
+    - resources/programa/**/*.pdf
+    - resources/biblio/**/*.pdf
   render:
     - index.qmd
     - curso.qmd
     - clases/*/index.qmd
-    - ayudantias.qmd
     - bibliografia.qmd
     - Recursos.qmd
     - ultima-informacion.qmd
     - ultima-informacion/*.qmd
-#    - laboratorio-r.qmd
-#    - laboratorio-r/*/index.qmd
 
 website:
   favicon: resources/imagenes/logo.svg
-  title: "Procesamiento y Visualización de datos en R "
-  site-url: https://utf-estadistica-social-i.netlify.app
+  title: "Métodos Cuantitativos"
+  # site-url: https://udp-metodos-cuantitativos.netlify.app
   search: true
   page-navigation: true
 
@@ -36,7 +35,7 @@ website:
       <div class="site-footer">
       <div class="footer-line"><i class="bi bi-braces"></i><span>Hecho con <a href="https://quarto.org" target="_blank" rel="noopener">Quarto</a></span></div>
       <div class="footer-line"><i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a></div>
-      <div class="footer-line"><i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a></div>
+      <div class="footer-line"><i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a></div>
       </div>
 
   navbar:
@@ -45,14 +44,8 @@ website:
       - text: "Inicio"
         href: index.qmd
       - text: "Clases"
-        menu:
-          - text: "Catedra"
-            href: clases/clase_00/index.qmd
-          - text: "Ayudantías"
-            href: ayudantias.qmd
-#      - text: "Laboratorio R"
-#        href: laboratorio-r.qmd
-      - text: "Información"
+        href: clases/clase_00/index.qmd
+      - text: "Curso"
         href: curso.qmd
       - text: "Bibliografía"
         href: bibliografia.qmd
@@ -61,7 +54,7 @@ website:
 
     tools:
       - icon: github
-        href: https://github.com/KAravena/udp-magister-visualizacion-datos-r
+        href: https://github.com/udp-metodos-cuantitativos/curso-2026
         aria-label: GitHub
 
 format:
@@ -72,7 +65,7 @@ format:
       - styles.css
     link-external-newwindow: false
     anchor-sections: true
-    smooth-scroll: true
+    smooth-scroll: false
     code-copy: true
     html-math-method: plain
 
@@ -84,4 +77,3 @@ include-in-header:
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=block" rel="stylesheet">
-

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Recursos – Procesamiento y Visualización de datos en R</title>
+<title>Recursos – Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./resources/imagenes/logo.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -86,10 +87,6 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -100,24 +97,13 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="./clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="./curso.html"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./bibliografia.html"> 
@@ -130,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -164,12 +150,12 @@ ul.task-list li input[type="checkbox"] {
 
 <section class="resources-hero">
   <div class="resources-hero-inner">
-    <p class="resources-eyebrow">Centro de apoyo del curso</p>
-    <h1>Recursos para aprender y trabajar con R</h1>
+    <p class="resources-eyebrow">Centro de apoyo al aprendizaje</p>
+    <h1>Recursos de apoyo para Métodos Cuantitativos y R</h1>
     <p>
-      Herramientas, guías y materiales seleccionados para acompañar el trabajo práctico del curso:
-      instalación, programación en R, procesamiento de datos, visualización, estadística descriptiva
-      y elaboración de reportes reproducibles.
+      Herramientas, paquetes, manuales y fuentes de datos seleccionados para apoyar el aprendizaje
+      conceptual y práctico del curso: uso básico de R, importación de datos, estadística descriptiva,
+      tablas de frecuencias, gráficos y análisis bivariado.
     </p>
   </div>
 </section>
@@ -178,32 +164,32 @@ ul.task-list li input[type="checkbox"] {
   <div class="route-card">
     <span class="route-step">1</span>
     <div>
-      <h2 class="anchored">Preparar entorno</h2>
-      <p>Instalar R, RStudio y Quarto, o usar Posit Cloud como respaldo.</p>
+      <h2 class="anchored">Entorno R</h2>
+      <p>Instalar R y RStudio Desktop en tu equipo o utilizar Posit Cloud en el navegador.</p>
     </div>
   </div>
 
   <div class="route-card">
     <span class="route-step">2</span>
     <div>
-      <h2 class="anchored">Aprender lo básico</h2>
-      <p>Objetos, scripts, paquetes, funciones y estructura de una base.</p>
+      <h2 class="anchored">R básico y datos</h2>
+      <p>Comprender objetos, tipos de variables, importar bases (.csv, .sav, .xlsx) y limpiar datos.</p>
     </div>
   </div>
 
   <div class="route-card">
     <span class="route-step">3</span>
     <div>
-      <h2 class="anchored">Procesar datos</h2>
-      <p>Importar, limpiar, seleccionar, filtrar, recodificar y resumir datos.</p>
+      <h2 class="anchored">Estadística descriptiva</h2>
+      <p>Calcular frecuencias, medidas de tendencia central, dispersión y posición con R.</p>
     </div>
   </div>
 
   <div class="route-card">
     <span class="route-step">4</span>
     <div>
-      <h2 class="anchored">Comunicar resultados</h2>
-      <p>Construir tablas, gráficos y reportes reproducibles con Quarto.</p>
+      <h2 class="anchored">Análisis y visualización</h2>
+      <p>Construir gráficos con ggplot2, tablas de contingencia y análisis de correlación.</p>
     </div>
   </div>
 </section>
@@ -211,103 +197,102 @@ ul.task-list li input[type="checkbox"] {
 <section class="resources-toolbar" aria-label="Filtros de recursos">
   <div class="resources-search-wrap">
     <label for="resource-search">Buscar recurso</label>
-    <input id="resource-search" type="search" placeholder="Buscar por nombre, tema o herramienta">
+    <input id="resource-search" type="search" placeholder="Buscar por tema, herramienta, paquete o autor">
   </div>
 
   <div class="resource-filters" role="group" aria-label="Filtrar recursos por categoría">
     <button class="resource-filter is-active" type="button" data-filter="inicio" aria-pressed="true">Inicio recomendado</button>
     <button class="resource-filter" type="button" data-filter="instalacion" aria-pressed="false">Instalación</button>
-    <button class="resource-filter" type="button" data-filter="posit-cloud" aria-pressed="false">Posit Cloud</button>
-    <button class="resource-filter" type="button" data-filter="quarto" aria-pressed="false">Quarto</button>
     <button class="resource-filter" type="button" data-filter="r-basico" aria-pressed="false">R básico</button>
-    <button class="resource-filter" type="button" data-filter="tidyverse" aria-pressed="false">Tidyverse</button>
     <button class="resource-filter" type="button" data-filter="importar" aria-pressed="false">Importar datos</button>
+    <button class="resource-filter" type="button" data-filter="estadistica" aria-pressed="false">Estadística descriptiva</button>
+    <button class="resource-filter" type="button" data-filter="bivariado" aria-pressed="false">Análisis bivariado</button>
     <button class="resource-filter" type="button" data-filter="visualizacion" aria-pressed="false">Visualización</button>
-    <button class="resource-filter" type="button" data-filter="estadistica" aria-pressed="false">Estadística</button>
     <button class="resource-filter" type="button" data-filter="bases" aria-pressed="false">Bases de datos</button>
-    <button class="resource-filter" type="button" data-filter="plantillas" aria-pressed="false">Plantillas</button>
+    <button class="resource-filter" type="button" data-filter="libros" aria-pressed="false">Libros y guías R</button>
+    <button class="resource-filter" type="button" data-filter="quarto" aria-pressed="false">Quarto</button>
     <button class="resource-filter" type="button" data-filter="errores" aria-pressed="false">Errores frecuentes</button>
     <button class="resource-filter resource-filter-all" type="button" data-filter="all" aria-pressed="false">Ver todos</button>
   </div>
 
   <p class="resource-count" id="resource-count" aria-live="polite"></p>
   <p class="resources-help-text">
-    Selecciona una categoría para explorar recursos específicos. La vista inicial muestra solo los materiales recomendados para comenzar.
+    Selecciona una categoría o escribe en el buscador para filtrar los recursos disponibles.
   </p>
 </section>
 
 <section class="resources-grid" id="resources-grid">
 
+  <!-- INICIO RECOMENDADO / INSTALACIÓN -->
   <article class="resource-card resource-featured" data-categories="inicio instalacion">
     <div class="resource-card-head">
-      <span class="resource-tag">Inicio</span>
-      <span class="resource-kind">Recomendado</span>
+      <span class="resource-tag">Instalación</span>
+      <span class="resource-kind">Software</span>
     </div>
-    <h2 class="anchored">Orden sugerido de instalación</h2>
-    <p>Primero instala R, luego RStudio Desktop y finalmente Quarto. Este orden evita varios errores frecuentes al comenzar.</p>
+    <h2 class="anchored">R y RStudio Desktop</h2>
+    <p>Instala primero el lenguaje R (CRAN) y posteriormente el entorno de desarrollo RStudio Desktop para trabajar localmente.</p>
     <div class="resource-actions">
       <a href="https://cran.r-project.org/" target="_blank" rel="noopener" class="resource-btn">Descargar R</a>
-      <a href="https://posit.co/download/rstudio-desktop/" target="_blank" rel="noopener" class="resource-btn secondary">RStudio</a>
-      <a href="https://quarto.org/docs/get-started/" target="_blank" rel="noopener" class="resource-btn secondary">Quarto</a>
+      <a href="https://posit.co/download/rstudio-desktop/" target="_blank" rel="noopener" class="resource-btn secondary">Descargar RStudio</a>
     </div>
   </article>
 
-  <article class="resource-card resource-featured" data-categories="inicio posit-cloud instalacion">
+  <article class="resource-card resource-featured" data-categories="inicio instalacion">
     <div class="resource-card-head">
-      <span class="resource-tag">Posit Cloud</span>
-      <span class="resource-kind">Respaldo</span>
+      <span class="resource-tag">En la nube</span>
+      <span class="resource-kind">Posit Cloud</span>
     </div>
     <h2 class="anchored">Posit Cloud</h2>
-    <p>Ambiente para trabajar con RStudio desde el navegador. Puede servir si tienes problemas instalando R o RStudio en tu computador.</p>
-    <p class="resource-note">No reemplaza necesariamente la instalación local. Requiere cuenta y puede tener límites según el plan disponible.</p>
+    <p>Entorno para ejecutar R y RStudio directamente desde el navegador, ideal como alternativa si tienes dificultades para instalar software en tu equipo.</p>
     <div class="resource-actions">
-      <a href="https://posit.cloud/" target="_blank" rel="noopener" class="resource-btn">Entrar a Posit Cloud</a>
+      <a href="https://posit.cloud/" target="_blank" rel="noopener" class="resource-btn">Abrir Posit Cloud</a>
+    </div>
+  </article>
+
+  <article class="resource-card resource-featured" data-categories="inicio r-basico libros">
+    <div class="resource-card-head">
+      <span class="resource-tag">R básico</span>
+      <span class="resource-kind">Libro en línea</span>
+    </div>
+    <h2 class="anchored">RStudio para Estadística Descriptiva</h2>
+    <p>Manual introductorio de Gonzalo Boccardo y Fabiola Ruiz orientado a ciencias sociales, ideal para acompañar las primeras sesiones de laboratorio.</p>
+    <div class="resource-actions">
+      <a href="https://bookdown.org/gboccardo/manual-ED-UCH/" target="_blank" rel="noopener" class="resource-btn">Leer manual</a>
     </div>
   </article>
 
   <article class="resource-card resource-featured" data-categories="inicio r-basico">
     <div class="resource-card-head">
-      <span class="resource-tag">R básico</span>
-      <span class="resource-kind">Libro</span>
-    </div>
-    <h2 class="anchored">R para Ciencia de Datos</h2>
-    <p>Libro en español para aprender a importar, transformar, visualizar y comunicar datos con R.</p>
-    <div class="resource-actions">
-      <a href="https://es.r4ds.hadley.nz/" target="_blank" rel="noopener" class="resource-btn">Leer libro</a>
-    </div>
-  </article>
-
-  <article class="resource-card resource-featured" data-categories="inicio r-basico">
-    <div class="resource-card-head">
-      <span class="resource-tag">R básico</span>
-      <span class="resource-kind">Interactivo</span>
+      <span class="resource-tag">Interactivo</span>
+      <span class="resource-kind">Práctica</span>
     </div>
     <h2 class="anchored">Posit Primers</h2>
-    <p>Ejercicios interactivos para practicar conceptos iniciales de R, visualización y transformación de datos.</p>
+    <p>Tutoriales interactivos guiados en el navegador para ejercitar conceptos básicos de R, manipulación de datos y visualización.</p>
     <div class="resource-actions">
-      <a href="https://posit.cloud/learn/primers" target="_blank" rel="noopener" class="resource-btn">Practicar</a>
+      <a href="https://posit.cloud/learn/primers" target="_blank" rel="noopener" class="resource-btn">Practicar en línea</a>
     </div>
   </article>
 
-  <article class="resource-card resource-featured" data-categories="inicio tidyverse visualizacion r-basico">
+  <article class="resource-card resource-featured" data-categories="inicio r-basico visualizacion">
     <div class="resource-card-head">
       <span class="resource-tag">Guías rápidas</span>
       <span class="resource-kind">Cheatsheets</span>
     </div>
-    <h2 class="anchored">Cheatsheets de Posit</h2>
-    <p>Hojas de ayuda para recordar funciones de dplyr, ggplot2, importación de datos, Quarto y más.</p>
+    <h2 class="anchored">Cheatsheets oficiales de Posit</h2>
+    <p>Hojas de referencia rápida en PDF para consultar la sintaxis de dplyr, ggplot2, tidyr, readr y R básico.</p>
     <div class="resource-actions">
       <a href="https://posit.co/resources/cheatsheets/" target="_blank" rel="noopener" class="resource-btn">Ver cheatsheets</a>
     </div>
   </article>
 
+  <!-- INSTALACIÓN VIDEOS -->
   <article class="resource-card" data-categories="instalacion">
     <div class="resource-card-head">
       <span class="resource-tag">Instalación</span>
-      <span class="resource-kind">Video</span>
+      <span class="resource-kind">Tutorial</span>
     </div>
-    <h2 class="anchored">Instalar R y RStudio en Windows</h2>
-    <p>Video paso a paso para instalar R y RStudio en computadores con Windows.</p>
+    <h2 class="anchored">Instalación de R y RStudio en Windows</h2>
+    <p>Guía paso a paso para descargar, instalar y configurar R y RStudio en sistemas operativos Windows.</p>
     <div class="resource-actions">
       <a href="https://www.youtube.com/watch?v=LbezGA_Yle8" target="_blank" rel="noopener" class="resource-btn">Ver video</a>
     </div>
@@ -316,372 +301,275 @@ ul.task-list li input[type="checkbox"] {
   <article class="resource-card" data-categories="instalacion">
     <div class="resource-card-head">
       <span class="resource-tag">Instalación</span>
-      <span class="resource-kind">Video</span>
+      <span class="resource-kind">Tutorial</span>
     </div>
-    <h2 class="anchored">Instalar R y RStudio en Mac</h2>
-    <p>Guía audiovisual para estudiantes que trabajan desde macOS.</p>
+    <h2 class="anchored">Instalación de R y RStudio en macOS</h2>
+    <p>Video explicativo para la correcta instalación de R y RStudio en computadores Mac.</p>
     <div class="resource-actions">
       <a href="https://www.youtube.com/watch?v=JqV-USGR6AA" target="_blank" rel="noopener" class="resource-btn">Ver video</a>
     </div>
   </article>
 
-  <article class="resource-card" data-categories="quarto plantillas">
+  <!-- IMPORTACIÓN Y MANIPULACIÓN -->
+  <article class="resource-card" data-categories="importar r-basico">
+    <div class="resource-card-head">
+      <span class="resource-tag">Importar datos</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">haven: Importar SPSS (.sav) y Stata (.dta)</h2>
+    <p>Paquete esencial para cargar bases de encuestas sociales con etiquetas de variables y categorías de respuesta.</p>
+    <div class="resource-actions">
+      <a href="https://haven.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Documentación haven</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="importar r-basico">
+    <div class="resource-card-head">
+      <span class="resource-tag">Importar datos</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">readr y readxl</h2>
+    <p>Herramientas para importar archivos de texto plano (.csv) y libros de cálculo (.xlsx) en R.</p>
+    <div class="resource-actions">
+      <a href="https://readr.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">readr</a>
+      <a href="https://readxl.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn secondary">readxl</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="importar r-basico estadistica">
+    <div class="resource-card-head">
+      <span class="resource-tag">Manipulación</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">dplyr: Gramática de transformación de datos</h2>
+    <p>Funciones clave para el procesamiento: select (columnas), filter (filas), mutate (variables), group_by y summarise.</p>
+    <div class="resource-actions">
+      <a href="https://dplyr.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Documentación dplyr</a>
+    </div>
+  </article>
+
+  <!-- ESTADÍSTICA DESCRIPTIVA -->
+  <article class="resource-card" data-categories="estadistica r-basico">
+    <div class="resource-card-head">
+      <span class="resource-tag">Frecuencias</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">janitor: Tablas de frecuencia limpias</h2>
+    <p>Crea tablas de frecuencia univariadas y bivariadas con porcentajes y totales usando la función tabyl.</p>
+    <div class="resource-actions">
+      <a href="https://sfirke.github.io/janitor/" target="_blank" rel="noopener" class="resource-btn">Documentación janitor</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="estadistica r-basico">
+    <div class="resource-card-head">
+      <span class="resource-tag">Descriptivos</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">psych: Estadísticos descriptivos univariados</h2>
+    <p>La función describe() entrega media, mediana, desviación estándar, rango, asimetría, curtosis y cuartiles en un solo paso.</p>
+    <div class="resource-actions">
+      <a href="https://personality-project.org/r/psych/" target="_blank" rel="noopener" class="resource-btn">Documentación psych</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="estadistica bivariado">
+    <div class="resource-card-head">
+      <span class="resource-tag">Tablas sociales</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">sjPlot: Tablas descriptivas y cruzadas</h2>
+    <p>Genera tablas HTML elegantes para frecuencias y tablas de contingencia respetando las etiquetas de encuestas.</p>
+    <div class="resource-actions">
+      <a href="https://strengejacke.github.io/sjPlot/" target="_blank" rel="noopener" class="resource-btn">Documentación sjPlot</a>
+    </div>
+  </article>
+
+  <!-- ANÁLISIS BIVARIADO -->
+  <article class="resource-card" data-categories="bivariado estadistica">
+    <div class="resource-card-head">
+      <span class="resource-tag">Correlación</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">corrplot: Matrices de correlación visuales</h2>
+    <p>Visualización gráfica de matrices de correlación (coeficiente de Pearson) para explorar relaciones entre variables cuantitativas.</p>
+    <div class="resource-actions">
+      <a href="https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html" target="_blank" rel="noopener" class="resource-btn">Guía corrplot</a>
+    </div>
+  </article>
+
+  <!-- VISUALIZACIÓN DE DATOS -->
+  <article class="resource-card" data-categories="visualizacion r-basico">
+    <div class="resource-card-head">
+      <span class="resource-tag">Visualización</span>
+      <span class="resource-kind">Paquete R</span>
+    </div>
+    <h2 class="anchored">ggplot2: Sistema gráfico por capas</h2>
+    <p>El estándar en R para la construcción de gráficos de barras, histogramas, diagramas de caja (boxplots) y diagramas de dispersión.</p>
+    <div class="resource-actions">
+      <a href="https://ggplot2.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Documentación ggplot2</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="visualizacion">
+    <div class="resource-card-head">
+      <span class="resource-tag">Galería</span>
+      <span class="resource-kind">Código R</span>
+    </div>
+    <h2 class="anchored">R Graph Gallery</h2>
+    <p>Catálogo interactivo con cientos de ejemplos de gráficos en R clasificados por tipo, con su código reproducible completo.</p>
+    <div class="resource-actions">
+      <a href="https://r-graph-gallery.com/" target="_blank" rel="noopener" class="resource-btn">Explorar galería</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="visualizacion">
+    <div class="resource-card-head">
+      <span class="resource-tag">Editorial</span>
+      <span class="resource-kind">Herramienta web</span>
+    </div>
+    <h2 class="anchored">Datawrapper</h2>
+    <p>Herramienta web complementaria para crear gráficos y mapas informativos de alta calidad editorial.</p>
+    <div class="resource-actions">
+      <a href="https://www.datawrapper.de/" target="_blank" rel="noopener" class="resource-btn">Entrar a Datawrapper</a>
+    </div>
+  </article>
+
+  <!-- LIBROS Y RECURSOS DE APOYO EN R -->
+  <article class="resource-card" data-categories="libros r-basico">
+    <div class="resource-card-head">
+      <span class="resource-tag">Libro de apoyo</span>
+      <span class="resource-kind">En español</span>
+    </div>
+    <h2 class="anchored">R para Ciencia de Datos</h2>
+    <p>Traducción al español del libro de Hadley Wickham y Garrett Grolemund sobre importación, transformación y visualización con R.</p>
+    <div class="resource-actions">
+      <a href="https://es.r4ds.hadley.nz/" target="_blank" rel="noopener" class="resource-btn">Leer libro</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="libros r-basico bases">
+    <div class="resource-card-head">
+      <span class="resource-tag">Libro de apoyo</span>
+      <span class="resource-kind">Ciencia Social</span>
+    </div>
+    <h2 class="anchored">Political Data Science Using R</h2>
+    <p>Guía práctica de Francisco Urdinez y Andrés Cruz para el análisis de datos políticos y sociales mediante R.</p>
+    <div class="resource-actions">
+      <a href="https://andrescruz.org/libroadp/index.html" target="_blank" rel="noopener" class="resource-btn">Acceder al recurso</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="libros estadistica">
+    <div class="resource-card-head">
+      <span class="resource-tag">Libro de apoyo</span>
+      <span class="resource-kind">Estadística en R</span>
+    </div>
+    <h2 class="anchored">Discovering Statistics Using R (Field et al., 2012)</h2>
+    <p>Texto de consulta complementario con explicaciones detalladas y código para conceptos estadísticos y gráficos en R.</p>
+    <div class="resource-actions">
+      <a href="resources/biblio/Field 2012 - Discovering-Statistics-Using-R.pdf" target="_blank" rel="noopener" class="resource-btn">Abrir PDF local</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="libros visualizacion">
+    <div class="resource-card-head">
+      <span class="resource-tag">Comunicación</span>
+      <span class="resource-kind">Visualización</span>
+    </div>
+    <h2 class="anchored">Storytelling with Data &amp; Better Presentations</h2>
+    <p>Textos de apoyo sobre claridad visual y comunicación efectiva de resultados cuantitativos.</p>
+    <div class="resource-actions">
+      <a href="resources/biblio/Nussbaumer 2016 - Storytelling with Data_ A Data Visualization Guide for Business Professionals (John Wiley %26 Sons).pdf" target="_blank" rel="noopener" class="resource-btn">Nussbaumer (PDF)</a>
+      <a href="resources/biblio/Schwabish 2017 - Better presentations _ a guide for scholars, researchers, and wonks (Columbia University Press).pdf" target="_blank" rel="noopener" class="resource-btn secondary">Schwabish (PDF)</a>
+    </div>
+  </article>
+
+  <!-- BASES DE DATOS SOCIALES -->
+  <article class="resource-card" data-categories="bases">
+    <div class="resource-card-head">
+      <span class="resource-tag">Encuesta Chile</span>
+      <span class="resource-kind">Socioeconómica</span>
+    </div>
+    <h2 class="anchored">Encuesta CASEN</h2>
+    <p>Encuesta de Caracterización Socioeconómica Nacional del Ministerio de Desarrollo Social. Datos sobre pobreza, ingresos, educación y vivienda.</p>
+    <div class="resource-actions">
+      <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen" target="_blank" rel="noopener" class="resource-btn">Portal CASEN</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="bases">
+    <div class="resource-card-head">
+      <span class="resource-tag">Encuesta Chile</span>
+      <span class="resource-kind">Opinión Pública</span>
+    </div>
+    <h2 class="anchored">Encuesta CEP</h2>
+    <p>Estudios periódicos de opinión pública del Centro de Estudios Públicos sobre actitudes sociales, confianza y coyuntura.</p>
+    <div class="resource-actions">
+      <a href="https://www.cepchile.cl/cep/encuestas-cep" target="_blank" rel="noopener" class="resource-btn">Datos CEP</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="bases">
+    <div class="resource-card-head">
+      <span class="resource-tag">Panel Chile</span>
+      <span class="resource-kind">COES</span>
+    </div>
+    <h2 class="anchored">Estudio Longitudinal Social de Chile (ELSOC)</h2>
+    <p>Encuesta panel del Centro de Estudios de Conflicto y Cohesión Social (COES) sobre estratificación, conflicto y relaciones sociales.</p>
+    <div class="resource-actions">
+      <a href="https://dataverse.harvard.edu/dataverse/cohesion" target="_blank" rel="noopener" class="resource-btn">Dataverse ELSOC</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="bases">
+    <div class="resource-card-head">
+      <span class="resource-tag">Oficial Chile</span>
+      <span class="resource-kind">INE</span>
+    </div>
+    <h2 class="anchored">Encuesta Nacional de Empleo (ENE - INE)</h2>
+    <p>Estadísticas del mercado laboral y empleo del Instituto Nacional de Estadísticas de Chile.</p>
+    <div class="resource-actions">
+      <a href="https://www.ine.gob.cl/estadisticas/sociales/mercado-laboral/empleo" target="_blank" rel="noopener" class="resource-btn">Portal ENE</a>
+    </div>
+  </article>
+
+  <article class="resource-card" data-categories="bases">
+    <div class="resource-card-head">
+      <span class="resource-tag">Internacional</span>
+      <span class="resource-kind">Indicadores</span>
+    </div>
+    <h2 class="anchored">Our World in Data &amp; World Bank</h2>
+    <p>Grandes repositorios de datos abiertos con indicadores sociales, demográficos y económicos a nivel global.</p>
+    <div class="resource-actions">
+      <a href="https://ourworldindata.org/" target="_blank" rel="noopener" class="resource-btn">Our World in Data</a>
+      <a href="https://data.worldbank.org/" target="_blank" rel="noopener" class="resource-btn secondary">World Bank</a>
+    </div>
+  </article>
+
+  <!-- QUARTO COMPLEMENTARIO -->
+  <article class="resource-card" data-categories="quarto">
     <div class="resource-card-head">
       <span class="resource-tag">Quarto</span>
       <span class="resource-kind">Documentación</span>
     </div>
     <h2 class="anchored">Guía de inicio en Quarto</h2>
-    <p>Documentación oficial para crear, editar y renderizar documentos reproducibles en formato .qmd.</p>
+    <p>Documentación para estructurar documentos reproducibles (.qmd), combinar texto Markdown con código R y renderizar informes HTML.</p>
     <div class="resource-actions">
-      <a href="https://quarto.org/docs/get-started/" target="_blank" rel="noopener" class="resource-btn">Abrir guía</a>
+      <a href="https://quarto.org/docs/get-started/" target="_blank" rel="noopener" class="resource-btn">Guía Quarto</a>
     </div>
   </article>
 
-  <article class="resource-card" data-categories="quarto">
+  <!-- ERRORES FRECUENTES -->
+  <article class="resource-card" data-categories="errores r-basico">
     <div class="resource-card-head">
-      <span class="resource-tag">Quarto</span>
-      <span class="resource-kind">Markdown</span>
+      <span class="resource-tag">Diagnóstico</span>
+      <span class="resource-kind">Guía práctica</span>
     </div>
-    <h2 class="anchored">Markdown básico en Quarto</h2>
-    <p>Referencia para escribir títulos, listas, enlaces, tablas, énfasis y estructura básica de informes.</p>
+    <h2 class="anchored">Resolución de errores comunes en R</h2>
+    <p>Consejos rápidos para resolver errores típicos: objetos no encontrados (object not found), comas y paréntesis faltantes, rutas de archivos no encontradas y conflictos de nombres.</p>
     <div class="resource-actions">
-      <a href="https://quarto.org/docs/authoring/markdown-basics.html" target="_blank" rel="noopener" class="resource-btn">Ver documentación</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="quarto">
-    <div class="resource-card-head">
-      <span class="resource-tag">Quarto</span>
-      <span class="resource-kind">Diseño</span>
-    </div>
-    <h2 class="anchored">Callouts, pestañas y componentes</h2>
-    <p>Recursos para ordenar informes con notas, advertencias, paneles, pestañas y bloques destacados.</p>
-    <div class="resource-actions">
-      <a href="https://quarto.org/docs/authoring/callouts.html" target="_blank" rel="noopener" class="resource-btn">Ver callouts</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="r-basico estadistica">
-    <div class="resource-card-head">
-      <span class="resource-tag">R básico</span>
-      <span class="resource-kind">Manual</span>
-    </div>
-    <h2 class="anchored">Manual de Estadística Descriptiva con R</h2>
-    <p>Manual introductorio orientado a ciencias sociales, útil para repasar conceptos y ejemplos aplicados.</p>
-    <div class="resource-actions">
-      <a href="https://bookdown.org/gboccardo/manual-ED-UCH/" target="_blank" rel="noopener" class="resource-btn">Abrir manual</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="importar tidyverse">
-    <div class="resource-card-head">
-      <span class="resource-tag">Importar datos</span>
-      <span class="resource-kind">CSV</span>
-    </div>
-    <h2 class="anchored">readr</h2>
-    <p>Paquete recomendado para importar archivos .csv y trabajar con bases de datos en texto plano.</p>
-    <div class="resource-actions">
-      <a href="https://readr.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver readr</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="importar tidyverse">
-    <div class="resource-card-head">
-      <span class="resource-tag">Importar datos</span>
-      <span class="resource-kind">Excel</span>
-    </div>
-    <h2 class="anchored">readxl</h2>
-    <p>Paquete útil para importar archivos .xls y .xlsx sin depender de Excel dentro de R.</p>
-    <div class="resource-actions">
-      <a href="https://readxl.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver readxl</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="importar">
-    <div class="resource-card-head">
-      <span class="resource-tag">Importar datos</span>
-      <span class="resource-kind">Encuestas</span>
-    </div>
-    <h2 class="anchored">haven</h2>
-    <p>Paquete para importar bases .sav, .dta y otros formatos frecuentes en encuestas sociales.</p>
-    <div class="resource-actions">
-      <a href="https://haven.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver haven</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="tidyverse r-basico">
-    <div class="resource-card-head">
-      <span class="resource-tag">Tidyverse</span>
-      <span class="resource-kind">Colección</span>
-    </div>
-    <h2 class="anchored">Tidyverse</h2>
-    <p>Conjunto de paquetes para importar, transformar, ordenar, resumir y visualizar datos en R.</p>
-    <div class="resource-actions">
-      <a href="https://www.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver tidyverse</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="tidyverse">
-    <div class="resource-card-head">
-      <span class="resource-tag">Tidyverse</span>
-      <span class="resource-kind">Transformar</span>
-    </div>
-    <h2 class="anchored">dplyr</h2>
-    <p>Paquete central para usar funciones como select, filter, mutate, group_by y summarise.</p>
-    <div class="resource-actions">
-      <a href="https://dplyr.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver dplyr</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="tidyverse">
-    <div class="resource-card-head">
-      <span class="resource-tag">Tidyverse</span>
-      <span class="resource-kind">Ordenar</span>
-    </div>
-    <h2 class="anchored">tidyr</h2>
-    <p>Paquete para ordenar bases, separar columnas, unir columnas y transformar datos entre formato ancho y largo.</p>
-    <div class="resource-actions">
-      <a href="https://tidyr.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver tidyr</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="visualizacion tidyverse">
-    <div class="resource-card-head">
-      <span class="resource-tag">Visualización</span>
-      <span class="resource-kind">Paquete</span>
-    </div>
-    <h2 class="anchored">ggplot2</h2>
-    <p>Paquete principal para construir gráficos por capas y comunicar resultados visualmente en R.</p>
-    <div class="resource-actions">
-      <a href="https://ggplot2.tidyverse.org/" target="_blank" rel="noopener" class="resource-btn">Ver ggplot2</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="visualizacion">
-    <div class="resource-card-head">
-      <span class="resource-tag">Visualización</span>
-      <span class="resource-kind">Galería</span>
-    </div>
-    <h2 class="anchored">R Graph Gallery</h2>
-    <p>Galería de gráficos hechos en R con código reproducible, organizada por tipo de visualización.</p>
-    <div class="resource-actions">
-      <a href="https://r-graph-gallery.com/" target="_blank" rel="noopener" class="resource-btn">Abrir galería</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="visualizacion">
-    <div class="resource-card-head">
-      <span class="resource-tag">Visualización</span>
-      <span class="resource-kind">Editorial</span>
-    </div>
-    <h2 class="anchored">Datawrapper</h2>
-    <p>Herramienta complementaria para crear gráficos, mapas y tablas publicables sin programar.</p>
-    <div class="resource-actions">
-      <a href="https://www.datawrapper.de/" target="_blank" rel="noopener" class="resource-btn">Explorar</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="visualizacion">
-    <div class="resource-card-head">
-      <span class="resource-tag">Visualización</span>
-      <span class="resource-kind">Comunicación</span>
-    </div>
-    <h2 class="anchored">Storytelling with Data</h2>
-    <p>Recurso útil para pensar la claridad visual, la narrativa y la comunicación de hallazgos con datos.</p>
-    <div class="resource-actions">
-      <a href="https://www.storytellingwithdata.com/" target="_blank" rel="noopener" class="resource-btn">Ver recurso</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="estadistica">
-    <div class="resource-card-head">
-      <span class="resource-tag">Estadística</span>
-      <span class="resource-kind">Tablas</span>
-    </div>
-    <h2 class="anchored">janitor</h2>
-    <p>Paquete útil para limpiar nombres de variables y construir tablas simples de frecuencias con tabyl.</p>
-    <div class="resource-actions">
-      <a href="https://sfirke.github.io/janitor/" target="_blank" rel="noopener" class="resource-btn">Ver janitor</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="estadistica visualizacion">
-    <div class="resource-card-head">
-      <span class="resource-tag">Estadística</span>
-      <span class="resource-kind">Tablas y gráficos</span>
-    </div>
-    <h2 class="anchored">sjPlot</h2>
-    <p>Paquete útil para producir tablas y gráficos descriptivos en análisis social aplicado.</p>
-    <div class="resource-actions">
-      <a href="https://strengejacke.github.io/sjPlot/" target="_blank" rel="noopener" class="resource-btn">Ver sjPlot</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases chile">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases Chile</span>
-      <span class="resource-kind">Encuesta</span>
-    </div>
-    <h2 class="anchored">CASEN</h2>
-    <p>Encuesta nacional útil para practicar análisis descriptivo de datos sociales en Chile.</p>
-    <div class="resource-actions">
-      <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen" target="_blank" rel="noopener" class="resource-btn">Ver CASEN</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases chile">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases Chile</span>
-      <span class="resource-kind">Opinión pública</span>
-    </div>
-    <h2 class="anchored">Encuesta CEP</h2>
-    <p>Base útil para trabajar opinión pública, actitudes políticas y variables sociodemográficas.</p>
-    <div class="resource-actions">
-      <a href="https://www.cepchile.cl/cep/encuestas-cep" target="_blank" rel="noopener" class="resource-btn">Ver CEP</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases chile">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases Chile</span>
-      <span class="resource-kind">Longitudinal</span>
-    </div>
-    <h2 class="anchored">ELSOC / COES</h2>
-    <p>Estudio longitudinal social de Chile, útil para practicar análisis con datos sociales reales.</p>
-    <div class="resource-actions">
-      <a href="https://dataverse.harvard.edu/dataverse/cohesion" target="_blank" rel="noopener" class="resource-btn">Ver Dataverse</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases chile">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases Chile</span>
-      <span class="resource-kind">Trabajo</span>
-    </div>
-    <h2 class="anchored">ENE / INE</h2>
-    <p>Encuesta Nacional de Empleo, útil para practicar variables laborales y análisis descriptivo.</p>
-    <div class="resource-actions">
-      <a href="https://www.ine.gob.cl/estadisticas/sociales/mercado-laboral/empleo" target="_blank" rel="noopener" class="resource-btn">Ver ENE</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases chile">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases Chile</span>
-      <span class="resource-kind">Datos abiertos</span>
-    </div>
-    <h2 class="anchored">Datos Abiertos del Estado</h2>
-    <p>Portal para buscar bases públicas chilenas de distintas instituciones y áreas temáticas.</p>
-    <div class="resource-actions">
-      <a href="https://datos.gob.cl/" target="_blank" rel="noopener" class="resource-btn">Abrir portal</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases internacional">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases internacionales</span>
-      <span class="resource-kind">Indicadores</span>
-    </div>
-    <h2 class="anchored">World Bank Open Data</h2>
-    <p>Indicadores internacionales para practicar análisis comparado y visualización de series.</p>
-    <div class="resource-actions">
-      <a href="https://data.worldbank.org/" target="_blank" rel="noopener" class="resource-btn">Ver datos</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases internacional">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases internacionales</span>
-      <span class="resource-kind">OCDE</span>
-    </div>
-    <h2 class="anchored">OECD Data</h2>
-    <p>Datos comparados para trabajar indicadores económicos, sociales y educativos.</p>
-    <div class="resource-actions">
-      <a href="https://data.oecd.org/" target="_blank" rel="noopener" class="resource-btn">Ver OECD Data</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases internacional">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases internacionales</span>
-      <span class="resource-kind">Trabajo</span>
-    </div>
-    <h2 class="anchored">ILOSTAT</h2>
-    <p>Base internacional de estadísticas laborales para practicar análisis comparado.</p>
-    <div class="resource-actions">
-      <a href="https://ilostat.ilo.org/data/" target="_blank" rel="noopener" class="resource-btn">Ver ILOSTAT</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases internacional visualizacion">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases internacionales</span>
-      <span class="resource-kind">Visualización</span>
-    </div>
-    <h2 class="anchored">Our World in Data</h2>
-    <p>Repositorio de datos y visualizaciones sobre temas sociales, económicos, sanitarios y ambientales.</p>
-    <div class="resource-actions">
-      <a href="https://ourworldindata.org/" target="_blank" rel="noopener" class="resource-btn">Explorar</a>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="plantillas interno">
-    <div class="resource-card-head">
-      <span class="resource-tag">Plantillas</span>
-      <span class="resource-kind pending">Próximamente</span>
-    </div>
-    <h2 class="anchored">Plantilla de script R</h2>
-    <p>Archivo base para organizar scripts con encabezado, carga de paquetes, importación, limpieza y análisis.</p>
-    <div class="resource-actions">
-      <span class="resource-btn disabled" aria-disabled="true">Próximamente</span>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="plantillas quarto interno">
-    <div class="resource-card-head">
-      <span class="resource-tag">Plantillas</span>
-      <span class="resource-kind pending">Próximamente</span>
-    </div>
-    <h2 class="anchored">Plantilla de reporte Quarto</h2>
-    <p>Documento base para construir entregas reproducibles con texto, código, tablas y gráficos.</p>
-    <div class="resource-actions">
-      <span class="resource-btn disabled" aria-disabled="true">Próximamente</span>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="bases interno">
-    <div class="resource-card-head">
-      <span class="resource-tag">Bases de práctica</span>
-      <span class="resource-kind pending">Próximamente</span>
-    </div>
-    <h2 class="anchored">Base de práctica 1</h2>
-    <p>Base simple para practicar importación, exploración, filtros, recodificaciones y descriptivos.</p>
-    <div class="resource-actions">
-      <span class="resource-btn disabled" aria-disabled="true">Próximamente</span>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="errores r-basico interno">
-    <div class="resource-card-head">
-      <span class="resource-tag">Errores frecuentes</span>
-      <span class="resource-kind pending">Próximamente</span>
-    </div>
-    <h2 class="anchored">Guía de errores frecuentes en R</h2>
-    <p>Soluciones para problemas comunes: paquetes, rutas, objetos no encontrados, lectura de bases y render Quarto.</p>
-    <div class="resource-actions">
-      <span class="resource-btn disabled" aria-disabled="true">Próximamente</span>
-    </div>
-  </article>
-
-  <article class="resource-card" data-categories="r-basico interno">
-    <div class="resource-card-head">
-      <span class="resource-tag">Laboratorio R</span>
-      <span class="resource-kind pending">Próximamente</span>
-    </div>
-    <h2 class="anchored">Laboratorios interactivos</h2>
-    <p>Ejercicios prácticos para las ayudantías: objetos, procesamiento, descriptivos y visualización.</p>
-    <div class="resource-actions">
-      <span class="resource-btn disabled" aria-disabled="true">Próximamente</span>
+      <a href="https://r4ds.hadley.nz/workflow-basics#what-if-things-go-wrong" target="_blank" rel="noopener" class="resource-btn">Guía de errores R4DS</a>
     </div>
   </article>
 
@@ -709,7 +597,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateResources() {
-    const query = normalizeText(searchInput.value || "");
+    const query = normalizeText(searchInput ? searchInput.value : "");
     let visible = 0;
 
     cards.forEach(function (card) {
@@ -727,9 +615,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (count) {
       if (activeFilter === "inicio" && query === "") {
-        count.textContent = "Mostrando recursos esenciales para comenzar.";
+        count.textContent = "Mostrando recursos esenciales recomendados.";
       } else if (activeFilter === "all" && query === "") {
-        count.textContent = visible + " recursos disponibles.";
+        count.textContent = visible + " recursos disponibles en total.";
       } else {
         count.textContent = visible === 1
           ? "1 recurso encontrado."
@@ -842,7 +730,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1197,7 +1085,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -1207,5 +1095,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

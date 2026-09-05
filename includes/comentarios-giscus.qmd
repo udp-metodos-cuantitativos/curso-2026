@@ -1,27 +1,16 @@
 ```{=html}
-<section class="comments-box comments-giscus-box">
+<!-- 
+  Sistema de comentarios Giscus (GitHub Discussions)
+  Pendiente de configuración de data-repo-id y data-category-id
+  para el repositorio oficial: udp-metodos-cuantitativos/curso-2026
+-->
+<section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
   <div class="comments-heading">
     <h2>Preguntas, dudas y comentarios</h2>
+    <p class="text-muted small">
+      El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
+    </p>
   </div>
-
   <div class="giscus"></div>
-
-<script src="https://giscus.app/client.js"
-        data-repo="KAravena/udp-magister-visualizacion-datos-r"
-        data-repo-id="R_kgDOSC4xhA"
-        data-category="Comentarios"
-        data-category-id="DIC_kwDOSC4xhM4C8I67"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light"
-        data-lang="es"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
-
 </section>
 ```

@@ -1,0 +1,78 @@
+---
+title: "Clase 07 | Posición y forma"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 07 · Unidad III</p>
+  <h1>Medidas de posición y forma</h1>
+  <p>Cuartiles, percentiles, rango intercuartílico, asimetría, curtosis y visualización de distribuciones con boxplots (Laboratorio 4).</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+Completamos la Unidad III estudiando cómo se distribuyen los datos a lo largo de su rango mediante medidas de posición relativa y la forma geométrica de la curva.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Medidas de posición**
+
+Calcular e interpretar cuartiles (Q1, Q2, Q3) y percentiles en variables numéricas.
+:::
+
+::: {.objetivo-card}
+**Rango intercuartílico (IQR)**
+
+Medir la dispersión del 50% central de las observaciones.
+:::
+
+::: {.objetivo-card}
+**Forma de la distribución**
+
+Identificar asimetría positiva, negativa y simetría, junto al grado de apuntamiento (curtosis).
+:::
+
+::: {.objetivo-card}
+**Laboratorio 4 en R**
+
+Uso de quantile(), gráficos de caja (*boxplots*) con ggplot2 y detección de valores atípicos.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Materiales de la sesión
+
+::: {.callout-note}
+### Material de la sesión por publicar
+Las diapositivas y el script de R del Laboratorio 4 estarán disponibles en esta sección.
+:::
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+::: {.column-margin}
+
+{{< include ../../includes/menu-clases.qmd >}}
+
+:::
+
+:::

@@ -1,0 +1,92 @@
+---
+title: "Bienvenida a Métodos Cuantitativos 2026"
+date: 2026-08-11
+description: "Bienvenida al curso Métodos Cuantitativos (ANT01221) de la Escuela de Antropología de la Universidad Diego Portales e indicaciones generales para usar el sitio web."
+categories: [aviso, inicio]
+image: "../resources/post/inicio-curso.jpg"
+image-alt: "Imagen de bienvenida al curso Métodos Cuantitativos"
+title-block: false
+toc: false
+page-layout: full
+
+format:
+  html:
+    css:
+      - ../styles.css
+---
+
+```{=html}
+<style>
+#title-block-header,
+.quarto-title-block,
+.quarto-title,
+.quarto-title-meta,
+.quarto-title-meta-heading,
+.quarto-title-meta-contents,
+.quarto-categories,
+.quarto-category,
+.description {
+  display: none !important;
+}
+
+#quarto-content,
+main.content,
+.page-layout-full main {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+</style>
+```
+
+::: {.notice-post}
+
+::: {.notice-hero}
+
+<div class="notice-image-wrap">
+<img src="../resources/post/inicio-curso.jpg" alt="Imagen de bienvenida al curso Métodos Cuantitativos" class="notice-image">
+</div>
+
+::: {.notice-meta}
+<span>Bienvenida</span>
+<span>Aviso oficial</span>
+<span>11 de agosto de 2026</span>
+:::
+
+# Inicio del curso
+
+<p class="notice-lead">
+Les damos una cordial bienvenida al curso Métodos Cuantitativos (código ANT01221) de la Escuela de Antropología de la Universidad Diego Portales.
+Este espacio centraliza el programa, la calendarización interactiva, las sesiones de clase, los laboratorios de ayudantía, la bibliografía y los recursos de R.
+</p>
+
+:::
+
+::: {.notice-body}
+
+## Nota de bienvenida
+
+Estimadas y estimados estudiantes:
+
+Les damos la bienvenida a la asignatura **Métodos Cuantitativos** correspondiente al segundo semestre de 2026. Durante este curso abordaremos los fundamentos del diseño de investigación cuantitativa en ciencias sociales, la formulación de hipótesis estadísticas, el proceso de operacionalización y medición, la elaboración de matrices de datos y las principales técnicas de estadística descriptiva univariada y análisis bivariado, acompañadas del uso del software estadístico **R**.
+
+Este sitio web ha sido diseñado para acompañar su aprendizaje durante todo el semestre. En él encontrarán:
+
+* **Curso:** El programa oficial, el esquema detallado de evaluaciones con sus fórmulas de ponderación y el calendario interactivo semana a semana.
+* **Clases (Cátedra):** Las páginas dedicadas a cada una de las sesiones teóricas y metodológicas divididas en las cuatro unidades del curso.
+* **Ayudantías (Laboratorios):** El cronograma de los 7 laboratorios prácticos en R y las orientaciones de apoyo para el trabajo grupal.
+* **Bibliografía:** El catálogo de lecturas obligatorias (Ritchey) y complementarias (Johnson & Kuby, Cea D'Ancona, Agresti & Finlay, De Miguel) con acceso a los textos disponibles.
+* **Recursos:** Enlaces para instalar R y RStudio, guías de paquetes (`tidyverse`, `haven`, `janitor`, `psych`, `ggplot2`), manuales recomendados y repositorios de datos sociales.
+
+::: {.notice-list-card}
+**Información de la asignatura**
+
+* **Asignatura:** Métodos Cuantitativos (Código ANT01221)
+* **Escuela:** Escuela de Antropología, Facultad de Ciencias Sociales e Historia, UDP
+* **Docente:** Daniela Olivares Collío (`daniela.olivares2@mail.udp.cl`)
+* **Ayudante:** Katherine Aravena Herrera (`katherine.aravena@mail.udp.cl`)
+* **Modalidad:** Cátedra teórica y sesiones prácticas en laboratorio de computación
+:::
+
+:::
+
+:::

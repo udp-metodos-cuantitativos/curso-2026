@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Clase 06 | Documentos dinámicos en Quarto – Procesamiento y Visualización de datos en R</title>
+<title>Clase 06 | Tendencia central y dispersión – Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,41 +24,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -69,15 +37,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../resources/imagenes/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +72,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -121,10 +87,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -135,24 +97,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="../../clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../curso.html"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../bibliografia.html"> 
@@ -165,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -181,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clase 06 | Documentos dinámicos en Quarto</h1>
+<h1 class="title">Clase 06 | Tendencia central y dispersión</h1>
 </div>
 
 
@@ -201,669 +152,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="catedra" class="columns page-columns page-full">
 <div class="column clase-main">
 <section class="clase-hero">
-  <p class="clase-kicker">Clase 06</p>
-  <h1>Documentos dinámicos en Quarto</h1>
-  <p>Cómo construir un informe reproducible con texto, código, tablas, gráficos e interpretaciones.</p>
-  <p><a class="btn btn-primary" href="informe_practica_bienestar_prueba.qmd" download="">Descargar script</a></p>
+  <p class="clase-kicker">Clase 06 · Unidad III</p>
+  <h1>Medidas de tendencia central y dispersión</h1>
+  <p>Cálculo, propiedades e interpretación sustantiva de la media, mediana, moda, varianza, desviación estándar y rango en R (Laboratorio 3).</p>
 </section>
-<section id="contenidos-de-la-clase" class="level2 clase-card clase-intro">
-<h2 class="anchored" data-anchor-id="contenidos-de-la-clase">Contenidos de la clase</h2>
-<p>En esta clase aprenderemos a construir un informe simple en <strong>Quarto</strong>. La idea es que puedan crear un archivo <code>.qmd</code>, escribir texto, ejecutar código de R, generar tablas, hacer gráficos e interpretar resultados.</p>
-<p>Trabajaremos con una base ficticia sobre bienestar subjetivo, confianza institucional y participación social. El foco no está en obtener resultados reales, sino en aprender una forma ordenada y reproducible de construir informes.</p>
+<section id="contenidos-de-la-sesión" class="level2 clase-card clase-intro">
+<h2 class="anchored" data-anchor-id="contenidos-de-la-sesión">Contenidos de la sesión</h2>
+<p>En esta clase abordamos los estadísticos descriptivos fundamentales para resumir variables cuantitativas continuas y discretas.</p>
 <div class="clase-objetivos">
 <div class="objetivo-card">
-<p><strong>Quarto</strong></p>
-<p>Entender qué es un archivo <code>.qmd</code> y cómo se renderiza a HTML.</p>
+<p><strong>Tendencia central</strong></p>
+<p>Calcular e interpretar media, mediana y moda, reconociendo cuándo utilizar cada medida.</p>
 </div>
 <div class="objetivo-card">
-<p><strong>Código R</strong></p>
-<p>Usar chunks para ejecutar código dentro del documento.</p>
+<p><strong>Dispersión</strong></p>
+<p>Comprender la variabilidad de los datos mediante la varianza, desviación estándar y rango.</p>
 </div>
 <div class="objetivo-card">
-<p><strong>Tablas</strong></p>
-<p>Construir tablas simples con <code>dplyr</code> y <code>gt</code>.</p>
+<p><strong>Sensibilidad a extremos</strong></p>
+<p>Evaluar el impacto de valores atípicos (<em>outliers</em>) sobre el promedio frente a la robustez de la mediana.</p>
 </div>
 <div class="objetivo-card">
-<p><strong>Gráficos</strong></p>
-<p>Crear gráficos básicos con <code>ggplot2</code>.</p>
-</div>
-<div class="objetivo-card">
-<p><strong>Interpretación</strong></p>
-<p>Escribir comentarios breves después de cada tabla o gráfico.</p>
+<p><strong>Laboratorio 3 en R</strong></p>
+<p>Cálculo de estadísticos con mean(), median(), sd(), var() y resúmenes completos con psych::describe() y dplyr::summarise().</p>
 </div>
 </div>
 </section>
-<section id="qué-es-quarto" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="qué-es-quarto">1. ¿Qué es Quarto?</h2>
-<p>Quarto permite crear documentos dinámicos. En un mismo archivo podemos combinar:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Elemento</th>
-<th>Para qué sirve</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>YAML</td>
-<td>Define título, autoría y formato de salida</td>
-</tr>
-<tr class="even">
-<td>Markdown</td>
-<td>Permite escribir texto, títulos y listas</td>
-</tr>
-<tr class="odd">
-<td>Chunks de R</td>
-<td>Permiten ejecutar código, tablas y gráficos</td>
-</tr>
-</tbody>
-</table>
-<p>La lógica general es:</p>
-<pre class="text"><code>archivo .qmd  →  Render  →  archivo .html</code></pre>
-<p>El archivo <code>.qmd</code> es el documento editable. El archivo <code>.html</code> es el resultado final que se abre en el navegador.</p>
+<section id="materiales-de-la-sesión" class="level2 clase-card">
+<h2 class="anchored" data-anchor-id="materiales-de-la-sesión">Materiales de la sesión</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Material de la sesión por publicar
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La ventaja de Quarto es que no necesitamos copiar y pegar resultados desde R. Las tablas y gráficos se generan dentro del mismo informe.</p>
+<p>Las diapositivas y el script de R del Laboratorio 3 estarán disponibles en esta sección.</p>
 </div>
 </div>
 </section>
-<section id="qué-vamos-a-construir" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="qué-vamos-a-construir">2. ¿Qué vamos a construir?</h2>
-<p>En esta clase construiremos un informe llamado:</p>
-<pre class="text"><code>informe_practica_bienestar.qmd</code></pre>
-<p>El informe responderá esta pregunta ficticia:</p>
-<blockquote class="blockquote">
-<p>¿Cómo se distribuye el bienestar subjetivo según sexo, edad, nivel educacional y participación social en una encuesta ficticia de población adulta?</p>
-</blockquote>
-<p>El informe tendrá solo lo esencial:</p>
-<ul>
-<li>una introducción breve;</li>
-<li>una base de datos simulada;</li>
-<li>una definición simple de variables;</li>
-<li>una tabla de frecuencia;</li>
-<li>una tabla descriptiva;</li>
-<li>un gráfico de barras;</li>
-<li>un histograma;</li>
-<li>una tabla bivariada;</li>
-<li>un boxplot;</li>
-<li>una conclusión breve.</li>
-</ul>
-</section>
-<section id="crear-el-archivo-del-informe" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="crear-el-archivo-del-informe">3. Crear el archivo del informe</h2>
-<p>En RStudio:</p>
-<ol type="1">
-<li>Ir a <strong>File &gt; New File &gt; Quarto Document</strong>.</li>
-<li>Elegir salida <strong>HTML</strong>.</li>
-<li>Guardar el archivo como <code>informe_practica_bienestar.qmd</code>.</li>
-<li>Borrar el contenido inicial.</li>
-<li>Copiar los bloques siguientes en orden.</li>
-</ol>
-<p><img src="quarto_document.png" class="img-fluid"></p>
-</section>
-<section id="bloque-0-yaml-del-informe" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-0-yaml-del-informe">4. Bloque 0: YAML del informe</h2>
-<p>Este bloque va al inicio del archivo <code>informe_practica_bienestar.qmd</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Informe de práctica: bienestar subjetivo"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Nombre Apellido"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Mostrar código"</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Reemplacen <code>Nombre Apellido</code> por su nombre.</p>
-</section>
-<section id="bloque-1-introducción" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-1-introducción">5. Bloque 1: Introducción</h2>
-<p>Copia este bloque después del YAML.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introducción</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Este informe utiliza una base de datos ficticia para practicar la construcción de un documento reproducible en Quarto. El objetivo no es representar una población real, sino aprender a integrar texto, código, tablas, gráficos e interpretaciones en un mismo archivo.</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>El tema del informe es el bienestar subjetivo. Para practicar análisis descriptivo, se trabajará con variables como sexo, edad, nivel educacional, participación social, confianza institucional e ingreso.</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿Cómo se distribuye el bienestar subjetivo según sexo, edad, nivel educacional y participación social en una encuesta ficticia de población adulta?</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>**Objetivo:** Describir la distribución del bienestar subjetivo y compararla según algunas características sociales básicas.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-2-cargar-paquetes" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-2-cargar-paquetes">6. Bloque 2: Cargar paquetes</h2>
-<p>Este bloque carga los paquetes que usaremos. Debe ir antes de crear tablas y gráficos.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación de los datos</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar paquetes</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalamos pacman si no está instalado</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"pacman"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos paquetes</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  tidyverse, <span class="co"># manipular datos y hacer gráficos</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  gt         <span class="co"># hacer tablas más bonitas</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Evitamos notación científica</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>tidyverse</code> incluye paquetes como <code>dplyr</code> y <code>ggplot2</code>. <code>gt</code> sirve para presentar tablas más ordenadas en HTML.</p>
-</div>
-</div>
-</section>
-<section id="bloque-3-simular-datos" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-3-simular-datos">7. Bloque 3: Simular datos</h2>
-<p>Este bloque crea una base ficticia simple. Usaremos <code>sample()</code> para crear variables fáciles de entender.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simular datos</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fijamos una semilla para que siempre salgan los mismos datos</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos el número de personas</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos una base ficticia</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">sexo =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">sample</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">80</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">nivel_educacional =</span> <span class="fu">sample</span>(</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Básica o menos"</span>, <span class="st">"Media"</span>, <span class="st">"Superior"</span>),</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    n,</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">participacion_social =</span> <span class="fu">sample</span>(</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Participa"</span>, <span class="st">"No participa"</span>),</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    n,</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">confianza_institucional =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">bienestar_subjetivo =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">ingreso =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">300000</span>, <span class="dv">1500000</span>, <span class="at">by =</span> <span class="dv">50000</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertimos algunas variables en factores</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> <span class="fu">factor</span>(sexo),</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">participacion_social =</span> <span class="fu">factor</span>(participacion_social),</span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">nivel_educacional =</span> <span class="fu">factor</span>(</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>      nivel_educacional,</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Básica o menos"</span>, <span class="st">"Media"</span>, <span class="st">"Superior"</span>),</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="fu">## Revisar datos</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisamos la estructura de la base</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(datos)</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisamos un resumen general</span></span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisamos filas y columnas</span></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>La base simulada contiene <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>r nrow(datos)<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span> casos y <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>r ncol(datos)<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span> variables.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-4-definir-variables" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-4-definir-variables">8. Bloque 4: Definir variables</h2>
-<p>Este bloque no usa código R. Es una tabla Markdown simple para que el estudiantado entienda primero qué significa cada variable.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Definición de variables</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Antes de analizar los datos, es importante saber qué significa cada variable de la base.</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable <span class="pp">|</span> Qué significa <span class="pp">|</span> Tipo de variable <span class="pp">|</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`sexo`</span> <span class="pp">|</span> Sexo de la persona encuestada <span class="pp">|</span> Categórica <span class="pp">|</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`edad`</span> <span class="pp">|</span> Edad en años <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`nivel_educacional`</span> <span class="pp">|</span> Nivel educacional alcanzado <span class="pp">|</span> Categórica ordinal <span class="pp">|</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`participacion_social`</span> <span class="pp">|</span> Indica si la persona participa o no en organizaciones sociales <span class="pp">|</span> Categórica <span class="pp">|</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`confianza_institucional`</span> <span class="pp">|</span> Nivel de confianza institucional, de 1 a 10 <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`bienestar_subjetivo`</span> <span class="pp">|</span> Nivel de bienestar subjetivo, de 1 a 10 <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ingreso`</span> <span class="pp">|</span> Ingreso mensual aproximado <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>La tabla anterior resume las variables usadas en el informe. Su función es ayudar a comprender qué información contiene la base antes de revisar tablas y gráficos.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-5-tabla-de-frecuencia" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-5-tabla-de-frecuencia">9. Bloque 5: Tabla de frecuencia</h2>
-<p>Ahora construiremos una tabla de frecuencia simple. Primero contamos los casos, luego calculamos porcentajes y finalmente mostramos la tabla con <code>gt()</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis descriptivo</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabla de frecuencia</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>::: {#tbl-sexo-ejemplo .cell tbl-cap='Distribución de la muestra según sexo'}</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>La @tbl-sexo muestra la composición de la muestra según sexo. Esta tabla permite conocer la estructura básica de la base antes de hacer comparaciones.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-6-tabla-descriptiva" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-6-tabla-descriptiva">10. Bloque 6: Tabla descriptiva</h2>
-<p>Esta tabla resume variables numéricas mediante media y mediana.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabla descriptiva</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>::: {#tbl-descriptivos-ejemplo .cell tbl-cap='Medidas descriptivas de variables numéricas'}</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>La @tbl-descriptivos resume las variables numéricas principales. La media y la mediana permiten observar valores típicos de cada variable.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-7-gráfico-de-barras" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-7-gráfico-de-barras">11. Bloque 7: Gráfico de barras</h2>
-<p>El gráfico de barras sirve para mostrar la distribución de una variable categórica.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Gráfico de barras</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>La @fig-educacion muestra la distribución porcentual del nivel educacional. Este tipo de gráfico es útil para variables categóricas.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-8-histograma" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-8-histograma">12. Bloque 8: Histograma</h2>
-<p>El histograma sirve para observar la distribución de una variable numérica.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Histograma</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>La @fig-bienestar muestra cómo se distribuye el bienestar subjetivo. En este caso, los valores van de 1 a 10.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-9-tabla-bivariada" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-9-tabla-bivariada">13. Bloque 9: Tabla bivariada</h2>
-<p>Una tabla bivariada permite comparar dos variables. En este caso veremos participación social según nivel educacional.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis bivariado</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabla bivariada</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>::: {#tbl-bivariada-ejemplo .cell tbl-cap='Participación social según nivel educacional'}</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>La @tbl-bivariada permite comparar la participación social dentro de cada nivel educacional. Esta lectura es descriptiva y no permite hablar de causalidad.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-10-boxplot" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-10-boxplot">14. Bloque 10: Boxplot</h2>
-<p>El boxplot permite comparar una variable numérica entre grupos.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Boxplot</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>La @fig-bivariada permite comparar la distribución del bienestar subjetivo entre quienes participan y quienes no participan socialmente.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bloque-11-conclusiones" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="bloque-11-conclusiones">15. Bloque 11: Conclusiones</h2>
-<p>El informe debe cerrar con una conclusión breve que responda la pregunta inicial.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusiones</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Este informe tuvo como objetivo describir la distribución del bienestar subjetivo en una base ficticia de población adulta.</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>Los resultados permiten practicar herramientas básicas de análisis descriptivo: tablas de frecuencia, medidas resumen, gráficos univariados y análisis bivariado. En particular, se comparó el bienestar subjetivo según participación social y se revisó la distribución de variables como sexo y nivel educacional.</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>Como la base es simulada, los resultados no deben interpretarse como evidencia sobre una población real. Su utilidad es pedagógica: permite aprender cómo construir un informe reproducible en Quarto.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="renderizar-el-informe" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="renderizar-el-informe">16. Renderizar el informe</h2>
-<p>Cuando terminen de copiar los bloques, presionen <strong>Render</strong> en RStudio.</p>
-<p>También pueden renderizar desde la consola copiando este chunk en la consola o en un documento de prueba. Está marcado con <code>eval: false</code> para que no se ejecute automáticamente dentro del informe.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"informe_practica_bienestar.qmd"</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Si todo está correcto, se creará este archivo:</p>
-<pre class="text"><code>informe_practica_bienestar.html</code></pre>
-<p>Antes de entregar, abran el HTML en el navegador y revisen que se vean las tablas, los gráficos y las interpretaciones.</p>
-</section>
-<div class="clase-card">
-<section id="informe-completo" class="level2">
-<h2 class="anchored" data-anchor-id="informe-completo">Informe completo</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Informe de práctica: bienestar subjetivo"</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Nombre Apellido"</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> today</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="an">lang:</span><span class="co"> es</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 2</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: cosmo</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-summary: "Mostrar código"</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="co">  message: false</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introducción</span></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>Este informe utiliza una base de datos ficticia para practicar la construcción de un documento reproducible en Quarto. El objetivo no es representar una población real, sino aprender a integrar texto, código, tablas, gráficos e interpretaciones en un mismo archivo.</span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>El tema del informe es el bienestar subjetivo. Para practicar análisis descriptivo, se trabajará con variables como sexo, edad, nivel educacional, participación social, confianza institucional e ingreso.</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿Cómo se distribuye el bienestar subjetivo según sexo, edad, nivel educacional y participación social en una encuesta ficticia de población adulta?</span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>**Objetivo:** Describir la distribución del bienestar subjetivo y compararla según algunas características sociales básicas.</span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación de los datos</span></span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cargar paquetes</span></span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalamos pacman si no está instalado</span></span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"pacman"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargamos paquetes</span></span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>  tidyverse, <span class="co"># manipular datos y hacer gráficos</span></span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>  gt         <span class="co"># hacer tablas más bonitas</span></span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Evitamos notación científica</span></span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simular datos</span></span>
-<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="co"># Fijamos una semilla para que siempre salgan los mismos datos</span></span>
-<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)</span>
-<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a><span class="co"># Definimos el número de personas</span></span>
-<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Creamos una base ficticia</span></span>
-<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">sexo =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Mujer"</span>, <span class="st">"Hombre"</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">sample</span>(<span class="dv">18</span><span class="sc">:</span><span class="dv">80</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>  <span class="at">nivel_educacional =</span> <span class="fu">sample</span>(</span>
-<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Básica o menos"</span>, <span class="st">"Media"</span>, <span class="st">"Superior"</span>),</span>
-<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>    n,</span>
-<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>  <span class="at">participacion_social =</span> <span class="fu">sample</span>(</span>
-<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Participa"</span>, <span class="st">"No participa"</span>),</span>
-<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a>    n,</span>
-<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace =</span> <span class="cn">TRUE</span></span>
-<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">confianza_institucional =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">bienestar_subjetivo =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">ingreso =</span> <span class="fu">sample</span>(<span class="fu">seq</span>(<span class="dv">300000</span>, <span class="dv">1500000</span>, <span class="at">by =</span> <span class="dv">50000</span>), n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertimos algunas variables en factores</span></span>
-<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
-<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> <span class="fu">factor</span>(sexo),</span>
-<span id="cb17-89"><a href="#cb17-89" aria-hidden="true" tabindex="-1"></a>    <span class="at">participacion_social =</span> <span class="fu">factor</span>(participacion_social),</span>
-<span id="cb17-90"><a href="#cb17-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">nivel_educacional =</span> <span class="fu">factor</span>(</span>
-<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a>      nivel_educacional,</span>
-<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a>      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Básica o menos"</span>, <span class="st">"Media"</span>, <span class="st">"Superior"</span>),</span>
-<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a>      <span class="at">ordered =</span> <span class="cn">TRUE</span></span>
-<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb17-97"><a href="#cb17-97" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-98"><a href="#cb17-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-99"><a href="#cb17-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## Revisar datos</span></span>
-<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb17-104"><a href="#cb17-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-105"><a href="#cb17-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{.r .cell-code}</span></span>
-<span id="cb17-106"><a href="#cb17-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisamos la estructura de la base</span></span>
-<span id="cb17-107"><a href="#cb17-107" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(datos)</span>
-<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-109"><a href="#cb17-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisamos un resumen general</span></span>
-<span id="cb17-110"><a href="#cb17-110" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span>
-<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisamos filas y columnas</span></span>
-<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span>
-<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-117"><a href="#cb17-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-118"><a href="#cb17-118" aria-hidden="true" tabindex="-1"></a>La base simulada contiene <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>r nrow(datos)<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span> casos y <span class="dt">&lt;</span><span class="kw">code</span><span class="dt">&gt;</span>r ncol(datos)<span class="dt">&lt;/</span><span class="kw">code</span><span class="dt">&gt;</span> variables.</span>
-<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-120"><a href="#cb17-120" aria-hidden="true" tabindex="-1"></a><span class="fu"># Definición de variables</span></span>
-<span id="cb17-121"><a href="#cb17-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-122"><a href="#cb17-122" aria-hidden="true" tabindex="-1"></a>Antes de analizar los datos, es importante saber qué significa cada variable de la base.</span>
-<span id="cb17-123"><a href="#cb17-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-124"><a href="#cb17-124" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable <span class="pp">|</span> Qué significa <span class="pp">|</span> Tipo de variable <span class="pp">|</span></span>
-<span id="cb17-125"><a href="#cb17-125" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
-<span id="cb17-126"><a href="#cb17-126" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`sexo`</span> <span class="pp">|</span> Sexo de la persona encuestada <span class="pp">|</span> Categórica <span class="pp">|</span></span>
-<span id="cb17-127"><a href="#cb17-127" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`edad`</span> <span class="pp">|</span> Edad en años <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb17-128"><a href="#cb17-128" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`nivel_educacional`</span> <span class="pp">|</span> Nivel educacional alcanzado <span class="pp">|</span> Categórica ordinal <span class="pp">|</span></span>
-<span id="cb17-129"><a href="#cb17-129" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`participacion_social`</span> <span class="pp">|</span> Indica si la persona participa o no en organizaciones sociales <span class="pp">|</span> Categórica <span class="pp">|</span></span>
-<span id="cb17-130"><a href="#cb17-130" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`confianza_institucional`</span> <span class="pp">|</span> Nivel de confianza institucional, de 1 a 10 <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb17-131"><a href="#cb17-131" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`bienestar_subjetivo`</span> <span class="pp">|</span> Nivel de bienestar subjetivo, de 1 a 10 <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb17-132"><a href="#cb17-132" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ingreso`</span> <span class="pp">|</span> Ingreso mensual aproximado <span class="pp">|</span> Numérica <span class="pp">|</span></span>
-<span id="cb17-133"><a href="#cb17-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-134"><a href="#cb17-134" aria-hidden="true" tabindex="-1"></a>La tabla anterior resume las variables usadas en el informe. Su función es ayudar a comprender qué información contiene la base antes de revisar tablas y gráficos.</span>
-<span id="cb17-135"><a href="#cb17-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-136"><a href="#cb17-136" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis descriptivo</span></span>
-<span id="cb17-137"><a href="#cb17-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-138"><a href="#cb17-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabla de frecuencia</span></span>
-<span id="cb17-139"><a href="#cb17-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-140"><a href="#cb17-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-141"><a href="#cb17-141" aria-hidden="true" tabindex="-1"></a>::: {#tbl-sexo-completo .cell tbl-cap='Distribución de la muestra según sexo'}</span>
-<span id="cb17-142"><a href="#cb17-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-143"><a href="#cb17-143" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-144"><a href="#cb17-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-145"><a href="#cb17-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-146"><a href="#cb17-146" aria-hidden="true" tabindex="-1"></a>La @tbl-sexo muestra la composición de la muestra según sexo. Esta tabla permite conocer la estructura básica de la base antes de hacer comparaciones.</span>
-<span id="cb17-147"><a href="#cb17-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-148"><a href="#cb17-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabla descriptiva</span></span>
-<span id="cb17-149"><a href="#cb17-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-150"><a href="#cb17-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-151"><a href="#cb17-151" aria-hidden="true" tabindex="-1"></a>::: {#tbl-descriptivos-completo .cell tbl-cap='Medidas descriptivas de variables numéricas'}</span>
-<span id="cb17-152"><a href="#cb17-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-153"><a href="#cb17-153" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-154"><a href="#cb17-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-155"><a href="#cb17-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-156"><a href="#cb17-156" aria-hidden="true" tabindex="-1"></a>La @tbl-descriptivos resume las variables numéricas principales. La media y la mediana permiten observar valores típicos de cada variable.</span>
-<span id="cb17-157"><a href="#cb17-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## Gráfico de barras</span></span>
-<span id="cb17-159"><a href="#cb17-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-160"><a href="#cb17-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-161"><a href="#cb17-161" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb17-162"><a href="#cb17-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-163"><a href="#cb17-163" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-164"><a href="#cb17-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-165"><a href="#cb17-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-166"><a href="#cb17-166" aria-hidden="true" tabindex="-1"></a>La @fig-educacion muestra la distribución porcentual del nivel educacional. Este tipo de gráfico es útil para variables categóricas.</span>
-<span id="cb17-167"><a href="#cb17-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-168"><a href="#cb17-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## Histograma</span></span>
-<span id="cb17-169"><a href="#cb17-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-170"><a href="#cb17-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-171"><a href="#cb17-171" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb17-172"><a href="#cb17-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-173"><a href="#cb17-173" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-174"><a href="#cb17-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-175"><a href="#cb17-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-176"><a href="#cb17-176" aria-hidden="true" tabindex="-1"></a>La @fig-bienestar muestra cómo se distribuye el bienestar subjetivo. En este caso, los valores van de 1 a 10.</span>
-<span id="cb17-177"><a href="#cb17-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-178"><a href="#cb17-178" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis bivariado</span></span>
-<span id="cb17-179"><a href="#cb17-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-180"><a href="#cb17-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tabla bivariada</span></span>
-<span id="cb17-181"><a href="#cb17-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-182"><a href="#cb17-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-183"><a href="#cb17-183" aria-hidden="true" tabindex="-1"></a>::: {#tbl-bivariada-completo .cell tbl-cap='Participación social según nivel educacional'}</span>
-<span id="cb17-184"><a href="#cb17-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-185"><a href="#cb17-185" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-186"><a href="#cb17-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-187"><a href="#cb17-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-188"><a href="#cb17-188" aria-hidden="true" tabindex="-1"></a>La @tbl-bivariada permite comparar la participación social dentro de cada nivel educacional. Esta lectura es descriptiva y no permite hablar de causalidad.</span>
-<span id="cb17-189"><a href="#cb17-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-190"><a href="#cb17-190" aria-hidden="true" tabindex="-1"></a><span class="fu">## Boxplot</span></span>
-<span id="cb17-191"><a href="#cb17-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-192"><a href="#cb17-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-193"><a href="#cb17-193" aria-hidden="true" tabindex="-1"></a>::: {.cell}</span>
-<span id="cb17-194"><a href="#cb17-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-195"><a href="#cb17-195" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb17-196"><a href="#cb17-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-197"><a href="#cb17-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-198"><a href="#cb17-198" aria-hidden="true" tabindex="-1"></a>La @fig-bivariada permite comparar la distribución del bienestar subjetivo entre quienes participan y quienes no participan socialmente.</span>
-<span id="cb17-199"><a href="#cb17-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-200"><a href="#cb17-200" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusiones</span></span>
-<span id="cb17-201"><a href="#cb17-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-202"><a href="#cb17-202" aria-hidden="true" tabindex="-1"></a>Este informe tuvo como objetivo describir la distribución del bienestar subjetivo en una base ficticia de población adulta.</span>
-<span id="cb17-203"><a href="#cb17-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-204"><a href="#cb17-204" aria-hidden="true" tabindex="-1"></a>Los resultados permiten practicar herramientas básicas de análisis descriptivo: tablas de frecuencia, medidas resumen, gráficos univariados y análisis bivariado. En particular, se comparó el bienestar subjetivo según participación social y se revisó la distribución de variables como sexo y nivel educacional.</span>
-<span id="cb17-205"><a href="#cb17-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-206"><a href="#cb17-206" aria-hidden="true" tabindex="-1"></a>Como la base es simulada, los resultados no deben interpretarse como evidencia sobre una población real. Su utilidad es pedagógica: permite aprender cómo construir un informe reproducible en Quarto.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="errores-frecuentes" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="errores-frecuentes">17. Errores frecuentes</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Problema</th>
-<th>Posible causa</th>
-<th>Solución</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>object 'datos' not found</code></td>
-<td>No se ejecutó el chunk de simulación</td>
-<td>Revisar que <code>simular-datos</code> esté antes de las tablas</td>
-</tr>
-<tr class="even">
-<td><code>could not find function "gt"</code></td>
-<td>No se cargó el paquete <code>gt</code></td>
-<td>Revisar <code>pacman::p_load(tidyverse, gt)</code></td>
-</tr>
-<tr class="odd">
-<td>La tabla no se cita</td>
-<td>El chunk no empieza con <code>tbl-</code></td>
-<td>Revisar el <code>label</code></td>
-</tr>
-<tr class="even">
-<td>La figura no se cita</td>
-<td>El chunk no empieza con <code>fig-</code></td>
-<td>Revisar el <code>label</code></td>
-</tr>
-<tr class="odd">
-<td>El HTML no se genera</td>
-<td>Hay error en un chunk</td>
-<td>Leer el mensaje de error y revisar ese bloque</td>
-</tr>
-<tr class="even">
-<td>Aparece label duplicado</td>
-<td>Hay dos chunks con el mismo nombre</td>
-<td>Cambiar uno de los <code>label</code></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Conviene renderizar varias veces durante el proceso, no solo al final.</p>
-</div>
-</div>
-</section>
-<section class="comments-box comments-giscus-box">
+<!-- 
+  Sistema de comentarios Giscus (GitHub Discussions)
+  Pendiente de configuración de data-repo-id y data-category-id
+  para el repositorio oficial: udp-metodos-cuantitativos/curso-2026
+-->
+<section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
   <div class="comments-heading">
     <h2 class="anchored">Preguntas, dudas y comentarios</h2>
+    <p class="text-muted small">
+      El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
+    </p>
   </div>
-
   <div class="giscus"></div>
-
-<script src="https://giscus.app/client.js" data-repo="KAravena/udp-magister-visualizacion-datos-r" data-repo-id="R_kgDOSC4xhA" data-category="Comentarios" data-category-id="DIC_kwDOSC4xhM4C8I67" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="es" data-loading="lazy" crossorigin="anonymous" async="">
-</script>
-
 </section>
-</div>
 </div>
 <div class="no-row-height column-margin column-container page-columns page-full"><div class="page-columns page-full">
 <div class="clases-sidebar-wrapper page-columns page-full">
@@ -874,89 +218,87 @@ Tip
   <aside class="clases-sidebar">
     <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">
 
+      <!-- Presentación -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad0" aria-expanded="false" aria-controls="unidad0">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 0</span>
-            <span class="unit-title">Presentación del curso</span>
+            <span class="unit-label">Inicio</span>
+            <span class="unit-title">Presentación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad0">
-        <a class="clase-link" href="../../clases/clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación</a>
+        <a class="clase-link" href="../clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación y fundamentos</a>
       </div>
 
+      <!-- Unidad I -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad1" aria-expanded="false" aria-controls="unidad1">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 1</span>
-            <span class="unit-title">Introducción al uso de R</span>
+            <span class="unit-label">Unidad I</span>
+            <span class="unit-title">Investigación Cuantitativa</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad1">
-        <a class="clase-link" href="../../clases/clase_01/index.html" data-clase-link="clase_01">Clase 01 – Introducción al uso de R</a>
-        <a class="clase-link" href="../../clases/clase_02/index.html" data-clase-link="clase_02">Clase 02 – Procesamiento de datos</a>
+        <a class="clase-link" href="../clase_01/index.html" data-clase-link="clase_01">Clase 01 – Variables y operacionalización</a>
+        <a class="clase-link" href="../clase_02/index.html" data-clase-link="clase_02">Clase 02 – Problema y matriz de datos</a>
       </div>
 
+      <!-- Unidad II -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad2" aria-expanded="false" aria-controls="unidad2">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 2</span>
-            <span class="unit-title">Introducción a la Estadística</span>
+            <span class="unit-label">Unidad II</span>
+            <span class="unit-title">Estadística en Investigación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad2">
-        <a class="clase-link" href="../../clases/clase_03/index.html" data-clase-link="clase_03">Clase 03 – Introducción a la Estadística</a>
+        <a class="clase-link" href="../clase_03/index.html" data-clase-link="clase_03">Clase 03 – Población, muestra y datos</a>
       </div>
 
+      <!-- Unidad III -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad3" aria-expanded="false" aria-controls="unidad3">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 3</span>
-            <span class="unit-title">Estadística Descriptiva Univariada</span>
+            <span class="unit-label">Unidad III</span>
+            <span class="unit-title">Estadística Univariada</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad3">
-        <a class="clase-link" href="../../clases/clase_04/index.html" data-clase-link="clase_04">Clase 04 – Estadística Descriptiva Univariada</a>
+        <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Distribución y análisis univariado</a>
+        <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Frecuencias y tablas</a>
+        <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Tendencia central y dispersión</a>
+        <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Posición y forma</a>
       </div>
 
+      <!-- Unidad IV -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 4</span>
-            <span class="unit-title">Estadística Bivariada</span>
+            <span class="unit-label">Unidad IV</span>
+            <span class="unit-title">Relaciones Bivariadas</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad4">
-        <a class="clase-link" href="../../clases/clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Bivariada</a>
-      </div>
-
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad5" aria-expanded="false" aria-controls="unidad5">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 5</span>
-            <span class="unit-title">Documentos dinámicos en Quarto</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad5">
-        <a class="clase-link" href="../../clases/clase_06/index.html" data-clase-link="clase_06">Clase 06 – Documentos dinámicos en Quarto</a>
+        <a class="clase-link" href="../clase_08/index.html" data-clase-link="clase_08">Clase 08 – Tablas de contingencia</a>
+        <a class="clase-link" href="../clase_09/index.html" data-clase-link="clase_09">Clase 09 – Indicadores, índices y escalas</a>
+        <a class="clase-link" href="../clase_10/index.html" data-clase-link="clase_10">Clase 10 – Correlación y regresión</a>
+        <a class="clase-link" href="../clase_11/index.html" data-clase-link="clase_11">Clase 11 – Taller de trabajo grupal</a>
+        <a class="clase-link" href="../clase_12/index.html" data-clase-link="clase_12">Clase 12 – Sesión de dudas</a>
       </div>
 
     </div>
@@ -966,7 +308,7 @@ Tip
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const path = window.location.pathname;
-  const unitStateKey = "clases-menu-unidades";
+  const unitStateKey = "clases-menu-unidades-ant01221";
 
   function readUnitState() {
     try {
@@ -997,7 +339,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!panel || !panel.id) return;
 
-    setUnitOpen(button, panel, unitState[panel.id] === true);
+    // Si no hay estado guardado, por defecto abre la unidad que contenga el enlace activo
+    const hasActiveLink = panel.querySelector("[data-clase-link].active") !== null;
+    const shouldOpen = unitState[panel.id] !== undefined ? unitState[panel.id] === true : hasActiveLink;
+
+    setUnitOpen(button, panel, shouldOpen);
 
     panel.addEventListener("shown.bs.collapse", function () {
       const currentState = readUnitState();
@@ -1017,10 +363,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       path.includes("/" + clase + "/") ||
-      path.endsWith("/" + clase + "/index.html")
+      path.endsWith("/" + clase + "/index.html") ||
+      path.endsWith("/" + clase + "/")
     ) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
+      const parentCollapse = link.closest(".collapse");
+      if (parentCollapse) {
+        parentCollapse.classList.add("show");
+        const trigger = document.querySelector(`[data-bs-target="#${parentCollapse.id}"]`);
+        if (trigger) trigger.setAttribute("aria-expanded", "true");
+      }
     }
   });
 
@@ -1120,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1475,7 +828,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -1485,5 +838,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

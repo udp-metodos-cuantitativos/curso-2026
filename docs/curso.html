@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Curso – Procesamiento y Visualización de datos en R</title>
+<title>Curso – Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./resources/imagenes/logo.svg" rel="icon" type="image/svg+xml">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -86,10 +87,6 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -100,24 +97,13 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="./clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link active" href="./curso.html" aria-current="page"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./bibliografia.html"> 
@@ -130,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -165,14 +151,14 @@ ul.task-list li input[type="checkbox"] {
 <div class="curso-shell">
 <div class="curso-card">
 <div class="tabset-margin-container"></div><div class="panel-tabset curso-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Calendarización</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Evaluaciones</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Programa</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Calendarización</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Evaluaciones</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Metodología y Normativa</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Programa</a></li></ul>
 <div class="tab-content curso-tabset">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="agenda-auto">
 
   <div class="agenda-status-card">
     <div>
-      <p class="agenda-kicker">Calendario del curso</p>
+      <p class="agenda-kicker">Calendario del curso 2026</p>
       <h3 id="agenda-status-title" class="anchored">Próxima actividad</h3>
       <p id="agenda-status-text">La calendarización se actualizará automáticamente según la fecha actual.</p>
     </div>
@@ -182,187 +168,419 @@ ul.task-list li input[type="checkbox"] {
   <div class="agenda-timeline" id="agenda-timeline">
 
     <section class="agenda-month">
-      <h3 class="anchored">Abril 2026</h3>
+      <h3 class="anchored">Agosto 2026</h3>
 
-      <article class="agenda-event" data-date="2026-04-30">
+      <article class="agenda-event" data-date="2026-08-11">
         <div class="agenda-date">
-          <span>Jue</span>
-          <strong>30</strong>
-          <span>Abr</span>
+          <span>Mar</span>
+          <strong>11</strong>
+          <span>Ago</span>
         </div>
         <div class="agenda-card">
           <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-class">Clase 1</span>
-            <span class="agenda-badge agenda-badge-r">RStudio</span>
-            <span class="agenda-badge agenda-badge-open">Ciencia abierta</span>
+            <span class="agenda-badge agenda-badge-class">Clase 00</span>
+            <span class="agenda-badge agenda-badge-open">Unidad I</span>
           </div>
-          <h4 class="agenda-event-title anchored">Introducción a R y flujo de trabajo reproducible</h4>
+          <h4 class="agenda-event-title anchored">Presentación y Fundamentos de la Investigación Cuantitativa</h4>
           <p class="agenda-event-desc">
-            Introducción a la ciencia abierta, flujo de trabajo reproducible, software y lenguaje R, REnvironment, interfaz RStudio y lógica del lenguaje: escritura, creación de objetos, tipos de datos, carga de librerías y carga de bases de datos.
+            Presentación del curso, objetivos y metodología. Fundamentos de la investigación social cuantitativa, conceptos básicos y medición de la realidad social.
           </p>
           <p class="agenda-material">
-            <strong>Material sugerido:</strong> Ritchey (2008), cap. 1; Urdinez &amp; Cruz (2021), cap. 1; Wickham &amp; Grolemund (2023), secciones 1, 2 y 4.
-          </p>
-        </div>
-      </article>
-    </section>
-
-    <section class="agenda-month">
-      <h3 class="anchored">Mayo 2026</h3>
-
-      <article class="agenda-event" data-date="2026-05-07">
-        <div class="agenda-date">
-          <span>Jue</span>
-          <strong>07</strong>
-          <span>May</span>
-        </div>
-        <div class="agenda-card">
-          <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-class">Clase 2</span>
-            <span class="agenda-badge agenda-badge-r">Procesamiento</span>
-          </div>
-          <h4 class="agenda-event-title anchored">Procesamiento de datos en R</h4>
-          <p class="agenda-event-desc">
-            Explorar, limpiar, seleccionar, filtrar, renombrar, recodificar y trabajar con casos perdidos.
-          </p>
-          <p class="agenda-material">
-            <strong>Material sugerido:</strong> Johnson (2008), cap. 1; Urdinez &amp; Cruz (2021), cap. 2; Wickham &amp; Grolemund (2023), secciones 5 y 6; Agresti, Franklin &amp; Klingenberg (2023), cap. 1.
+            <strong>Bibliografía:</strong> Ritchey (2002), cap. 1; Johnson &amp; Kuby (2004), cap. 1.
           </p>
         </div>
       </article>
 
-      <article class="agenda-event" data-date="2026-05-14">
+      <article class="agenda-event" data-date="2026-08-18">
         <div class="agenda-date">
-          <span>Jue</span>
-          <strong>14</strong>
-          <span>May</span>
-        </div>
-        <div class="agenda-card">
-          <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-class">Clase 3</span>
-            <span class="agenda-badge agenda-badge-stats">Estadística</span>
-          </div>
-          <h4 class="agenda-event-title anchored">Distribución y estadística descriptiva</h4>
-          <p class="agenda-event-desc">
-            Noción de distribución, introducción a la estadística descriptiva, tipos de análisis estadístico univariado y bivariado, tipos de gráficos y formas de visualización.
-          </p>
-          <p class="agenda-material">
-            <strong>Material sugerido:</strong> Ritchey (2008), cap. 2; Agresti, Franklin &amp; Klingenberg (2023), cap. 1.
-          </p>
-        </div>
-      </article>
-
-      <article class="agenda-event" data-date="2026-05-16">
-        <div class="agenda-date">
-          <span>Sáb</span>
-          <strong>16</strong>
-          <span>May</span>
-        </div>
-        <div class="agenda-card">
-          <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-class">Clase 4</span>
-            <span class="agenda-badge agenda-badge-r">ggplot</span>
-          </div>
-          <h4 class="agenda-event-title anchored">Estadística descriptiva univariada y visualización</h4>
-          <p class="agenda-event-desc">
-            Frecuencias, medidas de tendencia central, dispersión, posición y forma. Visualizaciones de datos con ggplot: gráficos de barras univariados y boxplot.
-          </p>
-          <p class="agenda-material">
-            <strong>Material sugerido:</strong> Ritchey (2008), caps. 3, 4 y 5; Agresti, Franklin &amp; Klingenberg (2023), cap. 2; Johnson (2008), cap. 2; Wickham &amp; Grolemund (2023), sección 28; R Graph Gallery.
-          </p>
-        </div>
-      </article>
-
-      <article class="agenda-event" data-date="2026-05-18">
-        <div class="agenda-date">
-          <span>Lun</span>
+          <span>Mar</span>
           <strong>18</strong>
-          <span>May</span>
+          <span>Ago</span>
         </div>
         <div class="agenda-card">
           <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-help">Ayudantía 1</span>
+            <span class="agenda-badge agenda-badge-class">Clase 01</span>
+            <span class="agenda-badge agenda-badge-open">Unidad I</span>
           </div>
-          <h4 class="agenda-event-title anchored">Dudas para la entrega parcial</h4>
+          <h4 class="agenda-event-title anchored">Investigación cuantitativa, variables y operacionalización</h4>
           <p class="agenda-event-desc">
-            Sesión de dudas para la elaboración de la entrega parcial.
-          </p>
-        </div>
-      </article>
-
-      <article class="agenda-event" data-date="2026-05-24">
-        <div class="agenda-date">
-          <span>Dom</span>
-          <strong>24</strong>
-          <span>May</span>
-        </div>
-        <div class="agenda-card">
-          <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-eval">Entrega parcial</span>
-          </div>
-          <h4 class="agenda-event-title anchored">Entrega parcial</h4>
-          <p class="agenda-event-desc">
-            Fecha límite para entregar la entrega parcial. Ponderación: 45%.
-          </p>
-        </div>
-      </article>
-
-      <article class="agenda-event" data-date="2026-05-28">
-        <div class="agenda-date">
-          <span>Jue</span>
-          <strong>28</strong>
-          <span>May</span>
-        </div>
-        <div class="agenda-card">
-          <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-class">Clase 5</span>
-            <span class="agenda-badge agenda-badge-r">Bivariado</span>
-            <span class="agenda-badge agenda-badge-eval">Entrega final disponible</span>
-          </div>
-          <h4 class="agenda-event-title anchored">Asociación, correlación y documentos dinámicos</h4>
-          <p class="agenda-event-desc">
-            Tablas de contingencia, noción de asociación entre variables, correlación y visualizaciones con ggplot: gráficos de dispersión, gráficos de barras bivariados y boxplot bivariado. Introducción a Quarto y documentos dinámicos.
+            Características, etapas y tipos de investigación cuantitativa. Conceptualización de variables e indicadores, proceso de operacionalización, variables, atributos, casos y niveles de medición.
           </p>
           <p class="agenda-material">
-            <strong>Material sugerido:</strong> Agresti, Franklin &amp; Klingenberg (2023), cap. 3; Johnson (2008), cap. 3.
+            <strong>Bibliografía:</strong> Cea D'Ancona (2005); Ritchey (2002), cap. 1.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-08-25">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>25</strong>
+          <span>Ago</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 02</span>
+            <span class="agenda-badge agenda-badge-open">Unidades I–II</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Construcción del problema y matriz de datos</h4>
+          <p class="agenda-event-desc">
+            Problematización, preguntas, objetivos y formulación de hipótesis. Elaboración de la matriz de datos y su libro de códigos correspondiente.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Ritchey (2002), cap. 2; Cea D'Ancona (2005).
           </p>
         </div>
       </article>
     </section>
 
     <section class="agenda-month">
-      <h3 class="anchored">Junio 2026</h3>
+      <h3 class="anchored">Septiembre 2026</h3>
 
-      <article class="agenda-event" data-date="2026-06-01">
+      <article class="agenda-event" data-date="2026-09-01">
         <div class="agenda-date">
-          <span>Lun</span>
+          <span>Mar</span>
           <strong>01</strong>
-          <span>Jun</span>
+          <span>Sep</span>
         </div>
         <div class="agenda-card">
           <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-help">Ayudantía 2</span>
+            <span class="agenda-badge agenda-badge-class">Clase 03</span>
+            <span class="agenda-badge agenda-badge-open">Unidad II</span>
           </div>
-          <h4 class="agenda-event-title anchored">Dudas para la entrega final</h4>
+          <h4 class="agenda-event-title anchored">Universo, población, muestra y recolección de datos</h4>
           <p class="agenda-event-desc">
-            Sesión de dudas para la elaboración de la entrega final.
+            Nociones de universo, población y muestra. Técnicas de recolección y procesamiento de datos en el contexto de la investigación social.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Ritchey (2002), cap. 2; Agresti &amp; Finlay (2009).
           </p>
         </div>
       </article>
 
-      <article class="agenda-event" data-date="2026-06-07">
+      <article class="agenda-event" data-date="2026-09-08">
         <div class="agenda-date">
-          <span>Dom</span>
-          <strong>07</strong>
-          <span>Jun</span>
+          <span>Mar</span>
+          <strong>08</strong>
+          <span>Sep</span>
         </div>
         <div class="agenda-card">
           <div class="agenda-card-head">
-            <span class="agenda-badge agenda-badge-eval">Entrega final</span>
+            <span class="agenda-badge agenda-badge-eval">Solemne 1</span>
+            <span class="agenda-badge agenda-badge-stats">30%</span>
           </div>
-          <h4 class="agenda-event-title anchored">Entrega final</h4>
+          <h4 class="agenda-event-title anchored">Solemne 1: Unidades I y II</h4>
           <p class="agenda-event-desc">
-            Fecha límite para entregar la entrega final. Ponderación: 55%.
+            Primera evaluación solemne escrita individual. Evalúa los contenidos de la Unidad I (Fundamentos, variables y diseño) y Unidad II (Muestreo, recolección y matrices).
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-09-15">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>15</strong>
+          <span>Sep</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-help">Receso</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Receso académico</h4>
+          <p class="agenda-event-desc">
+            Semana de receso de Fiestas Patrias sin actividades lectivas presenciales ni virtuales.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-09-22">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>22</strong>
+          <span>Sep</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 04</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad III</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 1</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Noción de distribución y análisis univariado</h4>
+          <p class="agenda-event-desc">
+            Concepto de distribución de variables sociales. Tipos de análisis estadístico univariado. Inicio del trabajo práctico con el Laboratorio 1 en R.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Ritchey (2002), cap. 3; Johnson &amp; Kuby (2004), cap. 2.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-09-29">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>29</strong>
+          <span>Sep</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 05</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad III</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 2</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Frecuencias y tablas descriptivas</h4>
+          <p class="agenda-event-desc">
+            Distribuciones de frecuencia absoluta, relativa y acumulada. Construcción y lectura de tablas descriptivas univariadas con el Laboratorio 2 en R.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Ritchey (2002), cap. 3.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="agenda-month">
+      <h3 class="anchored">Octubre 2026</h3>
+
+      <article class="agenda-event" data-date="2026-10-06">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>06</strong>
+          <span>Oct</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 06</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad III</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 3</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Medidas de tendencia central y dispersión</h4>
+          <p class="agenda-event-desc">
+            Media aritmética, mediana y moda. Medidas de dispersión: varianza, desviación estándar y rango. Trabajo práctico con el Laboratorio 3 en R.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Ritchey (2002), caps. 4 y 5; Johnson &amp; Kuby (2004), cap. 2.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-10-13">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>13</strong>
+          <span>Oct</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 07</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad III</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 4</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Medidas de posición y forma</h4>
+          <p class="agenda-event-desc">
+            Cuartiles, percentiles, asimetría y curtosis. Visualización y detección de valores extremos. Trabajo práctico con el Laboratorio 4 en R.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Ritchey (2002), cap. 5.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-10-20">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>20</strong>
+          <span>Oct</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-eval">Solemne 2</span>
+            <span class="agenda-badge agenda-badge-stats">30%</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Solemne 2: Unidad III</h4>
+          <p class="agenda-event-desc">
+            Segunda evaluación solemne escrita individual. Evalúa contenidos de Estadística Descriptiva Univariada: frecuencias, tendencia central, dispersión, posición y forma.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-10-27">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>27</strong>
+          <span>Oct</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 08</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad IV</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 5</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Análisis bivariado y tablas de contingencia</h4>
+          <p class="agenda-event-desc">
+            Tipos de análisis bivariado, cruce de variables categóricas, tablas de contingencia y porcentajes por fila y columna. Práctica con el Laboratorio 5 en R.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Johnson &amp; Kuby (2004), cap. 3; Agresti &amp; Finlay (2009).
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="agenda-month">
+      <h3 class="anchored">Noviembre 2026</h3>
+
+      <article class="agenda-event" data-date="2026-11-03">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>03</strong>
+          <span>Nov</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 09</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad IV</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 6</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Indicadores, índices y escalas</h4>
+          <p class="agenda-event-desc">
+            Construcción de indicadores sociales, diseño de índices y escalas de medición. Práctica aplicada con el Laboratorio 6 en R.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Cea D'Ancona (2005); De Miguel (1997).
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-11-10">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>10</strong>
+          <span>Nov</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 10</span>
+            <span class="agenda-badge agenda-badge-stats">Unidad IV</span>
+            <span class="agenda-badge agenda-badge-r">Laboratorio 7</span>
+            <span class="agenda-badge agenda-badge-help">Ayudantía 6</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Correlación y regresión</h4>
+          <p class="agenda-event-desc">
+            Medición de relaciones entre variables cuantitativas: coeficiente de correlación de Pearson y fundamentos de regresión lineal. Práctica con el Laboratorio 7 y Ayudantía 6.
+          </p>
+          <p class="agenda-material">
+            <strong>Bibliografía:</strong> Johnson &amp; Kuby (2004), cap. 3; Agresti &amp; Finlay (2009).
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-11-17">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>17</strong>
+          <span>Nov</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 11</span>
+            <span class="agenda-badge agenda-badge-open">Taller grupal</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Elaboración del trabajo grupal</h4>
+          <p class="agenda-event-desc">
+            Sesión de taller guiado en el laboratorio para el desarrollo, análisis de datos y redacción del informe final del trabajo grupal.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-11-22">
+        <div class="agenda-date">
+          <span>Dom</span>
+          <strong>22</strong>
+          <span>Nov</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-eval">Trabajo grupal</span>
+            <span class="agenda-badge agenda-badge-stats">40%</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Entrega del trabajo grupal</h4>
+          <p class="agenda-event-desc">
+            Fecha límite de entrega del informe escrito en grupos. Aplica los contenidos de todas las unidades del curso. Ponderación: 40%.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-11-24">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>24</strong>
+          <span>Nov</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-class">Clase 12</span>
+            <span class="agenda-badge agenda-badge-help">Dudas</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Sesión de resolución de dudas</h4>
+          <p class="agenda-event-desc">
+            Sesión plenaria de resolución de dudas conceptuales, preparación de presentaciones y consultas para la prueba recuperativa.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="agenda-month">
+      <h3 class="anchored">Diciembre 2026</h3>
+
+      <article class="agenda-event" data-date="2026-12-01">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>01</strong>
+          <span>Dic</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-eval">Presentaciones</span>
+            <span class="agenda-badge agenda-badge-eval">Recuperativa</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Presentaciones y Prueba Recuperativa</h4>
+          <p class="agenda-event-desc">
+            Presentación de los trabajos grupales y rendición de la prueba solemne recuperativa escrita para inasistencias debidamente justificadas.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-12-08">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>08</strong>
+          <span>Dic</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-help">Feriado</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Feriado nacional</h4>
+          <p class="agenda-event-desc">
+            Inmaculada Concepción. Sin actividades académicas.
+          </p>
+        </div>
+      </article>
+
+      <article class="agenda-event" data-date="2026-12-15">
+        <div class="agenda-date">
+          <span>Mar</span>
+          <strong>15</strong>
+          <span>Dic</span>
+        </div>
+        <div class="agenda-card">
+          <div class="agenda-card-head">
+            <span class="agenda-badge agenda-badge-eval">Examen</span>
+            <span class="agenda-badge agenda-badge-stats">30%</span>
+          </div>
+          <h4 class="agenda-event-title anchored">Examen oral individual</h4>
+          <p class="agenda-event-desc">
+            Examen oral individual para estudiantes con nota de presentación (NP) entre 3,5 y 5,5. Ponderación: 30% de la nota final del curso.
           </p>
         </div>
       </article>
@@ -435,45 +653,203 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div class="evaluaciones-panel">
+<section id="esquema-oficial-de-evaluaciones" class="level3 evaluaciones-panel">
+<h3 class="anchored" data-anchor-id="esquema-oficial-de-evaluaciones">Esquema oficial de evaluaciones</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 23%">
-<col style="width: 30%">
+<col style="width: 18%">
+<col style="width: 22%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 22%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Evaluación</th>
-<th>Fecha de entrega a las y los estudiantes</th>
-<th>Fecha de entrega por parte de las y los estudiantes</th>
-<th style="text-align: right;">Ponderación</th>
+<th style="text-align: left;">Evaluación</th>
+<th style="text-align: center;">Fecha</th>
+<th style="text-align: left;">Contenidos / Descripción</th>
+<th style="text-align: left;">Modalidad</th>
+<th style="text-align: center;">Ponderación</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Entrega parcial</td>
-<td>1 de mayo</td>
-<td>Domingo 24 de mayo</td>
-<td style="text-align: right;">45%</td>
+<td style="text-align: left;"><strong>Solemne 1</strong></td>
+<td style="text-align: center;">08/09/2026</td>
+<td style="text-align: left;">Unidades I y II</td>
+<td style="text-align: left;">Prueba escrita individual</td>
+<td style="text-align: center;"><strong>30%</strong></td>
 </tr>
 <tr class="even">
-<td>Entrega final</td>
-<td>28 de mayo</td>
-<td>Domingo 07 de junio</td>
-<td style="text-align: right;">55%</td>
+<td style="text-align: left;"><strong>Solemne 2</strong></td>
+<td style="text-align: center;">20/10/2026</td>
+<td style="text-align: left;">Unidad III</td>
+<td style="text-align: left;">Prueba escrita individual</td>
+<td style="text-align: center;"><strong>30%</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Trabajo grupal</strong></td>
+<td style="text-align: center;">22/11/2026</td>
+<td style="text-align: left;">Todas las unidades del curso</td>
+<td style="text-align: left;">Trabajo escrito en grupos</td>
+<td style="text-align: center;"><strong>40%</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Solemne recuperativa</strong></td>
+<td style="text-align: center;">01/12/2026</td>
+<td style="text-align: left;">Recuperación por inasistencia justificada</td>
+<td style="text-align: left;">Prueba escrita individual</td>
+<td style="text-align: center;">30% (reemplaza S1 o S2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Examen</strong></td>
+<td style="text-align: center;">15/12/2026</td>
+<td style="text-align: left;">Examen oral individual de contenidos integrados</td>
+<td style="text-align: left;">Examen oral individual</td>
+<td style="text-align: center;"><strong>30%</strong> (de la Nota Final)</td>
 </tr>
 </tbody>
 </table>
+<p><br></p>
+<div class="row g-4 my-3">
+<div class="col-md-6">
+<div class="card h-100 p-3 shadow-sm border-1">
+<h5 class="fw-bold text-primary mb-2 anchored">
+<i class="bi bi-calculator me-2"></i>Nota de Presentación (NP)
+</h5>
+<p class="mb-2">
+La nota de presentación a examen se calcula con las siguientes ponderaciones:
+</p>
+<div class="bg-light p-3 rounded text-center my-2">
+<p><code class="fs-6 fw-bold text-dark">NP = (S1 × 0.30) + (S2 × 0.30) + (Tg × 0.40)</code></p>
 </div>
+<ul class="small text-muted mt-2 mb-0">
+<li>
+<strong>S1:</strong> Solemne 1 (30%)
+</li>
+<li>
+<strong>S2:</strong> Solemne 2 (30%)
+</li>
+<li>
+<strong>Tg:</strong> Trabajo grupal (40%)
+</li>
+<li>
+Se presentarán a examen estudiantes cuya <strong>NP se encuentre entre 3,5 y 5,5</strong>.
+</li>
+<li>
+Quienes obtengan una NP inferior a 3,5 reprobarán la asignatura con su nota de presentación.
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card h-100 p-3 shadow-sm border-1">
+<h5 class="fw-bold text-primary mb-2 anchored">
+<i class="bi bi-award me-2"></i>Nota Final y Aprobación
+</h5>
+<p class="mb-2">
+Para estudiantes que rinden examen, la Nota Final (NF) del curso se calcula según:
+</p>
+<div class="bg-light p-3 rounded text-center my-2">
+<p><code class="fs-6 fw-bold text-dark">NF = (NP × 0.70) + (Ex × 0.30)</code></p>
+</div>
+<ul class="small text-muted mt-2 mb-0">
+<li>
+<strong>NF:</strong> Nota final del curso
+</li>
+<li>
+<strong>NP:</strong> Nota de presentación (70%)
+</li>
+<li>
+<strong>Ex:</strong> Examen oral individual (30%)
+</li>
+<li>
+<strong>Requisitos de aprobación:</strong> Obtener una <strong>NF ≥ 4,0</strong> y cumplir con una <strong>asistencia obligatoria igual o mayor al 70%</strong>.
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="programa-actions">
-<p><a href="resources/PROGRAMA_ESI_2026.pdf" class="programa-download-btn" download="" target="_blank" rel="noopener">Descargar programa</a></p>
+<div class="evaluaciones-panel">
+<section id="metodología-del-curso" class="level3">
+<h3 class="anchored" data-anchor-id="metodología-del-curso">Metodología del curso</h3>
+<p>La asignatura combina <strong>clases teóricas de modalidad expositiva</strong> y <strong>talleres prácticos de aplicación</strong>:</p>
+<ul>
+<li><strong>Cátedra:</strong> Presentación de contenidos teóricos, fundamentos del diseño de investigación cuantitativa y conceptos de estadística descriptiva y bivariada mediante ejemplos aplicados.</li>
+<li><strong>Laboratorio de computación:</strong> Sesiones prácticas con uso del programa estadístico <strong>R</strong>, destinadas al aprendizaje temprano de comandos básicos para procesar variables, construir matrices de datos, tablas descriptivas y gráficos.</li>
+<li><strong>Ayudantías semanales:</strong> Sesiones de asistencia en laboratorio a cargo de la ayudante del curso para profundizar los contenidos vistos en cátedra y ejercitar herramientas en R.</li>
+<li><strong>Trabajo grupal:</strong> Elaboración de un informe empírico en grupos aplicando las etapas del diseño cuantitativo y el análisis estadístico descriptivo.</li>
+</ul>
+<hr>
+</section>
+<section id="normativa-académica-y-procedimientos" class="level3">
+<h3 class="anchored" data-anchor-id="normativa-académica-y-procedimientos">Normativa académica y procedimientos</h3>
+<div id="normativaAccordion" class="accordion">
+<section id="procedimiento-de-recorrección" class="level4 accordion-item">
+<h4 class="anchored" data-anchor-id="procedimiento-de-recorrección"><span id="headingOne" class="accordion-header">1. Procedimiento de Recorrección</span></h4>
+<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+<div class="accordion-body">
+<ul>
+<li><strong>Plazos de entrega:</strong> El estudiantado tiene derecho a conocer las notas y pautas de corrección en un plazo máximo de 10 días hábiles desde la rendición, y antes de rendir la siguiente evaluación equivalente.</li>
+<li><strong>Plazo de solicitud:</strong> Las solicitudes de recorrección deben presentarse dentro de los <strong>5 días hábiles</strong> posteriores a la entrega de la nota.</li>
+<li><strong>Procedimiento:</strong> Mediante carta formal dirigida a la docente (<code>daniela.olivares2@mail.udp.cl</code>) fundamentando por escrito las razones y materias no consideradas, acompañada de la prueba e informe con las correcciones entregadas.</li>
+<li><strong>Resolución:</strong> La docente comunicará el resultado fundamentado en un plazo no superior a 5 días hábiles. La nota puede <strong>subir, mantenerse o bajar</strong>.</li>
+<li><em>Nota:</em> Por su naturaleza, las evaluaciones orales no son susceptibles de recorrección.</li>
+</ul>
 </div>
-<iframe src="resources/PROGRAMA_ESI_2026.pdf" class="programa-frame">
-</iframe>
+</div>
+</section>
+<section id="inasistencias-y-evaluación-recuperativa" class="level4 accordion-item">
+<h4 class="anchored" data-anchor-id="inasistencias-y-evaluación-recuperativa"><span id="headingTwo" class="accordion-header">2. Inasistencias y Evaluación Recuperativa</span></h4>
+<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+<div class="accordion-body">
+<ul>
+<li><strong>Justificación de inasistencias:</strong> Quienes no asistan a una solemne por motivos de salud u otras causales reglamentarias justificadas deben enviar el formulario de inasistencia junto a los certificados correspondientes a la Secretaría Académica (<code>marisol.verdugo@udp.cl</code>) dentro de los <strong>5 días hábiles</strong> siguientes a la evaluación.</li>
+<li><strong>Evaluación recuperativa:</strong> Quienes hayan justificado oportunamente rendirán la prueba recuperativa fijada para el <strong>01/12/2026</strong>. Las evaluaciones no rendidas sin justificación formal tendrán calificación <strong>1.0</strong>.</li>
+<li><strong>Asistencia mínima:</strong> Quienes tengan una asistencia a clases inferior al <strong>70%</strong> reprobarán el curso, aun cuando su promedio sea superior a 4,0. Para justificar inasistencias a clases regulares, enviar correo a Secretaría con certificado médico.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="integridad-académica-y-cláusulas-éticas" class="level4 accordion-item">
+<h4 class="anchored" data-anchor-id="integridad-académica-y-cláusulas-éticas"><span id="headingThree" class="accordion-header">3. Integridad Académica y Cláusulas Éticas</span></h4>
+<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+<div class="accordion-body">
+<ul>
+<li>La Escuela de Antropología aplica severas sanciones a conductas que vicien procesos evaluativos (copia, plagio, uso indebido de medios electrónicos o falsificación de documentos).</li>
+<li>Todo texto, dato o imagen proveniente de fuentes externas debe ser debidamente citado.</li>
+<li>Las faltas a la integridad académica serán sancionadas inmediatamente con nota <strong>1.0</strong> en la respectiva evaluación y remitidas al Comité de Ética de la Universidad.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="normativa-de-convivencia-y-prevención-de-violencia-de-género" class="level4 accordion-item">
+<h4 class="anchored" data-anchor-id="normativa-de-convivencia-y-prevención-de-violencia-de-género"><span id="headingFour" class="accordion-header">4. Normativa de Convivencia y Prevención de Violencia de Género</span></h4>
+<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+<div class="accordion-body">
+<ul>
+<li>La Universidad Diego Portales promueve el pluralismo, la dignidad humana, la libertad de expresión, la igualdad de género y la no discriminación.</li>
+<li>La comunidad universitaria está sujeta a la <em>Normativa de prevención y sanción de acciones de discriminación, violencia sexual y de género de la UDP</em>.</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+</section>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div class="evaluaciones-panel">
+<div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+<p><a href="resources/programa/Programa_Antropologia_Cuanti_2026.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar programa</a> <a href="resources/programa/Programa_Antropologia_Cuanti_2026.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Abrir en nueva pestaña</a></p>
+</div>
+<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 650px; border: 1px solid rgba(0,0,0,0.12);">
+<p><iframe src="resources/programa/Programa_Antropologia_Cuanti_2026.pdf" title="Programa Oficial Métodos Cuantitativos 2026" allowfullscreen=""></iframe></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -556,7 +932,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -911,7 +1287,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -921,5 +1297,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

@@ -1,0 +1,78 @@
+---
+title: "Clase 08 | Tablas de contingencia"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 08 · Unidad IV</p>
+  <h1>Análisis bivariado y tablas de contingencia</h1>
+  <p>Estudio de la relación entre dos variables categóricas, tablas cruzadas de doble entrada y cálculo de porcentajes por fila y columna (Laboratorio 5).</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+Iniciamos la Unidad IV con el análisis bivariado, que permite investigar si dos variables sociales están asociadas y cómo varía una según la otra.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Asociación bivariada**
+
+Comprender la noción de relación o asociación entre dos fenómenos sociales.
+:::
+
+::: {.objetivo-card}
+**Tablas de contingencia**
+
+Construir tablas cruzadas y analizar distribuciones condicionales.
+:::
+
+::: {.objetivo-card}
+**Porcentajes de fila y columna**
+
+Identificar qué tipo de porcentaje responde a la pregunta de investigación y comparar grupos adecuadamente.
+:::
+
+::: {.objetivo-card}
+**Laboratorio 5 en R**
+
+Tabulación cruzada con tabyl (janitor), tablas formateadas con sjPlot y visualización con barras agrupadas/apiladas en ggplot2.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Materiales de la sesión
+
+::: {.callout-note}
+### Material de la sesión por publicar
+Las diapositivas y el script de R del Laboratorio 5 estarán disponibles en esta sección.
+:::
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+::: {.column-margin}
+
+{{< include ../../includes/menu-clases.qmd >}}
+
+:::
+
+:::

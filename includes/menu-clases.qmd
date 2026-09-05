@@ -7,89 +7,87 @@
   <aside class="clases-sidebar">
     <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">
 
+      <!-- Presentación -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad0" aria-expanded="false" aria-controls="unidad0">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 0</span>
-            <span class="unit-title">Presentación del curso</span>
+            <span class="unit-label">Inicio</span>
+            <span class="unit-title">Presentación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad0">
-        <a class="clase-link" href="/clases/clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación</a>
+        <a class="clase-link" href="../clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación y fundamentos</a>
       </div>
 
+      <!-- Unidad I -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad1" aria-expanded="false" aria-controls="unidad1">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 1</span>
-            <span class="unit-title">Introducción al uso de R</span>
+            <span class="unit-label">Unidad I</span>
+            <span class="unit-title">Investigación Cuantitativa</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad1">
-        <a class="clase-link" href="/clases/clase_01/index.html" data-clase-link="clase_01">Clase 01 – Introducción al uso de R</a>
-        <a class="clase-link" href="/clases/clase_02/index.html" data-clase-link="clase_02">Clase 02 – Procesamiento de datos</a>
+        <a class="clase-link" href="../clase_01/index.html" data-clase-link="clase_01">Clase 01 – Variables y operacionalización</a>
+        <a class="clase-link" href="../clase_02/index.html" data-clase-link="clase_02">Clase 02 – Problema y matriz de datos</a>
       </div>
 
+      <!-- Unidad II -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad2" aria-expanded="false" aria-controls="unidad2">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 2</span>
-            <span class="unit-title">Introducción a la Estadística</span>
+            <span class="unit-label">Unidad II</span>
+            <span class="unit-title">Estadística en Investigación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad2">
-        <a class="clase-link" href="/clases/clase_03/index.html" data-clase-link="clase_03">Clase 03 – Introducción a la Estadística</a>
+        <a class="clase-link" href="../clase_03/index.html" data-clase-link="clase_03">Clase 03 – Población, muestra y datos</a>
       </div>
 
+      <!-- Unidad III -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad3" aria-expanded="false" aria-controls="unidad3">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 3</span>
-            <span class="unit-title">Estadística Descriptiva Univariada</span>
+            <span class="unit-label">Unidad III</span>
+            <span class="unit-title">Estadística Univariada</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad3">
-        <a class="clase-link" href="/clases/clase_04/index.html" data-clase-link="clase_04">Clase 04 – Estadística Descriptiva Univariada</a>
+        <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Distribución y análisis univariado</a>
+        <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Frecuencias y tablas</a>
+        <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Tendencia central y dispersión</a>
+        <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Posición y forma</a>
       </div>
 
+      <!-- Unidad IV -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 4</span>
-            <span class="unit-title">Estadística Bivariada</span>
+            <span class="unit-label">Unidad IV</span>
+            <span class="unit-title">Relaciones Bivariadas</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad4">
-        <a class="clase-link" href="/clases/clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Bivariada</a>
-      </div>
-
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad5" aria-expanded="false" aria-controls="unidad5">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 5</span>
-            <span class="unit-title">Documentos dinámicos en Quarto</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad5">
-        <a class="clase-link" href="/clases/clase_06/index.html" data-clase-link="clase_06">Clase 06 – Documentos dinámicos en Quarto</a>
+        <a class="clase-link" href="../clase_08/index.html" data-clase-link="clase_08">Clase 08 – Tablas de contingencia</a>
+        <a class="clase-link" href="../clase_09/index.html" data-clase-link="clase_09">Clase 09 – Indicadores, índices y escalas</a>
+        <a class="clase-link" href="../clase_10/index.html" data-clase-link="clase_10">Clase 10 – Correlación y regresión</a>
+        <a class="clase-link" href="../clase_11/index.html" data-clase-link="clase_11">Clase 11 – Taller de trabajo grupal</a>
+        <a class="clase-link" href="../clase_12/index.html" data-clase-link="clase_12">Clase 12 – Sesión de dudas</a>
       </div>
 
     </div>
@@ -99,7 +97,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const path = window.location.pathname;
-  const unitStateKey = "clases-menu-unidades";
+  const unitStateKey = "clases-menu-unidades-ant01221";
 
   function readUnitState() {
     try {
@@ -130,7 +128,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!panel || !panel.id) return;
 
-    setUnitOpen(button, panel, unitState[panel.id] === true);
+    // Si no hay estado guardado, por defecto abre la unidad que contenga el enlace activo
+    const hasActiveLink = panel.querySelector("[data-clase-link].active") !== null;
+    const shouldOpen = unitState[panel.id] !== undefined ? unitState[panel.id] === true : hasActiveLink;
+
+    setUnitOpen(button, panel, shouldOpen);
 
     panel.addEventListener("shown.bs.collapse", function () {
       const currentState = readUnitState();
@@ -150,10 +152,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       path.includes("/" + clase + "/") ||
-      path.endsWith("/" + clase + "/index.html")
+      path.endsWith("/" + clase + "/index.html") ||
+      path.endsWith("/" + clase + "/")
     ) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
+      const parentCollapse = link.closest(".collapse");
+      if (parentCollapse) {
+        parentCollapse.classList.add("show");
+        const trigger = document.querySelector(`[data-bs-target="#${parentCollapse.id}"]`);
+        if (trigger) trigger.setAttribute("aria-expanded", "true");
+      }
     }
   });
 

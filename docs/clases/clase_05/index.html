@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Clase 05 | Estadística bivariada – Procesamiento y Visualización de datos en R</title>
+<title>Clase 05 | Frecuencias y tablas – Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,41 +24,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -69,15 +37,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../resources/imagenes/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,7 +72,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -121,10 +87,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -135,24 +97,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="../../clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../curso.html"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../bibliografia.html"> 
@@ -165,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -181,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clase 05 | Estadística bivariada</h1>
+<h1 class="title">Clase 05 | Frecuencias y tablas</h1>
 </div>
 
 
@@ -198,324 +149,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="catedra" class="columns">
+<div id="catedra" class="columns page-columns page-full">
 <div class="column clase-main">
 <section class="clase-hero">
-  <p class="clase-kicker">Clase 05</p>
-  <h1>Estadística bivariada</h1>
-  <p>Tablas de contingencia, asociación y visualizaciones para explorar la relación entre dos variables.</p>
+  <p class="clase-kicker">Clase 05 · Unidad III</p>
+  <h1>Frecuencias y tablas descriptivas</h1>
+  <p>Construcción, lectura e interpretación de tablas de frecuencias absolutas, relativas y acumuladas en R (Laboratorio 2).</p>
 </section>
-<section id="contenidos-de-la-clase" class="level2 clase-card clase-intro">
-<h2 class="anchored" data-anchor-id="contenidos-de-la-clase">Contenidos de la clase</h2>
-<p>En esta clase introducimos el análisis bivariado: el estudio de la relación entre dos variables. A diferencia del análisis univariado —que describe una variable a la vez—, el análisis bivariado nos permite preguntarnos si dos fenómenos están asociados y en qué dirección.</p>
-<p>Trabajaremos con la base procesada de ELSOC 2022 que construimos en clases anteriores. En detalle, aprenderemos a:</p>
+<section id="contenidos-de-la-sesión" class="level2 clase-card clase-intro">
+<h2 class="anchored" data-anchor-id="contenidos-de-la-sesión">Contenidos de la sesión</h2>
+<p>En esta clase profundizamos en el análisis de variables categóricas (nominales y ordinales) mediante tablas de distribución de frecuencias.</p>
 <div class="clase-objetivos">
 <div class="objetivo-card">
-<p><strong>Tablas de contingencia</strong></p>
-<p>Cruzar dos variables categóricas y calcular distribuciones porcentuales.</p>
+<p><strong>Frecuencias absolutas</strong></p>
+<p>Contar el número de casos en cada categoría de respuesta.</p>
 </div>
 <div class="objetivo-card">
-<p><strong>Asociación entre variables</strong></p>
-<p>Comprender qué significa que dos variables estén relacionadas.</p>
+<p><strong>Frecuencias relativas</strong></p>
+<p>Calcular proporciones y porcentajes para comparar categorías.</p>
 </div>
 <div class="objetivo-card">
-<p><strong>Correlación</strong></p>
-<p>Medir la dirección e intensidad de la relación entre dos variables continuas.</p>
+<p><strong>Frecuencias acumuladas</strong></p>
+<p>Interpretar el porcentaje acumulado de casos en variables ordinales.</p>
 </div>
 <div class="objetivo-card">
-<p><strong>Visualización bivariada</strong></p>
-<p>Construir gráficos de dispersión, barras bivariadas y boxplots comparativos con <code>ggplot2</code>.</p>
+<p><strong>Laboratorio 2 en R</strong></p>
+<p>Uso de funciones de conteo con table(), prop.table() y tablas tabyl con el paquete janitor.</p>
 </div>
 </div>
 </section>
-<section id="preparación" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="preparación">0. Preparación</h2>
-<p>Cargamos los paquetes y la base procesada de ELSOC 2022:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               janitor,    <span class="co"># para tablas de contingencia legibles</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>               sjPlot,     <span class="co"># para tablas y gráficos con etiquetas</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>               corrplot)   <span class="co"># para matrices de correlación</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">"output/proc_elsoc.RData"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="tablas-de-contingencia" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="tablas-de-contingencia">1. Tablas de contingencia</h2>
-<p>Una <strong>tabla de contingencia</strong> (o tabla cruzada) muestra la distribución conjunta de dos variables categóricas. Cada celda indica cuántos casos tienen simultáneamente los valores de ambas variables.</p>
-<p>La función base en R es <code>table()</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frecuencias absolutas</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(proc_elsoc<span class="sc">$</span>sexo, proc_elsoc<span class="sc">$</span>autor_democ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Para obtener porcentajes usamos <code>prop.table()</code>. El argumento <code>margin</code> indica si queremos porcentajes por fila (<code>1</code>) o por columna (<code>2</code>):</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Porcentajes por fila (distribución de autor_democ dentro de cada sexo)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(proc_elsoc<span class="sc">$</span>sexo, proc_elsoc<span class="sc">$</span>autor_democ), <span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="con-janitor-tablas-más-legibles" class="level3">
-<h3 class="anchored" data-anchor-id="con-janitor-tablas-más-legibles">1.1 Con <code>janitor</code>: tablas más legibles</h3>
-<p>El paquete <code>janitor</code> ofrece <code>tabyl()</code>, que genera tablas más limpias y fáciles de leer:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="sc">%&gt;%</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(sexo, autor_democ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span>       <span class="co"># porcentajes por fila</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="co"># formato con 1 decimal</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_ns</span>()                         <span class="co"># agrega frecuencias absolutas entre paréntesis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="materiales-de-la-sesión" class="level2 clase-card">
+<h2 class="anchored" data-anchor-id="materiales-de-la-sesión">Materiales de la sesión</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Material de la sesión por publicar
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>¿Por qué porcentajes por fila?</strong> Cuando queremos comparar cómo se distribuye una variable (ej. opinión política) <em>según</em> otra (ej. sexo), calculamos porcentajes dentro de cada fila. Así cada fila suma 100% y la comparación entre grupos es directa.</p>
+<p>Las diapositivas y el script de R del Laboratorio 2 estarán disponibles en esta sección.</p>
 </div>
 </div>
 </section>
-<section id="ejercicio" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicio">1.2 Ejercicio</h3>
-<p>Construye una tabla de contingencia entre <code>tramo_edad</code> y <code>jv_delincuentes</code>. ¿En qué grupo etario es más frecuente justificar la violencia contra delincuentes?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabyl</span>(___, ___) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_percentages</span>(<span class="st">"row"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">adorn_pct_formatting</span>(<span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="la-noción-de-asociación-entre-variables" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="la-noción-de-asociación-entre-variables">2. La noción de asociación entre variables</h2>
-<p>Dos variables están <strong>asociadas</strong> cuando la distribución de una cambia según los valores de la otra. En términos prácticos:</p>
-<ul>
-<li>Si las filas de una tabla de contingencia son <em>similares</em> entre sí → las variables <strong>no están asociadas</strong></li>
-<li>Si las filas son <em>distintas</em> entre sí → las variables <strong>sí están asociadas</strong></li>
-</ul>
-<section id="chi-cuadrado-prueba-de-asociación-para-variables-categóricas" class="level3">
-<h3 class="anchored" data-anchor-id="chi-cuadrado-prueba-de-asociación-para-variables-categóricas">2.1 Chi-cuadrado: prueba de asociación para variables categóricas</h3>
-<p>La prueba <strong>chi-cuadrado (χ²)</strong> nos permite evaluar si la asociación observada en una tabla de contingencia es estadísticamente significativa, o si podría deberse al azar:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ¿Existe asociación entre sexo y opinión sobre la democracia?</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(proc_elsoc<span class="sc">$</span>sexo, proc_elsoc<span class="sc">$</span>autor_democ))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>¿Cómo leer el resultado?</strong> El valor <strong>p</strong> (<em>p-value</em>) indica la probabilidad de obtener esos datos si no hubiera asociación. Por convención:</p>
-<ul>
-<li>p &lt; 0.05 → hay evidencia de asociación</li>
-<li>p ≥ 0.05 → no hay evidencia suficiente de asociación</li>
-</ul>
-</div>
-</div>
-</section>
-</section>
-<section id="correlación" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="correlación">3. Correlación</h2>
-<p>La <strong>correlación</strong> mide la dirección e intensidad de la relación entre dos variables continuas. El coeficiente más común es el de <strong>Pearson (r)</strong>:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Valor de r</th>
-<th>Interpretación</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>r = 1</td>
-<td>Asociación positiva perfecta</td>
-</tr>
-<tr class="even">
-<td>0 &lt; r &lt; 1</td>
-<td>Asociación positiva (a mayor X, mayor Y)</td>
-</tr>
-<tr class="odd">
-<td>r = 0</td>
-<td>Sin asociación lineal</td>
-</tr>
-<tr class="even">
-<td>-1 &lt; r &lt; 0</td>
-<td>Asociación negativa (a mayor X, menor Y)</td>
-</tr>
-<tr class="odd">
-<td>r = -1</td>
-<td>Asociación negativa perfecta</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlación entre edad e ingreso</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(proc_elsoc<span class="sc">$</span>edad, proc_elsoc<span class="sc">$</span>ingreso, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="matriz-de-correlaciones" class="level3">
-<h3 class="anchored" data-anchor-id="matriz-de-correlaciones">3.1 Matriz de correlaciones</h3>
-<p>Cuando tenemos varias variables continuas, es útil calcular todas las correlaciones de una vez:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="sc">%&gt;%</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(edad, ingreso) <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Y visualizarla con <code>corrplot</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>proc_elsoc <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(edad, ingreso) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"complete.obs"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">corrplot</span>(<span class="at">method =</span> <span class="st">"color"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"upper"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">addCoef.col =</span> <span class="st">"black"</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">tl.col =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Correlación ≠ causalidad.</strong> Una correlación alta entre dos variables no significa que una cause a la otra. Pueden estar relacionadas por una tercera variable, o simplemente coincidir en el tiempo.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="visualización-bivariada-con-ggplot2" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="visualización-bivariada-con-ggplot2">4. Visualización bivariada con ggplot2</h2>
-<section id="gráfico-de-dispersión-dos-variables-continuas" class="level3">
-<h3 class="anchored" data-anchor-id="gráfico-de-dispersión-dos-variables-continuas">4.1 Gráfico de dispersión — dos variables continuas</h3>
-<p>El <strong>scatter plot</strong> muestra cada observación como un punto en el plano, con una variable en el eje X y otra en el eje Y. Es el gráfico natural para explorar correlaciones.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_elsoc, <span class="fu">aes</span>(<span class="at">x =</span> edad, <span class="at">y =</span> ingreso)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">color =</span> <span class="st">"#0072B2"</span>) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"#D55E00"</span>) <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Relación entre edad e ingreso"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"ELSOC 2022"</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Edad (años)"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ingreso mensual del hogar"</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li><code>alpha = 0.3</code> hace los puntos semitransparentes, útil cuando hay muchas observaciones superpuestas.</li>
-<li><code>geom_smooth(method = "lm")</code> agrega una línea de tendencia lineal.</li>
-</ul>
-</div>
-</div>
-</section>
-<section id="gráfico-de-barras-bivariado-dos-variables-categóricas" class="level3">
-<h3 class="anchored" data-anchor-id="gráfico-de-barras-bivariado-dos-variables-categóricas">4.2 Gráfico de barras bivariado — dos variables categóricas</h3>
-<section id="barras-agrupadas" class="level4">
-<h4 class="anchored" data-anchor-id="barras-agrupadas">Barras agrupadas</h4>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_elsoc, <span class="fu">aes</span>(<span class="at">x =</span> autor_democ, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Opinión sobre la democracia según sexo"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"ELSOC 2022"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sexo"</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">25</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="barras-apiladas-con-proporciones" class="level4">
-<h4 class="anchored" data-anchor-id="barras-apiladas-con-proporciones">Barras apiladas con proporciones</h4>
-<p>Más útil cuando queremos comparar distribuciones relativas entre grupos:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_elsoc, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">fill =</span> autor_democ)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de opinión sobre la democracia según sexo"</span>,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"ELSOC 2022"</span>,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Sexo"</span>,</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Porcentaje"</span>,</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Opinión"</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="boxplot-bivariado-una-variable-continua-una-categórica" class="level3">
-<h3 class="anchored" data-anchor-id="boxplot-bivariado-una-variable-continua-una-categórica">4.3 Boxplot bivariado — una variable continua + una categórica</h3>
-<p>El <strong>boxplot bivariado</strong> compara la distribución de una variable continua entre distintos grupos. Es ideal para visualizar si el ingreso, la edad u otra variable numérica varía según sexo, tramo de edad, etc.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_elsoc, <span class="fu">aes</span>(<span class="at">x =</span> tramo_edad, <span class="at">y =</span> ingreso, <span class="at">fill =</span> tramo_edad)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución del ingreso según tramo de edad"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"ELSOC 2022"</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tramo de edad"</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ingreso mensual del hogar"</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>También podemos cruzar dos variables categóricas como grouping:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(proc_elsoc, <span class="fu">aes</span>(<span class="at">x =</span> tramo_edad, <span class="at">y =</span> ingreso, <span class="at">fill =</span> sexo)) <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución del ingreso según tramo de edad y sexo"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"ELSOC 2022"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tramo de edad"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Ingreso mensual del hogar"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Sexo"</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-</section>
-<section id="ejercicio-integrador" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="ejercicio-integrador">5. Ejercicio integrador</h2>
-<p>Usando <code>proc_elsoc</code>, responde las siguientes preguntas con código R:</p>
-<p><strong>1.</strong> ¿La justificación de la violencia contra delincuentes (<code>jv_delincuentes</code>) varía según el tramo de ingreso (<code>tramo_ingreso</code>)? Construye una tabla de contingencia con porcentajes por fila e interpreta.</p>
-<p><strong>2.</strong> ¿Existe asociación estadística entre <code>tramo_edad</code> y <code>jv_delincuentes</code>? Aplica una prueba chi-cuadrado.</p>
-<p><strong>3.</strong> Construye un gráfico de barras apiladas (con proporciones) que muestre la distribución de <code>jv_delincuentes</code> según <code>tramo_edad</code>.</p>
-<p><strong>4.</strong> Construye un boxplot que compare la distribución del <code>ingreso</code> entre quienes apoyan la democracia y quienes prefieren un gobierno autoritario (<code>autor_democ</code>).</p>
-</section>
-<section class="comments-box comments-giscus-box">
+<!-- 
+  Sistema de comentarios Giscus (GitHub Discussions)
+  Pendiente de configuración de data-repo-id y data-category-id
+  para el repositorio oficial: udp-metodos-cuantitativos/curso-2026
+-->
+<section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
   <div class="comments-heading">
     <h2 class="anchored">Preguntas, dudas y comentarios</h2>
+    <p class="text-muted small">
+      El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
+    </p>
   </div>
-
   <div class="giscus"></div>
-
-<script src="https://giscus.app/client.js" data-repo="KAravena/udp-magister-visualizacion-datos-r" data-repo-id="R_kgDOSC4xhA" data-category="Comentarios" data-category-id="DIC_kwDOSC4xhM4C8I67" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="es" data-loading="lazy" crossorigin="anonymous" async="">
-</script>
-
 </section>
 </div>
-</div>
-
 <div class="no-row-height column-margin column-container page-columns page-full"><div class="page-columns page-full">
 <div class="clases-sidebar-wrapper page-columns page-full">
   <button class="clases-sidebar-toggle" type="button" aria-label="Mostrar u ocultar menú de clases">
@@ -525,89 +218,87 @@ Note
   <aside class="clases-sidebar">
     <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">
 
+      <!-- Presentación -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad0" aria-expanded="false" aria-controls="unidad0">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 0</span>
-            <span class="unit-title">Presentación del curso</span>
+            <span class="unit-label">Inicio</span>
+            <span class="unit-title">Presentación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad0">
-        <a class="clase-link" href="../../clases/clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación</a>
+        <a class="clase-link" href="../clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación y fundamentos</a>
       </div>
 
+      <!-- Unidad I -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad1" aria-expanded="false" aria-controls="unidad1">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 1</span>
-            <span class="unit-title">Introducción al uso de R</span>
+            <span class="unit-label">Unidad I</span>
+            <span class="unit-title">Investigación Cuantitativa</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad1">
-        <a class="clase-link" href="../../clases/clase_01/index.html" data-clase-link="clase_01">Clase 01 – Introducción al uso de R</a>
-        <a class="clase-link" href="../../clases/clase_02/index.html" data-clase-link="clase_02">Clase 02 – Procesamiento de datos</a>
+        <a class="clase-link" href="../clase_01/index.html" data-clase-link="clase_01">Clase 01 – Variables y operacionalización</a>
+        <a class="clase-link" href="../clase_02/index.html" data-clase-link="clase_02">Clase 02 – Problema y matriz de datos</a>
       </div>
 
+      <!-- Unidad II -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad2" aria-expanded="false" aria-controls="unidad2">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 2</span>
-            <span class="unit-title">Introducción a la Estadística</span>
+            <span class="unit-label">Unidad II</span>
+            <span class="unit-title">Estadística en Investigación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad2">
-        <a class="clase-link" href="../../clases/clase_03/index.html" data-clase-link="clase_03">Clase 03 – Introducción a la Estadística</a>
+        <a class="clase-link" href="../clase_03/index.html" data-clase-link="clase_03">Clase 03 – Población, muestra y datos</a>
       </div>
 
+      <!-- Unidad III -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad3" aria-expanded="false" aria-controls="unidad3">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 3</span>
-            <span class="unit-title">Estadística Descriptiva Univariada</span>
+            <span class="unit-label">Unidad III</span>
+            <span class="unit-title">Estadística Univariada</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad3">
-        <a class="clase-link" href="../../clases/clase_04/index.html" data-clase-link="clase_04">Clase 04 – Estadística Descriptiva Univariada</a>
+        <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Distribución y análisis univariado</a>
+        <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Frecuencias y tablas</a>
+        <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Tendencia central y dispersión</a>
+        <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Posición y forma</a>
       </div>
 
+      <!-- Unidad IV -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 4</span>
-            <span class="unit-title">Estadística Bivariada</span>
+            <span class="unit-label">Unidad IV</span>
+            <span class="unit-title">Relaciones Bivariadas</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad4">
-        <a class="clase-link" href="../../clases/clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Bivariada</a>
-      </div>
-
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad5" aria-expanded="false" aria-controls="unidad5">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 5</span>
-            <span class="unit-title">Documentos dinámicos en Quarto</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad5">
-        <a class="clase-link" href="../../clases/clase_06/index.html" data-clase-link="clase_06">Clase 06 – Documentos dinámicos en Quarto</a>
+        <a class="clase-link" href="../clase_08/index.html" data-clase-link="clase_08">Clase 08 – Tablas de contingencia</a>
+        <a class="clase-link" href="../clase_09/index.html" data-clase-link="clase_09">Clase 09 – Indicadores, índices y escalas</a>
+        <a class="clase-link" href="../clase_10/index.html" data-clase-link="clase_10">Clase 10 – Correlación y regresión</a>
+        <a class="clase-link" href="../clase_11/index.html" data-clase-link="clase_11">Clase 11 – Taller de trabajo grupal</a>
+        <a class="clase-link" href="../clase_12/index.html" data-clase-link="clase_12">Clase 12 – Sesión de dudas</a>
       </div>
 
     </div>
@@ -617,7 +308,7 @@ Note
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const path = window.location.pathname;
-  const unitStateKey = "clases-menu-unidades";
+  const unitStateKey = "clases-menu-unidades-ant01221";
 
   function readUnitState() {
     try {
@@ -648,7 +339,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!panel || !panel.id) return;
 
-    setUnitOpen(button, panel, unitState[panel.id] === true);
+    // Si no hay estado guardado, por defecto abre la unidad que contenga el enlace activo
+    const hasActiveLink = panel.querySelector("[data-clase-link].active") !== null;
+    const shouldOpen = unitState[panel.id] !== undefined ? unitState[panel.id] === true : hasActiveLink;
+
+    setUnitOpen(button, panel, shouldOpen);
 
     panel.addEventListener("shown.bs.collapse", function () {
       const currentState = readUnitState();
@@ -668,10 +363,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       path.includes("/" + clase + "/") ||
-      path.endsWith("/" + clase + "/index.html")
+      path.endsWith("/" + clase + "/index.html") ||
+      path.endsWith("/" + clase + "/")
     ) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
+      const parentCollapse = link.closest(".collapse");
+      if (parentCollapse) {
+        parentCollapse.classList.add("show");
+        const trigger = document.querySelector(`[data-bs-target="#${parentCollapse.id}"]`);
+        if (trigger) trigger.setAttribute("aria-expanded", "true");
+      }
     }
   });
 
@@ -693,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-</div></div><p>:::</p>
+</div></div></div>
 
 
 
@@ -771,7 +473,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1126,7 +828,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -1136,5 +838,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

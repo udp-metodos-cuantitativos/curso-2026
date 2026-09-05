@@ -1,44 +1,83 @@
 ---
-title: "Clase 00 | Presentación"
+title: "Clase 00 | Presentación y fundamentos"
 title-block: false
 toc: false
 page-layout: full
 body-classes: clases-page clase-page
 ---
 
-
 ::: {.columns #catedra}
 
 ::: {.column .clase-main}
 
 ```{=html}
-<div class="clase-presentacion">
-  <div class="clase-slide">
-    <div class="ratio ratio-16x9">
-      <iframe 
-        src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fudp-visualizacion-datos-r.netlify.app%2Fclases%2Fclase_00%2Fclase_00_v20260507b.pptx" 
-        allowfullscreen 
-        frameborder="0" 
-        scrolling="no">
-      </iframe>
-    </div>
-  </div>
-
-  <div class="clase-info">
-    <span class="clase-titulo">Clase 00 | Presentación</span>
-    <span class="clase-descarga">
-      <a href="clase_00_v20260507b.pptx">Descargar diapositivas</a>
-    </span>
-  </div>
-</div>
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 00 · Presentación</p>
+  <h1>Presentación y Fundamentos de la Investigación Cuantitativa</h1>
+  <p>Introducción general al curso Métodos Cuantitativos, programa, resultados de aprendizaje y fundamentos de la medición de la realidad social.</p>
+</section>
 ```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+En esta primera clase revisamos la estructura general del curso, el calendario de actividades, el sistema de evaluaciones y los fundamentos epistemológicos del enfoque cuantitativo en ciencias sociales.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Identidad del curso**
+
+Conocer el programa, fechas clave, evaluaciones y canales de comunicación.
+:::
+
+::: {.objetivo-card}
+**Medir la realidad social**
+
+Comprender el sentido de la cuantificación y la evidencia empírica en ciencias sociales.
+:::
+
+::: {.objetivo-card}
+**Enfoque de investigación**
+
+Diferenciar las etapas generales de un diseño de investigación cuantitativo.
+:::
+
+::: {.objetivo-card}
+**Uso de R como herramienta**
+
+Introducir el rol instrumental del software R en el aprendizaje de la estadística descriptiva.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Presentación de la sesión
+
+<div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+  <a href="clase_00.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
+  <a href="clase_00.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
+  <a href="clase_00.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Pantalla completa</a>
+</div>
+
+<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 520px; border: 1px solid rgba(0,0,0,0.12);">
+  <iframe src="clase_00.pdf" title="Presentación Clase 00" allowfullscreen></iframe>
+</div>
+
+:::
 
 {{< include ../../includes/comentarios-giscus.qmd >}}
 
 :::
+
 ::: {.column-margin}
 
 {{< include ../../includes/menu-clases.qmd >}}
 
 :::
+
 :::

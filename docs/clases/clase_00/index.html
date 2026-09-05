@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Clase 00 | Presentación – Procesamiento y Visualización de datos en R</title>
+<title>Clase 00 | Presentación y fundamentos – Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../resources/imagenes/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,7 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -86,10 +87,6 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -100,24 +97,13 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="../../clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="../../clases/clase_00/index.html" aria-current="page"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../../ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../../curso.html"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../bibliografia.html"> 
@@ -130,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -146,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clase 00 | Presentación</h1>
+<h1 class="title">Clase 00 | Presentación y fundamentos</h1>
 </div>
 
 
@@ -165,31 +151,55 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="catedra" class="columns page-columns page-full">
 <div class="column clase-main">
-<div class="clase-presentacion">
-  <div class="clase-slide">
-    <div class="ratio ratio-16x9">
-      <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fudp-visualizacion-datos-r.netlify.app%2Fclases%2Fclase_00%2Fclase_00_v20260507b.pptx" allowfullscreen="" frameborder="0" scrolling="no">
-      </iframe>
-    </div>
-  </div>
-
-  <div class="clase-info">
-    <span class="clase-titulo">Clase 00 | Presentación</span>
-    <span class="clase-descarga">
-      <a href="clase_00_v20260507b.pptx">Descargar diapositivas</a>
-    </span>
-  </div>
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 00 · Presentación</p>
+  <h1>Presentación y Fundamentos de la Investigación Cuantitativa</h1>
+  <p>Introducción general al curso Métodos Cuantitativos, programa, resultados de aprendizaje y fundamentos de la medición de la realidad social.</p>
+</section>
+<section id="contenidos-de-la-sesión" class="level2 clase-card clase-intro">
+<h2 class="anchored" data-anchor-id="contenidos-de-la-sesión">Contenidos de la sesión</h2>
+<p>En esta primera clase revisamos la estructura general del curso, el calendario de actividades, el sistema de evaluaciones y los fundamentos epistemológicos del enfoque cuantitativo en ciencias sociales.</p>
+<div class="clase-objetivos">
+<div class="objetivo-card">
+<p><strong>Identidad del curso</strong></p>
+<p>Conocer el programa, fechas clave, evaluaciones y canales de comunicación.</p>
 </div>
-<section class="comments-box comments-giscus-box">
+<div class="objetivo-card">
+<p><strong>Medir la realidad social</strong></p>
+<p>Comprender el sentido de la cuantificación y la evidencia empírica en ciencias sociales.</p>
+</div>
+<div class="objetivo-card">
+<p><strong>Enfoque de investigación</strong></p>
+<p>Diferenciar las etapas generales de un diseño de investigación cuantitativo.</p>
+</div>
+<div class="objetivo-card">
+<p><strong>Uso de R como herramienta</strong></p>
+<p>Introducir el rol instrumental del software R en el aprendizaje de la estadística descriptiva.</p>
+</div>
+</div>
+</section>
+<section id="presentación-de-la-sesión" class="level2 clase-card">
+<h2 class="anchored" data-anchor-id="presentación-de-la-sesión">Presentación de la sesión</h2>
+<div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
+<p><a href="clase_00.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a> <a href="clase_00.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a> <a href="clase_00.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Pantalla completa</a></p>
+</div>
+<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 520px; border: 1px solid rgba(0,0,0,0.12);">
+<p><iframe src="clase_00.pdf" title="Presentación Clase 00" allowfullscreen=""></iframe></p>
+</div>
+</section>
+<!-- 
+  Sistema de comentarios Giscus (GitHub Discussions)
+  Pendiente de configuración de data-repo-id y data-category-id
+  para el repositorio oficial: udp-metodos-cuantitativos/curso-2026
+-->
+<section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
   <div class="comments-heading">
     <h2 class="anchored">Preguntas, dudas y comentarios</h2>
+    <p class="text-muted small">
+      El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
+    </p>
   </div>
-
   <div class="giscus"></div>
-
-<script src="https://giscus.app/client.js" data-repo="KAravena/udp-magister-visualizacion-datos-r" data-repo-id="R_kgDOSC4xhA" data-category="Comentarios" data-category-id="DIC_kwDOSC4xhM4C8I67" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="es" data-loading="lazy" crossorigin="anonymous" async="">
-</script>
-
 </section>
 </div>
 <div class="no-row-height column-margin column-container page-columns page-full"><div class="page-columns page-full">
@@ -201,89 +211,87 @@ ul.task-list li input[type="checkbox"] {
   <aside class="clases-sidebar">
     <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">
 
+      <!-- Presentación -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad0" aria-expanded="false" aria-controls="unidad0">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 0</span>
-            <span class="unit-title">Presentación del curso</span>
+            <span class="unit-label">Inicio</span>
+            <span class="unit-title">Presentación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad0">
-        <a class="clase-link" href="../../clases/clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación</a>
+        <a class="clase-link" href="../clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación y fundamentos</a>
       </div>
 
+      <!-- Unidad I -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad1" aria-expanded="false" aria-controls="unidad1">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 1</span>
-            <span class="unit-title">Introducción al uso de R</span>
+            <span class="unit-label">Unidad I</span>
+            <span class="unit-title">Investigación Cuantitativa</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad1">
-        <a class="clase-link" href="../../clases/clase_01/index.html" data-clase-link="clase_01">Clase 01 – Introducción al uso de R</a>
-        <a class="clase-link" href="../../clases/clase_02/index.html" data-clase-link="clase_02">Clase 02 – Procesamiento de datos</a>
+        <a class="clase-link" href="../clase_01/index.html" data-clase-link="clase_01">Clase 01 – Variables y operacionalización</a>
+        <a class="clase-link" href="../clase_02/index.html" data-clase-link="clase_02">Clase 02 – Problema y matriz de datos</a>
       </div>
 
+      <!-- Unidad II -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad2" aria-expanded="false" aria-controls="unidad2">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 2</span>
-            <span class="unit-title">Introducción a la Estadística</span>
+            <span class="unit-label">Unidad II</span>
+            <span class="unit-title">Estadística en Investigación</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad2">
-        <a class="clase-link" href="../../clases/clase_03/index.html" data-clase-link="clase_03">Clase 03 – Introducción a la Estadística</a>
+        <a class="clase-link" href="../clase_03/index.html" data-clase-link="clase_03">Clase 03 – Población, muestra y datos</a>
       </div>
 
+      <!-- Unidad III -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad3" aria-expanded="false" aria-controls="unidad3">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 3</span>
-            <span class="unit-title">Estadística Descriptiva Univariada</span>
+            <span class="unit-label">Unidad III</span>
+            <span class="unit-title">Estadística Univariada</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad3">
-        <a class="clase-link" href="../../clases/clase_04/index.html" data-clase-link="clase_04">Clase 04 – Estadística Descriptiva Univariada</a>
+        <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Distribución y análisis univariado</a>
+        <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Frecuencias y tablas</a>
+        <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Tendencia central y dispersión</a>
+        <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Posición y forma</a>
       </div>
 
+      <!-- Unidad IV -->
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
           <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 4</span>
-            <span class="unit-title">Estadística Bivariada</span>
+            <span class="unit-label">Unidad IV</span>
+            <span class="unit-title">Relaciones Bivariadas</span>
           </div>
           <i class="bi bi-chevron-down"></i>
         </button>
       </div>
 
       <div class="collapse" id="unidad4">
-        <a class="clase-link" href="../../clases/clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Bivariada</a>
-      </div>
-
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad5" aria-expanded="false" aria-controls="unidad5">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad 5</span>
-            <span class="unit-title">Documentos dinámicos en Quarto</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad5">
-        <a class="clase-link" href="../../clases/clase_06/index.html" data-clase-link="clase_06">Clase 06 – Documentos dinámicos en Quarto</a>
+        <a class="clase-link" href="../clase_08/index.html" data-clase-link="clase_08">Clase 08 – Tablas de contingencia</a>
+        <a class="clase-link" href="../clase_09/index.html" data-clase-link="clase_09">Clase 09 – Indicadores, índices y escalas</a>
+        <a class="clase-link" href="../clase_10/index.html" data-clase-link="clase_10">Clase 10 – Correlación y regresión</a>
+        <a class="clase-link" href="../clase_11/index.html" data-clase-link="clase_11">Clase 11 – Taller de trabajo grupal</a>
+        <a class="clase-link" href="../clase_12/index.html" data-clase-link="clase_12">Clase 12 – Sesión de dudas</a>
       </div>
 
     </div>
@@ -293,7 +301,7 @@ ul.task-list li input[type="checkbox"] {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const path = window.location.pathname;
-  const unitStateKey = "clases-menu-unidades";
+  const unitStateKey = "clases-menu-unidades-ant01221";
 
   function readUnitState() {
     try {
@@ -324,7 +332,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!panel || !panel.id) return;
 
-    setUnitOpen(button, panel, unitState[panel.id] === true);
+    // Si no hay estado guardado, por defecto abre la unidad que contenga el enlace activo
+    const hasActiveLink = panel.querySelector("[data-clase-link].active") !== null;
+    const shouldOpen = unitState[panel.id] !== undefined ? unitState[panel.id] === true : hasActiveLink;
+
+    setUnitOpen(button, panel, shouldOpen);
 
     panel.addEventListener("shown.bs.collapse", function () {
       const currentState = readUnitState();
@@ -344,10 +356,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       path.includes("/" + clase + "/") ||
-      path.endsWith("/" + clase + "/index.html")
+      path.endsWith("/" + clase + "/index.html") ||
+      path.endsWith("/" + clase + "/")
     ) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
+      const parentCollapse = link.closest(".collapse");
+      if (parentCollapse) {
+        parentCollapse.classList.add("show");
+        const trigger = document.querySelector(`[data-bs-target="#${parentCollapse.id}"]`);
+        if (trigger) trigger.setAttribute("aria-expanded", "true");
+      }
     }
   });
 
@@ -447,7 +466,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -802,7 +821,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -812,5 +831,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

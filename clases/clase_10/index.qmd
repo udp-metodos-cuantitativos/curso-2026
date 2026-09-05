@@ -1,0 +1,78 @@
+---
+title: "Clase 10 | Correlación y regresión"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 10 · Unidad IV</p>
+  <h1>Correlación y regresión</h1>
+  <p>Medición de la asociación lineal con el coeficiente de Pearson, matrices de correlación y fundamentos del análisis de regresión (Laboratorio 7 y Ayudantía 6).</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+En esta clase abordamos el análisis de relaciones entre dos variables cuantitativas continuas mediante la correlación de Pearson y los principios del modelo lineal.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Coeficiente de Pearson**
+
+Interpretar el signo (dirección positiva o negativa) y la magnitud (fuerza de la asociación) del coeficiente $r$.
+:::
+
+::: {.objetivo-card}
+**Diagramas de dispersión**
+
+Visualizar pares de observaciones cuantitativas mediante gráficos de dispersión (*scatter plots*).
+:::
+
+::: {.objetivo-card}
+**Fundamentos de regresión**
+
+Comprender la recta de ajuste lineal y la distinción fundamental entre correlación y causalidad.
+:::
+
+::: {.objetivo-card}
+**Laboratorio 7 y Ayudantía 6**
+
+Cálculo con cor(), matrices de correlación con corrplot y gráficos con geom_point() y geom_smooth() en ggplot2.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Materiales de la sesión
+
+::: {.callout-note}
+### Material de la sesión por publicar
+Las diapositivas y el script de R del Laboratorio 7 estarán disponibles en esta sección.
+:::
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+::: {.column-margin}
+
+{{< include ../../includes/menu-clases.qmd >}}
+
+:::
+
+:::

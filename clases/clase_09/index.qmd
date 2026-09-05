@@ -1,0 +1,78 @@
+---
+title: "Clase 09 | Indicadores, índices y escalas"
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+---
+
+::: {.columns #catedra}
+
+::: {.column .clase-main}
+
+```{=html}
+<section class="clase-hero">
+  <p class="clase-kicker">Clase 09 · Unidad IV</p>
+  <h1>Indicadores, índices y escalas</h1>
+  <p>Construcción de indicadores empíricos, diseño de índices aditivos y ponderados, y escalas de medición para conceptos sociales complejos (Laboratorio 6).</p>
+</section>
+```
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+En esta clase revisamos las técnicas de síntesis métrica que permiten combinar múltiples variables en indicadores e índices representativos de dimensiones sociales complejas.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**De la variable al índice**
+
+Comprender la necesidad metodológica de integrar múltiples indicadores empíricos.
+:::
+
+::: {.objetivo-card}
+**Índices aditivos**
+
+Construir índices sumatorios simples y ponderados, cuidando la dimensionalidad y validez.
+:::
+
+::: {.objetivo-card}
+**Escalas de actitud**
+
+Revisar la lógica de escalas tipo Likert, Guttman y diferenciales semánticos.
+:::
+
+::: {.objetivo-card}
+**Laboratorio 6 en R**
+
+Transformación y estandarización de variables con mutate, recodificación múltiple y creación de variables compuestas.
+:::
+
+:::
+
+:::
+
+::: {.clase-card}
+
+## Materiales de la sesión
+
+::: {.callout-note}
+### Material de la sesión por publicar
+Las diapositivas y el script de R del Laboratorio 6 estarán disponibles en esta sección.
+:::
+
+:::
+
+{{< include ../../includes/comentarios-giscus.qmd >}}
+
+:::
+
+::: {.column-margin}
+
+{{< include ../../includes/menu-clases.qmd >}}
+
+:::
+
+:::

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Procesamiento y Visualización de datos en R</title>
+<title>Métodos Cuantitativos</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -36,15 +39,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9859d952baf36b9a7db628bbb9f3169e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,7 +103,6 @@ ul.task-list li input[type="checkbox"] {
     }
   })
   </script>
-<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -117,10 +118,6 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -131,24 +128,13 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Clases</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
-        <li>
-    <a class="dropdown-item" href="./clases/clase_00/index.html">
- <span class="dropdown-text">Catedra</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="./clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="./ayudantias.html">
- <span class="dropdown-text">Ayudantías</span></a>
-  </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="./curso.html"> 
-<span class="menu-text">Información</span></a>
+<span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./bibliografia.html"> 
@@ -161,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-    <a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -177,24 +163,21 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="hero-course hero-motion-on">
-<div class="hero-motion" aria-hidden="true">
-
-</div>
+<div class="hero-course">
 <div class="container-fluid px-4 px-md-5 py-5">
 <div class="row align-items-center g-5">
 <div class="col-12">
 <p class="eyebrow">
-Magíster en Métodos para la Investigación Social · 2 créditos · Universidad Diego Portales 2026
+Escuela de Antropología · ANT01221 · Universidad Diego Portales · 2026
 </p>
 <h1 class="display-4 fw-semibold">
-Procesamiento y Visualización de datos en R
+Métodos Cuantitativos
 </h1>
 <p class="lead">
-Curso práctico de introducción al lenguaje R para el procesamiento, análisis descriptivo y visualización de datos sociales cuantitativos.
+Introducción al diseño de investigación cuantitativa, la estadística descriptiva y el análisis de datos sociales mediante herramientas conceptuales, estadísticas y computacionales en R.
 </p>
 <div class="d-flex flex-wrap gap-2 mt-4 hero-cta">
-<p><a href="curso.html" class="btn btn-primary btn-md">Ver curso</a> <a href="clases\clase_00\index.html" class="btn btn-outline-secondary btn-md">Ver clases</a> <a href="ayudantias.html" class="btn btn-outline-secondary btn-md">Ver ayudantías</a></p>
+<p><a href="curso.html" class="btn btn-primary btn-md">Ver curso</a> <a href="clases/clase_00/index.html" class="btn btn-outline-secondary btn-md">Ver clases</a></p>
 </div>
 <div class="mt-4 small text-muted">
 <p><span class="me-3"></span> <span></span></p>
@@ -207,7 +190,7 @@ Curso práctico de introducción al lenguaje R para el procesamiento, análisis 
 <div class="course-grid">
 <div class="course-left">
 <h2 class="team-heading mt-0 mb-2 anchored">
-Equipo:
+Equipo docente:
 </h2>
 <div class="team-strip mt-2 mb-4">
 <div class="team-grid">
@@ -216,7 +199,7 @@ Equipo:
 <summary>
 <div class="d-flex align-items-center gap-3 mb-3">
 <div class="avatar-placeholder">
-<p><img src="resources/Daniela.jpg" alt="Fotografía de Daniela Olivares Collío" loading="lazy"></p>
+<p><img src="resources/Daniela.jpg" alt="Fotografía de Daniela Olivares Collío" width="96" height="96" loading="lazy" decoding="async"></p>
 </div>
 <div>
 <div class="fw-semibold team-name">
@@ -246,7 +229,7 @@ Asistente de investigación del proyecto “Clases sociales, movimientos sindica
 <summary>
 <div class="d-flex align-items-center gap-3 mb-3">
 <div class="avatar-placeholder">
-<p><img src="resources/Katherine.jpg" alt="Fotografía de Katherine Aravena Herrera" loading="lazy"></p>
+<p><img src="resources/Katherine.jpg" alt="Fotografía de Katherine Aravena Herrera" width="96" height="96" loading="lazy" decoding="async"></p>
 </div>
 <div>
 <div class="fw-semibold team-name">
@@ -256,7 +239,7 @@ Katherine Aravena Herrera
 Ayudante
 </div>
 <div class="team-email small mt-2">
-<p><strong>Correo:</strong> <a href="mailto:katherine.aravena@ug.uchile.cl">katherine.aravena@ug.uchile.cl</a></p>
+<p><strong>Correo:</strong> <a href="mailto:katherine.aravena@mail.udp.cl">katherine.aravena@mail.udp.cl</a></p>
 </div>
 </div>
 </div>
@@ -264,10 +247,10 @@ Ayudante
 <div class="bio-panel">
 <p>
 Licenciada en Sociología y estudiante del Magíster en Psicología Educacional de la Universidad de Chile.
-</p><p>
 </p>
+<p>
 Asistente de investigación en ERCE 2025 UNESCO del Instituto de Estudios Avanzados en Educación (IE) y en C22 Ciencias Sociales Digitales del Centro de Estudios Públicos (CEP). Ha colaborado en proyectos como LISA-COES, SODAS, FONDEF IT24I0115, entre otros. Maneja R, Python, Quarto/R Markdown, Git/GitHub y Visual Studio Code aplicados al análisis, visualización y trazabilidad de datos.
-<p></p>
+</p>
 </div>
 </details>
 </div>
@@ -282,24 +265,24 @@ Noticias
 <div class="latest-scroll">
 <div id="listing-ultimas-home" class="latest-listing latest-compact quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Y2xhc2UlMkNhdmlzbw==" data-listing-date-sort="1777521600000" data-listing-file-modified-sort="1777674657981" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="261">
-<div class="thumbnail"><a href="./ultima-informacion/2026-04-30-bienvenida-curso.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="YXZpc28lMkNpbmljaW8=" data-listing-date-sort="1786420800000" data-listing-file-modified-sort="1788552842759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="312">
+<div class="thumbnail"><a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">
 
-<img loading="lazy" src="./resources/post/inicio-curso.jpg" class="thumbnail-image" alt="Imagen de referencia del curso de R">
+<img loading="lazy" src="./resources/post/inicio-curso.jpg" class="thumbnail-image" alt="Imagen de bienvenida al curso Métodos Cuantitativos">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./ultima-informacion/2026-04-30-bienvenida-curso.html" class="no-external">Inicio del curso</a>
+<a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">Bienvenida a Métodos Cuantitativos 2026</a>
 </h3>
-<div class="delink listing-description"><a href="./ultima-informacion/2026-04-30-bienvenida-curso.html" class="no-external">
-<p>Bienvenida al curso Procesamiento y Visualización de Datos en R e indicaciones generales para usar la página.</p>
+<div class="delink listing-description"><a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">
+<p>Bienvenida al curso Métodos Cuantitativos (ANT01221) de la Escuela de Antropología de la Universidad Diego Portales e indicaciones generales para usar el sitio web.</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./ultima-informacion/2026-04-30-bienvenida-curso.html" class="no-external">
+<a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">
 <div class="listing-date">
-30 Apr
+11 Aug
 </div>
 </a>
 </div>
@@ -391,7 +374,7 @@ Noticias
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/utf-estadistica-social-i\.netlify\.app");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -746,7 +729,7 @@ Noticias
 <i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
 </div>
 <div class="footer-line">
-<i class="bi bi-github"></i><a href="https://github.com/KAravena/udp-magister-visualizacion-datos-r" target="_blank" rel="noopener">Ver en GitHub</a>
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
 </div>
 </div>
 </div>
@@ -756,5 +739,4 @@ Noticias
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
