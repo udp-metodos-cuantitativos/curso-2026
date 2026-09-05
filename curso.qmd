@@ -638,14 +638,16 @@ La asignatura combina **clases teóricas de modalidad expositiva** y **talleres 
 
 ::: {.evaluaciones-panel}
 
+```{=html}
 <div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
   <a href="resources/programa/Programa_Antropologia_Cuanti_2026.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar programa</a>
   <a href="resources/programa/Programa_Antropologia_Cuanti_2026.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Abrir en nueva pestaña</a>
 </div>
 
-<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 650px; border: 1px solid rgba(0,0,0,0.12);">
-  <iframe src="resources/programa/Programa_Antropologia_Cuanti_2026.pdf" title="Programa Oficial Métodos Cuantitativos 2026" allowfullscreen></iframe>
+<div class="programa-frame class-presentation-viewer" id="viewer-programa">
+  <iframe src="resources/programa/Programa_Antropologia_Cuanti_2026.pdf#view=FitH" title="Programa Oficial Métodos Cuantitativos 2026" allowfullscreen></iframe>
 </div>
+```
 
 :::
 

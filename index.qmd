@@ -98,9 +98,7 @@ Social (COES), y asistente metodológica en diversas investigaciones.
 <p>
 Licenciada en Sociología y estudiante del Magíster en Psicología Educacional de la Universidad de Chile.
 </p>
-<p>
-Asistente de investigación en ERCE 2025 UNESCO del Instituto de Estudios Avanzados en Educación (IE) y en C22 Ciencias Sociales Digitales del Centro de Estudios Públicos (CEP). Ha colaborado en proyectos como LISA-COES, SODAS, FONDEF IT24I0115, entre otros. Maneja R, Python, Quarto/R Markdown, Git/GitHub y Visual Studio Code aplicados al análisis, visualización y trazabilidad de datos.
-</p>
+<p> Asistente técnica de investigación en el proyecto Análisis Curricular ERCE 2025 (UNESCO-LLECE) del Instituto de Estudios Avanzados en Educación. Actualmente se desempeña también como profesora colaboradora en los cursos Estrategias de Investigación Cuantitativa y Estadística Correlacional de la Universidad de Chile. Ha colaborado en diversos proyectos como C22 del Centro de Estudios Públicos (CEP), LISA-COES, SODAS y FONDEF IT24I0115. </p>
 </div>
 </details>
 </div>

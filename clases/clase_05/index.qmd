@@ -18,6 +18,12 @@ body-classes: clases-page clase-page
 </section>
 ```
 
+::: {.clase-card}
+
+## Materiales de la sesión
+
+:::
+
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -51,12 +57,6 @@ Uso de funciones de conteo con table(), prop.table() y tablas tabyl con el paque
 :::
 
 :::
-
-:::
-
-::: {.clase-card}
-
-## Materiales de la sesión
 
 ::: {.callout-note}
 ### Material de la sesión por publicar

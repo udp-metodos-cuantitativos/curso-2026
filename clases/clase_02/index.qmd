@@ -18,6 +18,22 @@ body-classes: clases-page clase-page
 </section>
 ```
 
+::: {.clase-card .clase-card-presentation}
+
+```{=html}
+<div class="class-presentation-viewer" id="viewer-clase-02">
+  <iframe src="clase_02.pdf#view=FitH" title="Presentación Clase 02" allowfullscreen></iframe>
+</div>
+
+<div class="clase-presentacion-actions">
+  <a href="clase_02.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
+  <a href="clase_02.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
+  <button type="button" class="btn btn-outline-secondary" id="btn-fullscreen-02" onclick="const v = document.getElementById('viewer-clase-02'); if (v) { if (!document.fullscreenElement) { v.requestFullscreen().catch(() => window.open('clase_02.pdf', '_blank')); } else { document.exitFullscreen(); } }"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
+</div>
+```
+
+:::
+
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -51,22 +67,6 @@ Elaborar el libro de códigos (*codebook*) que documenta nombres, etiquetas y va
 :::
 
 :::
-
-:::
-
-::: {.clase-card}
-
-## Presentación de la sesión
-
-<div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
-  <a href="clase_02.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-  <a href="clase_02.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-  <a href="clase_02.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Pantalla completa</a>
-</div>
-
-<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 520px; border: 1px solid rgba(0,0,0,0.12);">
-  <iframe src="clase_02.pdf" title="Presentación Clase 02" allowfullscreen></iframe>
-</div>
 
 :::
 

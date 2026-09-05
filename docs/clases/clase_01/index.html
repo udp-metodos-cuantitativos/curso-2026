@@ -156,6 +156,17 @@ ul.task-list li input[type="checkbox"] {
   <h1>Investigación cuantitativa, variables y operacionalización</h1>
   <p>Características de la investigación cuantitativa, conceptualización de variables e indicadores, operacionalización y niveles de medición.</p>
 </section>
+<div class="clase-card clase-card-presentation">
+<div class="class-presentation-viewer" id="viewer-clase-01">
+  <iframe src="clase_01.pdf#view=FitH" title="Presentación Clase 01" allowfullscreen=""></iframe>
+</div>
+
+<div class="clase-presentacion-actions">
+  <a href="clase_01.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
+  <a href="clase_01.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
+  <button type="button" class="btn btn-outline-secondary" id="btn-fullscreen-01" onclick="const v = document.getElementById('viewer-clase-01'); if (v) { if (!document.fullscreenElement) { v.requestFullscreen().catch(() => window.open('clase_01.pdf', '_blank')); } else { document.exitFullscreen(); } }"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
+</div>
+</div>
 <section id="contenidos-de-la-sesión" class="level2 clase-card clase-intro">
 <h2 class="anchored" data-anchor-id="contenidos-de-la-sesión">Contenidos de la sesión</h2>
 <p>En esta clase profundizamos en el proceso que permite conectar conceptos teóricos abstractos con observaciones empíricas medibles.</p>
@@ -176,15 +187,6 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Niveles de medición</strong></p>
 <p>Identificar variables nominales, ordinales, de intervalo y de razón, y sus transformaciones.</p>
 </div>
-</div>
-</section>
-<section id="presentación-de-la-sesión" class="level2 clase-card">
-<h2 class="anchored" data-anchor-id="presentación-de-la-sesión">Presentación de la sesión</h2>
-<div class="d-flex flex-wrap gap-2 mb-3 align-items-center">
-<p><a href="clase_01.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a> <a href="clase_01.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a> <a href="clase_01.pdf" class="btn btn-outline-secondary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Pantalla completa</a></p>
-</div>
-<div class="ratio ratio-16x9 rounded shadow-sm overflow-hidden" style="min-height: 520px; border: 1px solid rgba(0,0,0,0.12);">
-<p><iframe src="clase_01.pdf" title="Presentación Clase 01" allowfullscreen=""></iframe></p>
 </div>
 </section>
 <!-- 
@@ -270,12 +272,26 @@ ul.task-list li input[type="checkbox"] {
 
       <div class="collapse" id="unidad3">
         <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Distribución y análisis univariado</a>
+        <!--
+        CLASES OCULTAS UNIDAD III HASTA PUBLICAR MATERIAL:
         <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Frecuencias y tablas</a>
         <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Tendencia central y dispersión</a>
         <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Posición y forma</a>
+        -->
       </div>
 
-      <!-- Unidad IV -->
+      <!--
+      =========================================================
+      INSTRUCCIÓN INTERNA PARA PUBLICAR UNA CLASE:
+      1. agregar PDF o PPTX al directorio de la clase (clases/clase_XX/);
+      2. descomentar su entrada en render dentro de _quarto.yml;
+      3. descomentar su entrada en includes/menu-clases.qmd;
+      4. ejecutar: quarto render.
+      =========================================================
+      -->
+
+      <!--
+      UNIDAD IV OCULTA HASTA CONTENER AL MENOS UNA CLASE CON MATERIAL PUBLICADO:
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
           <div class="unit-label-wrap">
@@ -293,6 +309,7 @@ ul.task-list li input[type="checkbox"] {
         <a class="clase-link" href="../clase_11/index.html" data-clase-link="clase_11">Clase 11 – Taller de trabajo grupal</a>
         <a class="clase-link" href="../clase_12/index.html" data-clase-link="clase_12">Clase 12 – Sesión de dudas</a>
       </div>
+      -->
 
     </div>
   </aside>

@@ -734,7 +734,7 @@ main {
   );
   pointer-events: none;
   z-index: -1;
-  animation: hero-diagonal-one 11s ease-in-out infinite;
+  animation: hero-diagonal-one 9s ease-in-out infinite;
   will-change: transform;
 }
 .hero-course::after {
@@ -751,7 +751,7 @@ main {
   );
   pointer-events: none;
   z-index: -1;
-  animation: hero-diagonal-two 14s ease-in-out infinite;
+  animation: hero-diagonal-two 13s ease-in-out infinite;
   will-change: transform;
 }
 .hero-course .hero-motion,
@@ -807,19 +807,19 @@ main {
   0% {
     transform:
       rotate(-38deg)
-      translate3d(-35px, -12px, 0)
+      translate3d(-55px, -18px, 0)
       scale(1);
   }
   50% {
     transform:
       rotate(-38deg)
-      translate3d(40px, 20px, 0)
-      scale(1.035);
+      translate3d(55px, 24px, 0)
+      scale(1.04);
   }
   100% {
     transform:
       rotate(-38deg)
-      translate3d(-35px, -12px, 0)
+      translate3d(-55px, -18px, 0)
       scale(1);
   }
 }
@@ -828,20 +828,20 @@ main {
   0% {
     transform:
       rotate(-38deg)
-      translate3d(30px, 14px, 0)
-      scale(1.01);
+      translate3d(45px, 20px, 0)
+      scale(1.015);
   }
   50% {
     transform:
       rotate(-38deg)
-      translate3d(-38px, -18px, 0)
-      scale(1.035);
+      translate3d(-50px, -22px, 0)
+      scale(1.045);
   }
   100% {
     transform:
       rotate(-38deg)
-      translate3d(30px, 14px, 0)
-      scale(1.01);
+      translate3d(45px, 20px, 0)
+      scale(1.015);
   }
 }
 
@@ -869,38 +869,38 @@ main {
     height: 140%;
     top: -20%;
     right: -10%;
-    animation: hero-diagonal-one-mobile 11s ease-in-out infinite;
+    animation: hero-diagonal-one-mobile 9s ease-in-out infinite;
   }
   .hero-course::after {
     width: 70%;
     height: 120%;
     right: -15%;
     top: -10%;
-    animation: hero-diagonal-two-mobile 14s ease-in-out infinite;
+    animation: hero-diagonal-two-mobile 13s ease-in-out infinite;
   }
 }
 
 @keyframes hero-diagonal-one-mobile {
   0% {
-    transform: rotate(-38deg) translate3d(-20px, -8px, 0) scale(1);
+    transform: rotate(-38deg) translate3d(-35px, -12px, 0) scale(1);
   }
   50% {
-    transform: rotate(-38deg) translate3d(24px, 12px, 0) scale(1.02);
+    transform: rotate(-38deg) translate3d(35px, 16px, 0) scale(1.025);
   }
   100% {
-    transform: rotate(-38deg) translate3d(-20px, -8px, 0) scale(1);
+    transform: rotate(-38deg) translate3d(-35px, -12px, 0) scale(1);
   }
 }
 
 @keyframes hero-diagonal-two-mobile {
   0% {
-    transform: rotate(-38deg) translate3d(18px, 9px, 0) scale(1.01);
+    transform: rotate(-38deg) translate3d(30px, 14px, 0) scale(1.01);
   }
   50% {
-    transform: rotate(-38deg) translate3d(-22px, -11px, 0) scale(1.02);
+    transform: rotate(-38deg) translate3d(-32px, -15px, 0) scale(1.025);
   }
   100% {
-    transform: rotate(-38deg) translate3d(18px, 9px, 0) scale(1.01);
+    transform: rotate(-38deg) translate3d(30px, 14px, 0) scale(1.01);
   }
 }
 
@@ -3099,7 +3099,7 @@ strong, b {
 
 .agenda-date span {
   display: block;
-  color: #735D5A;
+  color: #684B48;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -3184,12 +3184,13 @@ strong, b {
   color: #6F2424;
   font-family: "Source Serif 4", serif;
   font-size: 1.15rem;
+  font-weight: 600;
   line-height: 1.2;
 }
 
 .agenda-event-desc {
   margin: 0;
-  color: #5A4340;
+  color: #5F4D4A;
   font-size: 0.92rem;
   line-height: 1.55;
 }
@@ -3199,7 +3200,7 @@ strong, b {
   padding: 0.65rem 0.8rem;
   border-radius: 14px;
   background: rgba(111, 36, 36, 0.07);
-  color: #5A4340;
+  color: #6A5551;
   font-size: 0.82rem;
   line-height: 1.45;
 }
@@ -3209,19 +3210,40 @@ strong, b {
 }
 
 .agenda-event.is-past {
-  opacity: 0.58;
+  opacity: 1;
+}
+
+.agenda-event.is-past .agenda-card {
+  background: #fffdfc;
+  border-color: rgba(111, 36, 36, 0.08);
+  box-shadow: 0 4px 16px rgba(111, 36, 36, 0.02);
+}
+
+.agenda-event.is-past .agenda-badge {
+  opacity: 0.85;
+}
+
+.agenda-event.is-past .agenda-date {
+  opacity: 0.85;
 }
 
 .agenda-event.is-next .agenda-card,
 .agenda-event.is-today .agenda-card {
-  border-color: rgba(158, 59, 59, 0.40);
-  box-shadow: 0 18px 44px rgba(111, 36, 36, 0.10);
+  background: #ffffff;
+  border-color: rgba(158, 59, 59, 0.50);
+  box-shadow: 0 20px 48px rgba(111, 36, 36, 0.12);
+}
+
+.agenda-event.is-next .agenda-event-title,
+.agenda-event.is-today .agenda-event-title {
+  color: #6F2424;
+  font-weight: 700;
 }
 
 .agenda-event.is-next .agenda-date,
 .agenda-event.is-today .agenda-date {
-  border-color: rgba(158, 59, 59, 0.40);
-  background: rgba(247, 236, 233, 0.92);
+  border-color: rgba(158, 59, 59, 0.50);
+  background: rgba(247, 236, 233, 0.95);
 }
 
 .agenda-event.is-next .agenda-card::before,
@@ -4616,6 +4638,109 @@ body.clases-page .clase-slide iframe {
   width: 100% !important;
   height: 100% !important;
   border: 0 !important;
+}
+
+/* =========================================================
+   VISOR GRANDE: CLASES Y PROGRAMA
+   ========================================================= */
+.class-presentation-viewer,
+.programa-frame,
+.programa-viewer {
+  width: 100% !important;
+  height: min(76vh, 820px) !important;
+  min-height: 620px !important;
+  position: relative !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(111, 36, 36, 0.14) !important;
+  background: #FAF7F5 !important;
+  box-shadow: 0 12px 36px rgba(111, 36, 36, 0.08) !important;
+  display: block !important;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .class-presentation-viewer,
+  .programa-frame,
+  .programa-viewer {
+    min-height: 520px !important;
+    height: 70vh !important;
+  }
+}
+
+.class-presentation-viewer iframe,
+.class-presentation-viewer object,
+.class-presentation-viewer embed,
+.programa-frame iframe,
+.programa-frame object,
+.programa-frame embed,
+.programa-viewer iframe,
+.programa-viewer object,
+.programa-viewer embed {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  display: block !important;
+  border: 0 !important;
+}
+
+/* Evitar colapso si Pandoc envuelve en <p> */
+.class-presentation-viewer p,
+.programa-frame p,
+.programa-viewer p,
+.ratio p {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.ratio p > iframe,
+.ratio p > object,
+.ratio p > embed {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  border: 0 !important;
+}
+
+/* =========================================================
+   COMPOSICIÓN DE VISOR Y BOTONES EN PÁGINAS DE CLASES
+   ========================================================= */
+body.clases-page .clase-card.clase-card-presentation {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+
+body.clases-page .class-presentation-viewer {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important; /* Espaciado compacto entre visor y botones: 12-16px */
+}
+
+.clase-presentacion-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.75rem !important; /* Espaciado entre botones y tarjeta Contenidos: aprox. 26-28px */
+}
+
+@media (max-width: 768px) {
+  .clase-presentacion-actions {
+    gap: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
 }
 
 body.clases-page .clase-info {

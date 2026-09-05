@@ -10,11 +10,27 @@ project:
   render:
     - index.qmd
     - curso.qmd
-    - clases/*/index.qmd
     - bibliografia.qmd
     - Recursos.qmd
     - ultima-informacion.qmd
     - ultima-informacion/*.qmd
+
+    # CLASES PUBLICADAS (con PDF o PPTX)
+    - clases/clase_00/index.qmd
+    - clases/clase_01/index.qmd
+    - clases/clase_02/index.qmd
+    - clases/clase_03/index.qmd
+    - clases/clase_04/index.qmd
+
+    # OCULTAS HASTA QUE EXISTA MATERIAL
+    # - clases/clase_05/index.qmd
+    # - clases/clase_06/index.qmd
+    # - clases/clase_07/index.qmd
+    # - clases/clase_08/index.qmd
+    # - clases/clase_09/index.qmd
+    # - clases/clase_10/index.qmd
+    # - clases/clase_11/index.qmd
+    # - clases/clase_12/index.qmd
 
 website:
   favicon: resources/imagenes/logo.svg

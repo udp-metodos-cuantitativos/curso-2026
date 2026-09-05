@@ -49,7 +49,7 @@ Ritchey, F. (2002). *Estadística para las Ciencias Sociales. El potencial de la
 </details>
 
 ::: {.library-ref .library-ref-muted}
-**Edición disponible en el sitio:** 2.ª ed. (2008), McGraw-Hill.
+PDF disponible en el sitio: 2.ª edición, 2008.
 :::
 
 :::
@@ -67,6 +67,11 @@ Ritchey, F. (2002). *Estadística para las Ciencias Sociales. El potencial de la
 ::: {.library-card-head}
 ::: {.library-tags}
 <span class="library-tag library-tag-complementary">Complementaria</span>
+:::
+
+::: {.library-actions}
+[Abrir PDF](resources/biblio/Johnson_R_Kubi_P__(2008)__(10ed)__Estadistica_elemental.pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
+[Descargar](resources/biblio/Johnson_R_Kubi_P__(2008)__(10ed)__Estadistica_elemental.pdf){.library-btn download=""}
 :::
 :::
 
@@ -90,7 +95,8 @@ Johnson, R. & Kuby, P. (2004). *Estadística Elemental. Lo esencial* (2.ª ed.).
 </details>
 
 ::: {.library-ref .library-ref-muted}
-**Referencia programa oficial:** 2.ª ed. (2004).
+**Referencia programa oficial:** 2.ª ed. (2004).<br>
+PDF disponible en el sitio: 10.ª edición, 2008.
 :::
 
 :::
@@ -124,6 +130,11 @@ Texto de referencia central para diseño de investigación social, operacionaliz
 ::: {.library-card-head}
 ::: {.library-tags}
 <span class="library-tag library-tag-complementary">Complementaria</span>
+:::
+
+::: {.library-actions}
+[Abrir PDF](resources/biblio/Agresti_A_Finlay_B__(2009)__(4ed)__Statistical_Methods_for_Social_Sciences.pdf){.library-btn .library-btn-primary target="_blank" rel="noopener"}
+[Descargar](resources/biblio/Agresti_A_Finlay_B__(2009)__(4ed)__Statistical_Methods_for_Social_Sciences.pdf){.library-btn download=""}
 :::
 :::
 

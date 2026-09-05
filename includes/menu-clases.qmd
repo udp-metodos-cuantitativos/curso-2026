@@ -66,12 +66,26 @@
 
       <div class="collapse" id="unidad3">
         <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Distribución y análisis univariado</a>
+        <!--
+        CLASES OCULTAS UNIDAD III HASTA PUBLICAR MATERIAL:
         <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Frecuencias y tablas</a>
         <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Tendencia central y dispersión</a>
         <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Posición y forma</a>
+        -->
       </div>
 
-      <!-- Unidad IV -->
+      <!--
+      =========================================================
+      INSTRUCCIÓN INTERNA PARA PUBLICAR UNA CLASE:
+      1. agregar PDF o PPTX al directorio de la clase (clases/clase_XX/);
+      2. descomentar su entrada en render dentro de _quarto.yml;
+      3. descomentar su entrada en includes/menu-clases.qmd;
+      4. ejecutar: quarto render.
+      =========================================================
+      -->
+
+      <!--
+      UNIDAD IV OCULTA HASTA CONTENER AL MENOS UNA CLASE CON MATERIAL PUBLICADO:
       <div class="sidebar-unit-header">
         <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad4" aria-expanded="false" aria-controls="unidad4">
           <div class="unit-label-wrap">
@@ -89,6 +103,7 @@
         <a class="clase-link" href="../clase_11/index.html" data-clase-link="clase_11">Clase 11 – Taller de trabajo grupal</a>
         <a class="clase-link" href="../clase_12/index.html" data-clase-link="clase_12">Clase 12 – Sesión de dudas</a>
       </div>
+      -->
 
     </div>
   </aside>
