@@ -1,29 +1,14 @@
 ---
-title: "Clase 08 | Tablas de contingencia"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Análisis bivariado y tablas de contingencia"
+clase: "08"
+unidad: "Unidad IV"
+unidad-titulo: "Relaciones Bivariadas"
+orden: 8
+date: 2026-10-20
+description: "Estudio de la relación entre dos variables categóricas, tablas cruzadas de doble entrada y cálculo de porcentajes por fila y columna (Laboratorio 5)."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 08 · Unidad IV</p>
-  <h1>Análisis bivariado y tablas de contingencia</h1>
-  <p>Estudio de la relación entre dos variables categóricas, tablas cruzadas de doble entrada y cálculo de porcentajes por fila y columna (Laboratorio 5).</p>
-</section>
-```
-
-::: {.clase-card}
-
-## Materiales de la sesión
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -61,18 +46,6 @@ Tabulación cruzada con tabyl (janitor), tablas formateadas con sjPlot y visuali
 ::: {.callout-note}
 ### Material de la sesión por publicar
 Las diapositivas y el script de R del Laboratorio 5 estarán disponibles en esta sección.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

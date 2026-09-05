@@ -1,29 +1,14 @@
 ---
-title: "Clase 06 | Tendencia central y dispersión"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Medidas de tendencia central y dispersión"
+clase: "06"
+unidad: "Unidad III"
+unidad-titulo: "Estadística Univariada"
+orden: 6
+date: 2026-10-06
+description: "Cálculo, propiedades e interpretación sustantiva de la media, mediana, moda, varianza, desviación estándar y rango en R (Laboratorio 3)."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 06 · Unidad III</p>
-  <h1>Medidas de tendencia central y dispersión</h1>
-  <p>Cálculo, propiedades e interpretación sustantiva de la media, mediana, moda, varianza, desviación estándar y rango en R (Laboratorio 3).</p>
-</section>
-```
-
-::: {.clase-card}
-
-## Materiales de la sesión
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -61,18 +46,6 @@ Cálculo de estadísticos con mean(), median(), sd(), var() y resúmenes complet
 ::: {.callout-note}
 ### Material de la sesión por publicar
 Las diapositivas y el script de R del Laboratorio 3 estarán disponibles en esta sección.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

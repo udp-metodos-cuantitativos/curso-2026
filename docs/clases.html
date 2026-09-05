@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Métodos Cuantitativos</title>
+<title>Clases del Curso – Métodos Cuantitativos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -77,20 +77,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-ultimas-home .list');
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-ultimas-home'] = new List('listing-ultimas-home', options);
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -112,7 +112,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed clases-index-page quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -125,11 +125,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./clases.html"> 
+    <a class="nav-link active" href="./clases.html" aria-current="page"> 
 <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
@@ -158,149 +158,134 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Clases del Curso</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section class="clase-hero clases-hero-main">
+  <p class="clase-kicker">Material de docencia · Primer Semestre 2026</p>
+  <h1>Sesiones y Clases del Curso</h1>
+  <p>Acceso a presentaciones, lecturas, laboratorios en R y materiales de cada sesión.</p>
+</section>
+<div class="clases-listing-container">
+
+</div>
 
 
 
 
-<div class="hero-course">
-<div class="container-fluid px-4 px-md-5 py-5">
-<div class="row align-items-center g-5">
-<div class="col-12">
-<p class="eyebrow">
-Escuela de Antropología · ANT01221 · Universidad Diego Portales · 2026
-</p>
-<h1 class="display-4 fw-semibold">
-Métodos Cuantitativos
-</h1>
-<p class="lead">
-Introducción al diseño de investigación cuantitativa, la estadística descriptiva y el análisis de datos sociales mediante herramientas conceptuales, estadísticas y computacionales en R.
-</p>
-<div class="d-flex flex-wrap gap-2 mt-4 hero-cta">
-<p><a href="curso.html" class="btn btn-primary btn-md">Ver curso</a> <a href="clases/clase_00/index.html" class="btn btn-outline-secondary btn-md">Ver clases</a></p>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-listing-date-sort="1786420800000" data-listing-file-modified-sort="1788618741358" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="89">
+<a href="./clases/clase_00/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Presentación y Fundamentos de la Investigación Cuantitativa
+</h5>
+<div class="card-text listing-description delink">
+Clase 00 · Presentación
 </div>
-<div class="mt-4 small text-muted">
-<p><span class="me-3"></span> <span></span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="course-sections container-fluid px-4 px-md-5">
-<div class="course-grid">
-<div class="course-left">
-<h2 class="team-heading mt-0 mb-2 anchored">
-Equipo docente:
-</h2>
-<div class="team-strip mt-2 mb-4">
-<div class="team-grid">
-<div class="team-item team-item-interactive">
-<details class="bio-toggle">
-<summary>
-<div class="d-flex align-items-center gap-3 mb-3">
-<div class="avatar-placeholder">
-<p><img src="resources/Daniela.jpg" alt="Fotografía de Daniela Olivares Collío" width="96" height="96" loading="lazy" decoding="async"></p>
-</div>
-<div>
-<div class="fw-semibold team-name">
-Daniela Olivares Collío
-</div>
-<div class="text-muted small">
-Docente
-</div>
-<div class="team-email small mt-2">
-<p><strong>Correo:</strong> <a href="mailto:daniela.olivares2@mail.udp.cl">daniela.olivares2@mail.udp.cl</a></p>
-</div>
-</div>
-</div>
-</summary>
-<div class="bio-panel">
-<p>
-Magíster en Estadística de la Pontificia Universidad Católica de Chile (2022). Licenciada en Sociología de la Universidad de Chile (2019).
-</p>
-<p>
-Asistente de investigación del proyecto “Clases sociales, movimientos sindicales y conflicto en tiempos de crisis: un estudio comparativo de Argentina y Chile, CONCLAT” (Fondecyt Regular N°1230056). Anteriormente, fue coordinadora técnica del Estudio Longitudinal Social de Chile (ELSOC) del Centro de Estudios del Conflicto y la Cohesión Social (COES), y asistente metodológica en diversas investigaciones.
-</p>
-</div>
-</details>
-</div>
-<div class="team-item team-item-interactive">
-<details class="bio-toggle">
-<summary>
-<div class="d-flex align-items-center gap-3 mb-3">
-<div class="avatar-placeholder">
-<p><img src="resources/Katherine.jpg" alt="Fotografía de Katherine Aravena Herrera" width="96" height="96" loading="lazy" decoding="async"></p>
-</div>
-<div>
-<div class="fw-semibold team-name">
-Katherine Aravena Herrera
-</div>
-<div class="text-muted small">
-Ayudante
-</div>
-<div class="team-email small mt-2">
-<p><strong>Correo:</strong> <a href="mailto:katherine.aravena@mail.udp.cl">katherine.aravena@mail.udp.cl</a></p>
-</div>
-</div>
-</div>
-</summary>
-<div class="bio-panel">
-<p>
-Licenciada en Sociología y estudiante del Magíster en Psicología Educacional de la Universidad de Chile.
-</p>
-<p>
-Asistente técnica de investigación en el proyecto Análisis Curricular ERCE 2025 (UNESCO-LLECE) del Instituto de Estudios Avanzados en Educación. Actualmente se desempeña también como profesora colaboradora en los cursos Estrategias de Investigación Cuantitativa y Estadística Correlacional de la Universidad de Chile. Ha colaborado en diversos proyectos como C22 del Centro de Estudios Públicos (CEP), LISA-COES, SODAS y FONDEF IT24I0115.
-</p>
-</div>
-</details>
-</div>
-</div>
-</div>
-</div>
-<div class="course-right">
-<div class="latest-card latest-card-home" aria-label="Última información del curso">
-<div class="latest-title">
-Noticias
-</div>
-<div class="latest-scroll">
-<div id="listing-ultimas-home" class="latest-listing latest-compact quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="YXZpc28lMkNpbmljaW8=" data-listing-date-sort="1786420800000" data-listing-file-modified-sort="1788552842759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="312">
-<div class="thumbnail"><a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">
-
-<img loading="lazy" src="./resources/post/inicio-curso.jpg" class="thumbnail-image" alt="Imagen de bienvenida al curso Métodos Cuantitativos">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">Bienvenida a Métodos Cuantitativos 2026</a>
-</h3>
-<div class="delink listing-description"><a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">
-<p>Bienvenida al curso Métodos Cuantitativos (ANT01221) de la Escuela de Antropología de la Universidad Diego Portales e indicaciones generales para usar el sitio web.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./ultima-informacion/2026-08-11-bienvenida-curso.html" class="no-external">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
-11 Aug
+Aug 11, 2026
 </div>
-</a>
 </div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-listing-date-sort="1787025600000" data-listing-file-modified-sort="1788618877840" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="69">
+<a href="./clases/clase_01/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Investigación cuantitativa, variables y operacionalización
+</h5>
+<div class="card-text listing-description delink">
+<p>Características de la investigación cuantitativa, conceptualización de variables e indicadores, operacionalización y niveles de medición.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Aug 18, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-listing-date-sort="1787630400000" data-listing-file-modified-sort="1788618877842" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<a href="./clases/clase_02/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Problema de investigación y matriz de datos
+</h5>
+<div class="card-text listing-description delink">
+<p>Problematización, formulación de preguntas, objetivos, hipótesis cuantitativas y diseño de matrices de datos con libro de códigos.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Aug 25, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-listing-date-sort="1788235200000" data-listing-file-modified-sort="1788618877844" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="83">
+<a href="./clases/clase_03/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Población, muestra y recolección de datos
+</h5>
+<div class="card-text listing-description delink">
+<p>Nociones de universo, población y muestra. Técnicas de recolección y procesamiento de datos en el contexto de la investigación social.</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 1, 2026
+</div>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-listing-date-sort="1788836400000" data-listing-file-modified-sort="1788618877845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="82">
+<a href="./clases/clase_04/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Noción de distribución y análisis univariado
+</h5>
+<div class="card-text listing-description delink">
+<p>Concepto de distribución de variables en ciencias sociales, tipos de análisis descriptivo univariado y primeros pasos en R (Laboratorio 1).</p>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 8, 2026
+</div>
+</div>
+</div>
+</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-<p><a href="ultima-informacion.html" class="latest-footer">Ver todas las actualizaciones</a></p>
-</div>
-</div>
-</div>
-</div>
-
-
-
-
-</main> <!-- /main -->
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

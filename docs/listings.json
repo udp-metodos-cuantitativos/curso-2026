@@ -6,6 +6,16 @@
     ]
   },
   {
+    "listing": "/clases.html",
+    "items": [
+      "/clases/clase_00/index.html",
+      "/clases/clase_01/index.html",
+      "/clases/clase_02/index.html",
+      "/clases/clase_03/index.html",
+      "/clases/clase_04/index.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
       "/ultima-informacion/2026-08-11-bienvenida-curso.html"

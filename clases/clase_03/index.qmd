@@ -1,39 +1,16 @@
 ---
-title: "Clase 03 | Población, muestra y datos"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Población, muestra y recolección de datos"
+clase: "03"
+unidad: "Unidad II"
+unidad-titulo: "Estadística en Investigación"
+orden: 3
+date: 2026-09-01
+description: "Nociones de universo, población y muestra. Técnicas de recolección y procesamiento de datos en el contexto de la investigación social."
+pdf: "clase_03.pdf"
+pptx: "clase_03.pptx"
+publicada: true
+draft: false
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 03 · Unidad II</p>
-  <h1>Población, muestra y recolección de datos</h1>
-  <p>Nociones de universo, población y muestra. Técnicas de recolección y procesamiento de datos en el contexto de la investigación social.</p>
-</section>
-```
-
-::: {.clase-card .clase-card-presentation}
-
-```{=html}
-<div class="class-presentation-viewer" id="viewer-clase-03">
-  <iframe src="clase_03.pdf#view=FitH" title="Presentación Clase 03" allowfullscreen></iframe>
-</div>
-
-<div class="clase-presentacion-actions">
-  <a href="clase_03.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-  <a href="clase_03.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-  <button type="button" class="btn btn-outline-secondary" id="btn-fullscreen-03" onclick="const v = document.getElementById('viewer-clase-03'); if (v) { if (!document.fullscreenElement) { v.requestFullscreen().catch(() => window.open('clase_03.pdf', '_blank')); } else { document.exitFullscreen(); } }"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
-</div>
-```
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -65,18 +42,6 @@ Revisar el diseño y aplicación de cuestionarios, encuestas estructuradas y reg
 
 Identificar criterios de control de calidad, consistencia y preparación inicial de bases de datos.
 :::
-
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
 
 :::
 

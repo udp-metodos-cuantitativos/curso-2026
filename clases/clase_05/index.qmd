@@ -1,29 +1,14 @@
 ---
-title: "Clase 05 | Frecuencias y tablas"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Frecuencias y tablas descriptivas"
+clase: "05"
+unidad: "Unidad III"
+unidad-titulo: "Estadística Univariada"
+orden: 5
+date: 2026-09-29
+description: "Construcción, lectura e interpretación de tablas de frecuencias absolutas, relativas y acumuladas en R (Laboratorio 2)."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 05 · Unidad III</p>
-  <h1>Frecuencias y tablas descriptivas</h1>
-  <p>Construcción, lectura e interpretación de tablas de frecuencias absolutas, relativas y acumuladas en R (Laboratorio 2).</p>
-</section>
-```
-
-::: {.clase-card}
-
-## Materiales de la sesión
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -61,18 +46,6 @@ Uso de funciones de conteo con table(), prop.table() y tablas tabyl con el paque
 ::: {.callout-note}
 ### Material de la sesión por publicar
 Las diapositivas y el script de R del Laboratorio 2 estarán disponibles en esta sección.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

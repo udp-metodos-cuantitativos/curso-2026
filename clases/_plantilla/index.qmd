@@ -1,0 +1,43 @@
+---
+title: "Título de la Sesión"
+clase: "XX"
+unidad: "Unidad X"
+unidad-titulo: "Nombre de la Unidad"
+orden: 99
+date: 2026-01-01
+description: "Descripción sintética de los temas, objetivos y lecturas abordadas en la clase."
+pdf: "clase_XX.pdf"
+pptx: "clase_XX.pptx"
+publicada: false
+draft: true
+---
+
+::: {.clase-card .clase-intro}
+
+## Contenidos de la sesión
+
+Breve introducción a los contenidos, debates y problemáticas que se tratarán durante la sesión.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Primer concepto o tema clave**
+
+Descripción breve del aprendizaje esperado o punto central de la clase.
+:::
+
+::: {.objetivo-card}
+**Segundo concepto o tema clave**
+
+Descripción breve del aprendizaje esperado o punto central de la clase.
+:::
+
+::: {.objetivo-card}
+**Tercer concepto o tema clave**
+
+Descripción breve del aprendizaje esperado o punto central de la clase.
+:::
+
+:::
+
+:::

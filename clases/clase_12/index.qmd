@@ -1,23 +1,14 @@
 ---
-title: "Clase 12 | Sesión de dudas"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Sesión de resolución de dudas"
+clase: "12"
+unidad: "Cierre del semestre"
+unidad-titulo: "Cierre del Semestre"
+orden: 12
+date: 2026-11-22
+description: "Espacio plenario para consultas metodológicas y estadísticas, preparación de presentaciones y resolución de dudas para la prueba recuperativa."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 12 · Cierre del semestre</p>
-  <h1>Sesión de resolución de dudas</h1>
-  <p>Espacio plenario para consultas metodológicas y estadísticas, preparación de presentaciones y resolución de dudas para la prueba recuperativa.</p>
-</section>
-```
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -62,18 +53,6 @@ Balance de los resultados de aprendizaje alcanzados durante el semestre en Méto
 * **01/12/2026:** Presentaciones de trabajos grupales y rendición de la prueba recuperativa.
 * **08/12/2026:** Feriado nacional.
 * **15/12/2026:** Examen oral individual.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

@@ -1,39 +1,16 @@
 ---
-title: "Clase 01 | Variables y operacionalización"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Investigación cuantitativa, variables y operacionalización"
+clase: "01"
+unidad: "Unidad I"
+unidad-titulo: "Investigación Cuantitativa"
+orden: 1
+date: 2026-08-18
+description: "Características de la investigación cuantitativa, conceptualización de variables e indicadores, operacionalización y niveles de medición."
+pdf: "clase_01.pdf"
+pptx: "clase_01.pptx"
+publicada: true
+draft: false
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 01 · Unidad I</p>
-  <h1>Investigación cuantitativa, variables y operacionalización</h1>
-  <p>Características de la investigación cuantitativa, conceptualización de variables e indicadores, operacionalización y niveles de medición.</p>
-</section>
-```
-
-::: {.clase-card .clase-card-presentation}
-
-```{=html}
-<div class="class-presentation-viewer" id="viewer-clase-01">
-  <iframe src="clase_01.pdf#view=FitH" title="Presentación Clase 01" allowfullscreen></iframe>
-</div>
-
-<div class="clase-presentacion-actions">
-  <a href="clase_01.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-  <a href="clase_01.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-  <button type="button" class="btn btn-outline-secondary" id="btn-fullscreen-01" onclick="const v = document.getElementById('viewer-clase-01'); if (v) { if (!document.fullscreenElement) { v.requestFullscreen().catch(() => window.open('clase_01.pdf', '_blank')); } else { document.exitFullscreen(); } }"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
-</div>
-```
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -65,18 +42,6 @@ Distinguir entre unidades de análisis, variables, categorías y atributos.
 
 Identificar variables nominales, ordinales, de intervalo y de razón, y sus transformaciones.
 :::
-
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
 
 :::
 

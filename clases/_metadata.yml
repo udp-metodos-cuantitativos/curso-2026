@@ -1,0 +1,14 @@
+title-block: false
+toc: false
+page-layout: full
+body-classes: clases-page clase-page
+
+filters:
+  - clase-layout.lua
+
+format:
+  html:
+    include-after-body:
+      - text: |
+          <script src="../../assets/js/clases-menu.js"></script>
+          <script src="../../assets/js/clase-viewer.js"></script>

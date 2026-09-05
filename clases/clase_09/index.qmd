@@ -1,29 +1,14 @@
 ---
-title: "Clase 09 | Indicadores, índices y escalas"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Indicadores, índices y escalas"
+clase: "09"
+unidad: "Unidad IV"
+unidad-titulo: "Relaciones Bivariadas"
+orden: 9
+date: 2026-11-03
+description: "Construcción de indicadores empíricos, diseño de índices aditivos y ponderados, y escalas de medición para conceptos sociales complejos (Laboratorio 6)."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 09 · Unidad IV</p>
-  <h1>Indicadores, índices y escalas</h1>
-  <p>Construcción de indicadores empíricos, diseño de índices aditivos y ponderados, y escalas de medición para conceptos sociales complejos (Laboratorio 6).</p>
-</section>
-```
-
-::: {.clase-card}
-
-## Materiales de la sesión
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -61,18 +46,6 @@ Transformación y estandarización de variables con mutate, recodificación múl
 ::: {.callout-note}
 ### Material de la sesión por publicar
 Las diapositivas y el script de R del Laboratorio 6 estarán disponibles en esta sección.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

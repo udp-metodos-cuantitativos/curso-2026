@@ -1,29 +1,14 @@
 ---
-title: "Clase 10 | Correlación y regresión"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Correlación y regresión"
+clase: "10"
+unidad: "Unidad IV"
+unidad-titulo: "Relaciones Bivariadas"
+orden: 10
+date: 2026-11-10
+description: "Medición de la asociación lineal con el coeficiente de Pearson, matrices de correlación y fundamentos del análisis de regresión (Laboratorio 7 y Ayudantía 6)."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 10 · Unidad IV</p>
-  <h1>Correlación y regresión</h1>
-  <p>Medición de la asociación lineal con el coeficiente de Pearson, matrices de correlación y fundamentos del análisis de regresión (Laboratorio 7 y Ayudantía 6).</p>
-</section>
-```
-
-::: {.clase-card}
-
-## Materiales de la sesión
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -61,18 +46,6 @@ Cálculo con cor(), matrices de correlación con corrplot y gráficos con geom_p
 ::: {.callout-note}
 ### Material de la sesión por publicar
 Las diapositivas y el script de R del Laboratorio 7 estarán disponibles en esta sección.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

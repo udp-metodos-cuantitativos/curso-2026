@@ -1,39 +1,16 @@
 ---
-title: "Clase 02 | Problema y matriz de datos"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Problema de investigación y matriz de datos"
+clase: "02"
+unidad: "Unidades I–II"
+unidad-titulo: "Investigación Cuantitativa"
+orden: 2
+date: 2026-08-25
+description: "Problematización, formulación de preguntas, objetivos, hipótesis cuantitativas y diseño de matrices de datos con libro de códigos."
+pdf: "clase_02.pdf"
+pptx: "clase_02.pptx"
+publicada: true
+draft: false
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 02 · Unidades I–II</p>
-  <h1>Problema de investigación y matriz de datos</h1>
-  <p>Problematización, formulación de preguntas, objetivos, hipótesis cuantitativas y diseño de matrices de datos con libro de códigos.</p>
-</section>
-```
-
-::: {.clase-card .clase-card-presentation}
-
-```{=html}
-<div class="class-presentation-viewer" id="viewer-clase-02">
-  <iframe src="clase_02.pdf#view=FitH" title="Presentación Clase 02" allowfullscreen></iframe>
-</div>
-
-<div class="clase-presentacion-actions">
-  <a href="clase_02.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-  <a href="clase_02.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-  <button type="button" class="btn btn-outline-secondary" id="btn-fullscreen-02" onclick="const v = document.getElementById('viewer-clase-02'); if (v) { if (!document.fullscreenElement) { v.requestFullscreen().catch(() => window.open('clase_02.pdf', '_blank')); } else { document.exitFullscreen(); } }"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
-</div>
-```
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -65,18 +42,6 @@ Comprender la estructura rectangular (filas = casos, columnas = variables) de un
 
 Elaborar el libro de códigos (*codebook*) que documenta nombres, etiquetas y valores de las variables.
 :::
-
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
 
 :::
 

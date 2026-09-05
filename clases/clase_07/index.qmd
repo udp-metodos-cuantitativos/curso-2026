@@ -1,29 +1,14 @@
 ---
-title: "Clase 07 | Posición y forma"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Medidas de posición y forma"
+clase: "07"
+unidad: "Unidad III"
+unidad-titulo: "Estadística Univariada"
+orden: 7
+date: 2026-10-13
+description: "Cuartiles, percentiles, rango intercuartílico, asimetría, curtosis y visualización de distribuciones con boxplots (Laboratorio 4)."
+publicada: false
+draft: true
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 07 · Unidad III</p>
-  <h1>Medidas de posición y forma</h1>
-  <p>Cuartiles, percentiles, rango intercuartílico, asimetría, curtosis y visualización de distribuciones con boxplots (Laboratorio 4).</p>
-</section>
-```
-
-::: {.clase-card}
-
-## Materiales de la sesión
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -61,18 +46,6 @@ Uso de quantile(), gráficos de caja (*boxplots*) con ggplot2 y detección de va
 ::: {.callout-note}
 ### Material de la sesión por publicar
 Las diapositivas y el script de R del Laboratorio 4 estarán disponibles en esta sección.
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
-
 :::
 
 :::

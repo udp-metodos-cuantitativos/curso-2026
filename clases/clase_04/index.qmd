@@ -1,39 +1,16 @@
 ---
-title: "Clase 04 | Distribución y análisis univariado"
-title-block: false
-toc: false
-page-layout: full
-body-classes: clases-page clase-page
+title: "Noción de distribución y análisis univariado"
+clase: "04"
+unidad: "Unidad III"
+unidad-titulo: "Estadística Univariada"
+orden: 4
+date: 2026-09-08
+description: "Concepto de distribución de variables en ciencias sociales, tipos de análisis descriptivo univariado y primeros pasos en R (Laboratorio 1)."
+pdf: "clase_04.pdf"
+pptx: "clase_04.pptx"
+publicada: true
+draft: false
 ---
-
-::: {.columns #catedra}
-
-::: {.column .clase-main}
-
-```{=html}
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 04 · Unidad III</p>
-  <h1>Noción de distribución y análisis univariado</h1>
-  <p>Concepto de distribución de variables en ciencias sociales, tipos de análisis descriptivo univariado y primeros pasos en R (Laboratorio 1).</p>
-</section>
-```
-
-::: {.clase-card .clase-card-presentation}
-
-```{=html}
-<div class="class-presentation-viewer" id="viewer-clase-04">
-  <iframe src="clase_04.pdf#view=FitH" title="Presentación Clase 04" allowfullscreen></iframe>
-</div>
-
-<div class="clase-presentacion-actions">
-  <a href="clase_04.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-  <a href="clase_04.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-  <button type="button" class="btn btn-outline-secondary" id="btn-fullscreen-04" onclick="const v = document.getElementById('viewer-clase-04'); if (v) { if (!document.fullscreenElement) { v.requestFullscreen().catch(() => window.open('clase_04.pdf', '_blank')); } else { document.exitFullscreen(); } }"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
-</div>
-```
-
-:::
-
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
@@ -65,18 +42,6 @@ Iniciar el trabajo práctico en RStudio: carga de paquetes con pacman, importaci
 
 Traducir la forma de una distribución a conclusiones e interpretaciones sociales.
 :::
-
-:::
-
-:::
-
-{{< include ../../includes/comentarios-giscus.qmd >}}
-
-:::
-
-::: {.column-margin}
-
-{{< include ../../includes/menu-clases.qmd >}}
 
 :::
 
