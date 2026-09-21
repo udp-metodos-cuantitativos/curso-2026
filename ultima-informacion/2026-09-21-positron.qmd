@@ -110,11 +110,13 @@ Al finalizar el video, deberían poder reconocer de manera general:
 
 ## Video: Introducción a Positron
 
+```{=html}
 <div class="positron-video">
   <div class="positron-video-frame">
     <iframe
       src="https://www.youtube.com/embed/APkZlRjBrfI"
       title="Introducción a Positron | Estadística Correlacional 2026"
+      loading="lazy"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen>
@@ -122,21 +124,14 @@ Al finalizar el video, deberían poder reconocer de manera general:
   </div>
 
   <div class="positron-video-link">
-    <a href="https://www.youtube.com/watch?v=APkZlRjBrfI" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.youtube.com/watch?v=APkZlRjBrfI"
+       target="_blank"
+       rel="noopener noreferrer">
       Ver video directamente en YouTube ↗
     </a>
   </div>
 </div>
-
-::: {.notice-list-card}
-
-**Para la próxima clase**
-
-Revisa el video completo antes de la próxima sesión. **No necesitas aprender todo de memoria:** la finalidad es que llegues con una primera familiarización con Positron.
-
-Desde la próxima semana comenzaremos a utilizarlo en las actividades del curso y aprenderemos progresivamente a trabajar con sus distintas herramientas durante las clases y laboratorios.
-
-:::
+```
 
 :::
 
