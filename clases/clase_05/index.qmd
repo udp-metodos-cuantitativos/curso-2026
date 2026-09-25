@@ -1,51 +1,19 @@
 ---
-title: "Frecuencias y tablas descriptivas"
+title: "Estadística Descriptiva y Análisis descriptivo univariado"
 clase: "05"
 unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"
 orden: 5
 date: 2026-09-29
-description: "Construcción, lectura e interpretación de tablas de frecuencias absolutas, relativas y acumuladas en R (Laboratorio 2)."
-publicada: false
-draft: true
+description: "Nos centraremos en el análisis univariado, es decir, en el estudio de una variable a la vez."
+pdf: "clase_05.pdf"
+pptx: "clase_05.pptx"
+publicada: true
+draft: false
 ---
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
 
-En esta clase profundizamos en el análisis de variables categóricas (nominales y ordinales) mediante tablas de distribución de frecuencias.
-
-::: {.clase-objetivos}
-
-::: {.objetivo-card}
-**Frecuencias absolutas**
-
-Contar el número de casos en cada categoría de respuesta.
-:::
-
-::: {.objetivo-card}
-**Frecuencias relativas**
-
-Calcular proporciones y porcentajes para comparar categorías.
-:::
-
-::: {.objetivo-card}
-**Frecuencias acumuladas**
-
-Interpretar el porcentaje acumulado de casos en variables ordinales.
-:::
-
-::: {.objetivo-card}
-**Laboratorio 2 en R**
-
-Uso de funciones de conteo con table(), prop.table() y tablas tabyl con el paquete janitor.
-:::
-
-:::
-
-::: {.callout-note}
-### Material de la sesión por publicar
-Las diapositivas y el script de R del Laboratorio 2 estarán disponibles en esta sección.
-:::
-
+La estadística descriptiva es una herramienta fundamental para organizar, resumir y presentar datos de manera clara y concisa. 
 :::
