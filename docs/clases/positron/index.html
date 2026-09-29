@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2026-09-29">
-<meta name="description" content="Nos centraremos en el análisis univariado, es decir, en el estudio de una variable a la vez.">
+<meta name="description" content="Familiarización con la interfaz, paneles, scripts y entorno de trabajo en Positron para el análisis de datos con R.">
 
-<title>Estadística Descriptiva: Distribución – Métodos Cuantitativos</title>
+<title>Introducción a Positron – Métodos Cuantitativos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -134,12 +169,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Estadística Descriptiva: Distribución</h1>
+<h1 class="title">Introducción a Positron</h1>
 </div>
 
 <div>
   <div class="description">
-    Nos centraremos en el análisis univariado, es decir, en el estudio de una variable a la vez.
+    Familiarización con la interfaz, paneles, scripts y entorno de trabajo en Positron para el análisis de datos con R.
   </div>
 </div>
 
@@ -165,24 +200,282 @@ ul.task-list li input[type="checkbox"] {
 <div id="catedra" class="columns page-columns page-full">
 <div class="column clase-main">
 <section class="clase-hero">
-  <p class="clase-kicker">Clase 05 · Unidad III</p>
-  <h1>Estadística Descriptiva: Distribución</h1>
-  <p>Nos centraremos en el análisis univariado, es decir, en el estudio de una variable a la vez.</p>
+  <p class="clase-kicker">Taller de Software · Unidad III</p>
+  <h1>Introducción a Positron</h1>
+  <p>Familiarización con la interfaz, paneles, scripts y entorno de trabajo en Positron para el análisis de datos con R.</p>
 </section>
-<div class="clase-card clase-card-presentation">
-  <div class="class-presentation-viewer" id="viewer-clase-05">
-    <iframe src="clase_05.pdf#view=FitH" title="Presentación Clase 05" allowfullscreen=""></iframe>
-  </div>
-  <div class="clase-presentacion-actions">
-    <a href="clase_05.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-    <a href="clase_05.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-    <button type="button" class="btn btn-outline-secondary btn-presentation-fullscreen" id="btn-fullscreen-05" data-action="fullscreen" data-target="#viewer-clase-05" data-fallback-url="clase_05.pdf"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
-  </div>
+<style>
+/* Ajustes locales: se aplican únicamente a esta página. */
+#quarto-content main.content img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+#quarto-content main.content .quarto-figure,
+#quarto-content main.content figure {
+  width: 100%;
+  max-width: 100%;
+}
+
+main.content p,
+.callout-body p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+</style>
+<div class="d-flex flex-wrap gap-2 justify-content-end align-items-center mb-2">
+<p><a href="https://positron.posit.co/download.html" class="btn btn-outline-danger btn-sm" target="_blank" role="button">Descargar Positron</a> <a href="https://cran.r-project.org/bin/windows/base/" class="btn btn-outline-primary btn-sm" target="_blank" role="button">Última versión de R</a> <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-supported-redistributable-version" class="btn btn-outline-secondary btn-sm" target="_blank" role="button">Visual C++ Redistributable</a></p>
 </div>
-<section id="contenidos-de-la-sesión" class="level2 clase-card clase-intro">
-<h2 class="anchored" data-anchor-id="contenidos-de-la-sesión">Contenidos de la sesión</h2>
-<p>La estadística descriptiva es una herramienta fundamental para organizar, resumir y presentar datos de manera clara y concisa.</p>
+<p><small class="text-muted d-block text-end mb-4">* Recuerde tener R instalado.</small></p>
+<section id="de-rstudio-a-positron" class="level2">
+<h2 class="anchored" data-anchor-id="de-rstudio-a-positron">De RStudio a Positron</h2>
+<p>Positron cambia parcialmente la organización visual, pero conserva la lógica central de trabajo. En ambos entornos puede escribir scripts, ejecutar comandos en una consola de R, utilizar paquetes, revisar objetos, visualizar gráficos y organizar los archivos de un análisis. A raíz de esto, el propósito de esta sesión es que pueda familiarizarse con el entorno y con las acciones necesarias para comenzar a trabajar. Positron es solo una herramienta: el foco del curso seguirá estando en comprender los análisis, interpretar sus resultados y escribir código reproducible.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Lenguaje y entorno de trabajo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>R</strong> es el lenguaje que contiene las instrucciones, funciones y paquetes utilizados en el análisis.</li>
+<li><strong>RStudio</strong> y <strong>Positron</strong> son entornos de desarrollo o IDE: programas que reúnen herramientas para escribir, ejecutar y revisar código.</li>
+<li>La <strong>sintaxis</strong> corresponde a las instrucciones escritas, mientras que un <strong>script</strong> es el archivo <code>.R</code> donde se guardan y organizan. (Cambiar de RStudio a Positron no significa cambiar de lenguaje.)</li>
+</ul>
+</div>
+</div>
+<section id="por-qué-utilizaremos-positron" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-utilizaremos-positron">¿Por qué utilizaremos Positron?</h3>
+<p>Positron permite aprovechar lo que ya aprendimos en RStudio dentro de un entorno más integrado y flexible. <strong>R sigue siendo el mismo lenguaje:</strong> los comandos, paquetes y scripts continúan funcionando de igual forma que con RStudio. Durante el curso utilizaremos Positron porque reúne distintas herramientas en un solo espacio de trabajo. Positron permite:</p>
+<ol type="1">
+<li><p><strong>R, Python y distintos archivos</strong><br>
+Trabajar con scripts y diferentes tipos de documentos dentro de un mismo entorno.</p></li>
+<li><p><strong>Extensiones y personalización</strong><br>
+El entorno puede ampliarse gradualmente según las tareas y necesidades de cada proyecto. Además, es posible instalar múltiples herramientas y complementos desarrollados por la comunidad.</p></li>
+<li><p><strong>Exploración visual de datos</strong><br>
+Facilita la revisión de objetos, bases de datos y gráficos durante el análisis.</p></li>
+<li><p><strong>Asistencia opcional con inteligencia artificial</strong><br>
+Puede apoyar la comprensión de errores y fragmentos de código, pero su uso es opcional y sus respuestas siempre deben revisarse.</p></li>
+<li><p><strong>Escritura reproducible</strong><br>
+Mantener relacionados el texto, el código y los resultados para reconstruir el procedimiento de análisis.</p></li>
+<li><p><strong>Versionamiento y proyectos futuros</strong><br>
+Git y el registro de cambios ofrecen posibilidades para colaborar y desarrollar investigaciones, tesis u otros proyectos posteriores.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="user-interface-rstudio-vs-positron.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Interfaz de usuario de RStudio y Positron</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Positron no reemplaza lo aprendido en RStudio
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durante el curso utilizaremos Positron principalmente de una manera similar a RStudio: R, los comandos y los scripts siguen siendo los mismos. Si usted ya ha trabajado con RStudio, no está comenzando desde cero: solo deberá reconocer una nueva forma de organizar herramientas que ya conoce.</p>
+<p>No será necesario dominar desde el comienzo todas las funciones del entorno. Basta con reconocer que existen herramientas adicionales para el análisis de datos, la escritura y el versionamiento, en las que podrá profundizar durante el curso o en proyectos futuros. El foco continuará estando en comprender los análisis e interpretar sus resultados.</p>
+</div>
+</div>
 </section>
+</section>
+<section id="positron" class="level2">
+<h2 class="anchored" data-anchor-id="positron">¡Positron!</h2>
+<p>Ahora que sabemos qué se mantiene y qué cambia, revisaremos cómo se organiza la interfaz de Positron.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="user-interface-for-rstudio-migration.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Interfaz de usuario de Positron</figcaption>
+</figure>
+</div>
+<p>En la imagen puede reconocer cinco áreas principales:</p>
+<div style="margin: auto; width: fit-content;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>En Positron</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Barra de actividades</strong></td>
+<td>Permite abrir el Explorador de archivos, las extensiones, Git y otras herramientas. Se encuentra en el borde izquierdo de la pantalla.</td>
+</tr>
+<tr class="even">
+<td><strong>Barra lateral principal</strong></td>
+<td>Muestra los archivos y carpetas del proyecto. Se despliega al seleccionar una opción en la barra de actividades.</td>
+</tr>
+<tr class="odd">
+<td><strong>Editor</strong></td>
+<td>Permite escribir y guardar código en scripts y otros documentos.</td>
+</tr>
+<tr class="even">
+<td><strong>Panel inferior</strong></td>
+<td>Muestra la consola de R, los resultados, los mensajes y los errores.</td>
+</tr>
+<tr class="odd">
+<td><strong>Barra lateral secundaria</strong></td>
+<td>Muestra objetos, gráficos, ayuda y otras herramientas.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>La <strong>terminal</strong>, ubicada junto a la consola, no es lo mismo que la consola de R. Sirve para ejecutar comandos del sistema y no será necesaria en este práctico.</p>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>El origen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Visual Studio Code (Microsoft) es un editor de código flexible para distintos lenguajes y tareas, y <strong>Code OSS</strong> es su base abierta. Positron está construido sobre esa misma base e incorpora herramientas especializadas para trabajar con datos mediante R y Python</p>
+</div>
+</div>
+</section>
+<section id="de-r-project-a-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="de-r-project-a-workspace">De R Project a workspace</h2>
+<p>En Positron, seguimos organizando el trabajo dentro de una carpeta que reúne los scripts, datos y resultados del análisis, tal como lo hacíamos en RStudio. La diferencia es que en Positron no es necesario crear un proyecto <code>.Rproj</code> para comenzar. Al abrir una carpeta, esta funciona como el workspace o espacio de trabajo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="1_carpeta.png" class="img-fluid figure-img"></p>
+<figcaption>Abrir carpeta de trabajo en Positron</figcaption>
+</figure>
+</div>
+</section>
+<section id="reconocer-el-espacio-de-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="reconocer-el-espacio-de-trabajo">Reconocer el espacio de trabajo</h2>
+<p>Antes de ejecutar código, observe dos elementos de la interfaz:</p>
+<ol type="1">
+<li>el nombre de la carpeta abierta en Positron;</li>
+<li>los archivos que aparecen en el Explorador.</li>
+</ol>
+<p>Desde el <strong>Explorador</strong>, podrá navegar por las carpetas, los scripts, los datos, los resultados y las imágenes del proyecto.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="2_explorador.png" class="img-fluid figure-img"></p>
+<figcaption>Explorador de Positron</figcaption>
+</figure>
+</div>
+</section>
+<section id="script" class="level2">
+<h2 class="anchored" data-anchor-id="script">Script</h2>
+<p>En Positron, el script funciona de manera similar a RStudio. Un script es un archivo <code>.R</code> que conserva la sintaxis del análisis. Allí puede guardar, corregir y volver a ejecutar sus instrucciones cuando sea necesario. El script mantiene un registro organizado del trabajo realizado, mientras que la <strong>Consola</strong> ejecuta el código.</p>
+<section id="abrir-un-script-en-positron" class="level3">
+<h3 class="anchored" data-anchor-id="abrir-un-script-en-positron">Abrir un script en Positron</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="4_abrir_file.png" class="img-fluid figure-img"></p>
+<figcaption>Abrir un script en Positron</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>El recorrido del trabajo y del código
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Antes de comenzar el análisis, debe abrir la carpeta que contiene los archivos del proyecto y seleccionar el script en el que trabajará. El recorrido básico es el siguiente:</p>
+<ol type="1">
+<li>Seleccione y abra la <strong>carpeta de trabajo</strong>, donde se encuentran los scripts, datos y resultados.</li>
+<li>Abra o cree un <strong>script de R</strong> con la extensión <code>.R</code>.</li>
+<li>Escriba y guarde el código en el <strong>Editor</strong>.</li>
+<li>Ejecute las instrucciones para que R las procese en la <strong>Consola</strong>.</li>
+<li>Los objetos creados, como bases de datos y variables, aparecerán en <strong>Variables</strong>.</li>
+<li>Los gráficos generados aparecerán en <strong>Gráficos</strong>.</li>
+</ol>
+<p>De esta manera, la carpeta organiza el proyecto, el script conserva el código, la Consola lo ejecuta y los demás paneles muestran los resultados.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="para-cerrar-la-carpeta-de-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="para-cerrar-la-carpeta-de-trabajo">Para cerrar la carpeta de trabajo…</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="3_close.png" class="img-fluid figure-img"></p>
+<figcaption>Cerrar carpeta de trabajo en Positron</figcaption>
+</figure>
+</div>
+</section>
+<section id="cápsula-introducción-a-positron" class="level2">
+<h2 class="anchored" data-anchor-id="cápsula-introducción-a-positron">Cápsula: Introducción a Positron</h2>
+<p>Como complemento a este práctico, revise la siguiente cápsula, donde se presenta paso a paso el entorno de trabajo de Positron y su uso con R.</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/APkZlRjBrfI" title="Introducción a Positron" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<section id="código-utilizado-en-la-cápsula" class="level3">
+<h3 class="anchored">Código utilizado en la cápsula</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Ver código completo de la cápsula">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Ver código completo de la cápsula
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar los datos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Input/WID_Data_09082026-200910.csv"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">";"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Limpiar nombres de países</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>Country <span class="ot">&lt;-</span> <span class="fu">trimws</span>(datos<span class="sc">$</span>Country)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar algunos países</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>comparacion <span class="ot">&lt;-</span> <span class="fu">subset</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  datos,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Chile"</span>, <span class="st">"Brazil"</span>, <span class="st">"USA"</span>, <span class="st">"Sweden"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>comparacion</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir a porcentaje</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>comparacion<span class="sc">$</span>Porcentaje <span class="ot">&lt;-</span> comparacion<span class="sc">$</span>Value <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>comparacion</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una tabla simple</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>tabla <span class="ot">&lt;-</span> comparacion[, <span class="fu">c</span>(<span class="st">"Country"</span>, <span class="st">"Porcentaje"</span>)]</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver tabla</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>tabla</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear gráfico</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  comparacion<span class="sc">$</span>Porcentaje,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">names.arg =</span> comparacion<span class="sc">$</span>Country,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Porcentaje del ingreso"</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Ingreso 10%"</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
 
 
 <div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
@@ -191,12 +484,14 @@ ul.task-list li input[type="checkbox"] {
 <!-- Sistema de comentarios Giscus -->
 <section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
   <div class="comments-heading">
-    <h2 class="anchored">Preguntas, dudas y comentarios</h2>
+    <h2 class="anchored" data-anchor-id="código-utilizado-en-la-cápsula">Preguntas, dudas y comentarios</h2>
     <p class="text-muted small">
       El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
     </p>
   </div>
   <div class="giscus"></div>
+</section>
+</section>
 </section>
 </div>
 <div class="no-row-height column-margin column-container page-columns page-full"><div class="page-columns page-full">

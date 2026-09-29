@@ -39,12 +39,19 @@ def parse_class_qmd(qmd_path: Path) -> dict:
         print(f"[WARN] Error parseando YAML en {qmd_path}: {e}", file=sys.stderr)
         return {}
 
-    clase_num = str(data.get("clase", "")).zfill(2)
-    if not clase_num or clase_num == "00" and "clase" not in data:
-        # Extraer del nombre de carpeta si no está explícito
-        folder_match = re.search(r"clase_(\d+)", str(qmd_path))
-        if folder_match:
-            clase_num = folder_match.group(1).zfill(2)
+    folder_name = qmd_path.parent.name
+    clase_val = data.get("clase", "")
+    folder_match = re.search(r"clase_(\d+)", folder_name)
+
+    if folder_match:
+        clase_num = folder_match.group(1).zfill(2)
+        is_numbered = True
+    elif str(clase_val).isdigit():
+        clase_num = str(clase_val).zfill(2)
+        is_numbered = True
+    else:
+        clase_num = str(clase_val) if clase_val else folder_name
+        is_numbered = False
 
     title = data.get("title", f"Clase {clase_num}")
     # Limpiar título para el menú si tiene formato 'Clase XX | Título'
@@ -56,7 +63,16 @@ def parse_class_qmd(qmd_path: Path) -> dict:
         if parts[0].strip().lower().startswith("clase"):
             short_title = parts[1].strip()
 
-    orden = data.get("orden", int(clase_num) if clase_num.isdigit() else 99)
+    if is_numbered:
+        menu_label = f"Clase {clase_num} – {short_title}"
+    else:
+        menu_label = short_title
+
+    try:
+        orden = float(data.get("orden", int(clase_num) if is_numbered and clase_num.isdigit() else 99))
+    except (ValueError, TypeError):
+        orden = 99.0
+
     unidad = data.get("unidad", "")
     unidad_titulo = data.get("unidad-titulo", "")
     
@@ -88,13 +104,13 @@ def parse_class_qmd(qmd_path: Path) -> dict:
     elif "draft" in data:
         publicada = not bool(data["draft"])
     else:
-        publicada = (int(clase_num) <= 4) if clase_num.isdigit() else False
+        publicada = (int(clase_num) <= 4) if (is_numbered and clase_num.isdigit()) else False
 
     pdf = data.get("pdf", f"clase_{clase_num}.pdf" if (qmd_path.parent / f"clase_{clase_num}.pdf").exists() else None)
     pptx = data.get("pptx", f"clase_{clase_num}.pptx" if (qmd_path.parent / f"clase_{clase_num}.pptx").exists() else None)
 
     # Validar materiales si está publicada
-    if publicada:
+    if publicada and is_numbered:
         has_pdf = (qmd_path.parent / (pdf or "")).is_file() if pdf else False
         has_pptx = (qmd_path.parent / (pptx or "")).is_file() if pptx else False
         if not has_pdf and not has_pptx:
@@ -102,10 +118,13 @@ def parse_class_qmd(qmd_path: Path) -> dict:
 
     return {
         "path": qmd_path,
+        "folder": folder_name,
         "rel_path": qmd_path.relative_to(WORKSPACE_ROOT).as_posix(),
         "clase": clase_num,
+        "is_numbered": is_numbered,
         "title": title,
         "short_title": short_title,
+        "menu_label": menu_label,
         "orden": orden,
         "unidad": unidad,
         "unidad_titulo": unidad_titulo,
@@ -119,7 +138,7 @@ def parse_class_qmd(qmd_path: Path) -> dict:
 
 def get_all_classes() -> list:
     clases_dir = WORKSPACE_ROOT / "clases"
-    qmd_files = sorted(clases_dir.glob("clase_*/index.qmd"))
+    qmd_files = [p for p in sorted(clases_dir.glob("*/index.qmd")) if not p.parent.name.startswith("_")]
     classes = []
     for qmd in qmd_files:
         info = parse_class_qmd(qmd)
@@ -189,9 +208,9 @@ def generate_sidebar_qmd(classes: list) -> str:
         lines.append("")
         lines.append(f'      <div class="collapse" id="{uid}">')
         for c in published_in_unit:
-            c_num = c["clase"]
-            c_title = c["short_title"]
-            lines.append(f'        <a class="clase-link" href="../clase_{c_num}/index.html" data-clase-link="clase_{c_num}">Clase {c_num} – {c_title}</a>')
+            folder = c["folder"]
+            menu_label = c["menu_label"]
+            lines.append(f'        <a class="clase-link" href="../{folder}/index.html" data-clase-link="{folder}">{menu_label}</a>')
         lines.append('      </div>')
 
     lines.extend([
@@ -300,7 +319,7 @@ def main():
     # 4. Limpiar directorios en docs/ para clases ocultas
     import shutil
     for c in hidden:
-        hidden_doc = WORKSPACE_ROOT / "docs" / "clases" / f"clase_{c['clase']}"
+        hidden_doc = WORKSPACE_ROOT / "docs" / "clases" / c['folder']
         if hidden_doc.exists():
             shutil.rmtree(hidden_doc, ignore_errors=True)
             print(f"[OK] Limpiado directorio de clase oculta: {hidden_doc.relative_to(WORKSPACE_ROOT)}")

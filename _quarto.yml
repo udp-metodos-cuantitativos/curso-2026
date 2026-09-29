@@ -8,6 +8,9 @@ project:
     - assets/**
     - clases/**/*.pptx
     - clases/**/*.pdf
+    - clases/**/*.png
+    - clases/**/*.jpg
+    - clases/**/*.jpeg
     - resources/programa/**/*.pdf
     - resources/biblio/**/*.pdf
   render:
@@ -27,6 +30,7 @@ project:
     - clases/clase_03/index.qmd
     - clases/clase_04/index.qmd
     - clases/clase_05/index.qmd
+    - clases/positron/index.qmd
     - clases/clase_06/index.qmd
     # Clases preparadas / ocultas (se publican con 'publicada: true'):
     # - clases/clase_07/index.qmd (Medidas de posición y forma)

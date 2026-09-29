@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/ultima-informacion.html",
+    "listing": "/index.html",
     "items": [
       "/ultima-informacion/2026-09-29-socialR.html",
       "/ultima-informacion/2026-09-21-positron.html",
@@ -16,11 +16,12 @@
       "/clases/clase_03/index.html",
       "/clases/clase_04/index.html",
       "/clases/clase_05/index.html",
+      "/clases/positron/index.html",
       "/clases/clase_06/index.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/ultima-informacion.html",
     "items": [
       "/ultima-informacion/2026-09-29-socialR.html",
       "/ultima-informacion/2026-09-21-positron.html",
