@@ -1,5 +1,5 @@
 ---
-title: "Estadística Descriptiva y Análisis descriptivo univariado"
+title: "Estadística Descriptiva: Distribución "
 clase: "05"
 unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"

@@ -27,8 +27,8 @@ project:
     - clases/clase_03/index.qmd
     - clases/clase_04/index.qmd
     - clases/clase_05/index.qmd
+    - clases/clase_06/index.qmd
     # Clases preparadas / ocultas (se publican con 'publicada: true'):
-    # - clases/clase_06/index.qmd (Medidas de tendencia central y dispersión)
     # - clases/clase_07/index.qmd (Medidas de posición y forma)
     # - clases/clase_08/index.qmd (Análisis bivariado y tablas de contingencia)
     # - clases/clase_09/index.qmd (Indicadores, índices y escalas)

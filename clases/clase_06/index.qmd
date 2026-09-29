@@ -1,47 +1,20 @@
 ---
-title: "Medidas de tendencia central y dispersión"
+title: "Frecuencia y dispersión"
 clase: "06"
 unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"
 orden: 6
 date: 2026-10-06
-description: "Cálculo, propiedades e interpretación sustantiva de la media, mediana, moda, varianza, desviación estándar y rango en R (Laboratorio 3)."
-publicada: false
-draft: true
+description: "Análisis univariado: Medidas de posición y dispersión"
+pdf: "clase_06.pdf"
+pptx: "clase_06.pptx"
+publicada: true
+draft: false
 ---
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
 
-En esta clase abordamos los estadísticos descriptivos fundamentales para resumir variables cuantitativas continuas y discretas.
-
-::: {.clase-objetivos}
-
-::: {.objetivo-card}
-**Tendencia central**
-
-Calcular e interpretar media, mediana y moda, reconociendo cuándo utilizar cada medida.
-:::
-
-::: {.objetivo-card}
-**Dispersión**
-
-Comprender la variabilidad de los datos mediante la varianza, desviación estándar y rango.
-:::
-
-::: {.objetivo-card}
-**Sensibilidad a extremos**
-
-Evaluar el impacto de valores atípicos (*outliers*) sobre el promedio frente a la robustez de la mediana.
-:::
-
-::: {.objetivo-card}
-**Laboratorio 3 en R**
-
-Cálculo de estadísticos con mean(), median(), sd(), var() y resúmenes completos con psych::describe() y dplyr::summarise().
-:::
-
-:::
 
 ::: {.callout-note}
 ### Material de la sesión por publicar

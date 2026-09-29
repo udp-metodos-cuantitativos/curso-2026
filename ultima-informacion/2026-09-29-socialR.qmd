@@ -1,0 +1,75 @@
+---
+title: "Social R: practica R"
+date: "2026-09-22"
+description: "Practica R de manera interactiva y progresiva con Social R para prepararte para la segunda evaluación del curso."
+categories: [info, recursos]
+image: "../resources/post/r_social.png"
+image-alt: "Social R: introducción interactiva a R para Ciencias Sociales"
+toc: false
+---
+
+<style>
+.platform-access {
+  margin: 1.75rem 0;
+  text-align: center;
+}
+
+.course-resource-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--bs-primary, #1f5f8b);
+  color: #ffffff !important;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none !important;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.course-resource-button:hover {
+  filter: brightness(0.92);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.course-resource-button:focus-visible {
+  outline: 3px solid var(--bs-primary, #1f5f8b);
+  outline-offset: 3px;
+}
+
+@media (max-width: 576px) {
+  .course-resource-button {
+    width: 100%;
+  }
+}
+</style>
+
+![Social R: introducción interactiva a R para Ciencias Sociales](../resources/post/r_social.png){.news-main-image}
+
+Ya se encuentra disponible **Social R**, una plataforma interactiva para practicar R con datos de ciencias sociales directamente desde el navegador.
+
+La plataforma está pensada especialmente para apoyar la **preparación de la segunda evaluación**, que incluirá trabajo en R.
+
+Los ejercicios están organizados de manera progresiva para que puedan avanzar **a su propio ritmo**, practicar los comandos trabajados en el curso y desarrollar gradualmente las habilidades necesarias para trabajar con datos en R.
+
+No es necesario instalar nada: pueden escribir código, ejecutarlo y resolver los ejercicios directamente en la plataforma.
+
+<div class="platform-access">
+
+  <a href="https://karavena.github.io/social-r/"
+     class="course-resource-button"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Acceder a Social R en una nueva pestaña">
+    Practicar en Social R →
+  </a>
+
+</div>
+
+La recomendación es **ir avanzando durante estas semanas**, en lugar de realizar todos los ejercicios justo antes de la evaluación.
+
+Su progreso se guarda en el navegador, por lo que pueden continuar desde donde quedaron cada vez que vuelvan a ingresar.

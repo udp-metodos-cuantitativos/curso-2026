@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-08-25">
-<meta name="description" content="Problematización, formulación de preguntas, objetivos, hipótesis cuantitativas y diseño de matrices de datos con libro de códigos.">
+<meta name="dcterms.date" content="2026-09-22">
+<meta name="description" content="Practica R de manera interactiva y progresiva con Social R para prepararte para la segunda evaluación del curso.">
 
-<title>Problema de investigación y matriz de datos – Métodos Cuantitativos</title>
+<title>Social R: practica R – Métodos Cuantitativos</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,24 +29,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../resources/imagenes/favicon.svg" rel="icon" type="image/svg+xml">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../resources/imagenes/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,10 +80,10 @@ ul.task-list li input[type="checkbox"] {
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;display=block" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed clases-page clase-page quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -96,23 +96,23 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../clases/clase_00/index.html"> 
+    <a class="nav-link" href="../clases/clase_00/index.html"> 
 <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../curso.html"> 
+    <a class="nav-link" href="../curso.html"> 
 <span class="menu-text">Curso</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../bibliografia.html"> 
+    <a class="nav-link" href="../bibliografia.html"> 
 <span class="menu-text">Bibliografía</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Recursos.html"> 
+    <a class="nav-link" href="../Recursos.html"> 
 <span class="menu-text">Recursos</span></a>
   </li>  
 </ul>
@@ -124,33 +124,36 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    
 <!-- main -->
-<main class="content page-columns page-full column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Problema de investigación y matriz de datos</h1>
-</div>
+<h1 class="title">Social R: practica R</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">info</div>
+    <div class="quarto-category">recursos</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
-    Problematización, formulación de preguntas, objetivos, hipótesis cuantitativas y diseño de matrices de datos con libro de códigos.
+    Practica R de manera interactiva y progresiva con Social R para prepararte para la segunda evaluación del curso.
   </div>
 </div>
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 25, 2026</p>
+      <p class="date">September 22, 2026</p>
     </div>
   </div>
   
@@ -162,146 +165,62 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="catedra" class="columns page-columns page-full">
-<div class="column clase-main">
-<section class="clase-hero">
-  <p class="clase-kicker">Clase 02 · Unidades I–II</p>
-  <h1>Problema de investigación y matriz de datos</h1>
-  <p>Problematización, formulación de preguntas, objetivos, hipótesis cuantitativas y diseño de matrices de datos con libro de códigos.</p>
-</section>
-<div class="clase-card clase-card-presentation">
-  <div class="class-presentation-viewer" id="viewer-clase-02">
-    <iframe src="clase_02.pdf#view=FitH" title="Presentación Clase 02" allowfullscreen=""></iframe>
-  </div>
-  <div class="clase-presentacion-actions">
-    <a href="clase_02.pdf" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>
-    <a href="clase_02.pptx" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>
-    <button type="button" class="btn btn-outline-secondary btn-presentation-fullscreen" id="btn-fullscreen-02" data-action="fullscreen" data-target="#viewer-clase-02" data-fallback-url="clase_02.pdf"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
-  </div>
+<style>
+.platform-access {
+  margin: 1.75rem 0;
+  text-align: center;
+}
+
+.course-resource-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--bs-primary, #1f5f8b);
+  color: #ffffff !important;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none !important;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.course-resource-button:hover {
+  filter: brightness(0.92);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.course-resource-button:focus-visible {
+  outline: 3px solid var(--bs-primary, #1f5f8b);
+  outline-offset: 3px;
+}
+
+@media (max-width: 576px) {
+  .course-resource-button {
+    width: 100%;
+  }
+}
+</style>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../resources/post/r_social.png" class="news-main-image img-fluid figure-img"></p>
+<figcaption>Social R: introducción interactiva a R para Ciencias Sociales</figcaption>
+</figure>
 </div>
-<section id="contenidos-de-la-sesión" class="level2 clase-card clase-intro">
-<h2 class="anchored" data-anchor-id="contenidos-de-la-sesión">Contenidos de la sesión</h2>
-<p>En esta clase abordamos cómo estructurar un problema de investigación cuantitativa coherente y cómo traducir las variables e instrumentos a una matriz de datos ordenada.</p>
-<div class="clase-objetivos">
-<div class="objetivo-card">
-<p><strong>Problematización</strong></p>
-<p>Definir preguntas de investigación relevantes y delimitadas empíricamente.</p>
+<p>Ya se encuentra disponible <strong>Social R</strong>, una plataforma interactiva para practicar R con datos de ciencias sociales directamente desde el navegador.</p>
+<p>La plataforma está pensada especialmente para apoyar la <strong>preparación de la segunda evaluación</strong>, que incluirá trabajo en R.</p>
+<p>Los ejercicios están organizados de manera progresiva para que puedan avanzar <strong>a su propio ritmo</strong>, practicar los comandos trabajados en el curso y desarrollar gradualmente las habilidades necesarias para trabajar con datos en R.</p>
+<p>No es necesario instalar nada: pueden escribir código, ejecutarlo y resolver los ejercicios directamente en la plataforma.</p>
+<div class="platform-access">
+<p><a href="https://karavena.github.io/social-r/" class="course-resource-button" target="_blank" rel="noopener noreferrer" aria-label="Acceder a Social R en una nueva pestaña"> Practicar en Social R → </a></p>
 </div>
-<div class="objetivo-card">
-<p><strong>Objetivos e hipótesis</strong></p>
-<p>Redactar objetivos generales y específicos, y formular hipótesis estadísticas contrastables.</p>
-</div>
-<div class="objetivo-card">
-<p><strong>Matriz de datos</strong></p>
-<p>Comprender la estructura rectangular (filas = casos, columnas = variables) de una matriz de datos.</p>
-</div>
-<div class="objetivo-card">
-<p><strong>Libro de códigos</strong></p>
-<p>Elaborar el libro de códigos (<em>codebook</em>) que documenta nombres, etiquetas y valores de las variables.</p>
-</div>
-</div>
-</section>
+<p>La recomendación es <strong>ir avanzando durante estas semanas</strong>, en lugar de realizar todos los ejercicios justo antes de la evaluación.</p>
+<p>Su progreso se guarda en el navegador, por lo que pueden continuar desde donde quedaron cada vez que vuelvan a ingresar.</p>
 
 
-<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
-
-</div>
-<!-- Sistema de comentarios Giscus -->
-<section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
-  <div class="comments-heading">
-    <h2 class="anchored">Preguntas, dudas y comentarios</h2>
-    <p class="text-muted small">
-      El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
-    </p>
-  </div>
-  <div class="giscus"></div>
-</section>
-</div>
-<div class="no-row-height column-margin column-container page-columns page-full"><div class="page-columns page-full">
-<!--
-  ====================================================================
-  ESTE ARCHIVO SE GENERA AUTOMÁTICAMENTE MEDIANTE scripts/build_classes.py
-  NO EDITAR MANUALMENTE.
-  Para agregar o publicar clases, edita el frontmatter de cada
-  archivo en clases/clase_XX/index.qmd y ejecuta quarto render.
-  ====================================================================
--->
-<div class="clases-sidebar-wrapper page-columns page-full">
-  <button class="clases-sidebar-toggle" type="button" aria-label="Mostrar u ocultar menú de clases">
-    <i class="bi bi-chevron-right"></i>
-  </button>
-
-  <aside class="clases-sidebar">
-    <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">
-
-      <!-- Inicio -->
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad0" aria-expanded="false" aria-controls="unidad0">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Inicio</span>
-            <span class="unit-title">Presentación</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad0">
-        <a class="clase-link" href="../clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación y Fundamentos de la Investigación Cuantitativa</a>
-      </div>
-
-      <!-- Unidad I -->
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad1" aria-expanded="false" aria-controls="unidad1">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad I</span>
-            <span class="unit-title">Investigación Cuantitativa</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad1">
-        <a class="clase-link" href="../clase_01/index.html" data-clase-link="clase_01">Clase 01 – Investigación cuantitativa, variables y operacionalización</a>
-        <a class="clase-link" href="../clase_02/index.html" data-clase-link="clase_02">Clase 02 – Problema de investigación y matriz de datos</a>
-      </div>
-
-      <!-- Unidad II -->
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad2" aria-expanded="false" aria-controls="unidad2">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad II</span>
-            <span class="unit-title">Estadística en Investigación</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad2">
-        <a class="clase-link" href="../clase_03/index.html" data-clase-link="clase_03">Clase 03 – Población, muestra y recolección de datos</a>
-      </div>
-
-      <!-- Unidad III -->
-      <div class="sidebar-unit-header">
-        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad3" aria-expanded="false" aria-controls="unidad3">
-          <div class="unit-label-wrap">
-            <span class="unit-label">Unidad III</span>
-            <span class="unit-title">Estadística Univariada</span>
-          </div>
-          <i class="bi bi-chevron-down"></i>
-        </button>
-      </div>
-
-      <div class="collapse" id="unidad3">
-        <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Noción de distribución y análisis univariado</a>
-        <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Descriptiva: Distribución </a>
-        <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Frecuencia y dispersión</a>
-      </div>
-
-      <!-- Unidad IV (Relaciones Bivariadas) - Sin clases publicadas aún -->
-    </div>
-  </aside>
-</div>
-</div></div></div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -738,8 +657,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
   </div>
 </footer>
-<script src="../../assets/js/clases-menu.js"></script>
-<script src="../../assets/js/clase-viewer.js"></script>
 
 
 
