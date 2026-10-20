@@ -1,13 +1,14 @@
 ---
 title: "Análisis bivariado y tablas de contingencia"
 clase: "08"
-unidad: "Unidad IV"
-unidad-titulo: "Relaciones Bivariadas"
+unidad: "Unidad III"
+unidad-titulo: "Estadística Univariada"
 orden: 8
 date: 2026-10-20
 description: "Estudio de la relación entre dos variables categóricas, tablas cruzadas de doble entrada y cálculo de porcentajes por fila y columna (Laboratorio 5)."
-publicada: false
-draft: true
+pptx: "Clase_08.pptx"
+publicada: true
+draft: false
 ---
 ::: {.clase-card .clase-intro}
 
@@ -44,8 +45,9 @@ Tabulación cruzada con tabyl (janitor), tablas formateadas con sjPlot y visuali
 :::
 
 ::: {.callout-note}
-### Material de la sesión por publicar
-Las diapositivas y el script de R del Laboratorio 5 estarán disponibles en esta sección.
+### Material de la sesión
+- [Descargar presentación (.pptx)](Clase_08.pptx)
+- El script de R del Laboratorio 5 estará disponible en esta sección.
 :::
 
 :::

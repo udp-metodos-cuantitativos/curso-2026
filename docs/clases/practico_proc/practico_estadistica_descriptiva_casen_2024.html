@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-10-20">
+<meta name="description" content="Práctico integral de las clases 04–08: procesamiento, distribuciones, frecuencias, tendencia central, dispersión, posición y forma con CASEN 2024.">
+
+<title>Estadística descriptiva con R y CASEN 2024 – Métodos Cuantitativos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../resources/imagenes/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-2c169b83e1fc2996b25bcc8774810429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;display=block" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed clases-page clase-page quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../clases/clase_00/index.html"> 
+<span class="menu-text">Clases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../curso.html"> 
+<span class="menu-text">Curso</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bibliografia.html"> 
+<span class="menu-text">Bibliografía</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../Recursos.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/udp-metodos-cuantitativos/curso-2026" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Práctico — Estadística descriptiva con R</h1>
+</div>
+
+<div>
+  <div class="description">
+    Práctico integral de las clases 04–08: procesamiento, distribuciones, frecuencias, tendencia central, dispersión, posición y forma con CASEN 2024.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 20, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="catedra" class="columns page-columns page-full">
+<div class="column clase-main">
+<section class="clase-hero">
+  <p class="clase-kicker">Taller de Software · Unidad III</p>
+  <h1>Estadística descriptiva con R y CASEN 2024</h1>
+  <p>Práctico integral de las clases 04–08: procesamiento, distribuciones, frecuencias, tendencia central, dispersión, posición y forma con CASEN 2024.</p>
+</section>
+<style>
+/* Estilos de esta página, ajustados al ancho del tema Quarto del curso. */
+#quarto-content main.content .casen-taller {
+  --casen-vino: #79262a;
+  --casen-texto: #292628;
+  --casen-secundario: #51484a;
+  --casen-borde: #d2c6c3;
+  width: 100%;
+  max-width: none; /* hereda la anchura del contenido en Introducción a Positron */
+  min-width: 0;
+  color: var(--casen-texto);
+  font-size: 1.055rem;
+  line-height: 1.68;
+}
+#quarto-content main.content .casen-taller p,
+#quarto-content main.content .casen-taller li,
+#quarto-content main.content .casen-taller td {
+  color: var(--casen-texto);
+  text-align: left;
+  hyphens: auto;
+}
+#quarto-content main.content .casen-taller h2,
+#quarto-content main.content .casen-taller h3,
+#quarto-content main.content .casen-taller h4 {
+  color: var(--casen-vino);
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: -.008em;
+  scroll-margin-top: 90px;
+}
+#quarto-content main.content .casen-taller h2 {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--casen-borde);
+  padding-bottom: .38em;
+}
+#quarto-content main.content .casen-taller h3 { margin-top: 1.48rem; }
+#quarto-content main.content .casen-taller .casen-lead {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  font-weight: 400;
+  color: #514346;
+  margin-bottom: 1.15rem;
+}
+#quarto-content main.content .casen-taller .casen-meta {
+  font-size: .91rem;
+  color: var(--casen-secundario);
+}
+#quarto-content main.content .casen-taller a:not(.btn) {
+  color: #702127;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.3px;
+}
+#quarto-content main.content .casen-taller a:not(.btn):hover,
+#quarto-content main.content .casen-taller a:not(.btn):focus-visible {
+  color: #481015;
+  text-decoration-thickness: 2px;
+}
+#quarto-content main.content .casen-taller a:focus-visible {
+  outline: 3px solid #126b9e;
+  outline-offset: 3px;
+}
+#quarto-content main.content .casen-taller .btn-outline-primary {
+  color: #681e23; border-color: #681e23;
+  background-color: transparent; font-weight: 600;
+}
+#quarto-content main.content .casen-taller .btn-outline-primary:hover,
+#quarto-content main.content .casen-taller .btn-outline-primary:focus-visible {
+  background: #681e23; color: white;
+}
+#quarto-content main.content .casen-taller .btn-outline-secondary {
+  color: #343033; border-color: #777074; background: transparent;
+}
+#quarto-content main.content .casen-taller .btn-outline-secondary:hover,
+#quarto-content main.content .casen-taller .btn-outline-secondary:focus-visible {
+  background: #343033; color: white;
+}
+#quarto-content main.content .casen-taller .casen-consigna {
+  background: #f9f5f2;
+  border-left: 3px solid var(--casen-vino);
+  padding: .75rem 1.05rem;
+  margin: 1.15rem 0;
+}
+#quarto-content main.content .casen-taller .casen-consigna p:last-child { margin-bottom: 0; }
+#quarto-content main.content .casen-taller .callout {
+  border-width: 1px 1px 1px 4px;
+  background: #f9f8f6;
+  margin: 1.12rem 0;
+}
+#quarto-content main.content .casen-taller .callout .callout-title-container,
+#quarto-content main.content .casen-taller .callout p,
+#quarto-content main.content .casen-taller .callout li { color: #2c282a; }
+#quarto-content main.content .casen-taller div.sourceCode,
+#quarto-content main.content .casen-taller pre {
+  background: #f8f7f6;
+  border: 1px solid #cfc7c4;
+  border-radius: .35rem;
+  overflow-x: auto;
+}
+#quarto-content main.content .casen-taller pre code {
+  font-size: .91rem; line-height: 1.65; color: #242326;
+}
+#quarto-content main.content .casen-taller :not(pre) > code {
+  color: #651d25; background: #f3e9e8;
+  border-radius: .2rem; padding: .05rem .2rem;
+}
+#quarto-content main.content .casen-taller table {
+  width: 100%; margin: .5rem 0 .85rem;
+  font-size: .92rem; border-collapse: collapse;
+}
+#quarto-content main.content .casen-taller th {
+  background: #e9e2df; color: #302629;
+  border-bottom: 2px solid #988986;
+}
+#quarto-content main.content .casen-taller th,
+#quarto-content main.content .casen-taller td {
+  padding: .5rem .6rem;
+  border-bottom: 1px solid #d6ceca;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo {
+  margin: .9rem 0 .75rem;
+  align-items: start;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo > div {min-width: 0;}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo strong.casen-subtitulo {
+  font-size: .88rem; font-weight: 700; color: #514347;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo pre code {
+  font-size: .89rem; line-height: 1.58;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo figure,
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo img {
+  width: 100%; max-width: 100%; height: auto; display: block;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo .cell-output-display {max-width: 100%;}
+#quarto-content main.content .casen-taller .casen-resultado-nota {
+  font-size: .89rem; color: #5c5052; margin-top: .5rem;
+}
+/* Cuando las columnas quedan estrechas, el código y la salida se apilan. */
+@media (min-width: 992px) and (max-width: 1240px) {
+  #quarto-content main.content .casen-taller .casen-ejemplo-paralelo > [class*="col-lg-"] {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 680px) {
+  #quarto-content main.content .casen-taller {font-size: 1rem; line-height: 1.62;}
+  #quarto-content main.content .casen-taller .btn {width: 100%; margin-bottom: .35rem;}
+  #quarto-content main.content .casen-taller pre code {font-size: .83rem;}
+}
+</style>
+<div class="casen-taller">
+<p class="casen-lead">
+En este práctico usaremos R y una selección de datos reales de CASEN 2024. Aprenderemos a cargar la base, explorar variables, calcular medidas descriptivas y representar distribuciones mediante tablas y gráficos.
+</p>
+<div class="d-flex flex-wrap gap-2 justify-content-end align-items-center mb-3">
+<p><a href="../../scripts/casen_2024_udp.RData" class="btn btn-outline-primary btn-sm" download="casen_2024_udp.RData">Descargar base CASEN 2024 (.RData)</a> <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2024" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener">Libro de códigos y ficha técnica oficial</a></p>
+</div>
+<p class="casen-meta">
+Base didáctica: seis variables de CASEN 2024 y 218.367 registros. El archivo de descarga es el mismo utilizado para generar los resultados de esta página. Los análisis son descriptivos y no ponderados.
+</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>¿Qué aprenderemos?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al finalizar podrá <strong>cargar y explorar datos</strong>, construir <strong>tablas de frecuencias</strong>, calcular medidas de <strong>tendencia central, dispersión y posición</strong>, e interpretar <strong>histogramas y diagramas de caja</strong>. También reconocerá la asimetría, la curtosis y los límites de los resultados obtenidos.</p>
+</div>
+</div>
+<section id="sec-carga" class="level2">
+<h2 class="anchored" data-anchor-id="sec-carga">1. Descarguemos y carguemos los datos</h2>
+<ol type="1">
+<li>En su computador, cree una carpeta llamada <code>practico_estadistica</code> y ábrala como proyecto o carpeta de trabajo en Positron o RStudio.</li>
+<li>Dentro de ella, cree la subcarpeta <code>datos</code>.</li>
+<li>Use el botón <strong>Descargar base CASEN 2024</strong> de esta página y guarde <code>casen_2024_udp.RData</code> dentro de <code>datos</code>.</li>
+<li>Abra un script nuevo de R y guárdelo como <code>practico.R</code> en <code>practico_estadistica</code>.</li>
+<li>Copie los bloques de <strong>código en R</strong> a ese script y ejecútelos <strong>en el orden en que aparecen</strong>. Los comentarios <code>#</code> explican cada instrucción; R no los ejecuta.</li>
+</ol>
+<pre class="text"><code>practico_estadistica/
+├── datos/
+│   └── casen_2024_udp.RData
+└── practico.R</code></pre>
+<section id="carguemos-el-archivo-en-r" class="level3">
+<h3 class="anchored" data-anchor-id="carguemos-el-archivo-en-r">Carguemos el archivo en R</h3>
+<p>En Positron o RStudio, coloque el cursor sobre una línea del script y presione <code>Ctrl + Enter</code> para ejecutarla. Los resultados numéricos aparecerán en la consola; los gráficos, en el panel de visualización.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>objetos_cargados <span class="ot">&lt;-</span> <span class="fu">load</span>(<span class="st">"datos/casen_2024_udp.RData"</span>)  <span class="co"># Cargamos el archivo.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>objetos_cargados  <span class="co"># Vemos el nombre del objeto cargado.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()              <span class="co"># Listamos los objetos disponibles en R.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compruebe el resultado:</strong> <code>objetos_cargados</code> debe mostrar <code>sub_casen_2024</code>. El archivo contiene 218.367 filas y seis columnas. El símbolo <code>&lt;-</code> asigna el resultado de una operación a un objeto que podrá reutilizar después.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos_originales <span class="ot">&lt;-</span> sub_casen_2024  <span class="co"># Asignamos un nombre corto a la base.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(datos_originales)           <span class="co"># Revisamos el tipo de objeto.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos_originales)             <span class="co"># Vemos cuántas filas y columnas tiene.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Si R no encuentra el archivo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si R muestra <strong>«No such file or directory»</strong>, compruebe que el archivo se llame <code>casen_2024_udp.RData</code> y esté dentro de la carpeta <code>datos</code>. Ejecute <code>getwd()</code> para ver desde qué carpeta busca R. Si aparece <strong>«object not found»</strong>, revise que haya ejecutado los bloques anteriores en orden.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-matriz" class="level2">
+<h2 class="anchored" data-anchor-id="sec-matriz">2. Reconozcamos una matriz de datos</h2>
+<p>En una matriz de datos, cada <strong>fila</strong> corresponde a un caso (aquí, una persona registrada) y cada <strong>columna</strong> a una variable, como edad o sexo. Ejecute los siguientes comandos para reconocer ambas dimensiones. El <strong>libro de códigos</strong> permite saber qué significa cada variable y cómo se codificaron sus respuestas.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_originales)   <span class="co"># Mostramos las primeras filas.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos_originales)  <span class="co"># Consultamos los nombres de las variables.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_originales)    <span class="co"># Revisamos cómo está guardada cada columna.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="casen-consigna">
+<p><strong>En el chat de Zoom:</strong> indique un ejemplo de variable que aparezca en <code>names(datos_originales)</code> y explique, en una frase, para qué serviría consultar su libro de códigos.</p>
+</div>
+<section id="seleccionemos-una-base-de-trabajo" class="level3">
+<h3 class="anchored" data-anchor-id="seleccionemos-una-base-de-trabajo">Seleccionemos una base de trabajo</h3>
+<p>Trabajaremos principalmente con <strong><code>edad</code> y <code>sexo</code></strong>. La primera expresa años cumplidos; la segunda contiene categorías codificadas. Seleccionaremos estas dos columnas sin modificar la base original. Más adelante usaremos también <code>esc</code> (años de escolaridad).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos_originales[<span class="fu">c</span>(<span class="st">"edad"</span>, <span class="st">"sexo"</span>)]  <span class="co"># Seleccionamos dos columnas.</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)   <span class="co"># Verificamos las dimensiones de la nueva base.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)  <span class="co"># Observamos las primeras filas.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos)   <span class="co"># Revisamos los tipos de las dos variables.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Los corchetes <code>[ ]</code> seleccionan partes de la base; <code>c()</code> reúne los nombres de las columnas elegidas. El símbolo <code>$</code> permite acceder a una variable, por ejemplo <code>datos$edad</code>. <strong>Compruebe:</strong> ¿se mantuvo el número de filas? ¿Cuántas columnas quedan?</p>
+</section>
+<section id="revisemos-la-calidad-de-la-información" class="level3">
+<h3 class="anchored" data-anchor-id="revisemos-la-calidad-de-la-información">Revisemos la calidad de la información</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos<span class="sc">$</span>edad)      <span class="co"># Resumimos las edades observadas.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(datos<span class="sc">$</span>edad))  <span class="co"># Contamos las edades sin dato (NA).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>NA</code> representa un dato faltante. <code>is.na()</code> identifica esos casos y <code>sum()</code> permite contarlos. <strong>Observe:</strong> ¿cuántas edades faltan en esta base? Un valor faltante o extremo no debe eliminarse sin revisar su significado.</p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Muestra no es población
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Un <strong>estadístico</strong> resume los registros analizados; un <strong>parámetro</strong> describe a una población. Aquí calcularemos medidas <strong>sin ponderar</strong> sobre 218.367 registros de CASEN. Aunque provienen de una encuesta real, <strong>no son estimaciones representativas de Chile</strong>: para ello deben considerarse el diseño muestral y los factores de expansión.</p>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Concepto</th>
+<th>Pregunta para aplicar a CASEN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Universo y población</td>
+<td>¿A qué conjunto de personas busca describir el estudio? Consulte la ficha técnica antes de responder.</td>
+</tr>
+<tr class="even">
+<td>Muestra</td>
+<td>¿Quiénes efectivamente respondieron? ¿Por qué una muestra no equivale a toda la población?</td>
+</tr>
+<tr class="odd">
+<td>Parámetro y estadístico</td>
+<td>¿Una media calculada con registros de la base es por sí misma un parámetro poblacional?</td>
+</tr>
+<tr class="even">
+<td>Muestreo probabilístico y no probabilístico</td>
+<td>¿Por qué importa cómo se seleccionan las observaciones?</td>
+</tr>
+<tr class="odd">
+<td>Recolección y codificación</td>
+<td>¿Cómo pasa una respuesta del cuestionario a un código en una columna?</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="procesar-también-es-crear-nuevas-variables" class="level3">
+<h3 class="anchored" data-anchor-id="procesar-también-es-crear-nuevas-variables">Procesar también es crear nuevas variables</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>es_mayor_edad <span class="ot">&lt;-</span> datos<span class="sc">$</span>edad <span class="sc">&gt;=</span> <span class="dv">18</span>      <span class="co"># TRUE si tiene 18 años o más.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos<span class="sc">$</span>es_mayor_edad, <span class="at">useNA =</span> <span class="st">"ifany"</span>)  <span class="co"># Contamos TRUE, FALSE y NA.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compruebe:</strong> ahora <code>datos</code> contiene una columna nueva. <code>TRUE</code> significa «sí cumple» y <code>FALSE</code>, «no cumple». ¿Qué pasaría si la edad de una persona fuera <code>NA</code>?</p>
+</section>
+</section>
+<section id="sec-frecuencias" class="level2">
+<h2 class="anchored" data-anchor-id="sec-frecuencias">3. Exploremos las distribuciones y frecuencias</h2>
+<p>Una <strong>distribución</strong> muestra qué valores o categorías aparecen y con qué frecuencia. Para variables <strong>nominales</strong> es útil una tabla o barras; para variables <strong>ordinales</strong>, también podemos acumular porcentajes respetando el orden; para variables <strong>cuantitativas</strong>, suelen ser útiles histogramas y medidas numéricas.</p>
+<section id="cuántas-respuestas-hay-en-cada-categoría" class="level3">
+<h3 class="anchored" data-anchor-id="cuántas-respuestas-hay-en-cada-categoría">¿Cuántas respuestas hay en cada categoría?</h3>
+<div class="row g-4 casen-ejemplo-paralelo">
+<div class="col-12 col-lg-6">
+<p><strong>Código en R</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tabla_sexo <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">as.numeric</span>(datos<span class="sc">$</span>sexo))  <span class="co"># Contamos cada código de sexo.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tabla_sexo  <span class="co"># Mostramos las frecuencias absolutas.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>porcentaje_valido <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_sexo) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Calculamos porcentajes.</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>porcentaje_valido  <span class="co"># Mostramos los porcentajes válidos.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col-12 col-lg-6">
+<p><strong>Resultado calculado al publicar</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Código</th>
+<th style="text-align: left;">Etiqueta original</th>
+<th style="text-align: right;">Frecuencia</th>
+<th style="text-align: right;">Porcentaje válido</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">Hombre</td>
+<td style="text-align: right;">103616</td>
+<td style="text-align: right;">47.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">Mujer</td>
+<td style="text-align: right;">114751</td>
+<td style="text-align: right;">52.5%</td>
+</tr>
+</tbody>
+</table>
+<p><em>Respuestas sin dato (NA): 0.</em></p>
+</div>
+</div>
+<p>La tabla muestra <strong>frecuencias absolutas</strong> (número de casos) y <strong>porcentajes válidos</strong> (proporción de respuestas disponibles). <code>as.numeric()</code> permite contar los códigos de <code>sexo</code> sin alterar la columna original, que conserva sus etiquetas. Los resultados del sitio se muestran redondeados; la consola de R puede ofrecer más decimales.</p>
+<p><strong>Interprete:</strong> ¿qué categoría reúne más registros? ¿Por qué no tendría sentido calcular la media de los códigos de <code>sexo</code>? Una distribución puede ser unimodal, bimodal o multimodal según cuántos valores compartan la frecuencia máxima.</p>
+</section>
+<section id="por-qué-el-porcentaje-puede-cambiar-si-faltan-respuestas" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-el-porcentaje-puede-cambiar-si-faltan-respuestas">¿Por qué el porcentaje puede cambiar si faltan respuestas?</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>tabla_con_faltantes <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">as.numeric</span>(datos<span class="sc">$</span>sexo), <span class="at">useNA =</span> <span class="st">"ifany"</span>)  <span class="co"># Incluimos NA.</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>porcentaje_total <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_con_faltantes) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Porcentaje sobre el total.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>porcentaje_total  <span class="co"># Observamos el porcentaje obtenido.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(datos<span class="sc">$</span>sexo))  <span class="co"># Contamos las respuestas faltantes.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>En <code>sexo</code> no hay <code>NA</code>, por lo que los porcentajes válidos y totales coinciden. Para ver una <strong>diferencia real de denominadores</strong>, utilice <code>esc</code>, que sí tiene datos faltantes:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tabla_esc <span class="ot">&lt;-</span> <span class="fu">table</span>(datos_originales<span class="sc">$</span>esc)  <span class="co"># Contamos años de escolaridad válidos.</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>porc_esc_valido <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_esc) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Dividimos por respuestas válidas.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>porc_esc_total <span class="ot">&lt;-</span> tabla_esc <span class="sc">/</span> <span class="fu">nrow</span>(datos_originales) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Dividimos por todos.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">round</span>(porc_esc_valido, <span class="dv">1</span>))  <span class="co"># Observamos algunos porcentajes válidos.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">round</span>(porc_esc_total, <span class="dv">1</span>))   <span class="co"># Observamos los mismos valores sobre el total.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compare:</strong> ¿qué porcentajes son mayores? <code>na.rm = TRUE</code>, que aparecerá más adelante, indica a R que omita <code>NA</code> del cálculo, no que los borre de la base. La presencia de faltantes debe interpretarse considerando a quién se aplicó la pregunta.</p>
+</section>
+<section id="de-la-tabla-al-gráfico" class="level3">
+<h3 class="anchored" data-anchor-id="de-la-tabla-al-gráfico">De la tabla al gráfico</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  tabla_sexo,                    <span class="co"># Frecuencias de cada código.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Frecuencias de sexo"</span>,  <span class="co"># Título del gráfico.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Código de respuesta"</span>,  <span class="co"># Eje horizontal.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>,           <span class="co"># Eje vertical.</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#a35a5a"</span>                <span class="co"># Color de las barras.</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Observe:</strong> en un gráfico de barras las categorías aparecen separadas. En un histograma, los intervalos de una variable numérica aparecen contiguos. ¿Por qué no sería apropiado utilizar un histograma para los códigos de <code>sexo</code>?</p>
+</section>
+<section id="hagamos-una-variable-ordinal-y-acumulemos-porcentajes" class="level3">
+<h3 class="anchored" data-anchor-id="hagamos-una-variable-ordinal-y-acumulemos-porcentajes">Hagamos una variable ordinal y acumulemos porcentajes</h3>
+<p>Agruparemos las edades en <strong>tramos ordenados</strong> para practicar porcentajes acumulados. Los tramos son una variable creada para este ejercicio: simplifican las edades exactas y, por tanto, pierden detalle.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>tramo_edad <span class="ot">&lt;-</span> <span class="fu">cut</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                        <span class="co"># Edades que agruparemos.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">18</span>, <span class="dv">30</span>, <span class="dv">60</span>, <span class="cn">Inf</span>),    <span class="co"># Límites de los tramos.</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0–17"</span>, <span class="st">"18–29"</span>, <span class="st">"30–59"</span>, <span class="st">"60 o más"</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">right =</span> <span class="cn">FALSE</span>,                     <span class="co"># Incluimos el límite inferior.</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered_result =</span> <span class="cn">TRUE</span>              <span class="co"># Mantenemos el orden de los tramos.</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>tabla_tramos <span class="ot">&lt;-</span> <span class="fu">table</span>(datos<span class="sc">$</span>tramo_edad)  <span class="co"># Contamos personas por tramo.</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>tabla_tramos                            <span class="co"># Revisamos la tabla.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>porcentaje_tramos <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tabla_tramos) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Porcentajes válidos.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>porcentaje_tramos                                <span class="co"># Vemos cada porcentaje.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>porcentaje_acumulado <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(porcentaje_tramos)  <span class="co"># Sumamos en orden.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>porcentaje_acumulado                             <span class="co"># Vemos la acumulación.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Interprete:</strong> ¿qué proporción de los registros tiene menos de 30 años? Localice la respuesta acumulando los dos primeros tramos. ¿Por qué ese cálculo exige categorías ordenadas?</p>
+</section>
+<section id="distribuciones-empíricas-y-teóricas" class="level3">
+<h3 class="anchored" data-anchor-id="distribuciones-empíricas-y-teóricas">Distribuciones empíricas y teóricas</h3>
+<p>Las frecuencias observadas en CASEN forman una <strong>distribución empírica</strong>. En cambio, la distribución <strong>normal</strong> y otros modelos (exponencial, chi-cuadrado o beta) son distribuciones <strong>teóricas</strong>. Una normal es simétrica y tiene forma de campana; en su forma ideal, media, mediana y moda coinciden. Tener muchos registros no significa que la edad deba seguir una distribución normal.</p>
+</section>
+</section>
+<section id="sec-central" class="level2">
+<h2 class="anchored" data-anchor-id="sec-central">4. Busquemos el centro de una distribución</h2>
+<p>¿Qué número elegiría para resumir las edades de la base? Calcularemos primero dos medidas de centro y compararemos su información.</p>
+<section id="media-y-mediana" class="level3">
+<h3 class="anchored" data-anchor-id="media-y-mediana">Media y mediana</h3>
+<div class="row g-4 casen-ejemplo-paralelo">
+<div class="col-12 col-lg-6">
+<p><strong>Código en R</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>media_edad <span class="ot">&lt;-</span> <span class="fu">mean</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)      <span class="co"># Calculamos la media.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>media_edad  <span class="co"># Mostramos el resultado.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>mediana_edad <span class="ot">&lt;-</span> <span class="fu">median</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Calculamos la mediana.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>mediana_edad  <span class="co"># Mostramos el resultado.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col-12 col-lg-6">
+<p><strong>Resultado calculado al publicar</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Medida</th>
+<th style="text-align: right;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Media (años)</td>
+<td style="text-align: right;">39.92</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mediana (años)</td>
+<td style="text-align: right;">39.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La <strong>media</strong> es el promedio aritmético; la <strong>mediana</strong> divide los valores ordenados en dos mitades. <code>na.rm = TRUE</code> omite los valores faltantes del cálculo. <strong>Compare:</strong> ¿cuál de estas dos medidas es mayor en CASEN? ¿Cuál se afecta menos por edades extremas?</p>
+</section>
+<section id="y-la-moda" class="level3">
+<h3 class="anchored" data-anchor-id="y-la-moda">¿Y la moda?</h3>
+<p>La <strong>moda</strong> es el valor que más se repite. En R, <code>mode()</code> <strong>no</strong> calcula la moda estadística: informa el modo de almacenamiento del objeto. Para encontrarla, contaremos las frecuencias.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>tabla_edad <span class="ot">&lt;-</span> <span class="fu">table</span>(datos<span class="sc">$</span>edad)  <span class="co"># Contamos cuántas veces aparece cada edad.</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>frecuencia_moda <span class="ot">&lt;-</span> <span class="fu">max</span>(tabla_edad)  <span class="co"># Buscamos la frecuencia más alta.</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>frecuencia_moda  <span class="co"># Vemos cuántos registros tiene esa frecuencia.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>tabla_edad[tabla_edad <span class="sc">==</span> frecuencia_moda]  <span class="co"># Localizamos la edad o edades modales.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="casen-consigna">
+<p><strong>Compruebe:</strong> ¿puede obtenerse la moda de <code>sexo</code>? ¿Y su media? Explique qué permite interpretar cada tipo de variable.</p>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Medida</th>
+<th>¿Qué resume?</th>
+<th>¿Para qué variables?</th>
+<th>¿Qué limitación tiene?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Moda</td>
+<td>Categoría o valor más frecuente</td>
+<td>Nominales, ordinales y numéricas</td>
+<td>Puede haber varias modas</td>
+</tr>
+<tr class="even">
+<td>Mediana</td>
+<td>Posición central</td>
+<td>Ordinales y cuantitativas</td>
+<td>No muestra la dispersión</td>
+</tr>
+<tr class="odd">
+<td>Media</td>
+<td>Promedio aritmético</td>
+<td>Cuantitativas; ordinales solo con justificación especial</td>
+<td>Sensible a valores extremos</td>
+</tr>
+</tbody>
+</table>
+<p>La media se calcula como ({x}=): se suman los valores válidos (x_i) y se dividen por su cantidad (n). R efectúa este cálculo mediante <code>mean()</code>.</p>
+</section>
+</section>
+<section id="sec-detectives" class="level2">
+<h2 class="anchored" data-anchor-id="sec-detectives">5. Desafío: detectives de datos</h2>
+<p><strong>Desafío:</strong> tenemos que elegir cómo describir la distribución de edades usando evidencia, no solamente una impresión.</p>
+<div class="casen-consigna">
+<p><strong>Primera votación en Zoom.</strong> Lea las tres afirmaciones y escriba <strong>A, B o C</strong> en el chat, antes de ejecutar el siguiente código. La profesora pedirá a algunas personas que expliquen brevemente su elección.</p>
+<ul>
+<li><strong>A.</strong> «La edad promedio basta para describir cómo se distribuyen las edades».</li>
+<li><strong>B.</strong> «Además de la media, necesitamos mirar la mediana, la dispersión y la distribución».</li>
+<li><strong>C.</strong> «La mediana siempre es mejor que la media, sin importar cómo sean los datos».</li>
+</ul>
+</div>
+<p><strong>Ahora compruebe su respuesta:</strong> ejecute los comandos siguientes y observe los valores y el histograma. La profesora conducirá la comparación de las respuestas en la sesión principal de Zoom; no es necesario abrir salas separadas.</p>
+<section id="comprobemos-lo-que-sabemos" class="level3">
+<h3 class="anchored" data-anchor-id="comprobemos-lo-que-sabemos">Comprobemos lo que sabemos</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)    <span class="co"># Calculamos la media.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Calculamos la mediana.</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)   <span class="co"># Vemos la menor y mayor edad.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                         <span class="co"># Edades que analizaremos.</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Distribución de edades"</span>,  <span class="co"># Título del gráfico.</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Edad (años)"</span>,             <span class="co"># Eje horizontal.</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>,              <span class="co"># Eje vertical.</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#b47b78"</span>,                 <span class="co"># Color de las barras.</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"white"</span>                 <span class="co"># Separación entre barras.</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Segunda votación:</strong> después de observar los resultados, vuelva a escribir <strong>A, B o C</strong> en el chat. Justifique su elección con <strong>un valor</strong> (media o mediana) y <strong>una observación del histograma</strong>. ¿Cambió su respuesta? ¿Por qué?</p>
+<p><strong>Si no puede ejecutar R:</strong> utilice la tabla de media y mediana de esta página y el histograma publicado en la sección 8. Podrá participar en la votación y la discusión igualmente; la profesora revisará las conclusiones con el curso.</p>
+</section>
+</section>
+<section id="sec-dispersion" class="level2">
+<h2 class="anchored" data-anchor-id="sec-dispersion">6. ¿Cuánto varían los datos?</h2>
+<p>La <strong>dispersión</strong> nos indica qué tan extendidos están los valores. Dos conjuntos de datos pueden tener promedios similares y distinta variabilidad.</p>
+<section id="del-mínimo-y-el-máximo-al-rango" class="level3">
+<h3 class="anchored" data-anchor-id="del-mínimo-y-el-máximo-al-rango">Del mínimo y el máximo al rango</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Edad mínima.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Edad máxima.</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>amplitud_edad <span class="ot">&lt;-</span> <span class="fu">max</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">-</span>  <span class="co"># Calculamos el rango.</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">min</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>amplitud_edad  <span class="co"># Mostramos la diferencia entre ambos extremos.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="varianza-y-desviación-estándar" class="level3">
+<h3 class="anchored" data-anchor-id="varianza-y-desviación-estándar">Varianza y desviación estándar</h3>
+<div class="row g-4 casen-ejemplo-paralelo">
+<div class="col-12 col-lg-6">
+<p><strong>Código en R</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>varianza_edad <span class="ot">&lt;-</span> <span class="fu">var</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Varianza en años².</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>varianza_edad  <span class="co"># Mostramos la varianza.</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>desviacion_edad <span class="ot">&lt;-</span> <span class="fu">sd</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Desviación en años.</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>desviacion_edad  <span class="co"># Mostramos la desviación estándar.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col-12 col-lg-6">
+<p><strong>Resultado calculado al publicar</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Medida</th>
+<th style="text-align: right;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Varianza (años²)</td>
+<td style="text-align: right;">527.66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Desviación estándar (años)</td>
+<td style="text-align: right;">22.97</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Interprete:</strong> ¿por qué es más sencillo comunicar una desviación estándar en años que una varianza en años al cuadrado? Una desviación estándar de cierto valor <strong>no significa</strong> que todas las edades estén entre media menos ese valor y media más ese valor.</p>
+<p><strong>Para seguir practicando:</strong> más adelante incorporará <code>esc</code> a la base de trabajo. Después de revisar su codificación, calcule <code>sd(datos$esc, na.rm = TRUE)</code> y <code>range(datos$esc, na.rm = TRUE)</code>. Interprete ambas medidas <strong>en años de escolaridad</strong>, sin comparar directamente desviaciones estándar expresadas en unidades distintas.</p>
+<p><strong>Fórmulas de consulta.</strong> En una muestra, (s^2=), y (s=). La primera es la <strong>varianza muestral</strong> y la segunda, la <strong>desviación estándar muestral</strong>; <code>var()</code> y <code>sd()</code> implementan estas medidas en R. Una puntuación atípica puede aumentar mucho ambas.</p>
+</section>
+</section>
+<section id="sec-posicion" class="level2">
+<h2 class="anchored" data-anchor-id="sec-posicion">7. ¿Dónde se ubica un dato? Cuartiles y percentiles</h2>
+<p>La <strong>media</strong> indica un centro aritmético; los <strong>cuantiles</strong> describen posiciones. El percentil 50 coincide con la mediana bajo la convención de cálculo usual de R.</p>
+<section id="cuartiles-de-edad" class="level3">
+<h3 class="anchored" data-anchor-id="cuartiles-de-edad">Cuartiles de edad</h3>
+<div class="row g-4 casen-ejemplo-paralelo">
+<div class="col-12 col-lg-6">
+<p><strong>Código en R</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cuartiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                      <span class="co"># Edades observadas.</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>, <span class="fl">0.75</span>),     <span class="co"># Cortes del 25%, 50% y 75%.</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>                     <span class="co"># Excluimos faltantes.</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>cuartiles                         <span class="co"># Mostramos Q1, Q2 y Q3.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col-12 col-lg-6">
+<p><strong>Resultado calculado al publicar</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Cuartil</th>
+<th style="text-align: right;">Edad (años)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Q1 (25%)</td>
+<td style="text-align: right;">20.00</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Q2 (50%)</td>
+<td style="text-align: right;">39.00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Q3 (75%)</td>
+<td style="text-align: right;">59.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Q1 es el punto de corte del <strong>25%</strong>, Q2 corresponde a la <strong>mediana</strong> y Q3 al <strong>75%</strong> de la distribución ordenada, aproximadamente. Con datos repetidos, los porcentajes exactos pueden variar. <strong>Interprete:</strong> ¿qué significa el valor de Q3 expresado en años?</p>
+</section>
+<section id="percentiles-10-y-90" class="level3">
+<h3 class="anchored" data-anchor-id="percentiles-10-y-90">Percentiles 10 y 90</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>percentiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                      <span class="co"># Edades observadas.</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.10</span>, <span class="fl">0.90</span>),           <span class="co"># P10 y P90.</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>                     <span class="co"># Excluimos faltantes.</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>percentiles                       <span class="co"># Vemos los puntos de corte.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="casen-consigna">
+<p><strong>Interprete:</strong> ejecute el código y lea el valor de P90. ¿Qué le dice sobre la edad bajo la cual se ubica aproximadamente el 90% de los registros? No significa «90% de edad».</p>
+</div>
+</section>
+<section id="quintiles-y-deciles" class="level3">
+<h3 class="anchored" data-anchor-id="quintiles-y-deciles">Quintiles y deciles</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>quintiles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                              <span class="co"># Edades.</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.20</span>, <span class="fl">0.40</span>, <span class="fl">0.60</span>, <span class="fl">0.80</span>),       <span class="co"># Cuatro cortes de quintiles.</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>                             <span class="co"># Sin NA.</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>quintiles                                  <span class="co"># Mostramos los quintiles.</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>deciles <span class="ot">&lt;-</span> <span class="fu">quantile</span>(</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                              <span class="co"># Edades.</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">probs =</span> <span class="fu">seq</span>(<span class="fl">0.10</span>, <span class="fl">0.90</span>, <span class="fl">0.10</span>),           <span class="co"># Nueve cortes de deciles.</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span>                             <span class="co"># Sin NA.</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>deciles                                    <span class="co"># Mostramos los deciles.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Los <strong>cuartiles</strong>, <strong>quintiles</strong> y <strong>deciles</strong> definen puntos de corte para dividir una distribución ordenada en cuatro, cinco y diez partes, respectivamente. <code>quantile()</code> calcula esos cortes; no asigna automáticamente un grupo a cada persona. Cuando hay valores iguales, los grupos podrían no tener exactamente el mismo tamaño.</p>
+</section>
+<section id="qué-es-el-rango-intercuartílico" class="level3">
+<h3 class="anchored" data-anchor-id="qué-es-el-rango-intercuartílico">¿Qué es el rango intercuartílico?</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rango_intercuartilico <span class="ot">&lt;-</span> <span class="fu">IQR</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Calculamos Q3 − Q1.</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rango_intercuartilico                                    <span class="co"># Vemos el resultado.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Compare:</strong> ¿qué medida cambiaría más si apareciera una edad extrema: el rango total o el rango intercuartílico? Explique la diferencia entre ambos.</p>
+</section>
+</section>
+<section id="sec-forma" class="level2">
+<h2 class="anchored" data-anchor-id="sec-forma">8. Histograma, asimetría, curtosis y boxplot</h2>
+<p><strong>La forma importa:</strong> dos distribuciones pueden tener un centro similar y formas diferentes. No todas las distribuciones tienen una forma normal.</p>
+<section id="la-distribución-es-simétrica" class="level3">
+<h3 class="anchored" data-anchor-id="la-distribución-es-simétrica">¿La distribución es simétrica?</h3>
+<div class="row g-4 casen-ejemplo-paralelo">
+<div class="col-12 col-lg-5">
+<p><strong>Código en R</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                              <span class="co"># Variable cuantitativa.</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Forma de la distribución"</span>,       <span class="co"># Título.</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">"Edad (años)"</span>,                    <span class="co"># Eje horizontal.</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>,                     <span class="co"># Eje vertical.</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#b47b78"</span>,                        <span class="co"># Color de las barras.</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"white"</span>                        <span class="co"># Separación entre barras.</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col-12 col-lg-7">
+<p><strong>Resultado calculado al publicar</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practico_estadistica_descriptiva_casen_2024_files/figure-html/casen-grafico-histograma-1.png" class="img-fluid figure-img" alt="Histograma de las edades registradas en el subconjunto CASEN 2024." width="780"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Observe el histograma:</strong> ¿en qué edades se concentran más casos? ¿Hay una cola más larga hacia edades bajas o altas? La <strong>asimetría positiva</strong> tiene una cola más extendida hacia valores altos; la <strong>negativa</strong>, hacia valores bajos. Una distribución <strong>simétrica</strong> muestra lados aproximadamente equilibrados.</p>
+</section>
+<section id="leer-un-diagrama-de-caja" class="level3">
+<h3 class="anchored" data-anchor-id="leer-un-diagrama-de-caja">Leer un diagrama de caja</h3>
+<div class="row g-4 casen-ejemplo-paralelo">
+<div class="col-12 col-lg-5">
+<p><strong>Código en R</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  datos<span class="sc">$</span>edad,                     <span class="co"># Edades que analizaremos.</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Diagrama de caja"</span>,      <span class="co"># Título.</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Edad (años)"</span>,           <span class="co"># Unidad del eje vertical.</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"#dfc8c2"</span>                <span class="co"># Color de la caja.</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="col-12 col-lg-7">
+<p><strong>Resultado calculado al publicar</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practico_estadistica_descriptiva_casen_2024_files/figure-html/casen-grafico-boxplot-1.png" class="img-fluid figure-img" alt="Diagrama de caja que muestra la mediana, dispersión y posibles valores extremos de edad en CASEN 2024." width="780"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Ubique en el boxplot:</strong> la línea de la <strong>mediana</strong>, los bordes de la caja (cuartiles), los <strong>bigotes</strong> y los posibles puntos aislados. En R, los bigotes llegan hasta las observaciones más extremas dentro de los límites de <strong>1,5 veces el rango intercuartílico</strong> desde la caja; no necesariamente hasta el mínimo y máximo. Los puntos exteriores son <strong>potencialmente atípicos</strong>, no errores automáticamente.</p>
+</section>
+<section id="qué-muestra-la-curtosis" class="level3">
+<h3 class="anchored" data-anchor-id="qué-muestra-la-curtosis">¿Qué muestra la curtosis?</h3>
+<p>La <strong>curtosis</strong> resume aspectos del peso de las colas y la presencia de valores extremos, especialmente al comparar con la normal. No basta con describirla como «lo puntiaguda que es la campana». La <strong>curtosis en exceso</strong> de la normal es cero; distintas funciones y paquetes pueden usar convenciones diferentes. Para este nivel, comenzaremos <strong>interpretando conceptualmente el histograma y el boxplot</strong>, sin aprender un paquete adicional solo para calcular un coeficiente.</p>
+<div class="casen-consigna">
+<p><strong>Comparación conceptual.</strong> Dos distribuciones pueden tener media y desviación estándar semejantes, pero comportamientos muy distintos en las colas. ¿Qué información adicional revisaríamos antes de decidir que se parecen? ¿Puede un histograma por sí solo dar el valor exacto de la curtosis?</p>
+</div>
+</section>
+<section id="volvamos-a-mirar-los-cuartiles-junto-al-boxplot" class="level3">
+<h3 class="anchored" data-anchor-id="volvamos-a-mirar-los-cuartiles-junto-al-boxplot">Volvamos a mirar los cuartiles junto al boxplot</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(datos<span class="sc">$</span>edad, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.50</span>, <span class="fl">0.75</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Cuartiles.</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(datos<span class="sc">$</span>edad, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)  <span class="co"># Rango entre Q3 y Q1.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>Nota de lectura:</em> <code>quantile()</code> y <code>boxplot()</code> pueden utilizar convenciones ligeramente distintas para definir los extremos de la caja, especialmente con pocos casos. Una diferencia pequeña no significa necesariamente que el código esté mal.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Recurso</th>
+<th>Qué enseña</th>
+<th>Error común que debemos evitar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Percentil 90</td>
+<td>Punto de corte aproximadamente por debajo del cual queda el 90% de casos</td>
+<td>Interpretarlo como «90% de la variable»</td>
+</tr>
+<tr class="even">
+<td>Cuartiles</td>
+<td>Posición de Q1, Q2 y Q3</td>
+<td>Confundir puntos de corte con porcentajes</td>
+</tr>
+<tr class="odd">
+<td>Quintiles / deciles</td>
+<td>Cortes en cinco o diez partes</td>
+<td>Creer que <code>quantile()</code> ya clasificó personas en grupos</td>
+</tr>
+<tr class="even">
+<td>Asimetría</td>
+<td>Dirección de la cola</td>
+<td>Confundir asimetría positiva con «hay más personas a la derecha»</td>
+</tr>
+<tr class="odd">
+<td>Curtosis</td>
+<td>Peso de colas y extremos</td>
+<td>Reducirla solo a la altura del pico</td>
+</tr>
+<tr class="even">
+<td>Boxplot</td>
+<td>Centro, rango intercuartílico y puntos atípicos</td>
+<td>Interpretar cada punto como un dato erróneo</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="escolaridad-una-segunda-variable-solo-si-está-documentada" class="level3">
+<h3 class="anchored" data-anchor-id="escolaridad-una-segunda-variable-solo-si-está-documentada">Escolaridad: una segunda variable (solo si está documentada)</h3>
+<p>La variable <code>esc</code> registra años de escolaridad y tiene observaciones faltantes. Incorpórela a <code>datos</code>, compruebe sus valores y consulte el libro de códigos antes de interpretarla. Si encuentra algún código poco claro, pregunte a la profesora.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>esc <span class="ot">&lt;-</span> datos_originales<span class="sc">$</span>esc  <span class="co"># Agregamos escolaridad ya documentada.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos<span class="sc">$</span>esc)                <span class="co"># Revisamos valores y faltantes.</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos<span class="sc">$</span>esc, <span class="at">useNA =</span> <span class="st">"ifany"</span>)  <span class="co"># Contamos códigos y NA.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Para seguir practicando:</strong> después de verificar sus valores, calcule la media y mediana de <code>esc</code>. ¿Cuál es mayor? No interprete códigos especiales como si fueran años de escolaridad.</p>
+</section>
+</section>
+<section id="sec-integrador" class="level2">
+<h2 class="anchored" data-anchor-id="sec-integrador">9. Actividad integradora para continuar después de la clase</h2>
+<p><strong>Para realizar después de la clase:</strong> utilice <code>edad</code> o <code>esc</code> (si ya verificó su codificación). En su script, genere <strong>una medida de centro, una de dispersión, dos percentiles y un gráfico</strong>. Escriba cinco líneas que expliquen los resultados y una limitación metodológica.</p>
+<p>Puede seguir este orden: comprobar valores y <code>NA</code> → calcular medidas → elaborar el gráfico → interpretar. No generalice los resultados sin ponderar a toda la población de Chile.</p>
+<div class="casen-consigna">
+<p><strong>Para cerrar:</strong> ¿qué medida usaría para encontrar la categoría más frecuente? ¿Qué medida resume la mitad central de una variable cuantitativa?</p>
+</div>
+</section>
+<section id="sec-cierre" class="level2">
+<h2 class="anchored" data-anchor-id="sec-cierre">10. Ticket de salida</h2>
+<p><strong>Responda en el chat de Zoom</strong> con una frase breve para cada pregunta:</p>
+<ol type="1">
+<li>¿Qué diferencia hay entre un <strong>porcentaje válido</strong> y un <strong>porcentaje sobre todos los casos</strong>?</li>
+<li>¿Qué estadístico cambiaría más ante un valor extremo: <strong>media</strong> o <strong>mediana</strong>? ¿Por qué?</li>
+<li>¿Qué significa el <strong>percentil 75</strong> de una variable?</li>
+<li>En un <strong>boxplot</strong>, ¿un punto fuera de los bigotes significa necesariamente que alguien ingresó un dato mal?</li>
+</ol>
+<p><strong>Antes de terminar:</strong> guarde <code>practico.R</code>. Debe conservar el código, los comentarios y las instrucciones necesarias para repetir el análisis. Un resultado es reproducible cuando podemos explicar cómo se obtuvo.</p>
+<section id="fuentes-y-documentación" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-y-documentación">Fuentes y documentación</h3>
+<ul>
+<li><a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2024">Encuesta CASEN 2024: cuestionario, libro de códigos y ficha técnica</a>.</li>
+<li><a href="https://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2024/Nota_uso_bases_de_datos_Casen_2024.pdf">Nota oficial sobre el uso de las bases CASEN 2024</a>.</li>
+</ul>
+</section>
+</section>
+</div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
+<!-- Sistema de comentarios Giscus -->
+<section class="comments-box comments-giscus-box" aria-label="Espacio de comentarios">
+  <div class="comments-heading">
+    <h2 class="anchored">Preguntas, dudas y comentarios</h2>
+    <p class="text-muted small">
+      El canal de consultas y comentarios de la sesión estará habilitado durante el desarrollo del curso.
+    </p>
+  </div>
+  <div class="giscus"></div>
+</section>
+</div>
+<div class="no-row-height column-margin column-container page-columns page-full"><div class="page-columns page-full">
+<!--
+  ====================================================================
+  ESTE ARCHIVO SE GENERA AUTOMÁTICAMENTE MEDIANTE scripts/build_classes.py
+  NO EDITAR MANUALMENTE.
+  Para agregar o publicar clases, edita el frontmatter de cada
+  archivo en clases/clase_XX/index.qmd y ejecuta quarto render.
+  ====================================================================
+-->
+<div class="clases-sidebar-wrapper page-columns page-full">
+  <button class="clases-sidebar-toggle" type="button" aria-label="Mostrar u ocultar menú de clases">
+    <i class="bi bi-chevron-right"></i>
+  </button>
+
+  <aside class="clases-sidebar">
+    <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">
+
+      <!-- Inicio -->
+      <div class="sidebar-unit-header">
+        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad0" aria-expanded="false" aria-controls="unidad0">
+          <div class="unit-label-wrap">
+            <span class="unit-label">Inicio</span>
+            <span class="unit-title">Presentación</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="collapse" id="unidad0">
+        <a class="clase-link" href="../clase_00/index.html" data-clase-link="clase_00">Clase 00 – Presentación y Fundamentos de la Investigación Cuantitativa</a>
+      </div>
+
+      <!-- Unidad I -->
+      <div class="sidebar-unit-header">
+        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad1" aria-expanded="false" aria-controls="unidad1">
+          <div class="unit-label-wrap">
+            <span class="unit-label">Unidad I</span>
+            <span class="unit-title">Investigación Cuantitativa</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="collapse" id="unidad1">
+        <a class="clase-link" href="../clase_01/index.html" data-clase-link="clase_01">Clase 01 – Investigación cuantitativa, variables y operacionalización</a>
+        <a class="clase-link" href="../clase_02/index.html" data-clase-link="clase_02">Clase 02 – Problema de investigación y matriz de datos</a>
+      </div>
+
+      <!-- Unidad II -->
+      <div class="sidebar-unit-header">
+        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad2" aria-expanded="false" aria-controls="unidad2">
+          <div class="unit-label-wrap">
+            <span class="unit-label">Unidad II</span>
+            <span class="unit-title">Estadística en Investigación</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="collapse" id="unidad2">
+        <a class="clase-link" href="../clase_03/index.html" data-clase-link="clase_03">Clase 03 – Población, muestra y recolección de datos</a>
+      </div>
+
+      <!-- Unidad III -->
+      <div class="sidebar-unit-header">
+        <button class="btn btn-link sidebar-unit-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#unidad3" aria-expanded="false" aria-controls="unidad3">
+          <div class="unit-label-wrap">
+            <span class="unit-label">Unidad III</span>
+            <span class="unit-title">Estadística Univariada</span>
+          </div>
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="collapse" id="unidad3">
+        <a class="clase-link" href="../clase_04/index.html" data-clase-link="clase_04">Clase 04 – Noción de distribución y análisis univariado</a>
+        <a class="clase-link" href="../clase_05/index.html" data-clase-link="clase_05">Clase 05 – Estadística Descriptiva: Distribución </a>
+        <a class="clase-link" href="../positron/index.html" data-clase-link="positron">Introducción a Positron</a>
+        <a class="clase-link" href="../clase_06/index.html" data-clase-link="clase_06">Clase 06 – Frecuencia y dispersión</a>
+        <a class="clase-link" href="../clase_07/index.html" data-clase-link="clase_07">Clase 07 – Medidas de posición y forma</a>
+        <a class="clase-link" href="../clase_08/index.html" data-clase-link="clase_08">Clase 08 – Análisis bivariado y tablas de contingencia</a>
+        <a class="clase-link" href="../practico_proc/practico_estadistica_descriptiva_casen_2024.html" data-clase-link="practico_proc">Práctico — Estadística descriptiva con R</a>
+      </div>
+
+      <!-- Unidad IV (Relaciones Bivariadas) - Sin clases publicadas aún -->
+    </div>
+  </aside>
+</div>
+</div></div></div>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<div class="site-footer">
+<div class="footer-line">
+<i class="bi bi-c-circle"></i><span>Contenido © 2026 por <strong>Daniela Olivares</strong></span>
+</div>
+<div class="footer-line">
+<i class="bi bi-cc-circle"></i><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">Licencia Creative Commons Attribution-NonCommercial 4.0 (CC BY-NC 4.0)</a>
+</div>
+<div class="footer-line">
+<i class="bi bi-person-badge"></i><span>Sitio creado por <strong>Katherine Aravena</strong></span>
+</div>
+</div>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<div class="site-footer">
+<div class="footer-line">
+<i class="bi bi-braces"></i><span>Hecho con <a href="https://quarto.org" target="_blank" rel="noopener">Quarto</a></span>
+</div>
+<div class="footer-line">
+<i class="bi bi-cc-circle"></i><a href="https://opensource.org/license/mit" target="_blank" rel="noopener">Código bajo licencia MIT</a>
+</div>
+<div class="footer-line">
+<i class="bi bi-github"></i><a href="https://github.com/udp-metodos-cuantitativos/curso-2026" target="_blank" rel="noopener">Ver en GitHub</a>
+</div>
+</div>
+</div>
+  </div>
+</footer>
+<script src="../../assets/js/clases-menu.js"></script>
+<script src="../../assets/js/clase-viewer.js"></script>
+
+
+
+
+</body></html>

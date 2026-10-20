@@ -45,7 +45,7 @@ function Pandoc(doc)
   end
 
   local clase_num = pandoc.utils.stringify(meta.clase)
-  local title = pandoc.utils.stringify(meta.title or "")
+  local title = (meta["page-title"] and pandoc.utils.stringify(meta["page-title"])) or pandoc.utils.stringify(meta.title or "")
   local unidad = meta.unidad and pandoc.utils.stringify(meta.unidad) or ""
   local kicker = meta.kicker and pandoc.utils.stringify(meta.kicker)
   if not kicker or kicker == "" then
@@ -98,21 +98,30 @@ function Pandoc(doc)
     table.insert(main_blocks, pandoc.RawBlock("html", hero_html))
   end
 
-  -- 2. Inyectar Visor y Acciones si se definió PDF y no existe visor manual
-  if not has_manual_viewer and pdf ~= "" then
-    local viewer_html = '<div class="clase-card clase-card-presentation">\n' ..
-      '  <div class="class-presentation-viewer" id="viewer-clase-' .. clase_num .. '">\n' ..
-      '    <iframe src="' .. pdf .. '#view=FitH" title="Presentación Clase ' .. clase_num .. '" allowfullscreen=""></iframe>\n' ..
-      '  </div>\n' ..
-      '  <div class="clase-presentacion-actions">\n' ..
-      '    <a href="' .. pdf .. '" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>\n'
-    if pptx ~= "" then
-      viewer_html = viewer_html .. '    <a href="' .. pptx .. '" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>\n'
+  -- 2. Inyectar Visor y Acciones si se definió PDF o PPTX y no existe visor manual
+  if not has_manual_viewer then
+    if pdf ~= "" then
+      local viewer_html = '<div class="clase-card clase-card-presentation">\n' ..
+        '  <div class="class-presentation-viewer" id="viewer-clase-' .. clase_num .. '">\n' ..
+        '    <iframe src="' .. pdf .. '#view=FitH" title="Presentación Clase ' .. clase_num .. '" allowfullscreen=""></iframe>\n' ..
+        '  </div>\n' ..
+        '  <div class="clase-presentacion-actions">\n' ..
+        '    <a href="' .. pdf .. '" class="btn btn-primary" download=""><i class="bi bi-file-earmark-pdf me-2"></i>Descargar PDF</a>\n'
+      if pptx ~= "" then
+        viewer_html = viewer_html .. '    <a href="' .. pptx .. '" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>\n'
+      end
+      viewer_html = viewer_html .. '    <button type="button" class="btn btn-outline-secondary btn-presentation-fullscreen" id="btn-fullscreen-' .. clase_num .. '" data-action="fullscreen" data-target="#viewer-clase-' .. clase_num .. '" data-fallback-url="' .. pdf .. '"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>\n' ..
+        '  </div>\n' ..
+        '</div>'
+      table.insert(main_blocks, pandoc.RawBlock("html", viewer_html))
+    elseif pptx ~= "" then
+      local actions_html = '<div class="clase-card clase-card-presentation">\n' ..
+        '  <div class="clase-presentacion-actions">\n' ..
+        '    <a href="' .. pptx .. '" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-ppt me-2"></i>Descargar PowerPoint</a>\n' ..
+        '  </div>\n' ..
+        '</div>'
+      table.insert(main_blocks, pandoc.RawBlock("html", actions_html))
     end
-    viewer_html = viewer_html .. '    <button type="button" class="btn btn-outline-secondary btn-presentation-fullscreen" id="btn-fullscreen-' .. clase_num .. '" data-action="fullscreen" data-target="#viewer-clase-' .. clase_num .. '" data-fallback-url="' .. pdf .. '"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>\n' ..
-      '  </div>\n' ..
-      '</div>'
-    table.insert(main_blocks, pandoc.RawBlock("html", viewer_html))
   end
 
   -- 3. Insertar los bloques de contenido del autor

@@ -1,0 +1,884 @@
+---
+title: "Práctico — Estadística descriptiva con R"
+page-title: "Estadística descriptiva con R y CASEN 2024"
+pagetitle: "Estadística descriptiva con R y CASEN 2024"
+clase: "practico-estadistica"
+kicker: "Taller de Software · Unidad III"
+unidad: "Unidad III"
+unidad-titulo: "Estadística Univariada"
+orden: 8.5
+date: 2026-10-20
+description: "Práctico integral de las clases 04–08: procesamiento, distribuciones, frecuencias, tendencia central, dispersión, posición y forma con CASEN 2024."
+publicada: true
+draft: false
+resources:
+  - ../../scripts/casen_2024_udp.RData
+listing-title: "Práctico — Estadística descriptiva con R"
+menu-titulo: "Práctico — Estadística descriptiva con R"
+execute:
+  eval: false
+code-copy: true
+---
+
+<style>
+/* Estilos de esta página, ajustados al ancho del tema Quarto del curso. */
+#quarto-content main.content .casen-taller {
+  --casen-vino: #79262a;
+  --casen-texto: #292628;
+  --casen-secundario: #51484a;
+  --casen-borde: #d2c6c3;
+  width: 100%;
+  max-width: none; /* hereda la anchura del contenido en Introducción a Positron */
+  min-width: 0;
+  color: var(--casen-texto);
+  font-size: 1.055rem;
+  line-height: 1.68;
+}
+#quarto-content main.content .casen-taller p,
+#quarto-content main.content .casen-taller li,
+#quarto-content main.content .casen-taller td {
+  color: var(--casen-texto);
+  text-align: left;
+  hyphens: auto;
+}
+#quarto-content main.content .casen-taller h2,
+#quarto-content main.content .casen-taller h3,
+#quarto-content main.content .casen-taller h4 {
+  color: var(--casen-vino);
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: -.008em;
+  scroll-margin-top: 90px;
+}
+#quarto-content main.content .casen-taller h2 {
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--casen-borde);
+  padding-bottom: .38em;
+}
+#quarto-content main.content .casen-taller h3 { margin-top: 1.48rem; }
+#quarto-content main.content .casen-taller .casen-lead {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  font-weight: 400;
+  color: #514346;
+  margin-bottom: 1.15rem;
+}
+#quarto-content main.content .casen-taller .casen-meta {
+  font-size: .91rem;
+  color: var(--casen-secundario);
+}
+#quarto-content main.content .casen-taller a:not(.btn) {
+  color: #702127;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1.3px;
+}
+#quarto-content main.content .casen-taller a:not(.btn):hover,
+#quarto-content main.content .casen-taller a:not(.btn):focus-visible {
+  color: #481015;
+  text-decoration-thickness: 2px;
+}
+#quarto-content main.content .casen-taller a:focus-visible {
+  outline: 3px solid #126b9e;
+  outline-offset: 3px;
+}
+#quarto-content main.content .casen-taller .btn-outline-primary {
+  color: #681e23; border-color: #681e23;
+  background-color: transparent; font-weight: 600;
+}
+#quarto-content main.content .casen-taller .btn-outline-primary:hover,
+#quarto-content main.content .casen-taller .btn-outline-primary:focus-visible {
+  background: #681e23; color: white;
+}
+#quarto-content main.content .casen-taller .btn-outline-secondary {
+  color: #343033; border-color: #777074; background: transparent;
+}
+#quarto-content main.content .casen-taller .btn-outline-secondary:hover,
+#quarto-content main.content .casen-taller .btn-outline-secondary:focus-visible {
+  background: #343033; color: white;
+}
+#quarto-content main.content .casen-taller .casen-consigna {
+  background: #f9f5f2;
+  border-left: 3px solid var(--casen-vino);
+  padding: .75rem 1.05rem;
+  margin: 1.15rem 0;
+}
+#quarto-content main.content .casen-taller .casen-consigna p:last-child { margin-bottom: 0; }
+#quarto-content main.content .casen-taller .callout {
+  border-width: 1px 1px 1px 4px;
+  background: #f9f8f6;
+  margin: 1.12rem 0;
+}
+#quarto-content main.content .casen-taller .callout .callout-title-container,
+#quarto-content main.content .casen-taller .callout p,
+#quarto-content main.content .casen-taller .callout li { color: #2c282a; }
+#quarto-content main.content .casen-taller div.sourceCode,
+#quarto-content main.content .casen-taller pre {
+  background: #f8f7f6;
+  border: 1px solid #cfc7c4;
+  border-radius: .35rem;
+  overflow-x: auto;
+}
+#quarto-content main.content .casen-taller pre code {
+  font-size: .91rem; line-height: 1.65; color: #242326;
+}
+#quarto-content main.content .casen-taller :not(pre) > code {
+  color: #651d25; background: #f3e9e8;
+  border-radius: .2rem; padding: .05rem .2rem;
+}
+#quarto-content main.content .casen-taller table {
+  width: 100%; margin: .5rem 0 .85rem;
+  font-size: .92rem; border-collapse: collapse;
+}
+#quarto-content main.content .casen-taller th {
+  background: #e9e2df; color: #302629;
+  border-bottom: 2px solid #988986;
+}
+#quarto-content main.content .casen-taller th,
+#quarto-content main.content .casen-taller td {
+  padding: .5rem .6rem;
+  border-bottom: 1px solid #d6ceca;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo {
+  margin: .9rem 0 .75rem;
+  align-items: start;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo > div {min-width: 0;}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo strong.casen-subtitulo {
+  font-size: .88rem; font-weight: 700; color: #514347;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo pre code {
+  font-size: .89rem; line-height: 1.58;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo figure,
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo img {
+  width: 100%; max-width: 100%; height: auto; display: block;
+}
+#quarto-content main.content .casen-taller .casen-ejemplo-paralelo .cell-output-display {max-width: 100%;}
+#quarto-content main.content .casen-taller .casen-resultado-nota {
+  font-size: .89rem; color: #5c5052; margin-top: .5rem;
+}
+/* Cuando las columnas quedan estrechas, el código y la salida se apilan. */
+@media (min-width: 992px) and (max-width: 1240px) {
+  #quarto-content main.content .casen-taller .casen-ejemplo-paralelo > [class*="col-lg-"] {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 680px) {
+  #quarto-content main.content .casen-taller {font-size: 1rem; line-height: 1.62;}
+  #quarto-content main.content .casen-taller .btn {width: 100%; margin-bottom: .35rem;}
+  #quarto-content main.content .casen-taller pre code {font-size: .83rem;}
+}
+</style>
+
+::: {.casen-taller}
+
+```{r}
+#| label: casen-resultados-setup
+#| include: false
+#| eval: true
+#| warning: false
+#| message: false
+
+# Carga interna de Quarto. La base permanece en scripts/ en la raíz del proyecto.
+# Quarto suele ejecutar desde la carpeta del QMD (clases/practico_proc/).
+# La segunda ruta permite ejecutar también con project.execute-dir: project.
+rutas_casen_web <- c(
+  "../../scripts/casen_2024_udp.RData",  # Desde clases/practico_proc/.
+  "scripts/casen_2024_udp.RData"         # Desde la raíz del proyecto.
+)
+
+# Elegimos únicamente una ruta que exista; nunca descargamos una base alternativa.
+rutas_encontradas <- rutas_casen_web[file.exists(rutas_casen_web)]
+if (length(rutas_encontradas) == 0L) {
+  stop(
+    "CASEN UDP: no se encontró casen_2024_udp.RData. ",
+    "Ruta del proyecto esperada: scripts/casen_2024_udp.RData. ",
+    "Directorio de ejecución actual: ", getwd(), ". ",
+    "Rutas probadas: ", paste(rutas_casen_web, collapse = "; ")
+  )
+}
+ruta_casen_web <- rutas_encontradas[1]
+
+# Se usa un entorno separado para no crear la base en el entorno de estudiantes.
+entorno_casen_web <- new.env(parent = baseenv())
+nombres_web <- load(ruta_casen_web, envir = entorno_casen_web)
+if (!identical(nombres_web, "sub_casen_2024")) {
+  stop("CASEN UDP: se esperaba un objeto 'sub_casen_2024'; se encontró: ",
+       paste(nombres_web, collapse = ", "))
+}
+
+datos_publicacion <- get(
+  "sub_casen_2024", envir = entorno_casen_web, inherits = FALSE
+)
+if (!is.data.frame(datos_publicacion)) {
+  stop("CASEN UDP: 'sub_casen_2024' no es un data.frame.")
+}
+
+variables_necesarias <- c("sexo", "edad", "esc", "v12mt", "o10", "yoprcor")
+if (!identical(names(datos_publicacion), variables_necesarias)) {
+  stop("CASEN UDP: variables esperadas: ", paste(variables_necesarias, collapse = ", "),
+       "; encontradas: ", paste(names(datos_publicacion), collapse = ", "))
+}
+if (nrow(datos_publicacion) != 218367L || ncol(datos_publicacion) != 6L) {
+  stop("CASEN UDP: dimensiones distintas de 218367 x 6: ",
+       paste(dim(datos_publicacion), collapse = " x "))
+}
+if (!is.numeric(datos_publicacion$edad) || !is.numeric(datos_publicacion$sexo)) {
+  stop("CASEN UDP: 'edad' y 'sexo' deben ser numéricas (sexo puede ser haven_labelled).")
+}
+if (any(!is.finite(datos_publicacion$edad))) {
+  stop("CASEN UDP: 'edad' tiene NA, Inf o NaN inesperados.")
+}
+if (any(is.na(datos_publicacion$sexo))) {
+  stop("CASEN UDP: 'sexo' tiene valores NA inesperados.")
+}
+
+# Se comprueban los NA informados al construir este extracto oficial.
+na_esperados <- c(sexo = 0L, edad = 0L, esc = 37391L,
+                  v12mt = 216391L, o10 = 122933L, yoprcor = 125819L)
+na_observados <- vapply(datos_publicacion, function(x) sum(is.na(x)), integer(1))
+if (!identical(na_observados, na_esperados)) {
+  stop("CASEN UDP: cambiaron los valores faltantes; revise si es la base correcta. ",
+       "Encontrados: ", paste(na_observados, collapse = ", "))
+}
+
+# La huella sirve para comparar la copia local y el archivo publicado.
+casen_md5 <- unname(tools::md5sum(ruta_casen_web))
+```
+
+
+<p class="casen-lead">En este práctico usaremos R y una selección de datos reales de CASEN 2024. Aprenderemos a cargar la base, explorar variables, calcular medidas descriptivas y representar distribuciones mediante tablas y gráficos.</p>
+
+::: {.d-flex .flex-wrap .gap-2 .justify-content-end .align-items-center .mb-3}
+[Descargar base CASEN 2024 (.RData)](../../scripts/casen_2024_udp.RData){.btn .btn-outline-primary .btn-sm download="casen_2024_udp.RData"}
+[Libro de códigos y ficha técnica oficial](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2024){.btn .btn-outline-secondary .btn-sm target="_blank" rel="noopener"}
+:::
+
+<p class="casen-meta">Base didáctica: seis variables de CASEN 2024 y 218.367 registros. El archivo de descarga es el mismo utilizado para generar los resultados de esta página. Los análisis son descriptivos y no ponderados.</p>
+
+::: {.callout-note appearance="simple"}
+## ¿Qué aprenderemos?
+
+Al finalizar podrá **cargar y explorar datos**, construir **tablas de frecuencias**, calcular medidas de **tendencia central, dispersión y posición**, e interpretar **histogramas y diagramas de caja**. También reconocerá la asimetría, la curtosis y los límites de los resultados obtenidos.
+:::
+
+## 1. Descarguemos y carguemos los datos {#sec-carga}
+
+1. En su computador, cree una carpeta llamada `practico_estadistica` y ábrala como proyecto o carpeta de trabajo en Positron o RStudio.
+2. Dentro de ella, cree la subcarpeta `datos`.
+3. Use el botón **Descargar base CASEN 2024** de esta página y guarde `casen_2024_udp.RData` dentro de `datos`.
+4. Abra un script nuevo de R y guárdelo como `practico.R` en `practico_estadistica`.
+5. Copie los bloques de **código en R** a ese script y ejecútelos **en el orden en que aparecen**. Los comentarios `#` explican cada instrucción; R no los ejecuta.
+
+```text
+practico_estadistica/
+├── datos/
+│   └── casen_2024_udp.RData
+└── practico.R
+```
+
+### Carguemos el archivo en R
+
+En Positron o RStudio, coloque el cursor sobre una línea del script y presione `Ctrl + Enter` para ejecutarla. Los resultados numéricos aparecerán en la consola; los gráficos, en el panel de visualización.
+
+```r
+objetos_cargados <- load("datos/casen_2024_udp.RData")  # Cargamos el archivo.
+objetos_cargados  # Vemos el nombre del objeto cargado.
+ls()              # Listamos los objetos disponibles en R.
+```
+
+**Compruebe el resultado:** `objetos_cargados` debe mostrar `sub_casen_2024`. El archivo contiene 218.367 filas y seis columnas. El símbolo `<-` asigna el resultado de una operación a un objeto que podrá reutilizar después.
+
+```r
+datos_originales <- sub_casen_2024  # Asignamos un nombre corto a la base.
+class(datos_originales)           # Revisamos el tipo de objeto.
+dim(datos_originales)             # Vemos cuántas filas y columnas tiene.
+```
+
+::: {.callout-caution appearance="simple"}
+## Si R no encuentra el archivo
+
+Si R muestra **«No such file or directory»**, compruebe que el archivo se llame `casen_2024_udp.RData` y esté dentro de la carpeta `datos`. Ejecute `getwd()` para ver desde qué carpeta busca R. Si aparece **«object not found»**, revise que haya ejecutado los bloques anteriores en orden.
+:::
+
+## 2. Reconozcamos una matriz de datos {#sec-matriz}
+
+En una matriz de datos, cada **fila** corresponde a un caso (aquí, una persona registrada) y cada **columna** a una variable, como edad o sexo. Ejecute los siguientes comandos para reconocer ambas dimensiones. El **libro de códigos** permite saber qué significa cada variable y cómo se codificaron sus respuestas.
+
+```r
+head(datos_originales)   # Mostramos las primeras filas.
+names(datos_originales)  # Consultamos los nombres de las variables.
+str(datos_originales)    # Revisamos cómo está guardada cada columna.
+```
+
+::: {.casen-consigna}
+**En el chat de Zoom:** indique un ejemplo de variable que aparezca en `names(datos_originales)` y explique, en una frase, para qué serviría consultar su libro de códigos.
+:::
+
+### Seleccionemos una base de trabajo
+
+Trabajaremos principalmente con **`edad` y `sexo`**. La primera expresa años cumplidos; la segunda contiene categorías codificadas. Seleccionaremos estas dos columnas sin modificar la base original. Más adelante usaremos también `esc` (años de escolaridad).
+
+```r
+datos <- datos_originales[c("edad", "sexo")]  # Seleccionamos dos columnas.
+dim(datos)   # Verificamos las dimensiones de la nueva base.
+head(datos)  # Observamos las primeras filas.
+str(datos)   # Revisamos los tipos de las dos variables.
+```
+
+Los corchetes `[ ]` seleccionan partes de la base; `c()` reúne los nombres de las columnas elegidas. El símbolo `$` permite acceder a una variable, por ejemplo `datos$edad`. **Compruebe:** ¿se mantuvo el número de filas? ¿Cuántas columnas quedan?
+
+### Revisemos la calidad de la información
+
+```r
+summary(datos$edad)      # Resumimos las edades observadas.
+sum(is.na(datos$edad))  # Contamos las edades sin dato (NA).
+```
+
+`NA` representa un dato faltante. `is.na()` identifica esos casos y `sum()` permite contarlos. **Observe:** ¿cuántas edades faltan en esta base? Un valor faltante o extremo no debe eliminarse sin revisar su significado.
+
+::: {.callout-important appearance="simple"}
+## Muestra no es población
+
+Un **estadístico** resume los registros analizados; un **parámetro** describe a una población. Aquí calcularemos medidas **sin ponderar** sobre 218.367 registros de CASEN. Aunque provienen de una encuesta real, **no son estimaciones representativas de Chile**: para ello deben considerarse el diseño muestral y los factores de expansión.
+:::
+
+| Concepto | Pregunta para aplicar a CASEN |
+|---|---|
+| Universo y población | ¿A qué conjunto de personas busca describir el estudio? Consulte la ficha técnica antes de responder. |
+| Muestra | ¿Quiénes efectivamente respondieron? ¿Por qué una muestra no equivale a toda la población? |
+| Parámetro y estadístico | ¿Una media calculada con registros de la base es por sí misma un parámetro poblacional? |
+| Muestreo probabilístico y no probabilístico | ¿Por qué importa cómo se seleccionan las observaciones? |
+| Recolección y codificación | ¿Cómo pasa una respuesta del cuestionario a un código en una columna? |
+
+### Procesar también es crear nuevas variables
+
+```r
+datos$es_mayor_edad <- datos$edad >= 18      # TRUE si tiene 18 años o más.
+table(datos$es_mayor_edad, useNA = "ifany")  # Contamos TRUE, FALSE y NA.
+```
+
+**Compruebe:** ahora `datos` contiene una columna nueva. `TRUE` significa «sí cumple» y `FALSE`, «no cumple». ¿Qué pasaría si la edad de una persona fuera `NA`?
+
+## 3. Exploremos las distribuciones y frecuencias {#sec-frecuencias}
+
+Una **distribución** muestra qué valores o categorías aparecen y con qué frecuencia. Para variables **nominales** es útil una tabla o barras; para variables **ordinales**, también podemos acumular porcentajes respetando el orden; para variables **cuantitativas**, suelen ser útiles histogramas y medidas numéricas.
+
+### ¿Cuántas respuestas hay en cada categoría?
+
+::: {.row .g-4 .casen-ejemplo-paralelo}
+::: {.col-12 .col-lg-6}
+**Código en R**
+
+```r
+tabla_sexo <- table(as.numeric(datos$sexo))  # Contamos cada código de sexo.
+tabla_sexo  # Mostramos las frecuencias absolutas.
+porcentaje_valido <- prop.table(tabla_sexo) * 100  # Calculamos porcentajes.
+porcentaje_valido  # Mostramos los porcentajes válidos.
+```
+:::
+::: {.col-12 .col-lg-6}
+**Resultado calculado al publicar**
+
+```{r}
+#| label: casen-tabla-frecuencias
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| results: asis
+# Los conteos corresponden a la versión numérica mostrada por el estudiante.
+frecuencias <- table(as.numeric(datos_publicacion$sexo))
+porcentajes <- prop.table(frecuencias) * 100
+codigos <- as.numeric(names(frecuencias))
+
+# Leemos las etiquetas de la base sin atribuir significados inventados.
+etiquetas_originales <- attr(datos_publicacion$sexo, "labels")
+categorias <- rep("Revisar libro de códigos", length(codigos))
+if (!is.null(etiquetas_originales) && !is.null(names(etiquetas_originales))) {
+  coincidencias <- match(codigos, as.numeric(etiquetas_originales))
+  existentes <- !is.na(coincidencias)
+  categorias[existentes] <- names(etiquetas_originales)[coincidencias[existentes]]
+}
+
+tabla_resultado <- data.frame(
+  `Código` = names(frecuencias),
+  `Etiqueta original` = categorias,
+  `Frecuencia` = as.integer(frecuencias),
+  `Porcentaje válido` = sprintf("%.1f%%", as.numeric(porcentajes)),
+  check.names = FALSE
+)
+knitr::kable(tabla_resultado, align = c("l", "l", "r", "r"))
+cat("\n\n*Respuestas sin dato (NA): ", sum(is.na(datos_publicacion$sexo)), ".*\n", sep = "")
+```
+:::
+:::
+
+
+La tabla muestra **frecuencias absolutas** (número de casos) y **porcentajes válidos** (proporción de respuestas disponibles). `as.numeric()` permite contar los códigos de `sexo` sin alterar la columna original, que conserva sus etiquetas. Los resultados del sitio se muestran redondeados; la consola de R puede ofrecer más decimales.
+
+**Interprete:** ¿qué categoría reúne más registros? ¿Por qué no tendría sentido calcular la media de los códigos de `sexo`? Una distribución puede ser unimodal, bimodal o multimodal según cuántos valores compartan la frecuencia máxima.
+
+### ¿Por qué el porcentaje puede cambiar si faltan respuestas?
+
+```r
+tabla_con_faltantes <- table(as.numeric(datos$sexo), useNA = "ifany")  # Incluimos NA.
+porcentaje_total <- prop.table(tabla_con_faltantes) * 100  # Porcentaje sobre el total.
+porcentaje_total  # Observamos el porcentaje obtenido.
+sum(is.na(datos$sexo))  # Contamos las respuestas faltantes.
+```
+
+En `sexo` no hay `NA`, por lo que los porcentajes válidos y totales coinciden. Para ver una **diferencia real de denominadores**, utilice `esc`, que sí tiene datos faltantes:
+
+```r
+tabla_esc <- table(datos_originales$esc)  # Contamos años de escolaridad válidos.
+porc_esc_valido <- prop.table(tabla_esc) * 100  # Dividimos por respuestas válidas.
+porc_esc_total <- tabla_esc / nrow(datos_originales) * 100  # Dividimos por todos.
+
+head(round(porc_esc_valido, 1))  # Observamos algunos porcentajes válidos.
+head(round(porc_esc_total, 1))   # Observamos los mismos valores sobre el total.
+```
+
+**Compare:** ¿qué porcentajes son mayores? `na.rm = TRUE`, que aparecerá más adelante, indica a R que omita `NA` del cálculo, no que los borre de la base. La presencia de faltantes debe interpretarse considerando a quién se aplicó la pregunta.
+
+### De la tabla al gráfico
+
+```r
+barplot(
+  tabla_sexo,                    # Frecuencias de cada código.
+  main = "Frecuencias de sexo",  # Título del gráfico.
+  xlab = "Código de respuesta",  # Eje horizontal.
+  ylab = "Frecuencia",           # Eje vertical.
+  col = "#a35a5a"                # Color de las barras.
+)
+```
+
+**Observe:** en un gráfico de barras las categorías aparecen separadas. En un histograma, los intervalos de una variable numérica aparecen contiguos. ¿Por qué no sería apropiado utilizar un histograma para los códigos de `sexo`?
+
+### Hagamos una variable ordinal y acumulemos porcentajes
+
+Agruparemos las edades en **tramos ordenados** para practicar porcentajes acumulados. Los tramos son una variable creada para este ejercicio: simplifican las edades exactas y, por tanto, pierden detalle.
+
+```r
+datos$tramo_edad <- cut(
+  datos$edad,                        # Edades que agruparemos.
+  breaks = c(0, 18, 30, 60, Inf),    # Límites de los tramos.
+  labels = c("0–17", "18–29", "30–59", "60 o más"),
+  right = FALSE,                     # Incluimos el límite inferior.
+  ordered_result = TRUE              # Mantenemos el orden de los tramos.
+)
+tabla_tramos <- table(datos$tramo_edad)  # Contamos personas por tramo.
+tabla_tramos                            # Revisamos la tabla.
+```
+
+```r
+porcentaje_tramos <- prop.table(tabla_tramos) * 100  # Porcentajes válidos.
+porcentaje_tramos                                # Vemos cada porcentaje.
+porcentaje_acumulado <- cumsum(porcentaje_tramos)  # Sumamos en orden.
+porcentaje_acumulado                             # Vemos la acumulación.
+```
+
+**Interprete:** ¿qué proporción de los registros tiene menos de 30 años? Localice la respuesta acumulando los dos primeros tramos. ¿Por qué ese cálculo exige categorías ordenadas?
+
+### Distribuciones empíricas y teóricas
+
+Las frecuencias observadas en CASEN forman una **distribución empírica**. En cambio, la distribución **normal** y otros modelos (exponencial, chi-cuadrado o beta) son distribuciones **teóricas**. Una normal es simétrica y tiene forma de campana; en su forma ideal, media, mediana y moda coinciden. Tener muchos registros no significa que la edad deba seguir una distribución normal.
+
+## 4. Busquemos el centro de una distribución {#sec-central}
+
+¿Qué número elegiría para resumir las edades de la base? Calcularemos primero dos medidas de centro y compararemos su información.
+
+### Media y mediana
+
+::: {.row .g-4 .casen-ejemplo-paralelo}
+::: {.col-12 .col-lg-6}
+**Código en R**
+
+```r
+media_edad <- mean(datos$edad, na.rm = TRUE)      # Calculamos la media.
+media_edad  # Mostramos el resultado.
+mediana_edad <- median(datos$edad, na.rm = TRUE)  # Calculamos la mediana.
+mediana_edad  # Mostramos el resultado.
+```
+:::
+::: {.col-12 .col-lg-6}
+**Resultado calculado al publicar**
+
+```{r}
+#| label: casen-tabla-central
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| results: asis
+edad <- datos_publicacion$edad
+medidas_centro <- data.frame(
+  `Medida` = c("Media (años)", "Mediana (años)"),
+  `Valor` = sprintf("%.2f", c(mean(edad, na.rm = TRUE), median(edad, na.rm = TRUE))),
+  check.names = FALSE
+)
+knitr::kable(medidas_centro, align = c("l", "r"))
+```
+:::
+:::
+
+
+La **media** es el promedio aritmético; la **mediana** divide los valores ordenados en dos mitades. `na.rm = TRUE` omite los valores faltantes del cálculo. **Compare:** ¿cuál de estas dos medidas es mayor en CASEN? ¿Cuál se afecta menos por edades extremas?
+
+### ¿Y la moda?
+
+La **moda** es el valor que más se repite. En R, `mode()` **no** calcula la moda estadística: informa el modo de almacenamiento del objeto. Para encontrarla, contaremos las frecuencias.
+
+```r
+tabla_edad <- table(datos$edad)  # Contamos cuántas veces aparece cada edad.
+frecuencia_moda <- max(tabla_edad)  # Buscamos la frecuencia más alta.
+frecuencia_moda  # Vemos cuántos registros tiene esa frecuencia.
+tabla_edad[tabla_edad == frecuencia_moda]  # Localizamos la edad o edades modales.
+```
+
+::: {.casen-consigna}
+**Compruebe:** ¿puede obtenerse la moda de `sexo`? ¿Y su media? Explique qué permite interpretar cada tipo de variable.
+:::
+
+| Medida | ¿Qué resume? | ¿Para qué variables? | ¿Qué limitación tiene? |
+|---|---|---|---|
+| Moda | Categoría o valor más frecuente | Nominales, ordinales y numéricas | Puede haber varias modas |
+| Mediana | Posición central | Ordinales y cuantitativas | No muestra la dispersión |
+| Media | Promedio aritmético | Cuantitativas; ordinales solo con justificación especial | Sensible a valores extremos |
+
+La media se calcula como \(\bar{x}=\frac{\sum x_i}{n}\): se suman los valores válidos \(x_i\) y se dividen por su cantidad \(n\). R efectúa este cálculo mediante `mean()`.
+
+## 5. Desafío: detectives de datos {#sec-detectives}
+
+**Desafío:** tenemos que elegir cómo describir la distribución de edades usando evidencia, no solamente una impresión.
+
+::: {.casen-consigna}
+**Primera votación en Zoom.** Lea las tres afirmaciones y escriba **A, B o C** en el chat, antes de ejecutar el siguiente código. La profesora pedirá a algunas personas que expliquen brevemente su elección.
+
+- **A.** «La edad promedio basta para describir cómo se distribuyen las edades».
+- **B.** «Además de la media, necesitamos mirar la mediana, la dispersión y la distribución».
+- **C.** «La mediana siempre es mejor que la media, sin importar cómo sean los datos».
+:::
+
+**Ahora compruebe su respuesta:** ejecute los comandos siguientes y observe los valores y el histograma. La profesora conducirá la comparación de las respuestas en la sesión principal de Zoom; no es necesario abrir salas separadas.
+
+### Comprobemos lo que sabemos
+
+```r
+mean(datos$edad, na.rm = TRUE)    # Calculamos la media.
+median(datos$edad, na.rm = TRUE)  # Calculamos la mediana.
+range(datos$edad, na.rm = TRUE)   # Vemos la menor y mayor edad.
+```
+
+```r
+hist(
+  datos$edad,                         # Edades que analizaremos.
+  main = "Distribución de edades",  # Título del gráfico.
+  xlab = "Edad (años)",             # Eje horizontal.
+  ylab = "Frecuencia",              # Eje vertical.
+  col = "#b47b78",                 # Color de las barras.
+  border = "white"                 # Separación entre barras.
+)
+```
+
+**Segunda votación:** después de observar los resultados, vuelva a escribir **A, B o C** en el chat. Justifique su elección con **un valor** (media o mediana) y **una observación del histograma**. ¿Cambió su respuesta? ¿Por qué?
+
+**Si no puede ejecutar R:** utilice la tabla de media y mediana de esta página y el histograma publicado en la sección 8. Podrá participar en la votación y la discusión igualmente; la profesora revisará las conclusiones con el curso.
+
+## 6. ¿Cuánto varían los datos? {#sec-dispersion}
+
+La **dispersión** nos indica qué tan extendidos están los valores. Dos conjuntos de datos pueden tener promedios similares y distinta variabilidad.
+
+### Del mínimo y el máximo al rango
+
+```r
+min(datos$edad, na.rm = TRUE)  # Edad mínima.
+max(datos$edad, na.rm = TRUE)  # Edad máxima.
+amplitud_edad <- max(datos$edad, na.rm = TRUE) -  # Calculamos el rango.
+  min(datos$edad, na.rm = TRUE)
+amplitud_edad  # Mostramos la diferencia entre ambos extremos.
+```
+
+### Varianza y desviación estándar
+
+::: {.row .g-4 .casen-ejemplo-paralelo}
+::: {.col-12 .col-lg-6}
+**Código en R**
+
+```r
+varianza_edad <- var(datos$edad, na.rm = TRUE)  # Varianza en años².
+varianza_edad  # Mostramos la varianza.
+desviacion_edad <- sd(datos$edad, na.rm = TRUE)  # Desviación en años.
+desviacion_edad  # Mostramos la desviación estándar.
+```
+:::
+::: {.col-12 .col-lg-6}
+**Resultado calculado al publicar**
+
+```{r}
+#| label: casen-tabla-dispersion
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| results: asis
+edad <- datos_publicacion$edad
+medidas_dispersion <- data.frame(
+  `Medida` = c("Varianza (años²)", "Desviación estándar (años)"),
+  `Valor` = sprintf("%.2f", c(var(edad, na.rm = TRUE), sd(edad, na.rm = TRUE))),
+  check.names = FALSE
+)
+knitr::kable(medidas_dispersion, align = c("l", "r"))
+```
+:::
+:::
+
+
+**Interprete:** ¿por qué es más sencillo comunicar una desviación estándar en años que una varianza en años al cuadrado? Una desviación estándar de cierto valor **no significa** que todas las edades estén entre media menos ese valor y media más ese valor.
+
+**Para seguir practicando:** más adelante incorporará `esc` a la base de trabajo. Después de revisar su codificación, calcule `sd(datos$esc, na.rm = TRUE)` y `range(datos$esc, na.rm = TRUE)`. Interprete ambas medidas **en años de escolaridad**, sin comparar directamente desviaciones estándar expresadas en unidades distintas.
+
+**Fórmulas de consulta.** En una muestra, \(s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\), y \(s=\sqrt{s^2}\). La primera es la **varianza muestral** y la segunda, la **desviación estándar muestral**; `var()` y `sd()` implementan estas medidas en R. Una puntuación atípica puede aumentar mucho ambas.
+
+## 7. ¿Dónde se ubica un dato? Cuartiles y percentiles {#sec-posicion}
+
+La **media** indica un centro aritmético; los **cuantiles** describen posiciones. El percentil 50 coincide con la mediana bajo la convención de cálculo usual de R.
+
+### Cuartiles de edad
+
+::: {.row .g-4 .casen-ejemplo-paralelo}
+::: {.col-12 .col-lg-6}
+**Código en R**
+
+```r
+cuartiles <- quantile(
+  datos$edad,                      # Edades observadas.
+  probs = c(0.25, 0.50, 0.75),     # Cortes del 25%, 50% y 75%.
+  na.rm = TRUE                     # Excluimos faltantes.
+)
+cuartiles                         # Mostramos Q1, Q2 y Q3.
+```
+:::
+::: {.col-12 .col-lg-6}
+**Resultado calculado al publicar**
+
+```{r}
+#| label: casen-tabla-cuartiles
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| results: asis
+cuartiles_web <- quantile(datos_publicacion$edad,
+                         probs = c(0.25, 0.50, 0.75), na.rm = TRUE)
+tabla_cuartiles <- data.frame(
+  `Cuartil` = c("Q1 (25%)", "Q2 (50%)", "Q3 (75%)"),
+  `Edad (años)` = sprintf("%.2f", as.numeric(cuartiles_web)),
+  check.names = FALSE
+)
+knitr::kable(tabla_cuartiles, align = c("l", "r"))
+```
+:::
+:::
+
+
+Q1 es el punto de corte del **25%**, Q2 corresponde a la **mediana** y Q3 al **75%** de la distribución ordenada, aproximadamente. Con datos repetidos, los porcentajes exactos pueden variar. **Interprete:** ¿qué significa el valor de Q3 expresado en años?
+
+### Percentiles 10 y 90
+
+```r
+percentiles <- quantile(
+  datos$edad,                      # Edades observadas.
+  probs = c(0.10, 0.90),           # P10 y P90.
+  na.rm = TRUE                     # Excluimos faltantes.
+)
+percentiles                       # Vemos los puntos de corte.
+```
+
+::: {.casen-consigna}
+**Interprete:** ejecute el código y lea el valor de P90. ¿Qué le dice sobre la edad bajo la cual se ubica aproximadamente el 90% de los registros? No significa «90% de edad».
+:::
+
+### Quintiles y deciles
+
+```r
+quintiles <- quantile(
+  datos$edad,                              # Edades.
+  probs = c(0.20, 0.40, 0.60, 0.80),       # Cuatro cortes de quintiles.
+  na.rm = TRUE                             # Sin NA.
+)
+quintiles                                  # Mostramos los quintiles.
+deciles <- quantile(
+  datos$edad,                              # Edades.
+  probs = seq(0.10, 0.90, 0.10),           # Nueve cortes de deciles.
+  na.rm = TRUE                             # Sin NA.
+)
+deciles                                    # Mostramos los deciles.
+```
+
+Los **cuartiles**, **quintiles** y **deciles** definen puntos de corte para dividir una distribución ordenada en cuatro, cinco y diez partes, respectivamente. `quantile()` calcula esos cortes; no asigna automáticamente un grupo a cada persona. Cuando hay valores iguales, los grupos podrían no tener exactamente el mismo tamaño.
+
+### ¿Qué es el rango intercuartílico?
+
+```r
+rango_intercuartilico <- IQR(datos$edad, na.rm = TRUE)  # Calculamos Q3 − Q1.
+rango_intercuartilico                                    # Vemos el resultado.
+```
+
+**Compare:** ¿qué medida cambiaría más si apareciera una edad extrema: el rango total o el rango intercuartílico? Explique la diferencia entre ambos.
+
+## 8. Histograma, asimetría, curtosis y boxplot {#sec-forma}
+
+**La forma importa:** dos distribuciones pueden tener un centro similar y formas diferentes. No todas las distribuciones tienen una forma normal.
+
+### ¿La distribución es simétrica?
+
+::: {.row .g-4 .casen-ejemplo-paralelo}
+::: {.col-12 .col-lg-5}
+**Código en R**
+
+```r
+hist(
+  datos$edad,                              # Variable cuantitativa.
+  main = "Forma de la distribución",       # Título.
+  xlab = "Edad (años)",                    # Eje horizontal.
+  ylab = "Frecuencia",                     # Eje vertical.
+  col = "#b47b78",                        # Color de las barras.
+  border = "white"                        # Separación entre barras.
+)
+```
+:::
+::: {.col-12 .col-lg-7}
+**Resultado calculado al publicar**
+
+```{r}
+#| label: casen-grafico-histograma
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| fig-width: 6
+#| fig-height: 4.3
+#| fig-dpi: 130
+#| fig-alt: "Histograma de las edades registradas en el subconjunto CASEN 2024."
+hist(
+  datos_publicacion$edad,
+  main = "Forma de la distribución",
+  xlab = "Edad (años)", ylab = "Frecuencia",
+  col = "#b47b78", border = "white"
+)
+```
+:::
+:::
+
+
+**Observe el histograma:** ¿en qué edades se concentran más casos? ¿Hay una cola más larga hacia edades bajas o altas? La **asimetría positiva** tiene una cola más extendida hacia valores altos; la **negativa**, hacia valores bajos. Una distribución **simétrica** muestra lados aproximadamente equilibrados.
+
+### Leer un diagrama de caja
+
+::: {.row .g-4 .casen-ejemplo-paralelo}
+::: {.col-12 .col-lg-5}
+**Código en R**
+
+```r
+boxplot(
+  datos$edad,                     # Edades que analizaremos.
+  main = "Diagrama de caja",      # Título.
+  ylab = "Edad (años)",           # Unidad del eje vertical.
+  col = "#dfc8c2"                # Color de la caja.
+)
+```
+:::
+::: {.col-12 .col-lg-7}
+**Resultado calculado al publicar**
+
+```{r}
+#| label: casen-grafico-boxplot
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+#| fig-width: 6
+#| fig-height: 4.3
+#| fig-dpi: 130
+#| fig-alt: "Diagrama de caja que muestra la mediana, dispersión y posibles valores extremos de edad en CASEN 2024."
+boxplot(
+  datos_publicacion$edad,
+  main = "Diagrama de caja",
+  ylab = "Edad (años)", col = "#dfc8c2"
+)
+```
+:::
+:::
+
+
+**Ubique en el boxplot:** la línea de la **mediana**, los bordes de la caja (cuartiles), los **bigotes** y los posibles puntos aislados. En R, los bigotes llegan hasta las observaciones más extremas dentro de los límites de **1,5 veces el rango intercuartílico** desde la caja; no necesariamente hasta el mínimo y máximo. Los puntos exteriores son **potencialmente atípicos**, no errores automáticamente.
+
+### ¿Qué muestra la curtosis?
+
+La **curtosis** resume aspectos del peso de las colas y la presencia de valores extremos, especialmente al comparar con la normal. No basta con describirla como «lo puntiaguda que es la campana». La **curtosis en exceso** de la normal es cero; distintas funciones y paquetes pueden usar convenciones diferentes. Para este nivel, comenzaremos **interpretando conceptualmente el histograma y el boxplot**, sin aprender un paquete adicional solo para calcular un coeficiente.
+
+::: {.casen-consigna}
+**Comparación conceptual.** Dos distribuciones pueden tener media y desviación estándar semejantes, pero comportamientos muy distintos en las colas. ¿Qué información adicional revisaríamos antes de decidir que se parecen? ¿Puede un histograma por sí solo dar el valor exacto de la curtosis?
+:::
+
+### Volvamos a mirar los cuartiles junto al boxplot
+
+```r
+quantile(datos$edad, probs = c(0.25, 0.50, 0.75), na.rm = TRUE)  # Cuartiles.
+IQR(datos$edad, na.rm = TRUE)  # Rango entre Q3 y Q1.
+```
+
+*Nota de lectura:* `quantile()` y `boxplot()` pueden utilizar convenciones ligeramente distintas para definir los extremos de la caja, especialmente con pocos casos. Una diferencia pequeña no significa necesariamente que el código esté mal.
+
+| Recurso | Qué enseña | Error común que debemos evitar |
+|---|---|---|
+| Percentil 90 | Punto de corte aproximadamente por debajo del cual queda el 90% de casos | Interpretarlo como «90% de la variable» |
+| Cuartiles | Posición de Q1, Q2 y Q3 | Confundir puntos de corte con porcentajes |
+| Quintiles / deciles | Cortes en cinco o diez partes | Creer que `quantile()` ya clasificó personas en grupos |
+| Asimetría | Dirección de la cola | Confundir asimetría positiva con «hay más personas a la derecha» |
+| Curtosis | Peso de colas y extremos | Reducirla solo a la altura del pico |
+| Boxplot | Centro, rango intercuartílico y puntos atípicos | Interpretar cada punto como un dato erróneo |
+
+### Escolaridad: una segunda variable (solo si está documentada)
+
+La variable `esc` registra años de escolaridad y tiene observaciones faltantes. Incorpórela a `datos`, compruebe sus valores y consulte el libro de códigos antes de interpretarla. Si encuentra algún código poco claro, pregunte a la profesora.
+
+```r
+datos$esc <- datos_originales$esc  # Agregamos escolaridad ya documentada.
+summary(datos$esc)                # Revisamos valores y faltantes.
+table(datos$esc, useNA = "ifany")  # Contamos códigos y NA.
+```
+
+**Para seguir practicando:** después de verificar sus valores, calcule la media y mediana de `esc`. ¿Cuál es mayor? No interprete códigos especiales como si fueran años de escolaridad.
+
+## 9. Actividad integradora para continuar después de la clase {#sec-integrador}
+
+**Para realizar después de la clase:** utilice `edad` o `esc` (si ya verificó su codificación). En su script, genere **una medida de centro, una de dispersión, dos percentiles y un gráfico**. Escriba cinco líneas que expliquen los resultados y una limitación metodológica.
+
+Puede seguir este orden: comprobar valores y `NA` → calcular medidas → elaborar el gráfico → interpretar. No generalice los resultados sin ponderar a toda la población de Chile.
+
+::: {.casen-consigna}
+**Para cerrar:** ¿qué medida usaría para encontrar la categoría más frecuente? ¿Qué medida resume la mitad central de una variable cuantitativa?
+:::
+
+## 10. Ticket de salida {#sec-cierre}
+
+**Responda en el chat de Zoom** con una frase breve para cada pregunta:
+
+1. ¿Qué diferencia hay entre un **porcentaje válido** y un **porcentaje sobre todos los casos**?
+2. ¿Qué estadístico cambiaría más ante un valor extremo: **media** o **mediana**? ¿Por qué?
+3. ¿Qué significa el **percentil 75** de una variable?
+4. En un **boxplot**, ¿un punto fuera de los bigotes significa necesariamente que alguien ingresó un dato mal?
+
+**Antes de terminar:** guarde `practico.R`. Debe conservar el código, los comentarios y las instrucciones necesarias para repetir el análisis. Un resultado es reproducible cuando podemos explicar cómo se obtuvo.
+
+### Fuentes y documentación
+
+- [Encuesta CASEN 2024: cuestionario, libro de códigos y ficha técnica](https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2024).
+- [Nota oficial sobre el uso de las bases CASEN 2024](https://observatorio.ministeriodesarrollosocial.gob.cl/storage/docs/casen/2024/Nota_uso_bases_de_datos_Casen_2024.pdf).
+
+:::

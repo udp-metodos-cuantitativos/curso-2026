@@ -6,8 +6,9 @@ unidad-titulo: "Estadística Univariada"
 orden: 7
 date: 2026-10-13
 description: "Cuartiles, percentiles, rango intercuartílico, asimetría, curtosis y visualización de distribuciones con boxplots (Laboratorio 4)."
-publicada: false
-draft: true
+pptx: "Clase_07.pptx"
+publicada: true
+draft: false
 ---
 ::: {.clase-card .clase-intro}
 
@@ -44,8 +45,9 @@ Uso de quantile(), gráficos de caja (*boxplots*) con ggplot2 y detección de va
 :::
 
 ::: {.callout-note}
-### Material de la sesión por publicar
-Las diapositivas y el script de R del Laboratorio 4 estarán disponibles en esta sección.
+### Material de la sesión
+- [Descargar presentación (.pptx)](Clase_07.pptx)
+- El script de R del Laboratorio 4 estará disponible en esta sección.
 :::
 
 :::

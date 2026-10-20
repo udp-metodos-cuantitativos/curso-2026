@@ -63,10 +63,16 @@ def parse_class_qmd(qmd_path: Path) -> dict:
         if parts[0].strip().lower().startswith("clase"):
             short_title = parts[1].strip()
 
-    if is_numbered:
+    menu_custom = data.get("menu-titulo") or data.get("nav-title") or data.get("listing-title")
+    if menu_custom:
+        menu_label = menu_custom
+    elif is_numbered:
         menu_label = f"Clase {clase_num} – {short_title}"
     else:
         menu_label = short_title
+
+    html_name = "index.html" if qmd_path.name == "index.qmd" else f"{qmd_path.stem}.html"
+    href = f"../{folder_name}/{html_name}"
 
     try:
         orden = float(data.get("orden", int(clase_num) if is_numbered and clase_num.isdigit() else 99))
@@ -133,12 +139,24 @@ def parse_class_qmd(qmd_path: Path) -> dict:
         "description": data.get("description", ""),
         "pdf": pdf,
         "pptx": pptx,
-        "publicada": publicada
+        "publicada": publicada,
+        "href": href
     }
 
 def get_all_classes() -> list:
     clases_dir = WORKSPACE_ROOT / "clases"
-    qmd_files = [p for p in sorted(clases_dir.glob("*/index.qmd")) if not p.parent.name.startswith("_")]
+    qmd_files = []
+    for sub in sorted(clases_dir.iterdir()):
+        if not sub.is_dir() or sub.name.startswith("_"):
+            continue
+        index_file = sub / "index.qmd"
+        if index_file.exists():
+            qmd_files.append(index_file)
+        for qmd in sorted(sub.glob("*.qmd")):
+            if qmd.name == "index.qmd" or qmd.name.startswith("_"):
+                continue
+            qmd_files.append(qmd)
+
     classes = []
     for qmd in qmd_files:
         info = parse_class_qmd(qmd)
@@ -210,7 +228,8 @@ def generate_sidebar_qmd(classes: list) -> str:
         for c in published_in_unit:
             folder = c["folder"]
             menu_label = c["menu_label"]
-            lines.append(f'        <a class="clase-link" href="../{folder}/index.html" data-clase-link="{folder}">{menu_label}</a>')
+            href = c.get("href", f"../{folder}/index.html")
+            lines.append(f'        <a class="clase-link" href="{href}" data-clase-link="{folder}">{menu_label}</a>')
         lines.append('      </div>')
 
     lines.extend([

@@ -13,6 +13,7 @@ project:
     - clases/**/*.jpeg
     - resources/programa/**/*.pdf
     - resources/biblio/**/*.pdf
+    - scripts/casen_2024_udp.RData
   render:
     - index.qmd
     - clases.qmd
@@ -32,9 +33,10 @@ project:
     - clases/clase_05/index.qmd
     - clases/positron/index.qmd
     - clases/clase_06/index.qmd
+    - clases/clase_07/index.qmd
+    - clases/clase_08/index.qmd
+    - clases/practico_proc/practico_estadistica_descriptiva_casen_2024.qmd
     # Clases preparadas / ocultas (se publican con 'publicada: true'):
-    # - clases/clase_07/index.qmd (Medidas de posición y forma)
-    # - clases/clase_08/index.qmd (Análisis bivariado y tablas de contingencia)
     # - clases/clase_09/index.qmd (Indicadores, índices y escalas)
     # - clases/clase_10/index.qmd (Correlación y regresión)
     # - clases/clase_11/index.qmd (Elaboración del trabajo grupal)
