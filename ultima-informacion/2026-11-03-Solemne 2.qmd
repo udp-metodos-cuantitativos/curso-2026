@@ -1,0 +1,69 @@
+
+---
+title: "Solemne 2: análisis e interpretación de estadística descriptiva"
+date: "2026-11-03"
+description: "Revisa la pauta, las actividades y las instrucciones de la segunda evaluación de Métodos Cuantitativos."
+categories: [info, evaluaciones]
+toc: false
+image: "../resources/post/solemne2.png"
+---
+
+<style>
+.evaluation-access {
+  margin: 1.75rem 0;
+  text-align: center;
+}
+
+.course-resource-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--bs-primary, #1f5f8b);
+  color: #ffffff !important;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none !important;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.course-resource-button:hover {
+  filter: brightness(0.92);
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+.course-resource-button:focus-visible {
+  outline: 3px solid var(--bs-primary, #1f5f8b);
+  outline-offset: 3px;
+}
+
+@media (max-width: 576px) {
+  .course-resource-button {
+    width: 100%;
+  }
+}
+</style>
+
+Ya se encuentra disponible la **pauta de la Solemne 2 de Métodos Cuantitativos**, correspondiente a la unidad de **estadística descriptiva**.
+
+<div class="evaluation-access">
+  <a
+    href="https://docs.google.com/document/d/1j74dxwEVymq_VdPADEYXK2O3PBXTkVGQrr-TbIgFJjI/edit?tab=t.0"
+    class="course-resource-button"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Consultar pauta de la Solemne 2 en una nueva pestaña"
+  >
+    Revisar pauta de la Solemne 2 →
+  </a>
+</div>
+
+En esta ocasión, la evaluación se realizará de manera **individual, remota y asincrónica**, mediante una breve grabación en la que deberán demostrar sus conocimientos de interpretación y análisis estadístico.
+
+Deberán grabar un **video individual de entre 5 y 7 minutos, con un máximo de 8 minutos**, mostrando su rostro mientras explican los ejercicios y los procedimientos utilizados.
+
+No es necesario elaborar gráficos nuevos, utilizar R ni entregar un informe escrito. Todos los materiales necesarios se encuentran en la pauta.
