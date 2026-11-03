@@ -1,11 +1,11 @@
 ---
-title: "Medidas de posición y forma"
+title: " Medidas de Tendencia Central y Medidas de Dispersión"
 clase: "07"
 unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"
 orden: 7
 date: 2026-10-13
-description: "Cuartiles, percentiles, rango intercuartílico, asimetría, curtosis y visualización de distribuciones con boxplots (Laboratorio 4)."
+pdf: "clase_07.pdf"
 pptx: "Clase_07.pptx"
 publicada: true
 draft: false

@@ -1,11 +1,11 @@
 ---
-title: "Análisis bivariado y tablas de contingencia"
+title: "Medidas de Posición y Medidas de Forma"
 clase: "08"
 unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"
 orden: 8
 date: 2026-10-20
-description: "Estudio de la relación entre dos variables categóricas, tablas cruzadas de doble entrada y cálculo de porcentajes por fila y columna (Laboratorio 5)."
+pdf: "clase_08.pdf"
 pptx: "Clase_08.pptx"
 publicada: true
 draft: false
@@ -14,7 +14,6 @@ draft: false
 
 ## Contenidos de la sesión
 
-Iniciamos la Unidad IV con el análisis bivariado, que permite investigar si dos variables sociales están asociadas y cómo varía una según la otra.
 
 ::: {.clase-objetivos}
 
