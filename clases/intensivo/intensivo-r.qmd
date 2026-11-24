@@ -239,6 +239,7 @@ Antes de elegir una tabla, un estadístico o un gráfico, identifica qué mide t
 **Importante:** que una variable esté almacenada como número en R no significa que sea cuantitativa. Por ejemplo, 1 = Sí y 2 = No son códigos de categorías, no cantidades. Consulta siempre el diccionario antes de elegir el análisis.
 
 
+
 ```{r}
 #| label: entorno-render
 #| include: false
