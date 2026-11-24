@@ -5,7 +5,7 @@ unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"
 orden: 7
 date: 2026-10-13
-pdf: "clase_07.pdf"
+pdf: "Clase_07.pdf"
 pptx: "Clase_07.pptx"
 publicada: true
 draft: false
