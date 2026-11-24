@@ -1,0 +1,2620 @@
+---
+title: "Intensivo práctico de R"
+subtitle: "De los datos a la investigación"
+clase: "intensivo-r"
+kicker: "Taller de Software · Práctica en R"
+unidad: "Práctica en R"
+unidad-titulo: "Práctica en R"
+menu-titulo: "Intensivo práctico de R"
+orden: 9.5
+date: 2026-11-24
+description: "Recorrido práctico de preparación de datos, análisis univariado, visualización y análisis bivariado en R con la ENPCCL 2024."
+publicada: true
+draft: false
+lang: es
+toc: false
+page-layout: full
+engine: knitr
+execute:
+  echo: true
+  error: false
+  warning: true
+  cache: false
+  freeze: false
+format:
+  html:
+    code-copy: true
+    code-fold: false
+    anchor-sections: true
+resources:
+  - intensivo-r-recursos/**
+---
+
+```{=html}
+<style>
+/* Estilos exclusivos del intensivo. No modifica el tema del resto del sitio. */
+.r-intensivo {
+  --ir-text: #202b36; --ir-muted: #435364; --ir-code-bg: #f4f7fa;
+  --ir-line: #c4ced8; --ir-accent: #175c68; --ir-note: #edf6f6;
+  --ir-code: #172a3b; --ir-comment: #41596a;
+  color: var(--ir-text); font-size: 1.075rem; line-height: 1.68;
+  overflow-wrap: break-word; min-width: 0;
+}
+.quarto-dark .r-intensivo, [data-bs-theme="dark"] .r-intensivo {
+  --ir-text: #e7edf3; --ir-muted: #c1ced9; --ir-code-bg: #18232e;
+  --ir-line: #526477; --ir-accent: #92d8de; --ir-note: #203841;
+  --ir-code: #ecf4fa; --ir-comment: #b5cad9;
+}
+.r-intensivo h1 {font-size:clamp(1.65rem,3vw,2.05rem); margin:2.8rem 0 1.2rem; padding-bottom:.55rem; border-bottom:2px solid var(--ir-accent); color:var(--ir-text);}
+.r-intensivo h2 {font-size:1.48rem; margin:2.4rem 0 1rem; color:var(--ir-text);}
+.r-intensivo h3 {font-size:1.22rem; margin:1.65rem 0 .7rem; color:var(--ir-text);}
+.r-intensivo h4 {font-size:1.07rem; margin:1.25rem 0 .65rem; color:var(--ir-text);}
+.r-intensivo p {max-width:86ch; margin:0 0 1rem;}
+.r-intensivo a {color:var(--ir-accent); text-underline-offset:.2em;}
+.r-intensivo .cell {margin:1.15rem 0 1.75rem; min-width:0;}
+.r-intensivo div.sourceCode {max-width:100%; min-width:0; overflow-x:auto; background:var(--ir-code-bg); border:1px solid var(--ir-line); border-left:4px solid var(--ir-accent); border-radius:7px; margin:1rem 0;}
+.r-intensivo pre, .r-intensivo code {font-family:Consolas,"Liberation Mono",Menlo,monospace !important; font-variant-ligatures:none;}
+.r-intensivo pre {max-width:100%; overflow-x:auto; font-size:clamp(.91rem,1.15vw,1.04rem); line-height:1.65; color:var(--ir-code); padding:1rem 1.2rem; margin:0; background:var(--ir-code-bg);}
+.r-intensivo pre code {font-size:inherit; line-height:inherit; color:inherit; background:transparent; padding:0;}
+.r-intensivo pre code span {color:var(--ir-code);}
+.r-intensivo pre code span.co {color:var(--ir-comment) !important; font-style:normal; font-weight:500;}
+.r-intensivo pre code span.kw,.r-intensivo pre code span.cf {color:#17467c; font-weight:600;}
+.r-intensivo pre code span.st,.r-intensivo pre code span.ch {color:#176042;}
+.r-intensivo pre code span.dv,.r-intensivo pre code span.fl {color:#96360d;}
+.r-intensivo pre code span.fu,.r-intensivo pre code span.bu {color:#394b84;}
+.r-intensivo pre code span.cn {color:#82346c;}
+.quarto-dark .r-intensivo pre code span:not(.co), [data-bs-theme="dark"] .r-intensivo pre code span:not(.co) {color:var(--ir-code);}
+.r-intensivo .cell-output, .r-intensivo .cell-output-display, .r-intensivo .cell-output-stdout {min-width:0; max-width:100%; overflow-x:auto; margin:1rem 0 1.25rem; padding:.65rem .8rem; border-left:3px solid var(--ir-line);}
+.r-intensivo .cell-output-stdout pre {background:transparent; padding:.25rem .5rem;}
+.r-intensivo .cell-output-display:before,.r-intensivo .cell-output-stdout:before {content:"Resultado"; display:block; font-size:.83rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ir-muted); margin-bottom:.55rem;}
+.r-intensivo .cell-output-display img {max-width:100%;height:auto; display:block; margin:.6rem auto;}
+.r-intensivo .panel-tabset {margin:1.3rem 0 1.8rem; min-width:0;}
+.r-intensivo .panel-tabset .nav-tabs {flex-wrap:wrap; gap:.25rem; border-bottom:2px solid var(--ir-line);}
+.r-intensivo .nav-tabs .nav-link {padding:.65rem .9rem; color:var(--ir-accent); font-weight:600;}
+.r-intensivo .nav-tabs .nav-link.active {color:var(--ir-text); border-bottom:3px solid var(--ir-accent); background:var(--ir-note);}
+.r-intensivo .tab-content {padding:clamp(.65rem,2vw,1.4rem); border-color:var(--ir-line); min-width:0;}
+.r-intensivo .r-interpretacion {background:var(--ir-note); border-left:4px solid var(--ir-accent); padding:1rem 1.15rem; margin:1.25rem 0; border-radius:0 6px 6px 0;}
+.r-intensivo .r-interpretacion p:last-child {margin-bottom:0;}
+.r-intensivo .callout {margin:1.4rem 0;}
+.r-intensivo details {border:1px solid var(--ir-line); border-radius:6px; margin:.75rem 0; padding:.85rem 1rem;}
+.r-intensivo summary {cursor:pointer; font-weight:650; color:var(--ir-accent);}
+.r-intensivo .table-responsive {max-width:100%; overflow-x:auto;}
+.r-intensivo table {font-size:1rem; width:100%; font-variant-numeric:tabular-nums;}
+.r-intensivo th {background:var(--ir-note); color:var(--ir-text); font-weight:650;}
+.r-intensivo th,.r-intensivo td {padding:.6rem .75rem; border-bottom:1px solid var(--ir-line); vertical-align:top;}
+.r-intensivo .r-downloads {display:flex; gap:.65rem; flex-wrap:wrap; margin:1rem 0;}
+.r-intensivo .r-downloads a {border:1px solid currentColor; border-radius:5px; padding:.55rem .8rem; text-decoration:none; font-weight:600;}
+.r-intensivo .r-check, .r-intensivo #denom-demo {border:1px solid var(--ir-line); padding:1.15rem; border-radius:8px; margin:1.2rem 0; overflow-x:auto;}
+.r-intensivo .r-check label {display:block; margin:.65rem 0;}
+.r-intensivo .r-check input {margin-right:.6rem; accent-color:var(--ir-accent);}
+.r-intensivo progress {width:100%; accent-color:var(--ir-accent);}
+.r-intensivo select,.r-intensivo button {font:inherit; padding:.45rem .7rem; border:1px solid var(--ir-line); border-radius:5px; color:var(--ir-text); background:var(--ir-code-bg); max-width:100%;}
+.r-intensivo :focus-visible {outline:3px solid var(--ir-accent); outline-offset:3px;}
+@media(max-width:600px){.r-intensivo pre code,.r-intensivo pre code span{white-space:pre-wrap!important;overflow-wrap:anywhere}.r-intensivo{font-size:1rem}.r-intensivo pre{padding:.75rem;font-size:.88rem}.r-intensivo .tab-content{padding:.6rem}.r-intensivo table{font-size:.9rem}.r-intensivo th,.r-intensivo td{padding:.45rem}.r-intensivo h2{font-size:1.32rem}}
+/* TOC lateral derecho exclusivo del intensivo */
+html, body.clases-page {
+  overflow-x: clip !important;
+}
+@media (min-width: 992px) {
+  body.clases-page #catedra > .column.clase-main {
+    width: min(100%, 1260px, calc(100vw - var(--clase-sidebar-w) - 32px)) !important;
+    max-width: min(1260px, calc(100vw - var(--clase-sidebar-w) - 32px)) !important;
+    overflow: visible !important;
+    overflow-x: visible !important;
+  }
+  body.sidebar-clases-collapsed.clases-page #catedra > .column.clase-main {
+    width: min(100%, 1340px, calc(100vw - 64px)) !important;
+    max-width: min(1340px, calc(100vw - 64px)) !important;
+  }
+}
+.r-intensivo-shell {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 215px !important;
+  gap: 1.75rem !important;
+  align-items: start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.r-intensivo-shell > .r-intensivo {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  grid-column: 1 !important;
+}
+.r-intensivo-shell > .r-intensivo > section {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.r-intensivo-shell > .r-intensivo p {
+  max-width: 100% !important;
+}
+.r-intensivo-toc {
+  grid-column: 2 !important;
+  width: 215px !important;
+  position: sticky;
+  top: 5.2rem;
+  max-height: calc(100vh - 6.5rem);
+  overflow-y: auto;
+  padding: 0.35rem 0.4rem 0.75rem 0.9rem;
+  border-left: 2px solid #d6dde4;
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+.r-intensivo-toc-title {
+  margin: 0 0 0.6rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #435364;
+}
+.r-intensivo-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.r-intensivo-toc li {
+  margin: 0.25rem 0;
+}
+.r-intensivo-toc a {
+  display: block;
+  padding: 0.2rem 0.35rem;
+  border-radius: 5px;
+  color: #435364;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.r-intensivo-toc a:hover {
+  color: #175c68;
+  background: #edf6f6;
+}
+.r-intensivo-toc a.toc-lvl-1 {
+  font-weight: 700;
+  color: #202b36;
+  margin-top: 0.55rem;
+}
+.r-intensivo-toc a.toc-lvl-2 {
+  padding-left: 0.85rem;
+  font-size: 0.83rem;
+}
+.r-intensivo-toc a.is-active {
+  color: #175c68;
+  font-weight: 700;
+  background: #edf6f6;
+  border-left: 3px solid #175c68;
+  margin-left: -1rem;
+  padding-left: calc(1rem + 0.35rem - 3px);
+}
+.r-intensivo-toc a.toc-lvl-2.is-active {
+  padding-left: calc(1rem + 0.85rem - 3px);
+}
+@media (max-width: 1120px) {
+  .r-intensivo-shell {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+  }
+  .r-intensivo-shell > .r-intensivo,
+  .r-intensivo-toc {
+    grid-column: 1 !important;
+    width: 100% !important;
+  }
+  .r-intensivo-toc {
+    order: -1;
+    position: static;
+    max-height: none;
+    border-left: 4px solid #175c68;
+    background: #f4f7fa;
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+  }
+}
+</style>
+```
+
+::::::::: {.r-intensivo}
+
+# Parte I. Taller práctico de R
+
+Al terminar esta sesión podrás preparar datos sociales, construir tablas y gráficos, comparar grupos e interpretar resultados en R. Practicaremos con la Encuesta Nacional de Participación Cultural y Comportamiento Lector 2024 (ENPCCL), del Ministerio de las Culturas, las Artes y el Patrimonio. La versión pedagógica tiene 12.263 informantes seleccionados y 20 variables. Una fila corresponde a una persona informante Kish; el número de residentes describe su vivienda. Los resultados serán descriptivos y no ponderados: **no representan estimaciones de toda la población chilena**.
+
+[Fuente y documentación oficial de ENPCCL](https://observatorio.cultura.gob.cl/index.php/2025/10/20/encuesta-nacional-de-participacion-cultural-y-comportamiento-lector-enpccl-2024/).
+
+:::::::: {.r-downloads}
+[Descargar base Cultura 2024 (CSV)](../../bases%20de%20datos/Cultura_2024/Cultura_2024.csv){download="Cultura_2024.csv"} · [Descargar diccionario](../../bases%20de%20datos/Cultura_2024/Diccionario_variables.csv){download="Diccionario_variables.csv"} · [Ficha de la encuesta](intensivo-r-recursos/Ficha_encuesta.md)
+::::::::
+
+## Antes de empezar: recordemos los tipos de variables {#tipos-variables}
+
+Antes de elegir una tabla, un estadístico o un gráfico, identifica qué mide tu variable.
+
+| Tipo de variable | ¿Cómo reconocerla? | Ejemplo | ¿Qué análisis y gráfico usar? |
+|---|---|---|---|
+| **Categórica nominal** | Categorías sin orden natural. | Producción de artesanías: Sí / No (`inv_artesania`). | Frecuencias y porcentajes; gráfico de barras. |
+| **Categórica ordinal** | Categorías que pueden ordenarse. | Frecuencia de lectura: diaria, semanal, mensual, etc. (`lectura_libros`). | Frecuencias, porcentajes y acumulados; barras ordenadas. |
+| **Cuantitativa discreta** | Cantidades que se cuentan, generalmente números enteros. | Número de residentes de la vivienda (`ih1`); cantidad de libros (`libros_cant`). | Media, mediana, desviación estándar y cuartiles; histograma o diagrama de caja. |
+| **Cuantitativa continua** | Cantidades que se miden y pueden tomar valores intermedios. | Tiempo de viaje en horas (ejemplo ilustrativo, no una variable de esta base). | Media, mediana, desviación estándar y cuartiles; histograma o diagrama de caja. |
+
+**Regla rápida:** ¿son categorías o cantidades? Si son categorías, pregunta si tienen un orden. Si son cantidades, distingue si se cuentan o se miden en una escala continua.
+
+**Importante:** que una variable esté almacenada como número en R no significa que sea cuantitativa. Por ejemplo, 1 = Sí y 2 = No son códigos de categorías, no cantidades. Consulta siempre el diccionario antes de elegir el análisis.
+
+
+```{r}
+#| label: entorno-render
+#| include: false
+# Buscamos la carpeta de datos desde el directorio de ejecución.
+# Funciona si el QMD está en la raíz del sitio o en clases/intensivo/.
+raices <- c(getwd(), dirname(getwd()), dirname(dirname(getwd())))
+
+# Quarto puede proporcionar además la ruta de la raíz del proyecto.
+raiz_quarto <- Sys.getenv("QUARTO_PROJECT_DIR", unset = "")
+if (nzchar(raiz_quarto)) raices <- c(raiz_quarto, raices)
+
+# Construimos las rutas candidatas y comprobamos el CSV real.
+candidatas <- unique(file.path(raices, "bases de datos", "Cultura_2024"))
+validas <- candidatas[file.exists(file.path(candidatas, "Cultura_2024.csv"))]
+
+# Detenemos el render con un mensaje informativo si falta la base.
+if (length(validas) == 0L) {
+    stop(
+        "No se encontró Cultura_2024.csv. Rutas revisadas: ",
+        paste(candidatas, collapse = " | ")
+    )
+}
+
+# Conservamos las exportaciones del render en una carpeta temporal.
+options(
+    intensivo.input = normalizePath(validas[1], winslash = "/"),
+    intensivo.output = file.path(tempdir(), "intensivo-output")
+)
+```
+
+## 1. Preparar el proyecto {#preparar}
+
+**Demostración guiada** — criterios 2, 3 y 8 del trabajo final.
+
+### Crear nuestra carpeta de investigación
+
+R es el lenguaje que realiza los cálculos. RStudio y Positron son programas que nos permiten escribir código, ejecutarlo y organizar los resultados. No son lo mismo que R.
+
+**Paso 1.** En el explorador de archivos, crea una carpeta llamada `Mi_investigacion` en un lugar que recuerdes.
+
+**Paso 2.** Abre esa carpeta en tu editor:
+
+::::::: {.panel-tabset}
+
+#### RStudio
+
+Selecciona **File → New Project → Existing Directory**, elige `Mi_investigacion` y crea el proyecto. El archivo `.Rproj` permite volver a abrirlo.
+
+#### Positron
+
+Selecciona **File → Open Folder** y abre `Mi_investigacion`. Inicia una sesión de R en la consola. No necesitas un archivo `.Rproj` para trabajar en Positron.
+
+:::::::
+
+**Paso 3.** Crea manualmente las carpetas `input`, `procesamiento` y `output`. Dentro de `output`, crea `tablas` y `graficos`.
+
+**Paso 4.** Descarga el [CSV de Cultura 2024](../../bases%20de%20datos/Cultura_2024/Cultura_2024.csv){download="Cultura_2024.csv"} y el [diccionario](../../bases%20de%20datos/Cultura_2024/Diccionario_variables.csv){download="Diccionario_variables.csv"}. Guárdalos en `input/` con sus nombres originales. Si el navegador abre el CSV en vez de descargarlo, usa Guardar como. No lo abras y vuelvas a guardar en Excel.
+
+**Paso 5.** Crea un script de R: en RStudio, **File → New File → R Script**; en Positron, crea un archivo nuevo y guárdalo con extensión `.R`. Llámalo `analisis.R` y guárdalo dentro de `procesamiento/`. Escribe allí los códigos de la clase, no solo en la consola.
+
+La estructura debería quedar así:
+
+```text
+Mi_investigacion/
+├── input/
+│   ├── Cultura_2024.csv
+│   └── Diccionario_variables.csv
+├── procesamiento/
+│   └── analisis.R
+└── output/
+    ├── tablas/
+    └── graficos/
+```
+
+`input` conserva los datos entregados; `procesamiento` conserva las instrucciones; `output` recibe las tablas y gráficos. Así podemos repetir el análisis sin sobrescribir los datos originales.
+
+::::::: {.callout-note collapse="true"}
+#### Alternativa: crear carpetas mediante R
+
+Desde la carpeta principal, ejecuta cada comando solo si la carpeta todavía no existe. También puedes crearlas manualmente como acabamos de hacer.
+
+```r
+# Creamos la carpeta para los datos.
+dir.create("input")
+
+# Creamos la carpeta para nuestro script.
+dir.create("procesamiento")
+
+# Creamos la carpeta para resultados.
+dir.create("output")
+
+# Creamos las subcarpetas dentro de output.
+dir.create("output/tablas")
+
+# Creamos la carpeta donde se guardarán los gráficos.
+dir.create("output/graficos")
+```
+
+Si aparece un aviso de que la carpeta ya existe, no necesitas crearla de nuevo.
+:::::::
+
+### Conocer el entorno de trabajo
+
+| Elemento | Para qué sirve |
+|---|---|
+| Consola | Ejecuta instrucciones y muestra resultados o errores. |
+| Editor de scripts | Permite escribir y guardar instrucciones para volver a ejecutarlas. |
+| Environment / Variables | Muestra los objetos que existen en la sesión actual. |
+| Files / Explorer | Permite encontrar los archivos y carpetas de la investigación. |
+| Plots | Muestra los gráficos que generamos. |
+
+Selecciona una línea completa en tu script y usa **Run** (habitualmente Ctrl+Enter en Windows o Cmd+Enter en Mac, según la configuración del editor). Para varias líneas, selecciónalas y ejecútalas juntas. Guarda con Ctrl+S o Cmd+S. Para repetir todo, guarda el archivo y ejecútalo de principio a fin desde el editor, o usa `source("procesamiento/analisis.R")` desde la carpeta principal.
+
+Guardar el script no equivale a guardar los objetos de la sesión. Los objetos pueden desaparecer al reiniciar R; el script permite volver a crearlos. Los archivos exportados permanecen en el disco.
+
+### Primeros comandos {#primeros-comandos}
+
+Un **objeto** es un nombre que usamos para guardar información. Una **función** realiza una operación; recibe argumentos entre paréntesis. El símbolo `<-` guarda el resultado en el objeto que está a su izquierda.
+
+```{r}
+#| label: primer-objeto
+# Guardamos un número en un objeto llamado cantidad.
+cantidad <- 10
+
+# Escribimos su nombre para ver el valor guardado.
+cantidad
+```
+
+Un vector reúne varios valores. `c()` significa combinar; las comas separan los elementos.
+
+```{r}
+#| label: primer-vector
+# Creamos un vector con cuatro edades de ejemplo.
+edades <- c(18, 20, 22, 25)
+
+# Calculamos el promedio de esas edades.
+mean(edades)
+```
+
+Estas edades son un ejemplo didáctico, no datos de la encuesta. Las funciones `mean()`, `table()`, `summary()` y `read.csv()` vienen con R; no necesitas instalar paquetes para usarlas.
+
+### ¿Qué es un paquete?
+
+Un paquete añade herramientas a R. Usaremos R base para calcular resultados y **ggplot2** para construir gráficos. Instalar y cargar son dos cosas distintas:
+
+::::::: {.panel-tabset}
+
+#### Instalar (normalmente una vez)
+
+Ejecuta en tu consola si todavía no tienes el paquete. Necesitas conexión a internet y permiso de escritura en la biblioteca de R.
+
+```r
+# Descargamos e instalamos ggplot2.
+install.packages("ggplot2")
+```
+
+#### Cargar (cada sesión)
+
+Cuando el paquete ya está instalado, basta con activarlo en la sesión. Puedes dejar esta instrucción en tu script.
+
+```r
+# Activamos las funciones de ggplot2.
+library(ggplot2)
+```
+
+:::::::
+
+Si `library(ggplot2)` dice que no existe el paquete, instálalo primero. Si falla la instalación, lee el mensaje, revisa la conexión y solicita ayuda antes de comenzar los gráficos. Puedes avanzar con los cálculos estadísticos mientras tanto. No instales todos los paquetes de la biblioteca: son opcionales.
+
+### Importar y comprobar {#importar-datos}
+
+Antes de leer los datos, comprueba desde qué carpeta está trabajando R. Una ruta relativa parte de esa carpeta; una ruta absoluta empieza desde el disco o el directorio raíz. No copies rutas personales de otro computador.
+
+Ejecuta estas instrucciones en tu propia sesión. Los resultados de esta página se calculan con el mismo CSV, desde su ubicación en el sitio. En tu computador, usa las rutas relativas que aparecen en el código.
+
+```r
+# Muestra la carpeta principal que R está usando.
+getwd()
+
+# Muestra los archivos y carpetas que hay allí.
+list.files()
+
+# Revisa el contenido de input.
+list.files("input")
+```
+
+Si no ves `input`, abre la carpeta correcta. La ubicación del archivo `analisis.R` no cambia automáticamente el directorio de trabajo.
+
+```{r}
+#| label: importar-ruta
+#| eval: false
+# Guardamos la ruta relativa del archivo dentro de un objeto.
+archivo <- "input/Cultura_2024.csv"
+```
+
+```{r}
+#| label: importar-ruta-render
+#| include: false
+# La página lee los mismos datos desde su ubicación real en el sitio.
+archivo <- file.path(getOption("intensivo.input"), "Cultura_2024.csv")
+stopifnot(file.exists(archivo))
+```
+
+```{r}
+#| label: importar-existe
+# TRUE significa que R encontró el archivo; FALSE indica que hay que revisar la ruta.
+file.exists(archivo)
+```
+
+Si obtienes `FALSE`, vuelve a `getwd()` y `list.files("input")`. No continúes hasta encontrar el CSV.
+
+**Paso siguiente: leer el archivo.** 
+
+```{r}
+#| label: importar-csv
+# Leemos el archivo CSV y guardamos la base en un objeto llamado datos.
+# UTF-8-BOM permite leer tildes y caracteres especiales, incluso si el CSV incluye una marca de codificación.
+# na.strings indica qué textos representan valores perdidos.
+datos <- read.csv(
+    archivo,
+    fileEncoding = "UTF-8-BOM",
+    na.strings = c("", "NA"),
+    check.names = FALSE
+)
+```
+
+
+`read.csv()` lee las columnas separadas por comas. `check.names = FALSE` conserva sus códigos originales. El objeto `datos` queda disponible en la sesión.
+
+```{r}
+#| label: validacion-datos
+#| include: false
+# Control técnico de la versión pedagógica (no forma parte de los comandos de aprendizaje).
+# Comprobamos la forma y los códigos contra la auditoría de la fase 05.
+stopifnot(nrow(datos) == 12263L, ncol(datos) == 20L)
+variables_esperadas <- c(
+    "ih1", "libros_cant", "artesania_veces",
+    "cine_veces", "religion_veces", "rph_sexo",
+    "rph_pert_indigena", "rph_nacionalidad", "edad_aux",
+    "rph_nse", "rph_nivel_consolidado", "cultura_general_3",
+    "scree_asist_artesania_vida", "scree_asist_cine_vida", "scree_asist_religion_vida",
+    "scree_asist_ppoo_vida", "scree_asist_memoria_vida", "scree_asist_arqueo_vida",
+    "inv_artesania", "lectura_libros"
+)
+
+# Normalización solo de encabezados/códigos: marca BOM y espacios exteriores.
+# No se modifican los archivos ni los valores de las observaciones.
+limpiar_codigo <- function(x) {
+    trimws(sub("^\uFEFF", "", trimws(enc2utf8(as.character(x)))))
+}
+nombres_base <- limpiar_codigo(names(datos))
+if (anyNA(nombres_base) || anyDuplicated(nombres_base) ||
+    !setequal(nombres_base, variables_esperadas)) {
+    stop("El CSV no coincide con las 20 variables de Cultura 2024 auditadas. ",
+        "Faltan: ", paste(setdiff(variables_esperadas, nombres_base), collapse = ", "),
+        "; sobran: ", paste(setdiff(nombres_base, variables_esperadas), collapse = ", "),
+        ". Archivo: ", archivo,
+        call. = FALSE
+    )
+}
+names(datos) <- nombres_base
+
+# Leemos el diccionario local y reconocemos variantes del encabezado del código.
+ruta_diccionario <- file.path(getOption("intensivo.input"), "Diccionario_variables.csv")
+if (!file.exists(ruta_diccionario)) {
+    stop("No se encontró el diccionario: ", ruta_diccionario, call. = FALSE)
+}
+diccionario <- read.csv(ruta_diccionario,
+    fileEncoding = "UTF-8-BOM",
+    check.names = FALSE, colClasses = "character"
+)
+encabezados_dic <- tolower(limpiar_codigo(names(diccionario)))
+columnas_codigo <- which(encabezados_dic %in% c(
+    "variable", "codigo", "código",
+    "codigo original", "código original"
+))
+# Si el diccionario tiene más de una columna candidata, elegimos únicamente
+# la que contiene exactamente los 20 códigos auditados, sin duplicados.
+coinciden <- vapply(columnas_codigo, function(i) {
+    codigos <- limpiar_codigo(diccionario[[i]])
+    length(codigos) == length(variables_esperadas) && !anyNA(codigos) &&
+        !anyDuplicated(codigos) && setequal(codigos, variables_esperadas)
+}, logical(1))
+if (!any(coinciden)) {
+    codigos_dic <- if (length(columnas_codigo)) {
+        limpiar_codigo(diccionario[[columnas_codigo[1]]])
+    } else {
+        character(0)
+    }
+    stop("El diccionario local no coincide con la base auditada. ",
+        "Encabezados: ", paste(names(diccionario), collapse = " | "),
+        "; faltan en diccionario: ", paste(setdiff(nombres_base, codigos_dic), collapse = ", "),
+        "; sobran en diccionario: ", paste(setdiff(codigos_dic, nombres_base), collapse = ", "),
+        ". Revisa duplicados y separador, o reemplaza el diccionario por la copia verificada. ",
+        "Archivo: ", ruta_diccionario,
+        call. = FALSE
+    )
+}
+# Conservamos la comprobación estricta de correspondencia base-diccionario.
+codigos_dic <- limpiar_codigo(diccionario[[columnas_codigo[which(coinciden)[1]]]])
+stopifnot(!anyDuplicated(codigos_dic), setequal(names(datos), codigos_dic))
+stopifnot(
+    length(setdiff(na.omit(datos$inv_artesania), c(1, 2, 88, 96, 99))) == 0L,
+    length(setdiff(na.omit(datos$lectura_libros), c(1:7, 88, 96, 99))) == 0L,
+    length(setdiff(na.omit(datos$rph_sexo), c(1, 2))) == 0L
+)
+stopifnot(
+    is.numeric(datos$ih1), is.numeric(datos$libros_cant),
+    all(is.finite(na.omit(datos$ih1))), all(na.omit(datos$ih1) >= 1),
+    all(na.omit(datos$ih1) %% 1 == 0),
+    all(is.finite(na.omit(datos$libros_cant))), all(na.omit(datos$libros_cant) >= 0),
+    all(na.omit(datos$libros_cant) %% 1 == 0)
+)
+```
+
+**Comprobar la importación.**
+
+```{r}
+#| label: importar-dimensiones
+# dim() indica cuántas filas y columnas tiene la base.
+dim(datos)
+```
+
+
+
+```{r}
+#| label: importar-nombres
+# names() muestra los códigos de las columnas que podemos analizar.
+names(datos)
+```
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia el nombre del CSV por el de tu encuesta. Conserva la ruta relativa y verifica que el archivo exista.
+
+::::::
+
+
+Resultado esperado: 12.263 filas y 20 columnas. Si no coincide, revisa qué archivo abriste. `getwd()` muestra la carpeta activa. `file.exists()` debe devolver `TRUE`. 
+
+Para explorar registros en tu computador (no se muestran microdatos individuales en la página):
+
+
+```r
+# Muestra las primeras seis filas del objeto en la consola.
+head(datos)
+
+# Muestra tipos de almacenamiento y ejemplos de valores.
+str(datos)
+
+# Abre la tabla en el visor del entorno, si está disponible.
+View(datos)
+```
+
+
+Un número almacenado como entero no es necesariamente cuantitativo: `rph_sexo` usa códigos 1 y 2 para categorías, no cantidades. Consulta el diccionario antes de aplicar cualquier estadístico.
+
+**Pregunta rápida:** ¿qué representa una fila? ¿Tiene sentido sumar los códigos de sexo? No: cada fila corresponde a un informante y los códigos representan categorías.
+
+## 2. Explorar y preparar {#procesar}
+
+**Demostración y práctica guiada** — criterios 2 y 3.
+
+| Código | Qué mide | Nivel |
+|---|---|---|
+| `inv_artesania` | Ha producido artesanías o manualidades | Nominal |
+| `lectura_libros` | Frecuencia de lectura | Ordinal |
+| `ih1` | Residentes de la vivienda | Cuantitativa discreta |
+| `libros_cant` | Libros leídos en los últimos 12 meses | Cuantitativa discreta |
+| `rph_sexo` | Sexo registrado en la encuesta | Nominal |
+
+### Seleccionar columnas y filas
+
+Imagina esta pequeña base: cada fila es una persona, cada columna es una variable y cada celda contiene un dato.
+
+:::::: {.table-responsive}
+
+| Fila | `edad_aux` | **`ih1`** | `libros_cant` |
+|---|---:|---:|---:|
+| Persona A | 1 | **3** | 4 |
+| Persona B | 2 | **2** | NA |
+| Persona C | 1 | **5** | 8 |
+
+::::::
+
+*Ejemplo ficticio, no son registros de la encuesta. Las letras identifican las filas solo para ilustrar el ejemplo.*
+
+- `datos$ih1` accede a la columna destacada (3, 2, 5). `$` indica qué columna queremos.
+- `datos[variables]` selecciona las columnas nombradas en `variables`, sin quitar personas; `c()` reúne esos nombres.
+- `subset(datos, edad_aux == 1)` conservaría las filas A y C.
+
+`NA` significa que falta el dato de libros de B, no que haya leído cero. Conservaremos la base original.
+
+
+```{r}
+#| label: seleccionar-columnas
+# Guardamos los nombres de las cinco variables que queremos estudiar.
+variables <- c("inv_artesania", "lectura_libros", "ih1", "libros_cant", "rph_sexo")
+
+# Creamos una nueva base con esas columnas, sin eliminar filas.
+seleccion <- datos[variables]
+
+# Comprobamos las dimensiones de la nueva base.
+dim(seleccion)
+```
+
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia los nombres dentro de `c()` por las columnas de tu investigación.
+
+::::::
+
+
+**Filtrar filas.** A diferencia de seleccionar columnas, filtrar reduce el número de personas incluidas. `==` pregunta si dos valores son iguales; no se utiliza para guardar objetos. `subset()` omite los casos donde la condición no se puede evaluar (NA).
+
+```{r}
+#| label: seleccionar-filas
+# subset() selecciona las filas que cumplen una condición.
+# == pregunta si el código de edad es igual a 1 (15 a 29 años).
+jovenes <- subset(datos, edad_aux == 1)
+
+# Contamos cuántas filas quedaron; la base original no cambia.
+nrow(jovenes)
+```
+
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia `edad_aux == 1` por una condición que esté respaldada por tu pregunta y diccionario.
+
+::::::
+
+
+### Valores perdidos y etiquetas
+
+Veamos cómo cambia una respuesta de `inv_artesania` al preparar una copia llamada `artesania`:
+
+| Código original | Paso 2 · Limpiar | Paso 3 · Etiquetar |
+|---|---|---|
+| 1 (Sí) | 1 | Sí |
+| 2 (No) | 2 | No |
+| 88 (No sabe) | NA | NA |
+| 96 (Sin dato) | NA | NA |
+| 99 (No responde) | NA | NA |
+
+Los códigos originales se conservan. Estos códigos especiales corresponden a esta pregunta: consulta el diccionario antes de reutilizarlos. `NA` no equivale a cero ni a «No».
+
+Compara los códigos observados con el diccionario antes de etiquetar. Si aparece un código desconocido, detente y acláralo: `factor()` lo convertiría en NA.
+
+
+**Paso 1. Revisar los códigos.**
+
+```{r}
+#| label: artesania-revisar
+# Contamos las respuestas originales, incluyendo las que están como NA.
+table(datos$inv_artesania, useNA = "always")
+```
+
+**Paso 2. Preparar una copia y tratar los códigos especiales.**
+
+```{r}
+#| label: artesania-limpiar
+# Creamos una copia de la variable para conservar sus códigos originales.
+datos$artesania <- datos$inv_artesania
+
+# %in% comprueba si cada respuesta pertenece al conjunto de códigos especiales.
+perdidos <- datos$artesania %in% c(88, 96, 99)
+
+# Contamos cuántos TRUE y FALSE encontramos.
+table(perdidos)
+
+# Los corchetes seleccionan solo las posiciones marcadas como TRUE.
+# Reemplazamos esas respuestas por NA, sin cambiar las demás.
+datos$artesania[perdidos] <- NA
+
+# Revisamos qué códigos quedan después de la limpieza.
+table(datos$artesania, useNA = "always")
+```
+
+`perdidos` es un vector de valores lógicos: TRUE si el código es especial, FALSE si no lo es. Los NA que ya existían se conservan.
+
+**Paso 3. Etiquetar las categorías.**
+
+`factor()` convierte códigos en categorías. `levels` indica los códigos válidos; `labels` indica sus nombres, en el mismo orden. No cambies el orden de los códigos sin cambiar también sus etiquetas.
+
+```{r}
+#| label: artesania-etiquetar
+# Después de revisar el diccionario, convertimos los códigos válidos en etiquetas nominales.
+datos$artesania <- factor(
+    datos$artesania,
+    levels = c(1, 2),
+    labels = c("Sí", "No")
+)
+```
+
+**Paso 4. Contar casos válidos y excluidos.**
+
+```{r}
+#| label: artesania-n
+# is.na() identifica los casos sin un valor utilizable.
+# sum() cuenta los TRUE como 1 y los FALSE como 0.
+sum(is.na(datos$artesania))
+
+# ! significa lo contrario: aquí identifica los casos que NO son NA.
+sum(!is.na(datos$artesania))
+```
+
+
+
+:::::::: {.r-interpretacion}
+**Cómo leer el resultado.** Los casos excluidos no son respuestas «No». La tabla de frecuencias sustantivas utilizará solo los casos válidos.
+::::::::
+
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia la columna, los códigos y las etiquetas a partir del diccionario de tu propia variable. No copies automáticamente 88, 96 y 99.
+
+::::::
+
+
+**Repetimos la limpieza con lectura.** Ejecuta este bloque antes de calcular los acumulados. Usa el mismo procedimiento anterior. Los códigos válidos van del 1 al 7 (de mayor frecuencia a «No leo»); los especiales son 88, 96 y 99. `ordered = TRUE` conserva el orden de las categorías, sin convertirlas en cantidades.
+
+
+```{r}
+#| label: limpieza-lectura
+# Revisamos los códigos originales.
+table(datos$lectura_libros, useNA = "always")
+
+# Creamos una copia y marcamos las respuestas especiales.
+datos$frecuencia_lectura <- datos$lectura_libros
+perdidos_lectura <- datos$frecuencia_lectura %in% c(88, 96, 99)
+datos$frecuencia_lectura[perdidos_lectura] <- NA
+
+# Etiquetamos los códigos del 1 al 7 (1:7) en su orden original.
+datos$frecuencia_lectura <- factor(
+    datos$frecuencia_lectura,
+    levels = 1:7,
+    labels = c(
+        "Diaria", "Semanal", "Mensual", "Cada 3 meses",
+        "Cada 6 meses", "Anual", "No lee"
+    ),
+    ordered = TRUE
+)
+
+# Comprobamos el resultado.
+table(datos$frecuencia_lectura, useNA = "always")
+```
+
+**Preparamos el sexo para el cruce posterior.** Revisa el diccionario: 1 = Hombre, 2 = Mujer.
+
+```{r}
+#| label: limpieza-sexo
+# Revisamos los códigos de sexo: 1 y 2 según el diccionario.
+table(datos$rph_sexo, useNA = "always")
+
+# Creamos una variable nominal etiquetada, conservando rph_sexo.
+datos$sexo <- factor(
+    datos$rph_sexo,
+    levels = c(1, 2),
+    labels = c("Hombre", "Mujer")
+)
+```
+
+
+### Universos y cantidades
+
+`libros_cant` tiene respuestas no disponibles. No reemplaces NA por cero: el universo de la pregunta debe revisarse en el cuestionario. En estas cantidades el diccionario solo documenta celdas vacías como perdidas; 99 puede ser un número válido de libros. No elimines valores altos automáticamente.
+
+
+::::::: {.callout-note collapse="true" title="Consulta: revisar disponibilidad de cantidades"}
+
+```{r}
+#| label: universos
+# summary() resume las cantidades: mínimo, cuartiles, mediana, media y máximo.
+summary(datos$ih1)
+
+# Revisamos por separado la cantidad de libros.
+summary(datos$libros_cant)
+
+# Contamos los residentes con información disponible.
+sum(!is.na(datos$ih1))
+
+# Contamos las personas con una cantidad de libros registrada.
+sum(!is.na(datos$libros_cant))
+
+# Contamos las personas sin cantidad de libros registrada.
+sum(is.na(datos$libros_cant))
+```
+
+:::::::
+
+
+## 3. Análisis univariado {#univariado}
+
+**Demostración guiada.** Una distribución describe una variable a la vez. Revisa las tres pestañas en orden: nominal, ordinal y cuantitativa. Elige el procedimiento según el nivel de medición.
+
+:::::::: {.panel-tabset}
+
+### Nominal · frecuencias
+
+¿Qué proporción de las personas con respuesta válida declara producir artesanía o manualidades? `table()` excluye NA por defecto; `prop.table()` divide por el total válido. Multiplicar por 100 convierte proporciones en porcentajes.
+
+
+```{r}
+#| label: frecuencias
+# Contamos las respuestas válidas de cada categoría.
+frecuencias <- table(datos$artesania)
+
+# Vemos el número de personas en cada categoría.
+frecuencias
+
+# Dividimos cada frecuencia por el total de respuestas válidas.
+proporciones <- prop.table(frecuencias)
+
+# Mostramos las proporciones (entre 0 y 1).
+proporciones
+
+# Multiplicamos por 100 para expresar las proporciones como porcentajes.
+porcentajes <- proporciones * 100
+
+# round() muestra los porcentajes con dos decimales, sin modificar el objeto.
+round(porcentajes, 2)
+```
+
+
+
+**Organizar una tabla para el informe.** `data.frame()` reúne columnas en una tabla; `names()` recupera las etiquetas; `as.numeric()` extrae los números de una tabla de R. Conservamos los porcentajes sin redondear para los cálculos posteriores.
+
+```{r}
+#| label: frecuencias-tabla
+#| results: hide
+# Reunimos las categorías y los números ya calculados.
+tabla_artesania <- data.frame(
+    categoria = names(frecuencias),
+    frecuencia = as.numeric(frecuencias),
+    porcentaje = as.numeric(porcentajes)
+)
+
+# Consultamos la tabla.
+tabla_artesania
+```
+
+```{r}
+#| label: frecuencias-resultado
+#| echo: false
+#| results: asis
+# Presentación web; no modifica el objeto de cálculo.
+knitr::kable(rbind(tabla_artesania, data.frame(categoria = "Total válido", frecuencia = sum(frecuencias), porcentaje = sum(tabla_artesania$porcentaje))), col.names = c("Respuesta", "Frecuencia absoluta", "Porcentaje válido (%)"), caption = "Producción artesanal. ENPCCL 2024, análisis no ponderado.", digits = 2)
+```
+
+
+
+```{r}
+#| label: frecuencias-control
+# Comprobamos el denominador y la suma de porcentajes.
+sum(frecuencias)
+
+# Los porcentajes deben sumar 100 antes del redondeo.
+sum(tabla_artesania$porcentaje)
+```
+
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Usa `table(datos$tu_variable)` después de preparar esa variable.
+
+::::::
+
+El total debe corresponder a sus respuestas válidas.
+
+
+Entre los `r sum(frecuencias)` casos válidos (`r sum(is.na(datos$artesania))` excluidos), el `r round(tabla_artesania$porcentaje[1], 2)` % declara haber producido artesanías o manualidades. La categoría más frecuente se identifica con la frecuencia mayor; `mode()` de R **no** calcula la moda estadística. No afirmes que este porcentaje estima a toda la población chilena.
+
+### Ordinal · acumulados
+
+Acumulamos desde la frecuencia de lectura mayor hacia la menor. `cumsum()` suma progresivamente. No calcules acumulados en categorías nominales.
+
+
+```{r}
+#| label: ordinal
+# Contamos las respuestas en el orden de las categorías.
+f_lectura <- table(datos$frecuencia_lectura)
+
+# Calculamos los porcentajes válidos.
+pct_lectura <- prop.table(f_lectura) * 100
+
+# Sumamos los porcentajes desde la primera categoría.
+cumsum(pct_lectura)
+```
+
+::::::: {.callout-note collapse="true" title="Organizar la tabla de acumulados (para exportar)"}
+
+```{r}
+#| label: ordinal-tabla-organizada
+#| results: hide
+# Reunimos los resultados y sus acumulados en una tabla.
+tabla_lectura <- data.frame(
+    categoria = names(f_lectura),
+    frecuencia = as.numeric(f_lectura),
+    porcentaje = as.numeric(pct_lectura)
+)
+
+# cumsum() suma cada categoría y las anteriores.
+tabla_lectura$n_acumulado <- cumsum(tabla_lectura$frecuencia)
+tabla_lectura$pct_acumulado <- cumsum(tabla_lectura$porcentaje)
+
+tabla_lectura
+```
+
+:::::::
+
+
+
+```{r}
+#| label: ordinal-resultado
+#| echo: false
+#| results: asis
+# Presentación web; no modifica el objeto de cálculo.
+knitr::kable(tabla_lectura, col.names = c("Frecuencia de lectura", "N", "% válido", "N acumulado", "% acumulado"), caption = "Frecuencia de lectura; orden de mayor a menor. ENPCCL 2024, análisis no ponderado.", digits = 2)
+```
+
+
+
+Define el orden de los niveles antes de acumular.
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia la variable, no el orden sin justificación.
+
+::::::
+
+
+De `r sum(f_lectura)` respuestas válidas (`r sum(is.na(datos$frecuencia_lectura))` casos excluidos), el acumulado hasta «Mensual» es `r round(tabla_lectura$pct_acumulado[3], 2)` %: lee al menos una vez al mes. Si inviertes el orden, cambia el significado. El último acumulado debe ser 100 %.
+
+### Cuantitativa · estadísticos
+
+Media, mediana, desviación estándar, mínimo, máximo y cuartiles resumen posición y dispersión. `na.rm = TRUE` omite NA solo para esa operación; no limpia códigos especiales. `quantile()` usa por defecto el método 7 de R.
+
+
+```{r}
+#| label: cuantitativa
+# Contamos respuestas válidas para el número de residentes.
+sum(!is.na(datos$ih1))
+
+# na.rm = TRUE excluye los NA únicamente de este cálculo.
+mean(datos$ih1, na.rm = TRUE)
+
+# La mediana indica el centro de la distribución ordenada.
+median(datos$ih1, na.rm = TRUE)
+
+# La desviación estándar mide dispersión alrededor de la media.
+sd(datos$ih1, na.rm = TRUE)
+
+# Buscamos el menor y el mayor valor disponible.
+min(datos$ih1, na.rm = TRUE)
+
+# Buscamos el mayor valor registrado.
+max(datos$ih1, na.rm = TRUE)
+
+# 0.25 y 0.75 indican los percentiles 25 y 75 (Q1 y Q3).
+quantile(datos$ih1, probs = c(0.25, 0.75), na.rm = TRUE)
+```
+
+
+
+**Comparamos con libros.** Ejecuta el siguiente bloque para guardar los valores disponibles de cada cantidad. `na.omit()` elimina los NA de un vector, no de toda la base. Aquí `x` contiene residentes y `y` contiene libros. Los reutilizaremos en la tabla resumen.
+
+```{r}
+#| label: cuantitativa-validos
+# Guardamos las cantidades válidas de cada variable.
+x <- na.omit(datos$ih1)
+y <- na.omit(datos$libros_cant)
+
+# Contamos las personas con cantidad de libros registrada y calculamos media y mediana.
+length(y)
+mean(y)
+median(y)
+```
+
+::::::: {.callout-note collapse="true" title="Repetir los demás estadísticos para libros"}
+
+```{r}
+#| label: cuantitativa-libros-extra
+# Calculamos dispersión, extremos y cuartiles de los libros válidos.
+sd(y)
+min(y)
+max(y)
+quantile(y, probs = c(0.25, 0.75))
+```
+
+:::::::
+
+```{r}
+#| label: cuantitativa-control
+#| include: false
+# Control técnico: deben existir suficientes valores válidos para calcular la DE.
+stopifnot(length(x) > 1L, length(y) > 1L)
+```
+
+::::::: {.callout-note collapse="true"}
+#### Organizar ambos resultados en una tabla
+
+Esta es una alternativa para el reporte. Cada vector contiene los ocho estadísticos en el mismo orden que la primera columna.
+
+```{r}
+#| label: cuantitativa-tabla
+#| results: hide
+# Guardamos los nombres de los estadísticos en el orden que queremos mostrar.
+medidas <- c("N válido", "Media", "Mediana", "DE", "Mínimo", "Máximo", "Q1", "Q3")
+
+# Reunimos los resultados de residentes en un vector.
+resumen_residentes <- c(
+    length(x), mean(x), median(x), sd(x), min(x), max(x),
+    quantile(x, 0.25), quantile(x, 0.75)
+)
+
+# Repetimos exactamente el orden para los libros.
+resumen_libros <- c(
+    length(y), mean(y), median(y), sd(y), min(y), max(y),
+    quantile(y, 0.25), quantile(y, 0.75)
+)
+
+# Construimos la tabla con las dos columnas de resultados.
+tabla_cantidades <- data.frame(
+    estadistico = medidas,
+    residentes = resumen_residentes,
+    libros = resumen_libros
+)
+
+# Consultamos la tabla en R.
+print(tabla_cantidades, row.names = FALSE)
+```
+
+:::::::
+
+```{r}
+#| label: cuantitativa-resultado
+#| echo: false
+#| results: asis
+# Presentación web; no modifica el objeto de cálculo.
+knitr::kable(tabla_cantidades, col.names = c("Estadístico", "Residentes (personas)", "Libros (cantidad)"), caption = "Casos válidos por variable; ENPCCL 2024, análisis no ponderado.", digits = 2)
+```
+
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Sustituye `x` e `y` por cantidades de tu encuesta.
+
+::::::
+
+No calcules medias de códigos nominales u ordinales.
+
+
+El N válido de residentes es `r length(x)` y el de libros es `r length(y)`; se excluyen `r sum(is.na(datos$libros_cant))` casos en este último análisis. Para libros, la media es `r round(mean(y), 2)` y la mediana es `r median(y)`; el valor máximo es `r max(y)`. La media superior a la mediana es compatible con una cola derecha, que debemos examinar gráficamente. Q1 y Q3 delimitan aproximadamente el 50 % central. No se justifica eliminar el máximo solo por ser elevado. Las dos columnas tienen unidades distintas y describen universos disponibles distintos.
+
+::::::::
+
+**Comprueba tu comprensión:** ¿por qué no calculamos una media de `lectura_libros`? ¿Por qué el N válido de libros no tiene que coincidir con el de residentes?
+
+## 4. Visualización {#graficos}
+
+**Demostración guiada** — criterio 5. Todos los gráficos siguen la misma receta: `ggplot()` elige los datos, `aes()` elige las variables y `geom_*()` dibuja. Con `+` agregamos capas; `labs()` escribe títulos y `theme_minimal()` mejora la presentación. `base_size = 14` solo aumenta el tamaño del texto.
+
+Abre las pestañas Barras, Histograma y Diagrama de caja en ese orden. Fuente de los gráficos: ENPCCL 2024, versión pedagógica, resultados descriptivos no ponderados. Incluye esta información al insertar una figura en tu informe.
+
+Todos los gráficos del taller utilizan ggplot2. Cárgalo una vez al comenzar cada sesión de R. Si aún no está instalado, ejecuta `install.packages("ggplot2")` en la consola y luego `library(ggplot2)`. No se instalarán paquetes durante la renderización.
+
+```{r}
+#| label: comprobar-ggplot
+#| include: false
+# Control técnico: ggplot2 es el único paquete de gráficos de este taller.
+# No instalamos paquetes automáticamente durante el render.
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("Falta ggplot2. Ejecuta install.packages('ggplot2') en R y vuelve a renderizar.", call. = FALSE)
+}
+```
+
+
+
+```{r}
+#| label: cargar-ggplot
+# Cargamos ggplot2 una vez antes de construir los gráficos.
+library(ggplot2)
+```
+
+
+
+:::::::: {.panel-tabset}
+
+### Barras
+
+Primero dibujamos un gráfico de frecuencias con los casos válidos. `geom_bar()` cuenta filas; `geom_col()` utiliza un valor que ya calculamos, como el porcentaje. `aes(x = ...)` indica qué variable va en el eje horizontal.
+
+```{r}
+#| label: grafico-barras-minimo
+#| fig-width: 8
+#| fig-height: 4
+# Conservamos únicamente las respuestas válidas.
+datos_validos <- subset(datos, !is.na(artesania))
+
+# Dibujamos una barra por respuesta; geom_bar() cuenta personas.
+ggplot(datos_validos, aes(x = artesania)) +
+    geom_bar()
+```
+
+Usamos ahora `tabla_artesania`, que contiene los porcentajes calculados antes. `geom_col()` utiliza esos valores; `fill` fija el color. Guardamos el gráfico con `<-` para exportarlo después y usamos `print()` para verlo.
+
+```{r}
+#| label: grafico-barras-gg
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Dibujamos los porcentajes que ya calculamos.
+g_barras <- ggplot(tabla_artesania, aes(x = categoria, y = porcentaje)) +
+    geom_col(fill = "steelblue") +
+    labs(
+        title = "Producción de artesanías", x = "Respuesta",
+        y = "Porcentaje válido (%)"
+    ) +
+    theme_minimal(base_size = 14)
+
+# Mostramos el gráfico guardado.
+print(g_barras)
+```
+
+
+Las barras muestran el porcentaje de cada respuesta entre casos válidos. No confundas los porcentajes con frecuencias absolutas.
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Prueba otro color o título. Para otro gráfico, cambia el objeto `tabla_artesania` por tu tabla de frecuencias y adapta los nombres de las columnas en `aes()`.
+
+::::::
+
+No cambies los datos para mejorar el aspecto.
+
+### Histograma
+
+Representa una distribución cuantitativa por intervalos contiguos. Las barras son contiguas; no es un gráfico para categorías nominales. Para residentes, utilizamos intervalos de un entero, centrados en cada valor.
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia `binwidth` para ajustar el ancho de intervalos según las unidades y la variabilidad.
+
+::::::
+
+
+```{r}
+#| label: grafico-histograma-gg
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Representamos el número de residentes con intervalos de una persona.
+g_hist <- ggplot(datos, aes(x = ih1)) +
+    geom_histogram(
+        binwidth = 1, boundary = 0.5, na.rm = TRUE,
+        fill = "steelblue"
+    ) +
+    labs(title = "Residentes en la vivienda", x = "Personas", y = "Frecuencia") +
+    theme_minimal(base_size = 14)
+
+print(g_hist)
+```
+
+
+Observa dónde se concentran los casos y si la frecuencia disminuye hacia valores altos. `binwidth = 1` crea intervalos de una persona; `boundary = 0.5` sitúa sus límites entre enteros. `na.rm = TRUE` omite los NA del gráfico. Cambiar `binwidth` modifica los intervalos, no los datos.
+
+### Diagrama de caja
+
+Antes de interpretar la caja de libros, identifica sus partes:
+
+```{=html}
+<figure style="max-width:590px;margin:1rem auto 1.25rem;text-align:center">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 172" role="img" aria-labelledby="ir-caja-titulo ir-caja-desc" style="width:100%;height:auto;display:block;color:var(--ir-text);font-family:inherit">
+  <title id="ir-caja-titulo">Partes de un diagrama de caja</title>
+  <desc id="ir-caja-desc">Esquema horizontal ilustrativo. De izquierda a derecha: bigote inferior, primer cuartil, mediana, tercer cuartil, bigote superior y observación aislada. La caja entre Q1 y Q3 representa aproximadamente el 50 por ciento central.</desc>
+  <g fill="none" stroke="currentColor" stroke-width="1.6">
+    <path d="M25 66V94 M25 80H85 M165 80H245 M245 66V94"/>
+    <path d="M25 61V38 M245 61V38 M305 72V38" stroke-dasharray="3 3" opacity=".65"/>
+    <path d="M85 103V114 M165 103V114 M125 58V28" stroke-dasharray="3 3" opacity=".65"/>
+    <path d="M85 136V143H165V136"/>
+  </g>
+  <rect x="85" y="60" width="80" height="40" rx="1" fill="var(--ir-note)" stroke="var(--ir-accent)" stroke-width="2"/>
+  <path d="M125 60V100" stroke="var(--ir-accent)" stroke-width="3"/>
+  <circle cx="305" cy="80" r="3.4" fill="currentColor"/>
+  <g fill="currentColor" font-size="12" text-anchor="middle">
+    <text x="25" y="31">Bigote</text>
+    <text x="125" y="20" font-weight="650">Mediana</text>
+    <text x="245" y="31">Bigote</text>
+    <text x="305" y="18">Punto</text><text x="305" y="31">aislado</text>
+    <text x="85" y="128">Q1</text><text x="165" y="128">Q3</text>
+    <text x="125" y="159" font-weight="650">IQR: Q3 − Q1</text>
+  </g>
+</svg>
+<figcaption style="font-size:.9rem;color:var(--ir-muted)">Esquema ilustrativo en horizontal, no datos de la encuesta. En el gráfico siguiente la caja es vertical, pero sus partes son las mismas.</figcaption>
+</figure>
+```
+
+La caja va de Q1 a Q3 (aproximadamente el 50 % central). Los bigotes llegan hasta los valores observados más extremos que están dentro de 1,5 veces el IQR desde los bordes de la caja; no siempre son el mínimo y el máximo. Los puntos fuera de ellos no son automáticamente errores.
+
+
+```{r}
+#| label: grafico-caja-gg
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Dibujamos una caja con las cantidades de libros disponibles.
+g_caja <- ggplot(datos, aes(y = libros_cant)) +
+    geom_boxplot(na.rm = TRUE, fill = "steelblue") +
+    labs(title = "Libros leídos en 12 meses", y = "Número de libros") +
+    theme_minimal(base_size = 14)
+
+print(g_caja)
+```
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia `libros_cant` por tu variable cuantitativa.
+
+::::::
+
+Identifica la línea de la mediana y los puntos aislados en el gráfico de libros.
+
+Si la caja aparece comprimida por valores muy altos, no los elimines para mejorar la apariencia. Puedes mostrar una vista ampliada adicional identificándola como tal (ver biblioteca).
+
+::::::::
+
+## 5. Análisis bivariado {#bivariado}
+
+**Demostración guiada** — criterio 6. ¿Qué diferencias descriptivas se observan en la producción de artesanías según el sexo registrado? Usaremos dos categóricas. Cada celda cuenta personas que cumplen ambas condiciones; los marginales suman filas o columnas. El N conjunto excluye los casos no válidos en cualquiera de las dos.
+
+
+```{r}
+#| label: contingencia
+#| results: hide
+# Cruzamos dos variables: sexo en filas y artesania en columnas.
+# table() excluye automáticamente los casos con NA en cualquiera de las dos.
+cruce <- table(datos$sexo, datos$artesania)
+
+# Mostramos los recuentos de cada combinación.
+cruce
+
+# Añadimos los totales de las filas y columnas.
+addmargins(cruce)
+```
+
+
+
+```{r}
+#| label: contingencia-validacion
+#| include: false
+# Control técnico para publicar el cruce real: ambas categorías deben estar presentes.
+# Se conserva también el criterio previo de no publicar celdas pequeñas.
+stopifnot(
+    nrow(cruce) == 2L, ncol(cruce) == 2L,
+    all(rowSums(cruce) > 0), all(colSums(cruce) > 0), all(cruce >= 5)
+)
+```
+
+```{r}
+#| label: contingencia-resultado
+#| echo: false
+#| results: asis
+# Presentación web; no modifica el objeto de cálculo.
+knitr::kable(addmargins(cruce), caption = "Frecuencias conjuntas y marginales. ENPCCL 2024, sin ponderadores.", digits = 2)
+```
+
+
+
+```{r}
+#| label: contingencia-n
+# Contamos casos válidos en ambas variables.
+sum(cruce)
+```
+
+
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia `sexo` y `artesania` por tus dos factores preparados. Revisa qué variable quedará en filas.
+
+::::::
+
+Si una fila o columna suma cero, no calcules un porcentaje con ese denominador: revisa las categorías sin casos. `sum(cruce)` cuenta solo las personas con ambas respuestas válidas.
+
+
+:::::::: {.panel-tabset}
+
+### Porcentajes por fila
+
+¿Qué porcentaje de cada grupo de sexo declara producir artesanía? El denominador es el total de la fila. Comparamos los porcentajes en la misma columna entre grupos.
+
+
+```{r}
+#| label: por-fila
+#| results: hide
+# Dividimos cada celda por el total de su fila.
+por_fila <- prop.table(cruce, margin = 1) * 100
+
+# Consultamos el resultado en R. La página lo muestra como tabla.
+print(round(por_fila, 2))
+```
+
+
+
+```{r}
+#| label: por-fila-resultado
+#| echo: false
+#| results: asis
+# Presentación web; no modifica el objeto de cálculo.
+knitr::kable(por_fila, caption = "Porcentajes por fila; casos válidos conjuntos.", digits = 2)
+```
+
+
+
+```{r}
+#| label: por-fila-control
+# Comprobamos que cada fila sume 100 %.
+rowSums(por_fila)
+```
+
+
+### Porcentajes por columna
+
+Entre quienes sí producen artesanía (o quienes no), ¿cómo se distribuyen los grupos de sexo? El denominador es ahora el total de la columna; la pregunta cambió.
+
+
+```{r}
+#| label: por-columna
+#| results: hide
+# Dividimos cada celda por el total de su columna.
+por_columna <- prop.table(cruce, margin = 2) * 100
+
+# Consultamos el resultado en R. La página lo muestra como tabla.
+print(round(por_columna, 2))
+```
+
+
+
+```{r}
+#| label: por-columna-resultado
+#| echo: false
+#| results: asis
+# Presentación web; no modifica el objeto de cálculo.
+knitr::kable(por_columna, caption = "Porcentajes por columna; casos válidos conjuntos.", digits = 2)
+```
+
+
+
+```{r}
+#| label: por-columna-control
+# Comprobamos que cada columna sume 100 %.
+colSums(por_columna)
+```
+
+
+::::::::
+
+### Comparar denominadores en una misma tabla
+
+Cambia el selector y observa la misma celda «Sí» en las tres vistas: recuento, porcentaje dentro de la fila y porcentaje dentro de la columna. Fíjate en qué total vale 100 %. Los números se calculan desde la base real.
+
+```{r}
+#| label: validacion-resultados
+#| include: false
+# Contrastes con la auditoría de la versión reducida. No se fijan las tablas manualmente.
+stopifnot(
+    sum(frecuencias) == 12254L,
+    identical(as.integer(frecuencias), c(3887L, 8367L)),
+    sum(f_lectura) == 12247L, length(x) == 12263L, length(y) == 7668L,
+    sum(cruce) == 12254L,
+    all(abs(rowSums(por_fila) - 100) < 1e-8),
+    all(abs(colSums(por_columna) - 100) < 1e-8),
+    abs(tail(tabla_lectura$pct_acumulado, 1) - 100) < 1e-8
+)
+```
+
+```{r}
+#| label: interactivo-cruce
+#| echo: false
+#| results: asis
+# Control de seguridad: no mostrar resultados con celdas pequeñas.
+if (any(cruce < 5)) stop("Revisar celdas pequeñas del cruce antes de publicar")
+cat('<div id="denom-demo"><label for="denom-modo">Mostrar: </label><select id="denom-modo"><option value="n">Frecuencias absolutas</option><option value="f">Porcentajes por fila</option><option value="c">Porcentajes por columna</option></select><div id="denom-tabla" aria-live="polite"></div><p id="denom-nota"></p></div>')
+cat(sprintf('<script type="application/json" id="denom-datos">[[%d,%d],[%d,%d]]</script>', cruce[1, 1], cruce[1, 2], cruce[2, 1], cruce[2, 2]))
+```
+
+```{=html}
+<script>
+(function(){function iniciar(){const el=document.getElementById('denom-modo'), raw=document.getElementById('denom-datos');if(!el||!raw)return;const n=JSON.parse(raw.textContent);function actualizar(){const modo=el.value;let html='<table class="table"><thead><tr><th scope="col">Sexo</th><th scope="col">Sí</th><th scope="col">No</th><th scope="col">Total</th></tr></thead><tbody>';const f=n.map(r=>r[0]+r[1]), c=[n[0][0]+n[1][0],n[0][1]+n[1][1]];const fmt=v=>v.toLocaleString('es-CL',{minimumFractionDigits:1,maximumFractionDigits:1})+' %';n.forEach((r,i)=>{html+='<tr><th scope="row">'+['Hombre','Mujer'][i]+'</th>';r.forEach((v,j)=>{html+='<td>'+(modo==='n'?v.toLocaleString('es-CL'):fmt(100*v/(modo==='f'?f[i]:c[j])))+'</td>'});html+='<td>'+(modo==='n'?f[i].toLocaleString('es-CL'):modo==='f'?'100 %':'—')+'</td></tr>'});html+='<tr><th scope="row">Total</th>'+c.map(v=>'<td>'+(modo==='n'?v.toLocaleString('es-CL'):modo==='c'?'100 %':'—')+'</td>').join('')+'<td>'+(modo==='n'?(f[0]+f[1]).toLocaleString('es-CL'):'—')+'</td></tr></tbody></table>';document.getElementById('denom-tabla').innerHTML=html;document.getElementById('denom-nota').textContent={n:'¿Cuántas personas hay en cada combinación?',f:'Cada fila suma 100 %: compara la participación dentro de cada grupo.',c:'Cada columna suma 100 %: describe la composición de cada respuesta.'}[modo]}el.addEventListener('change',actualizar);actualizar()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',iniciar);else iniciar()})();
+</script>
+```
+
+En los casos válidos, el porcentaje de «Sí» entre hombres es `r round(por_fila["Hombre", "Sí"], 2)` % y entre mujeres `r round(por_fila["Mujer", "Sí"], 2)` %. La diferencia mujeres menos hombres es `r round(por_fila["Mujer", "Sí"] - por_fila["Hombre", "Sí"], 2)` puntos porcentuales. Es una comparación descriptiva; no demuestra causalidad ni significación estadística. Una diferencia pequeña también es un resultado válido.
+
+### Barras apiladas al 100 %
+
+Cada barra representa un grupo de sexo. Primero conservamos los casos válidos en ambas variables. `&` significa «y». En `aes()`, `fill = artesania` distingue las respuestas por color; `position = "fill"` divide cada barra por su total, igual que los porcentajes por fila.
+
+```{r}
+#| label: cruce-grafico-minimo
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Quitamos solo los casos sin respuesta en alguna de las dos variables.
+datos_cruce <- subset(datos, !is.na(sexo) & !is.na(artesania))
+
+# Dibujamos una barra proporcional para cada grupo.
+g_cruce <- ggplot(datos_cruce, aes(x = sexo, fill = artesania)) +
+    geom_bar(position = "fill") +
+    labs(
+        title = "Producción artesanal según sexo", x = "Sexo",
+        y = "Proporción dentro del grupo", fill = "Respuesta"
+    ) +
+    theme_minimal(base_size = 14)
+
+print(g_cruce)
+```
+
+El eje va de 0 a 1: 0,4 equivale al 40 %. La altura de cada color representa la proporción dentro de ese grupo, no el número total de personas. La versión en porcentajes de 0 a 100 está en la biblioteca.
+
+```{r}
+#| label: grafico-cruce-control
+#| include: false
+# Control técnico: los casos del gráfico deben coincidir con la contingencia.
+cruce_grafico <- table(datos_cruce$sexo, datos_cruce$artesania)
+stopifnot(
+    identical(as.integer(cruce_grafico), as.integer(cruce)),
+    identical(unname(dimnames(cruce_grafico)), unname(dimnames(cruce))),
+    isTRUE(all.equal(
+        as.numeric(prop.table(cruce_grafico, margin = 1) * 100),
+        as.numeric(por_fila)
+    ))
+)
+```
+
+:::::::: {.r-interpretacion}
+**Cómo leer el resultado.** Cada barra representa el 100 % de un grupo con respuesta válida en las dos variables. Compara el mismo color entre grupos. No implica causalidad.
+::::::::
+
+
+## 6. Exportación y reproducibilidad {#exportar}
+
+**Demostración** — criterio 8. Guarda el código, tablas y gráficos. En tu proyecto las salidas van a `output/`. El sitio escribe en una carpeta temporal durante la renderización.
+
+
+**1. Crear las carpetas.**
+
+```{r}
+#| label: exportar-carpetas
+#| eval: false
+# Elegimos la carpeta donde guardaremos los resultados.
+salida <- "output"
+```
+
+```{r}
+#| label: exportar-carpetas-render
+#| include: false
+# Usamos una carpeta temporal para no escribir resultados en el repositorio.
+salida <- getOption("intensivo.output")
+dir.create(file.path(salida, "tablas"), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path(salida, "graficos"), recursive = TRUE, showWarnings = FALSE)
+```
+
+Si ya creaste `output/tablas` y `output/graficos` al iniciar, no necesitas hacer nada más. Si no existen, créalas ahora desde el explorador de archivos. `file.path()` une partes de una ruta con el separador correcto. Por ejemplo, `file.path(salida, "tablas", "artesania.csv")` equivale a `output/tablas/artesania.csv` en tu proyecto.
+
+**2. Guardar una tabla.** `row.names = FALSE` evita agregar una columna de números de fila. Si quieres guardar otras tablas, abre el desplegable.
+
+```{r}
+#| label: exportar-tablas
+# Guardamos la tabla de artesanía como CSV.
+write.csv(tabla_artesania, file.path(salida, "tablas", "artesania.csv"),
+    row.names = FALSE
+)
+```
+
+::::::: {.callout-note collapse="true" title="Guardar otras tablas (consulta posterior)"}
+
+Para exportar `tabla_lectura` y `tabla_cantidades`, ejecuta antes sus bloques «Organizar la tabla» en el análisis univariado. Los objetos `cruce`, `por_fila` y `por_columna` se crean en el análisis bivariado.
+
+```{r}
+#| label: exportar-tablas-resto
+# Guardamos también la tabla ordinal.
+write.csv(tabla_lectura, file.path(salida, "tablas", "lectura.csv"), row.names = FALSE)
+
+# Exportamos los estadísticos cuantitativos.
+write.csv(tabla_cantidades, file.path(salida, "tablas", "cantidades.csv"), row.names = FALSE)
+
+# Conservamos los nombres de fila del cruce, porque son categorías.
+write.csv(as.matrix(cruce), file.path(salida, "tablas", "cruce_n.csv"))
+
+# Guardamos porcentajes por fila.
+write.csv(as.matrix(por_fila), file.path(salida, "tablas", "cruce_pct_fila.csv"))
+
+# Guardamos porcentajes por columna.
+write.csv(as.matrix(por_columna), file.path(salida, "tablas", "cruce_pct_columna.csv"))
+```
+
+:::::::
+
+**3. Guardar un gráfico.**
+
+`ggsave()` guarda el objeto de gráfico indicado en `plot`. `width` y `height` son el ancho y alto (en pulgadas por defecto); `dpi` define la resolución.
+
+```{r}
+#| label: exportar-ruta
+# Definimos el nombre del archivo de imagen.
+ruta_graf <- file.path(salida, "graficos", "artesania.png")
+```
+
+
+
+```{r}
+#| label: exportar-gg
+# Guardamos el gráfico de barras con resolución adecuada.
+ggsave(ruta_graf, plot = g_barras, width = 7, height = 4, dpi = 300)
+```
+
+
+
+::::::: {.callout-note collapse="true"}
+#### Guardar los otros gráficos
+
+
+```{r}
+#| label: exportar-gg-resto
+# Guardamos también el histograma.
+ggsave(file.path(salida, "graficos", "residentes.png"), plot = g_hist, width = 7, height = 4, dpi = 300)
+
+# Guardamos el diagrama de caja.
+ggsave(file.path(salida, "graficos", "libros.png"), plot = g_caja, width = 7, height = 4, dpi = 300)
+
+# Guardamos la visualización del cruce.
+ggsave(file.path(salida, "graficos", "cruce.png"), plot = g_cruce, width = 7, height = 4, dpi = 300)
+```
+
+
+:::::::
+
+
+
+```{r}
+#| label: exportar-control
+# Comprobamos si R guardó el archivo de barras.
+file.exists(ruta_graf)
+
+# Consultamos los archivos que existen dentro de output y sus subcarpetas.
+list.files(salida, recursive = TRUE)
+```
+
+
+
+```{r}
+#| label: exportar-validacion
+#| include: false
+# Control técnico de los archivos generados durante el render.
+stopifnot(file.exists(ruta_graf), file.info(ruta_graf)$size > 0)
+```
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Cambia el nombre del archivo y el objeto `plot =` para guardar otro gráfico.
+
+::::::
+
+
+
+Para comprobar reproducibilidad, abre una sesión nueva de R, ejecuta el script desde el principio y revisa si se regeneran las salidas. No necesitas Quarto para entregar el trabajo final.
+
+## 7. Actividad práctica · Exploramos el patrimonio cultural {#autonomo-1}
+
+Ahora utiliza `scree_asist_arqueo_vida`: visita a edificios o barrios patrimoniales, o sitios arqueológicos o paleontológicos a lo largo de la vida.
+
+:::::::: {.callout-tip}
+## Objetivo de la actividad
+Aplica a una variable nueva lo que acabamos de hacer con artesanía. Trabaja en tu propio `analisis.R`; no se requiere entrega. Usa [limpieza](#procesar), [frecuencias](#univariado) y [gráficos](#graficos) como modelo.
+
+1. Consulta el diccionario e identifica el nivel y los códigos.
+2. Revisa los valores originales y prepara una copia.
+3. Etiqueta las categorías válidas y trata los códigos especiales.
+4. Construye una tabla de frecuencias y porcentajes válidos.
+5. Elabora un gráfico de barras con `ggplot2` e interpreta en dos frases.
+
+**Resultado esperado:** una tabla con N válido, un gráfico y una interpretación. ¿Cuál es la categoría más frecuente? ¿Cuál es el denominador?
+::::::::
+
+
+
+```r
+# Inspecciona los códigos originales, incluyendo NA.
+table(datos$scree_asist_arqueo_vida, useNA = "always")
+
+# Conserva la variable original creando una copia.
+patrimonio <- datos$scree_asist_arqueo_vida
+
+# 1. Completa la limpieza con los códigos del diccionario.
+# 2. Usa factor() para etiquetar las respuestas.
+# 3. Calcula frecuencias y porcentajes con table() y prop.table().
+# 4. Organiza la tabla y dibuja las barras con ggplot2.
+# 5. Escribe dos frases: ¿qué muestra la tabla y cuál es su N válido?
+```
+
+
+:::::::: {.callout-tip collapse="true"}
+## Pista 1 · ¿Qué revisar?
+
+La variable es categórica. Busca su fila en el diccionario, localiza los códigos válidos y los especiales en el diccionario. No confundas una pregunta sobre visitas a lo largo de la vida con el número de visitas.
+::::::::
+
+:::::::: {.callout-tip collapse="true"}
+## Pista 2 · ¿Cómo continuar?
+
+Adapta el bloque de limpieza de artesanía: conserva el original, verifica los códigos y prepara un factor. Guarda primero las frecuencias con `table()`, después calcula sus proporciones con `prop.table()` y finalmente multiplica por 100. Usa el N válido de esa variable, no el N de artesanía.
+::::::::
+
+**Desafío opcional:** repite el procedimiento con `scree_asist_memoria_vida` (visitas a sitios de memoria). ¿Por qué ambas preguntas no representan exactamente la misma práctica?
+
+:::::::: {.callout-note collapse="true" title="Solución de la actividad · acceso con contraseña"}
+
+Intenta resolver el ejercicio antes de consultar la solución. El equipo docente compartirá la contraseña cuando corresponda.
+
+```{=html}
+<div id="patrimonio-solucion">
+  <form>
+    <label for="patrimonio-clave">Contraseña de la solución</label>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:.65rem 0">
+      <input id="patrimonio-clave" class="form-control" style="width:auto;max-width:100%" type="password" autocomplete="off" required>
+      <button type="submit">Desbloquear solución</button>
+    </div>
+  </form>
+  <p role="status" aria-live="polite"></p>
+  <div data-panel hidden>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:.65rem 0">
+      <button type="button" data-copiar>Copiar código R</button>
+      <button type="button" data-cerrar>Volver a bloquear</button>
+    </div>
+    <pre><code></code></pre>
+    <div class="r-interpretacion" style="white-space:pre-line" data-interpretacion></div>
+  </div>
+  <noscript>Activa JavaScript para consultar la solución.</noscript>
+</div>
+<script>
+(function () {
+  function iniciar() {
+    const root = document.getElementById('patrimonio-solucion');
+    if (!root) return;
+    const form = root.querySelector('form');
+    const input = root.querySelector('input');
+    const status = root.querySelector('[role="status"]');
+    const panel = root.querySelector('[data-panel]');
+    const code = panel.querySelector('code');
+    const interp = panel.querySelector('[data-interpretacion]');
+    const abrir = form.querySelector('button');
+    const config = {"salt":"BUAidwZd1h4g5bXJVGc9EQ==","iv":"tuj5DRs8ndCd139Z","data":"CDy1a859tzLjSUr8MboY+vyWpYF4hGTkP/+LIQmK4eiGHlR1NJ9Oc1midhZ6/7F23xmb5ppHWqZ9o5KygCbmqxSYLHRJyzTNUXZDUe9qQQqH0SwK7vYtuWh294981fQd9ZqDi92MxhcJOPQ9KIq7lNxz+6R7RpDz7H9WgygWnwcDRtTMExZjVvza0NVFfCpP0A2axvcAZ+gjZ2Fo5j2BjRixEbhrQuYYrupU3ilrU0Cb0j/G1Dn3mUw7eugAeRXyTWpHg9S/2uXDiqyKTGqDswSO1TlUaxOSNTUMF0yhgCHd3/TfXUJmRkHlSlOON6oGGkXIe5Kup8XfOaXh0jl+2VbZXLqzmQbVQnfDXeybMDhmnI1Y7QvlTKhq+9uRy6hHGbm6v+a+hcDkYzroKPo6Wvgo8YNwQt+7sat8Bv2inJtxjzcbXzM3LdcwjnvawouiSvFWDuaJJZD366FDZ9Rz5CTyb0oDk/zzs3S/nVzRnkjMQMI9l/utIjUE2uJF4bt+fPN77+AvvQSuFyfZJFyic4sIgjklTbFZUosoS1VbGo/JvQwQHggCtucJHjK3zaR+xyk8zSufTI6jACwXEnssTCDq+RNvTb+EC3QEStI+p8jR0zB2j1TCNdKLpZX7bmfmpPTbKyoDyfOjBmNXfLtTfsNPO98K/94UT6yxQjDxLAcqB0JdMzgEoOL1b6uRdKo6xO65kt9fCL+PARxYB8BabVzAQoZMCSe9p2yO4YaAq4LcApUvlFhBW8aGTA+g4BmlEHv3NioMHxlL8BA7mjwZlDBDqVufslhvxjLcNUkw9lv9+IFeS65F21t2aZAGv0HUpTkdUTJ69cCDmTAG9D7DrszNEJxBI84wPjO6YqMUmYoDDqfN/GOBfvEtG9vIQDkX2UM4bwPu2rEFaG7lHnqj7PNjHRoRo5y20VW/rM8CJGn99uzUGLpEuY4vZOgqoQ81q0kFmPHcpg3uiRzPCCg5LlX7ZM8BTr/UsIr+XNNiwkrntNEJeur9dIVgHUaf9lX/vJseBFBvgcb2HSFeDXnlGRl/VUq8qZ/BDxFVO5RxjhCKS0vZKNIWpXqAbwFo9EfO2rHvD4t7JrCAU7ukqnSTpEv4dP8eJH9dmSDkIGrIdiAxWyALgFT2bIoxenoPV5JsTNbfmZQK2tKN5PFnYOPuHo7x0vRzhVhegC9EOKvOp2SNeRdSQnTZnuswpOhMd2lbOAZcMTSRUx6g0/vydm4AHwlxl/iXwcIbwHOAr/VnfWKnYgzOonCSKGdVWPFaWiJZBil4hBHGMnCRAIjwBAlQdNEJRNldZoBijYBu6k/aSsAX4ZyQkKif2rclAji346qVIdnM/oUfkocZ8q+aAwg8nOssiRbb3cf9V+FWKSog744lVOJSpn04Ep4+Na6HxlR6TfRUJ7+m0yvgI+AWd13BttNzcG0fFjnrxYrm3Tul1Exsg2+7+WoJiJ9jazgcgDb/M/DAKEUVJt7IWzOi2o4xbmHQLpavRDJO8aQXas0na6czBgB3W6bmoIdUOxDOOtyDZMddD8NvoKGomJuYnmQd3NgX2vBC38bTdi5J+VM/XvwtgF9ChJ32PHXuNTEPgESpd8AyPmv5SF/6vn7Uzq6zIVkHRD1rqAXZtB9RUjgkoVmBIPJYu8cVELhx7LoQqVSfP+1NMY2cb4yOiw+K3GfydjDiK1AixPnvby0Vp7b46QBUngphMTjQ0ENqF98vzmPI3s4+yXFiwNGmw7MaxV6gGPJgA11q7Elqieb+Vsj7Wu2VqWJ1SLuWp6wOkT0bSJs9uuRnT/C/6zzYZTQid6HkZcSMlc+l6D12B2T2l8t5/wy9kcAvnYH/6HZPOLCdbBOqQWuq2Vsxu7Suc83XdrD6hmVYMql2f1ZkQHMTV4Dx6DuCPoxUVJ6vpljzVave/LPBs3YRnDIE/O5iwi8UP+CfVZzqoc7HejSCAy1sSSb72U2Vvt2a96QxxqN4m4PYOmAT3p80x7masEF0B55Ght6lHdNLcPgFbwd1IjuYUmF29lknVxmvdwwEoebBCke9TLYx4hFwbsCySqdrWu8+0qBe9nKyn2dll/bPe7hsCV6f8N+Q9dZlUJ6lf9/dlRJggqw2wOb0d/d5TDs4BtkFl9WbyfHGqUYSM8uZ+NIg+FKbuef0pL0YmPLQ/B1IKRKvpj0ntqGL2eWPfzHpQQIC5W39LMAuP6jnXamMzCBdARbZovgpQ/f6HRukZw7yAaZD2HXbp+E/osjcaM5Kgkce5uBwSTkge4zn5icfnqYC8S8W97unYgRE9bh1mvR/GD41Sic2Yi3NduGQRyVO+kKVRYLrY9zZv/3dc17z2OWUyBDt+53kQ1EKpFb40QQ1jOEQWGlycwy106Wmpp1ZpeFKjClyq7x7a5e8K5oXzJMb9pMeMG1SuD9FH5p8nsqXETzSsWLXTi77BV0LJUlzAIhbj4EZX7Cj3riNwKhyE73Y/k4+VV6DD4e9z6obQbDDztEwbUOSqjF6PvgewzPX4MetBehUEvQ+nnmjrIozW9eZyI+FonQnYgDh0oSHiT8HDlWl3sBcoeXXr+WF8K86InSL5BoGZ5qsWw==","iterations":310000};
+    const bytes = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!window.crypto || !window.crypto.subtle) {
+        status.textContent = 'Abre la página mediante HTTPS o localhost para desbloquear la solución.';
+        return;
+      }
+      abrir.disabled = true;
+      status.textContent = 'Comprobando contraseña…';
+      try {
+        const material = await crypto.subtle.importKey('raw', new TextEncoder().encode(input.value), 'PBKDF2', false, ['deriveKey']);
+        const key = await crypto.subtle.deriveKey({name: 'PBKDF2', salt: bytes(config.salt), iterations: config.iterations, hash: 'SHA-256'}, material, {name: 'AES-GCM', length: 256}, false, ['decrypt']);
+        const clear = await crypto.subtle.decrypt({name: 'AES-GCM', iv: bytes(config.iv)}, key, bytes(config.data));
+        const data = JSON.parse(new TextDecoder().decode(clear));
+        code.textContent = data.codigo;
+        interp.textContent = data.interpretacion;
+        panel.hidden = false;
+        form.hidden = true;
+        input.value = '';
+        status.textContent = 'Solución desbloqueada.';
+        panel.querySelector('[data-copiar]').focus();
+      } catch (err) {
+        status.textContent = 'Contraseña incorrecta o no se pudo desbloquear la solución.';
+        input.select();
+      } finally { abrir.disabled = false; }
+    });
+    panel.querySelector('[data-copiar]').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        status.textContent = 'Código copiado.';
+      } catch (err) {
+        const range = document.createRange(); range.selectNodeContents(code);
+        const selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+        status.textContent = 'Código seleccionado. Usa Ctrl+C o Cmd+C para copiarlo.';
+      }
+    });
+    panel.querySelector('[data-cerrar]').addEventListener('click', () => {
+      panel.hidden = true; code.textContent = ''; interp.textContent = '';
+      form.hidden = false; status.textContent = 'Solución bloqueada.'; input.focus();
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);
+  else iniciar();
+})();
+</script>
+```
+
+::::::::
+
+# Parte II. Biblioteca de herramientas {#biblioteca}
+
+**Consulta posterior.** Ejecuta primero tu script del recorrido principal, incluidas las tablas organizadas de lectura y cantidades si las vas a usar. Los ejemplos reutilizan esos objetos; no son requisitos adicionales. Los paquetes opcionales se ejecutan en la página solo si están instalados.
+
+## 8. Procesamiento y tablas {#tablas-biblioteca}
+
+:::::::: {.panel-tabset}
+
+### Recodificar e importar
+
+Etiquetar no es recodificar. Agrupar frecuencia de lectura reduce siete categorías a dos, perdiendo detalle, y solo es útil si tu pregunta lo justifica.
+
+
+```{r}
+#| label: recodificar
+# Creamos una copia de texto; los NA se conservan.
+datos$lectura_mensual <- as.character(datos$frecuencia_lectura)
+
+# Identificamos las tres categorías de lectura al menos mensual.
+mensual <- datos$frecuencia_lectura %in% c("Diaria", "Semanal", "Mensual")
+
+# Agrupamos las categorías de mayor frecuencia.
+datos$lectura_mensual[mensual] <- "Al menos mensual"
+
+# Agrupamos las otras respuestas válidas, sin tocar los NA.
+menos <- !is.na(datos$frecuencia_lectura) & !mensual
+datos$lectura_mensual[menos] <- "Menor frecuencia o no lee"
+
+# Definimos las dos etiquetas de la nueva variable.
+datos$lectura_mensual <- factor(
+    datos$lectura_mensual,
+    levels = c("Al menos mensual", "Menor frecuencia o no lee")
+)
+
+# Revisamos la distribución y los valores perdidos.
+table(datos$lectura_mensual, useNA = "always")
+```
+
+
+```r
+# Alternativa de importación, si readr está instalado.
+# Si aún no lo tienes: install.packages("readr")
+# Cargamos el paquete antes de usar su función.
+library(readr)
+
+# Leemos el mismo archivo con una función alternativa.
+datos_readr <- read_csv(archivo, show_col_types = FALSE)
+
+# Si tienes el RDS correspondiente, puedes importarlo preservando atributos.
+# datos_rds <- readRDS("input/Cultura_2024.rds")
+```
+
+
+El RDS es un formato propio de R. Es una alternativa únicamente si el equipo docente proporciona ese archivo; la clase usa CSV. Revisa siempre los tipos y etiquetas después de importar. `!=` significa distinto de; `|>` pasa el resultado a la siguiente función (R 4.1 o superior).
+
+### Frecuencias y dplyr
+
+Con R base, `table()` calcula; `data.frame()` organiza; una herramienta de presentación puede mejorar la legibilidad. Mantén el cálculo sin redondeo hasta el final.
+
+
+```{r}
+#| label: tabla-total-moda
+# Añadimos el total de respuestas válidas a la tabla de frecuencias.
+addmargins(frecuencias)
+
+# Buscamos la frecuencia más alta.
+mayor_frecuencia <- max(frecuencias)
+
+# Marcamos las categorías que tienen esa frecuencia (puede haber empates).
+es_moda <- frecuencias == mayor_frecuencia
+
+# Mostramos los nombres de las categorías marcadas.
+names(frecuencias)[es_moda]
+```
+
+
+
+::::::: {.callout-note collapse="true"}
+#### Alternativa con dplyr
+
+Este paquete facilita seleccionar, filtrar y transformar tablas. Si no lo tienes, ejecuta `install.packages("dplyr")` una vez. `filter()` conserva filas, `count()` cuenta y `mutate()` añade o transforma columnas.
+
+
+```{r}
+#| label: tabla-dplyr
+#| eval: !expr requireNamespace("dplyr", quietly = TRUE)
+# Cargamos el paquete opcional antes de usar sus funciones.
+library(dplyr)
+
+# Conservamos únicamente las respuestas válidas.
+tabla_dplyr <- filter(datos, !is.na(artesania))
+
+# Contamos cada categoría.
+tabla_dplyr <- count(tabla_dplyr, artesania, name = "n")
+
+# Dividimos cada frecuencia por el total válido.
+tabla_dplyr <- mutate(tabla_dplyr, porcentaje = 100 * n / sum(n))
+
+# Mostramos la tabla.
+print(tabla_dplyr)
+```
+
+
+:::::::
+
+
+
+::::::: {.callout-note collapse="true"}
+#### Alternativa con janitor
+
+Si quieres probarlo, instala una vez con `install.packages("janitor")`. `janitor::tabyl()` significa utilizar la función `tabyl()` del paquete janitor sin cargarlo con `library()`.
+
+
+```{r}
+#| label: tabla-janitor
+#| eval: !expr requireNamespace("janitor", quietly = TRUE)
+# Seleccionamos los mismos casos válidos que en R base.
+validos <- subset(datos, !is.na(artesania))
+
+# tabyl() devuelve frecuencias y proporciones.
+janitor::tabyl(validos, artesania)
+```
+
+
+:::::::
+
+
+### Porcentajes y acumulados
+
+Las proporciones son frecuencias divididas por el N válido; al multiplicar por 100 obtenemos porcentajes. Para una ordinal, acumulamos en el orden del factor. No acumulamos categorías nominales.
+
+```{r}
+#| label: biblioteca-porcentajes
+# Calculamos frecuencias relativas de la variable nominal.
+prop.table(frecuencias)
+
+# Consultamos los porcentajes acumulados de la ordinal.
+tabla_lectura[, c("categoria", "pct_acumulado")]
+```
+
+:::::: {.callout-note collapse="true" title="¿Cómo adaptar este código?"}
+
+Usa una tabla de frecuencias de tu variable.
+
+::::::
+
+Comprueba que el último acumulado sea 100 %.
+
+### Contingencias
+
+Los conteos, totales y porcentajes condicionales responden preguntas diferentes. Usa los casos válidos conjuntos y no sumes porcentajes por fila como si fueran porcentajes por columna.
+
+```{r}
+#| label: biblioteca-contingencia
+# Mostramos el cruce y los totales marginales.
+addmargins(cruce)
+
+# Comprobamos el N válido conjunto.
+sum(cruce)
+```
+
+Consulta el [análisis bivariado](#bivariado) para adaptar los denominadores y el gráfico.
+
+### Estadísticos adicionales
+
+El rango es máximo menos mínimo; la varianza usa unidades al cuadrado; la DE vuelve a la unidad original; el IQR es Q3 menos Q1.
+
+
+```{r}
+#| label: estadisticos-extra
+# El rango es la diferencia entre el máximo y el mínimo.
+max(y) - min(y)
+
+# La varianza mide dispersión en unidades al cuadrado.
+var(y)
+
+# IQR() calcula la distancia entre Q1 y Q3.
+IQR(y)
+
+# aggregate() aplica una función a los libros de cada grupo de sexo.
+# La fórmula libros_cant ~ sexo significa libros separados por sexo.
+aggregate(libros_cant ~ sexo, data = datos, FUN = mean)
+
+# Contamos los casos válidos de libros dentro de cada grupo.
+aggregate(libros_cant ~ sexo, data = datos, FUN = length)
+```
+
+
+Esta comparación cuantitativa por grupos es opcional; no sustituye la tabla de contingencia exigida. No atribuyas diferencias a un efecto causal.
+
+### Presentación de tablas
+
+Una tabla formateada mejora la lectura, no la exactitud del cálculo.
+
+
+```{r}
+#| label: presentacion-redondear
+# Creamos una copia para presentar sin modificar la tabla de cálculo.
+tabla_presentacion <- tabla_artesania
+
+# Redondeamos los porcentajes de la copia a dos decimales.
+tabla_presentacion$porcentaje <- round(tabla_presentacion$porcentaje, 2)
+
+# Mostramos la copia sin números de fila adicionales.
+print(tabla_presentacion, row.names = FALSE)
+```
+
+
+
+```{r}
+#| label: presentacion-kable
+#| eval: !expr requireNamespace("knitr", quietly = TRUE)
+#| results: asis
+# kable() prepara una tabla para HTML o Markdown.
+knitr::kable(
+    tabla_presentacion,
+    col.names = c("Respuesta", "N", "% válido")
+)
+```
+
+
+En el reporte incluye fuente, N válido y unidades. Puedes copiar los valores del CSV exportado o formatear la tabla en tu procesador de texto. `gt` es otra opción de presentación, no una exigencia.
+
+::::::::
+
+## 9. Galería de gráficos {#galeria}
+
+Los ejemplos reutilizan los datos del taller. Fuente: ENPCCL 2024, versión pedagógica, sin ponderadores. Para los conteos discretos de esta encuesta preferimos histogramas, polígonos y cajas; una densidad suavizada podría sugerir valores no observados.
+
+:::::::: {.panel-tabset}
+
+### Categóricas
+
+**Barras de frecuencia, horizontales, orden ordinal y etiquetas.** Elige frecuencia o porcentaje según la pregunta. No reordenes una ordinal por frecuencia si quieres mostrar su escala.
+
+
+::::::: {.callout-note collapse="true"}
+#### Producción artesanal: frecuencias
+Compara cantidades absolutas, no porcentajes. Cambia `frecuencia` por `porcentaje` si quieres comparar proporciones.
+
+```{r}
+#| label: galeria-conteos
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Usamos las frecuencias ya calculadas.
+ggplot(tabla_artesania, aes(x = categoria, y = frecuencia)) +
+    geom_col(fill = "steelblue") +
+    labs(title = "Producción artesanal: frecuencias", x = "Respuesta", y = "Personas") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+::::::: {.callout-note collapse="true"}
+#### Producción artesanal: barras horizontales
+Útil para nombres largos. El giro no modifica los recuentos.
+
+```{r}
+#| label: galeria-horizontal
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# coord_flip() gira los ejes.
+ggplot(tabla_artesania, aes(x = categoria, y = frecuencia)) +
+    geom_col(fill = "steelblue") +
+    coord_flip() +
+    labs(title = "Barras horizontales", x = "Respuesta", y = "Personas") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+::::::: {.callout-note collapse="true"}
+#### Producción artesanal: categorías ordenadas
+Usa `reorder()` para nominales, no para una escala ordinal que deba conservar su orden.
+
+```{r}
+#| label: galeria-ordenadas
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# reorder() ordena las categorías por frecuencia.
+ggplot(tabla_artesania, aes(x = reorder(categoria, frecuencia), y = frecuencia)) +
+    geom_col(fill = "steelblue") +
+    coord_flip() +
+    labs(title = "Categorías ordenadas", x = "Respuesta", y = "Personas") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+::::::: {.callout-note collapse="true"}
+#### Producción artesanal: porcentajes
+Las etiquetas muestran porcentajes válidos. Cambia el número de decimales en `sprintf()`.
+
+```{r}
+#| label: galeria-etiquetas
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# geom_text() escribe los porcentajes; round() redondea solo las etiquetas.
+ggplot(tabla_artesania, aes(x = categoria, y = porcentaje)) +
+    geom_col(fill = "steelblue") +
+    geom_text(aes(label = round(porcentaje, 1)), vjust = -0.4) +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.15))) +
+    labs(
+        title = "Porcentajes de producción artesanal", x = "Respuesta",
+        y = "Porcentaje válido (%)"
+    ) +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+::::::: {.callout-note collapse="true"}
+#### Frecuencia de lectura
+Las categorías mantienen el orden de frecuencia de lectura. El gráfico no debe ordenarse por tamaño.
+
+```{r}
+#| label: galeria-orden-lectura
+# Recuperamos el orden original de la variable ordinal.
+tabla_lectura$categoria <- factor(
+    tabla_lectura$categoria,
+    levels = levels(datos$frecuencia_lectura),
+    ordered = TRUE
+)
+```
+
+
+
+```{r}
+#| label: galeria-ordinales
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Usamos el orden del factor preparado en el bloque anterior.
+ggplot(tabla_lectura, aes(x = categoria, y = porcentaje)) +
+    geom_col(fill = "steelblue") +
+    coord_flip() +
+    labs(title = "Frecuencia de lectura", x = "Frecuencia", y = "Porcentaje válido (%)") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+
+
+Las etiquetas facilitan la lectura de valores; si se superponen, usa barras horizontales. La suma de los porcentajes válidos debe ser 100 % (salvo redondeo).
+
+
+### Cuantitativas
+
+**Polígono de frecuencias y vista ampliada.** Un polígono conecta frecuencias por intervalo. La ampliación gráfica no debe alterar los estadísticos ni ocultar que existen valores mayores.
+
+
+::::::: {.callout-note collapse="true"}
+#### Polígono de frecuencias
+Une las frecuencias de intervalos contiguos; conserva los intervalos del histograma.
+
+```{r}
+#| label: galeria-poligono
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# geom_freqpoly() une las frecuencias de cada intervalo.
+ggplot(datos, aes(x = ih1)) +
+    geom_freqpoly(binwidth = 1, boundary = 0.5, na.rm = TRUE) +
+    labs(title = "Polígono de frecuencias", x = "Personas", y = "Frecuencia") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+
+::::::: {.callout-note collapse="true"}
+#### Caja ampliada de libros
+La ventana cambia, no se eliminan observaciones del cálculo. El máximo real puede estar fuera de la vista.
+
+```{r}
+#| label: galeria-caja-zoom-gg
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Ampliamos la zona central sin filtrar datos.
+g_zoom <- g_caja +
+
+    # Cambiamos la ventana visible sin excluir casos.
+    coord_cartesian(ylim = c(0, 30)) +
+
+    # Informamos que la vista no muestra todos los valores.
+    labs(subtitle = "Vista ampliada 0–30; existen valores superiores")
+
+# Mostramos la versión ampliada.
+print(g_zoom)
+```
+
+
+:::::::
+
+
+No interpretes la vista ampliada como si el máximo fuera 30. Consulta la caja completa y los estadísticos.
+
+### Bivariadas
+
+**Barras agrupadas, apiladas y mapa de calor.** Las dos primeras muestran recuentos; el mapa representa porcentajes por fila. Los tamaños de los grupos afectan los recuentos.
+
+
+::::::: {.callout-note collapse="true"}
+#### Organizar una contingencia como tabla larga
+
+Este formato es útil para ggplot2: cada fila representa una combinación de categorías y su recuento, no una persona de la encuesta.
+
+```{r}
+#| label: galeria-cruce-largo
+# Convertimos las frecuencias del cruce en una tabla de tres columnas.
+tabla_n <- as.data.frame(cruce)
+
+# Asignamos nombres descriptivos a las columnas.
+names(tabla_n) <- c("sexo", "respuesta", "n")
+
+# Mostramos el resultado.
+print(tabla_n)
+```
+
+:::::::
+
+::::::: {.callout-note collapse="true"}
+#### Barras agrupadas
+Compara recuentos lado a lado. Los tamaños de los grupos influyen en las alturas.
+
+```{r}
+#| label: galeria-agrupadas
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# position = "dodge" coloca las barras lado a lado.
+ggplot(tabla_n, aes(x = sexo, y = n, fill = respuesta)) +
+    geom_col(position = "dodge") +
+    labs(title = "Barras agrupadas", x = "Sexo", y = "Frecuencia", fill = "Respuesta") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+
+::::::: {.callout-note collapse="true"}
+#### Barras apiladas
+La altura de cada barra es el total del grupo; no es un porcentaje.
+
+```{r}
+#| label: galeria-apiladas
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# geom_col() apila los recuentos de cada grupo por defecto.
+ggplot(tabla_n, aes(x = sexo, y = n, fill = respuesta)) +
+    geom_col() +
+    labs(title = "Barras apiladas", x = "Sexo", y = "Frecuencia", fill = "Respuesta") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+
+::::::: {.callout-note collapse="true" title="Barras al 100 % con porcentajes ya calculados (opcional)"}
+
+Esta variante utiliza `por_fila`, la tabla del cruce que calculamos antes. La necesitamos también para el mapa de calor. `as.table()` y `as.data.frame()` permiten pasar de una tabla de doble entrada a una fila por combinación. Ejecuta primero esta preparación si quieres hacer el mapa de calor.
+
+```{r}
+#| label: cruce-formato-grafico
+# Convertimos los porcentajes por fila en una tabla de tres columnas.
+porcentajes_tabla <- as.table(por_fila)
+tabla_cruce_graf <- as.data.frame(porcentajes_tabla)
+
+# Damos nombres a las columnas para utilizarlas en ggplot2.
+names(tabla_cruce_graf) <- c("sexo", "respuesta", "porcentaje")
+tabla_cruce_graf
+```
+
+El siguiente código añade una paleta manual, marcas del eje y una ventana visible. Son opciones de presentación, no nuevos cálculos. `geom_col()` usa los porcentajes ya calculados; `position = "stack"` es su posición por defecto.
+
+```{r}
+#| label: grafico-cruce-gg
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Elegimos los datos y asignamos las variables a los ejes.
+g_cruce_pct <- ggplot(
+    tabla_cruce_graf,
+    aes(x = sexo, y = porcentaje, fill = respuesta)
+) +
+
+    # Apilamos los porcentajes dentro de cada sexo.
+    geom_col(position = "stack", width = 0.7) +
+
+    # Asignamos un color fijo a cada respuesta.
+    scale_fill_manual(values = c("Sí" = "#216873", "No" = "#D6B36A"), name = "Respuesta") +
+
+    # Mantenemos el eje en porcentajes de 0 a 100.
+    scale_y_continuous(breaks = seq(0, 100, 25)) +
+
+    # Fijamos la ventana sin descartar datos por redondeo.
+    coord_cartesian(ylim = c(0, 100)) +
+
+    # Etiquetamos los ejes y documentamos la fuente.
+    labs(
+        title = "Producción artesanal según sexo",
+        x = NULL,
+        y = "Porcentaje dentro del grupo (%)",
+        caption = "ENPCCL 2024 · versión pedagógica · sin ponderadores"
+    ) +
+
+    # Aplicamos un tema legible para la página o una presentación.
+    theme_minimal(base_size = 14)
+
+# Mostramos el gráfico guardado en el objeto.
+print(g_cruce_pct)
+```
+
+:::::::
+
+::::::: {.callout-note collapse="true"}
+#### Mapa de calor
+Cada celda representa un porcentaje por fila. Lee también el valor numérico, no solo el color.
+
+```{r}
+#| label: galeria-calor
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Una celda por combinación; el color representa el porcentaje por fila.
+ggplot(tabla_cruce_graf, aes(x = respuesta, y = sexo, fill = porcentaje)) +
+    geom_tile() +
+    geom_text(aes(label = round(porcentaje, 1))) +
+    scale_fill_gradient(low = "lightyellow", high = "lightblue", limits = c(0, 100)) +
+    labs(
+        title = "Porcentajes dentro de cada grupo", x = "Respuesta",
+        y = "Sexo", fill = "%"
+    ) +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+
+::::::: {.callout-note collapse="true"}
+#### Diagramas de caja por grupos
+Compara medianas y dispersión de libros con respuesta válida en cada grupo. Es una extensión; no sustituye la contingencia.
+
+```{r}
+#| label: galeria-cajas-grupo
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Conservamos los casos válidos de ambas variables.
+datos_cajas <- subset(datos, !is.na(sexo) & !is.na(libros_cant))
+
+# Dibujamos una caja por grupo.
+ggplot(datos_cajas, aes(x = sexo, y = libros_cant)) +
+    geom_boxplot(fill = "steelblue") +
+    labs(title = "Libros según sexo", x = "Sexo", y = "Número de libros") +
+    theme_minimal(base_size = 14)
+```
+
+
+:::::::
+
+
+Para porcentajes apilados al 100 %, consulta el [ejemplo principal](#bivariado).
+
+
+La caja por grupo es una extensión descriptiva, no reemplaza el cruce categórico del trabajo final. Si aparecen celdas pequeñas, no exageres su interpretación.
+
+### Personalizar y guardar
+
+Cambia títulos, color, ejes y tamaños sin alterar los datos. `ggsave()` guarda el objeto indicado. Las opciones avanzadas de escalas y paletas están en las barras al 100 % y el mapa de calor. En las barras con etiquetas, `vjust` ajusta su posición y `expansion()` deja espacio en el eje. `coord_cartesian()` amplía una zona sin eliminar observaciones.
+
+
+```{r}
+#| label: galeria-personalizar
+#| fig-width: 9
+#| fig-height: 5
+#| out-width: "100%"
+#| fig-align: center
+# Personalizamos el gráfico sin cambiar los porcentajes.
+g_reporte <- g_barras +
+
+    # Agregamos el N válido y la fuente.
+    labs(
+        subtitle = paste("N válido:", sum(frecuencias)),
+        caption = "ENPCCL 2024, versión pedagógica; resultados no ponderados"
+    ) +
+
+    # Cambiamos el tema gráfico.
+    theme_bw(base_size = 14)
+
+# Mostramos el gráfico personalizado.
+print(g_reporte)
+```
+
+
+
+```{r}
+#| label: galeria-pdf-gg
+# Exportamos el gráfico personalizado a PDF.
+ggsave(
+    file.path(salida, "graficos", "artesania_reporte.pdf"),
+    plot = g_reporte,
+    width = 9,
+    height = 5
+)
+```
+
+
+::::::::
+
+:::::::: {.callout-note collapse="true"}
+### Referencia rápida de operadores
+
+| Operador | Significado |
+|---|---|
+| `<-` | Guarda el resultado en un objeto. |
+| `$` | Accede a una columna por nombre. |
+| `[]` | Selecciona filas y columnas. |
+| `c()` | Reúne varios elementos. |
+| `==` / `!=` | Igual a / distinto de. |
+| `>` / `<` | Mayor / menor que. |
+| `>=` / `<=` | Mayor o igual / menor o igual. |
+| `%in%` | Comprueba pertenencia a un conjunto. |
+| `!` | Niega una condición. |
+| `&` / `\|` | Y / o (condiciones lógicas). |
+| `\|>` | Envía un resultado a la función siguiente. |
+| `+` | Añade capas a un gráfico de ggplot2. |
+
+::::::::
+
+## 10. Errores frecuentes {#errores}
+
+
+
+:::::::: {.callout-note collapse="true"}
+#### `object not found`
+Comprueba `ls()` y `exists("datos")`. Si devuelve FALSE, ejecuta primero el bloque que crea el objeto. Guarda el script y sigue su orden.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### `could not find function`
+Revisa que el nombre de la función esté bien escrito. Para una función de ggplot2, ejecuta `library(ggplot2)`. Si R dice que el paquete no está instalado, usa `install.packages("ggplot2")` una vez y vuelve a cargarlo.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### `cannot open file`
+Consulta `getwd()` y `file.exists(archivo)`. Abre la carpeta del proyecto; no uses una ruta ajena.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### `unexpected symbol`
+Revisa comillas, comas y paréntesis en esa instrucción y la anterior. Ejecuta bloques completos.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Consola con `+`
+Falta cerrar una expresión. Presiona Esc para cancelar y revisa paréntesis o comillas.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Variable inexistente
+Consulta `names(datos)`; R distingue mayúsculas y minúsculas.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### NA inesperados
+Compara `table(datos$inv_artesania, useNA = "always")` con `table(datos$artesania, useNA = "always")`. Si aparecen NA que no esperabas, verifica los códigos originales y `levels()`; no apliques niveles incorrectos. Conserva siempre el original.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Media igual a NA
+Confirma que sea una cantidad con `is.numeric(datos$libros_cant)`. Revisa los códigos y cuenta los NA con `sum(is.na(datos$libros_cant))`. Luego utiliza `mean(datos$libros_cant, na.rm = TRUE)` si hay datos válidos.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Categorías desordenadas
+Comprueba `levels()` y define el orden explícitamente con `factor()`.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Gráfico vacío
+Revisa `nrow()` y N válido, filtros y ejes; confirma que el objeto existe.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Porcentajes incorrectos
+Revisa el total válido y `margin`; comprueba `rowSums()` o `colSums()`.
+::::::::
+
+
+:::::::: {.callout-note collapse="true"}
+#### Archivos no exportados
+Comprueba que exista la carpeta, que el objeto del gráfico exista y que `ggsave()` haya terminado sin errores. Usa `list.files()` para verificar el archivo.
+::::::::
+
+
+
+# Parte III. Materiales descargables {#materiales}
+
+- [Base de datos Cultura 2024 (CSV)](../../bases%20de%20datos/Cultura_2024/Cultura_2024.csv){download="Cultura_2024.csv"}
+- [Diccionario de variables (CSV)](../../bases%20de%20datos/Cultura_2024/Diccionario_variables.csv){download="Diccionario_variables.csv"}
+- [Script 01 · Práctico guiado](intensivo-r-recursos/01_practico_guiado.R)
+- [Script 02 · Biblioteca de herramientas y gráficos](intensivo-r-recursos/02_biblioteca_herramientas.R)
+- [Script 03 · Trabajo autónomo](intensivo-r-recursos/03_trabajo_autonomo.R)
+- [Ficha metodológica](intensivo-r-recursos/Ficha_encuesta.md)
+
+Los scripts son recursos de consulta posterior. Durante la clase, construye y guarda tu propio archivo `analisis.R`. Recuerda: el trabajo final puede realizarse individualmente o en parejas. Revisa su pauta oficial; la biblioteca no agrega requisitos ni evaluaciones.
+
+
+:::::::: {.callout-note collapse="true" #autonomo-2 title="Para después de la clase · Comienza tu investigación"}
+
+Abre la encuesta que te interese, individualmente o en pareja. Crea una nueva carpeta con `input`, `procesamiento` y `output`, guarda el CSV y crea tu propio script desde cero. Consulta la [pauta del trabajo final](../../trabajo.qmd). Como preparación para el trabajo final, puedes partir por una encuesta, un tema, tres variables y la importación. Si quieres avanzar, prepara las variables, construye una primera tabla y un cruce. No es una actividad adicional de la clase ni una entrega.
+
+Si no has elegido tema, explora `edad_aux` y `scree_asist_memoria_vida` de Cultura, y busca en el diccionario una cantidad pertinente. No es una pregunta obligatoria.
+
+```{=html}
+<div class="r-check" id="r-autonomo"><p id="r-avance" aria-live="polite">0 de 7 pasos</p><progress id="r-progreso" max="7" value="0" aria-label="Avance"></progress>
+<label><input type="checkbox">Elegí encuesta y tema.</label>
+<label><input type="checkbox">Consulté el diccionario.</label>
+<label><input type="checkbox">Identifiqué una cuantitativa y dos categóricas pertinentes.</label>
+<label><input type="checkbox">Importé los datos.</label>
+<label><input type="checkbox">Revisé códigos y valores perdidos.</label>
+<label><input type="checkbox">Construí una primera tabla o cruce.</label>
+<label><input type="checkbox">Registré dudas y próximos pasos.</label>
+<button type="button" id="r-reiniciar">Reiniciar lista</button></div>
+<script>(function(){function iniciar(){const root=document.getElementById('r-autonomo');if(!root)return;const boxes=[...root.querySelectorAll('input')];function actualizar(){const n=boxes.filter(x=>x.checked).length;document.getElementById('r-avance').textContent=n+' de '+boxes.length+' pasos';document.getElementById('r-progreso').value=n}boxes.forEach(b=>b.addEventListener('change',actualizar));document.getElementById('r-reiniciar').addEventListener('click',()=>{boxes.forEach(b=>b.checked=false);actualizar()});actualizar()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',iniciar);else iniciar()})();</script>
+```
+
+::::::::
+
+
+:::::::::
+
+```{=html}
+<script>
+(function () {
+  function initIntensivoToc() {
+    var content = document.querySelector('.r-intensivo');
+    if (!content || document.getElementById('r-intensivo-toc')) return;
+
+    var headings = Array.prototype.slice.call(content.querySelectorAll('h1, h2'));
+    if (!headings.length) return;
+
+    var shell = document.createElement('div');
+    shell.className = 'r-intensivo-shell';
+    content.parentNode.insertBefore(shell, content);
+    shell.appendChild(content);
+
+    var aside = document.createElement('aside');
+    aside.id = 'r-intensivo-toc';
+    aside.className = 'r-intensivo-toc';
+    aside.setAttribute('aria-label', 'En esta página');
+
+    var title = document.createElement('p');
+    title.className = 'r-intensivo-toc-title';
+    title.textContent = 'En esta página';
+    aside.appendChild(title);
+
+    var nav = document.createElement('nav');
+    var ul = document.createElement('ul');
+    var linksById = {};
+
+    headings.forEach(function (h, idx) {
+      var section = h.closest('section[id]');
+      var id = h.id || (section && section.id);
+      if (!id) {
+        id = 'sec-intensivo-' + (idx + 1);
+        h.id = id;
+      }
+      var text = h.textContent.replace(/\s+/g, ' ').trim();
+      if (!text) return;
+
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + id;
+      a.textContent = text;
+      a.className = h.tagName === 'H1' ? 'toc-lvl-1' : 'toc-lvl-2';
+      li.appendChild(a);
+      ul.appendChild(li);
+      linksById[id] = a;
+    });
+
+    nav.appendChild(ul);
+    aside.appendChild(nav);
+    shell.appendChild(aside);
+
+    function setActive(id) {
+      Object.keys(linksById).forEach(function (k) {
+        linksById[k].classList.toggle('is-active', k === id);
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.id || (entry.target.closest('section[id]') && entry.target.closest('section[id]').id);
+              if (id && linksById[id]) setActive(id);
+            }
+          });
+        },
+        { rootMargin: '-12% 0px -72% 0px', threshold: 0 }
+      );
+      headings.forEach(function (h) { observer.observe(h); });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initIntensivoToc);
+  } else {
+    initIntensivoToc();
+  }
+})();
+</script>
+```
+

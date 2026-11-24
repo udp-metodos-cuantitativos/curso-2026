@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/ultima-informacion.html",
     "items": [
       "/ultima-informacion/2026-11-03-Solemne 2.html",
       "/ultima-informacion/2026-09-29-socialR.html",
@@ -23,6 +23,7 @@
       "/clases/clase_08/index.html",
       "/clases/practico_proc/practico_estadistica_descriptiva_casen_2024.html",
       "/clases/clase_09/index.html",
+      "/clases/intensivo/intensivo-r.html",
       "/clases/presentaciones/macarena_otarola.html",
       "/clases/presentaciones/brian_montenegro.html",
       "/clases/presentaciones/karina_cabrera.html",
@@ -30,7 +31,7 @@
     ]
   },
   {
-    "listing": "/ultima-informacion.html",
+    "listing": "/index.html",
     "items": [
       "/ultima-informacion/2026-11-03-Solemne 2.html",
       "/ultima-informacion/2026-09-29-socialR.html",
