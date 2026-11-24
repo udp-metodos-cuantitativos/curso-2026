@@ -1,0 +1,42 @@
+---
+title: "Encuesta de Presupuestos Familiares: del diseño al análisis"
+clase: "invitado-felipe"
+kicker: "Presentación Invitada · Felipe López (INE)"
+unidad: "Presentaciones Invitados"
+unidad-titulo: "Presentaciones Invitados"
+menu-titulo: "Felipe López – Encuesta de Presupuestos Familiares (INE)"
+orden: 20.4
+date: 2026-11-10
+description: "Presentación de Felipe López (Subdepartamento de Estadísticas Socioeconómicas, Instituto Nacional de Estadísticas) sobre el diseño metodológico, levantamiento y análisis de ingresos y gastos de los hogares en la Encuesta de Presupuestos Familiares (EPF)."
+pptx: "felipe_lopez_epf.pptx"
+publicada: true
+draft: false
+---
+::: {.clase-card .clase-intro}
+
+## Sobre la presentación
+
+Felipe López (Subdepartamento de Estadísticas Socioeconómicas, Instituto Nacional de Estadísticas) presenta el recorrido completo de la **Encuesta de Presupuestos Familiares (EPF)**, desde su diseño conceptual y muestral hasta la estimación y análisis de ingresos y gastos de los hogares por quintil.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Diseño de la EPF**
+
+Antecedentes, objetivos estadísticos, instrumentos de recolección y estructura de la Encuesta de Presupuestos Familiares del INE.
+:::
+
+::: {.objetivo-card}
+**Análisis de ingresos y gastos**
+
+Estimación de promedios, intervalos de confianza y comparación de gastos e ingresos entre quintiles de ingreso per cápita.
+:::
+
+:::
+
+::: {.callout-note}
+### Material de la presentación
+- [Descargar presentación (.pptx)](felipe_lopez_epf.pptx)
+:::
+
+:::

@@ -1,0 +1,42 @@
+---
+title: "Construcción Encuesta Web Diversidades"
+clase: "invitado-karina"
+kicker: "Presentación Invitada · Karina Cabrera (INE)"
+unidad: "Presentaciones Invitados"
+unidad-titulo: "Presentaciones Invitados"
+menu-titulo: "Karina Cabrera – Construcción Encuesta Web Diversidades (INE)"
+orden: 20.3
+date: 2026-11-10
+description: "Presentación de Karina Cabrera (Instituto Nacional de Estadísticas, Proyecto Diversidades) sobre el diseño metodológico, estudio cualitativo, mesas de trabajo, pruebas QAS y pruebas cognitivas para la Encuesta Web Diversidades 2025."
+pdf: "karina_cabrera.pdf"
+publicada: true
+draft: false
+---
+::: {.clase-card .clase-intro}
+
+## Sobre la presentación
+
+Karina Cabrera (Instituto Nacional de Estadísticas – Proyecto Diversidades) expone el proceso metodológico de construcción del cuestionario de la **Encuesta Web Diversidades 2025**, orientada a conocer las características sociodemográficas y experiencias de las personas de las diversidades sexuales y de género residentes en Chile.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Construcción participativa del cuestionario**
+
+Revisión de antecedentes, estudio cualitativo sobre trayectorias de vida, entrevistas a académicos/as y mesas de trabajo con instituciones públicas y organizaciones sociales.
+:::
+
+::: {.objetivo-card}
+**Evaluación y validación de preguntas**
+
+Aplicación de pruebas de cuestionario (QAS) y 60 entrevistas de pruebas cognitivas para evaluar comprensión, sensibilidad y categorías de respuesta.
+:::
+
+:::
+
+::: {.callout-note}
+### Material de la presentación
+- [Descargar presentación (.pdf)](karina_cabrera.pdf)
+:::
+
+:::

@@ -26,6 +26,7 @@ UNIDADES_INFO = {
     "3": {"id": "unidad3", "label": "Unidad III", "title": "Estadística Univariada"},
     "4": {"id": "unidad4", "label": "Unidad IV", "title": "Estadística Bivariada"},
     "practica": {"id": "practica", "label": "Talleres", "title": "Práctica en R"},
+    "invitados": {"id": "invitados", "label": "Invitados", "title": "Presentaciones Invitados"},
 }
 
 def parse_class_qmd(qmd_path: Path) -> dict:
@@ -85,10 +86,12 @@ def parse_class_qmd(qmd_path: Path) -> dict:
     
     # Determinar unidad_id
     unidad_id = "unidad0"
-    if "present" in unidad.lower():
-        unidad_id = "unidad0"
+    if "invitad" in unidad.lower():
+        unidad_id = "invitados"
     elif "práctic" in unidad.lower() or "practic" in unidad.lower() or "taller" in unidad.lower():
         unidad_id = "practica"
+    elif "present" in unidad.lower():
+        unidad_id = "unidad0"
     elif "i–ii" in unidad.lower() or "i-ii" in unidad.lower():
         unidad_id = "unidad1"
     elif "iv" in unidad.lower():
@@ -177,6 +180,7 @@ def generate_sidebar_qmd(classes: list) -> str:
         "unidad3": [],
         "unidad4": [],
         "practica": [],
+        "invitados": [],
     }
     for c in classes:
         uid = c["unidad_id"]
@@ -203,7 +207,7 @@ def generate_sidebar_qmd(classes: list) -> str:
         '    <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">',
     ]
 
-    for uid in ["unidad0", "unidad1", "unidad2", "unidad3", "unidad4", "practica"]:
+    for uid in ["unidad0", "unidad1", "unidad2", "unidad3", "unidad4", "practica", "invitados"]:
         c_list = groups.get(uid, [])
         published_in_unit = [c for c in c_list if c["publicada"]]
         unit_meta = UNIDADES_INFO.get(uid.replace("unidad", ""), {"label": uid, "title": ""})
@@ -233,7 +237,8 @@ def generate_sidebar_qmd(classes: list) -> str:
             folder = c["folder"]
             menu_label = c["menu_label"]
             href = c.get("href", f"../{folder}/index.html")
-            lines.append(f'        <a class="clase-link" href="{href}" data-clase-link="{folder}">{menu_label}</a>')
+            link_key = folder if href.endswith("/index.html") else href.replace("../", "")
+            lines.append(f'        <a class="clase-link" href="{href}" data-clase-link="{link_key}">{menu_label}</a>')
         lines.append('      </div>')
 
     lines.extend([

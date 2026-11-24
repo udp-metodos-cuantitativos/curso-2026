@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       path.includes("/" + clase + "/") ||
+      path.endsWith("/" + clase) ||
       path.endsWith("/" + clase + "/index.html") ||
       path.endsWith("/" + clase + "/")
     ) {

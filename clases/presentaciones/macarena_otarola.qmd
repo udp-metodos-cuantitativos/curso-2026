@@ -1,0 +1,42 @@
+---
+title: "El ejercicio antropológico en la Investigación Social en Educación"
+clase: "invitado-macarena"
+kicker: "Presentación Invitada · Macarena Otárola Contreras"
+unidad: "Presentaciones Invitados"
+unidad-titulo: "Presentaciones Invitados"
+menu-titulo: "Macarena Otárola – El ejercicio antropológico en la Investigación Social en Educación"
+orden: 20.1
+date: 2026-11-03
+description: "Presentación de Macarena Otárola Contreras (Antropóloga Social) sobre trayectoria, inserción en equipos interdisciplinarios y articulación entre formación etnográfica y proyectos cuantitativos o mixtos en educación."
+pdf: "macarena_otarola.pdf"
+publicada: true
+draft: false
+---
+::: {.clase-card .clase-intro}
+
+## Sobre la presentación
+
+Macarena Otárola Contreras (Antropóloga Social, asistente de investigación en CIAE y CPEIP) comparte su experiencia profesional en equipos de investigación social en educación y reflexiona sobre cómo dialoga la formación antropológica con estudios cuantitativos y mixtos.
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Trayectoria e inserción laboral**
+
+Experiencia en proyectos de investigación aplicada en educación (CIAE–CPEIP, Fondecyt y Fundación Casa de la Paz).
+:::
+
+::: {.objetivo-card}
+**Mirada antropológica y métodos mixtos**
+
+Cómo conjugar el enfoque cualitativo y etnográfico con proyectos cuantitativos en equipos interdisciplinarios.
+:::
+
+:::
+
+::: {.callout-note}
+### Material de la presentación
+- [Descargar presentación (.pdf)](macarena_otarola.pdf)
+:::
+
+:::

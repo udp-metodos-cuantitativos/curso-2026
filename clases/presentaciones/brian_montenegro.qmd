@@ -1,0 +1,54 @@
+---
+title: "Encuesta Nacional de Empleo: Indicadores de mercado laboral en Chile"
+clase: "invitado-brian"
+kicker: "Presentación Invitada · Brian Montenegro (INE)"
+unidad: "Presentaciones Invitados"
+unidad-titulo: "Presentaciones Invitados"
+menu-titulo: "Brian Montenegro – Encuesta Nacional de Empleo (INE)"
+orden: 20.2
+date: 2026-11-03
+description: "Presentación de Brian Montenegro (Sociólogo y analista socioeconómico del Instituto Nacional de Estadísticas) sobre el diseño, medición e indicadores del mercado laboral en Chile a partir de la Encuesta Nacional de Empleo (ENE)."
+publicada: true
+draft: false
+---
+```{=html}
+<div class="clase-card clase-card-presentation">
+  <div class="class-presentation-viewer" id="viewer-clase-invitado-brian">
+    <iframe src="brian_montenegro_slides.html" title="Presentación Brian Montenegro – Encuesta Nacional de Empleo" allowfullscreen=""></iframe>
+  </div>
+  <div class="clase-presentacion-actions">
+    <a href="brian_montenegro_slides.html" class="btn btn-primary" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-2"></i>Abrir presentación en nueva pestaña</a>
+    <a href="brian_montenegro_slides.html" class="btn btn-outline-secondary" download=""><i class="bi bi-file-earmark-code me-2"></i>Descargar HTML</a>
+    <button type="button" class="btn btn-outline-secondary btn-presentation-fullscreen" id="btn-fullscreen-invitado-brian" data-action="fullscreen" data-target="#viewer-clase-invitado-brian" data-fallback-url="brian_montenegro_slides.html"><i class="bi bi-arrows-fullscreen me-2"></i>Pantalla completa</button>
+  </div>
+</div>
+```
+
+::: {.clase-card .clase-intro}
+
+## Sobre la presentación
+
+Brian Montenegro (Sociólogo y analista socioeconómico del Instituto Nacional de Estadísticas) presenta los fundamentos metodológicos y los principales indicadores del mercado laboral en Chile producidos mediante la Encuesta Nacional de Empleo (ENE).
+
+::: {.clase-objetivos}
+
+::: {.objetivo-card}
+**Encuesta Nacional de Empleo (ENE)**
+
+Diseño estadístico, población objetivo y marco conceptual de medición de la fuerza de trabajo en Chile.
+:::
+
+::: {.objetivo-card}
+**Indicadores del mercado laboral**
+
+Construcción e interpretación de tasas de ocupación, desocupación, participación e informalidad laboral.
+:::
+
+:::
+
+::: {.callout-note}
+### Material de la presentación
+- [Abrir presentación interactiva (.html)](brian_montenegro_slides.html){target="_blank"}
+:::
+
+:::
