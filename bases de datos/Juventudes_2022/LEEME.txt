@@ -1,0 +1,13 @@
+Encuesta: Juventudes_2022
+Fuente: https://www.injuv.gob.cl/sites/default/files/cuestionario_jovenes_-10ma_encuesta_nacional_de_juventudes.pdf
+Registros: 9700
+Variables: 20
+Unidad: persona; algunas variables describen su hogar o vivienda.
+Base didactica: seleccion de columnas de microdatos publicos; no es la base oficial completa.
+El CSV conserva valores originales y codigos especiales. Celdas vacias = NA.
+Usar el diccionario para distinguir respuestas validas, faltantes y no aplicables.
+Analisis descriptivo no ponderado de los casos disponibles; no extrapolar a la poblacion.
+No tratar categorias ordinales como cantidades ni publicar celdas con muy pocos casos.
+En CASEN, las caracteristicas de hogar se repiten entre integrantes; no contar hogares usando filas.
+En Cultura, las frecuencias de asistencia y lectura corresponden a casos con respuesta valida, no a todas las personas.
+En ENUT, los tiempos corresponden al dia tipo; analizar personas con tiempos validos y no convertir NA en cero.
