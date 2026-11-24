@@ -36,8 +36,8 @@ project:
     - clases/clase_07/index.qmd
     - clases/clase_08/index.qmd
     - clases/practico_proc/practico_estadistica_descriptiva_casen_2024.qmd
+    - clases/clase_09/index.qmd
     # Clases preparadas / ocultas (se publican con 'publicada: true'):
-    # - clases/clase_09/index.qmd (Indicadores, índices y escalas)
     # - clases/clase_10/index.qmd (Correlación y regresión)
     # - clases/clase_11/index.qmd (Elaboración del trabajo grupal)
     # - clases/clase_12/index.qmd (Sesión de resolución de dudas)

@@ -3,9 +3,9 @@ title: "Práctico — Estadística descriptiva con R"
 page-title: "Estadística descriptiva con R y CASEN 2024"
 pagetitle: "Estadística descriptiva con R y CASEN 2024"
 clase: "practico-estadistica"
-kicker: "Taller de Software · Unidad III"
-unidad: "Unidad III"
-unidad-titulo: "Estadística Univariada"
+kicker: "Taller de Software · Práctica en R"
+unidad: "Práctica en R"
+unidad-titulo: "Práctica en R"
 orden: 8.5
 date: 2026-10-20
 description: "Práctico integral de las clases 04–08: procesamiento, distribuciones, frecuencias, tendencia central, dispersión, posición y forma con CASEN 2024."

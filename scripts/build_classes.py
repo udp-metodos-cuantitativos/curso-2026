@@ -24,7 +24,8 @@ UNIDADES_INFO = {
     "1": {"id": "unidad1", "label": "Unidad I", "title": "Investigación Cuantitativa"},
     "2": {"id": "unidad2", "label": "Unidad II", "title": "Estadística en Investigación"},
     "3": {"id": "unidad3", "label": "Unidad III", "title": "Estadística Univariada"},
-    "4": {"id": "unidad4", "label": "Unidad IV", "title": "Relaciones Bivariadas"},
+    "4": {"id": "unidad4", "label": "Unidad IV", "title": "Estadística Bivariada"},
+    "practica": {"id": "practica", "label": "Talleres", "title": "Práctica en R"},
 }
 
 def parse_class_qmd(qmd_path: Path) -> dict:
@@ -86,6 +87,8 @@ def parse_class_qmd(qmd_path: Path) -> dict:
     unidad_id = "unidad0"
     if "present" in unidad.lower():
         unidad_id = "unidad0"
+    elif "práctic" in unidad.lower() or "practic" in unidad.lower() or "taller" in unidad.lower():
+        unidad_id = "practica"
     elif "i–ii" in unidad.lower() or "i-ii" in unidad.lower():
         unidad_id = "unidad1"
     elif "iv" in unidad.lower():
@@ -173,6 +176,7 @@ def generate_sidebar_qmd(classes: list) -> str:
         "unidad2": [],
         "unidad3": [],
         "unidad4": [],
+        "practica": [],
     }
     for c in classes:
         uid = c["unidad_id"]
@@ -199,7 +203,7 @@ def generate_sidebar_qmd(classes: list) -> str:
         '    <div class="nav flex-column nav-pills" id="clases-tabs" role="navigation" aria-label="Menú de clases">',
     ]
 
-    for uid in ["unidad0", "unidad1", "unidad2", "unidad3", "unidad4"]:
+    for uid in ["unidad0", "unidad1", "unidad2", "unidad3", "unidad4", "practica"]:
         c_list = groups.get(uid, [])
         published_in_unit = [c for c in c_list if c["publicada"]]
         unit_meta = UNIDADES_INFO.get(uid.replace("unidad", ""), {"label": uid, "title": ""})

@@ -1,51 +1,54 @@
 ---
-title: "Indicadores, índices y escalas"
+title: "Tablas de contingencia"
 clase: "09"
 unidad: "Unidad IV"
-unidad-titulo: "Relaciones Bivariadas"
+unidad-titulo: "Estadística Bivariada"
 orden: 9
 date: 2026-11-03
-description: "Construcción de indicadores empíricos, diseño de índices aditivos y ponderados, y escalas de medición para conceptos sociales complejos (Laboratorio 6)."
-publicada: false
-draft: true
+description: "Introducción al análisis estadístico de relaciones bivariadas y construcción e interpretación de tablas de contingencia."
+pdf: "clase_09.pdf"
+pptx: "clase_09.pptx"
+publicada: true
+draft: false
 ---
 ::: {.clase-card .clase-intro}
 
 ## Contenidos de la sesión
 
-En esta clase revisamos las técnicas de síntesis métrica que permiten combinar múltiples variables en indicadores e índices representativos de dimensiones sociales complejas.
+Iniciamos la Unidad IV revisando los fundamentos del análisis estadístico bivariado y el uso de tablas de contingencia para examinar patrones de asociación entre variables categóricas en fenómenos sociales y culturales.
 
 ::: {.clase-objetivos}
 
 ::: {.objetivo-card}
-**De la variable al índice**
+**Análisis estadístico bivariado**
 
-Comprender la necesidad metodológica de integrar múltiples indicadores empíricos.
+Examinar la relación entre dos variables (categóricas o numéricas) para identificar patrones de asociación entre fenómenos sociales o culturales.
 :::
 
 ::: {.objetivo-card}
-**Índices aditivos**
+**Tipos de análisis bivariado**
 
-Construir índices sumatorios simples y ponderados, cuidando la dimensionalidad y validez.
+Distinguir la técnica adecuada según el nivel de medición: tablas de contingencia (dos categóricas), prueba T o ANOVA (cuantitativa y categórica) y correlación de Pearson o Spearman (dos cuantitativas).
 :::
 
 ::: {.objetivo-card}
-**Escalas de actitud**
+**Tablas de contingencia**
 
-Revisar la lógica de escalas tipo Likert, Guttman y diferenciales semánticos.
+Identificar los componentes esenciales de una tabla cruzada (título, variables, atributos, porcentajes y totales) y comprender por qué se reportan porcentajes en lugar de frecuencias.
 :::
 
 ::: {.objetivo-card}
-**Laboratorio 6 en R**
+**Porcentajes de fila y columna**
 
-Transformación y estandarización de variables con mutate, recodificación múltiple y creación de variables compuestas.
+Diferenciar la lectura horizontal (% de fila) y vertical (% de columna) para reconocer a qué variable refiere cada porcentaje e interpretar correctamente la relación.
 :::
 
 :::
 
 ::: {.callout-note}
-### Material de la sesión por publicar
-Las diapositivas y el script de R del Laboratorio 6 estarán disponibles en esta sección.
+### Material de la sesión
+- [Descargar presentación (.pptx)](clase_09.pptx)
+- [Descargar presentación (.pdf)](clase_09.pdf)
 :::
 
 :::

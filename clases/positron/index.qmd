@@ -1,9 +1,9 @@
 ---
 title: "Introducción a Positron"
 clase: "positron"
-kicker: "Taller de Software · Unidad III"
-unidad: "Unidad III"
-unidad-titulo: "Estadística Univariada"
+kicker: "Taller de Software · Práctica en R"
+unidad: "Práctica en R"
+unidad-titulo: "Práctica en R"
 orden: 5.5
 date: 2026-09-29
 description: "Familiarización con la interfaz, paneles, scripts y entorno de trabajo en Positron para el análisis de datos con R."

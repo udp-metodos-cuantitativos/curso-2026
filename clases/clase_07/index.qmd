@@ -1,5 +1,5 @@
 ---
-title: " Medidas de Tendencia Central y Medidas de Dispersión"
+title: "Medidas de Tendencia Central y Medidas de Dispersión"
 clase: "07"
 unidad: "Unidad III"
 unidad-titulo: "Estadística Univariada"
